@@ -1,3 +1,3 @@
-# PRAJKT | ANNEX | _proto
+# PRAJKT | ANNEX
 
 - Made with svelte

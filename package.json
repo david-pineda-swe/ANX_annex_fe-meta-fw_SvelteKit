@@ -1,5 +1,5 @@
 {
-  "name": "prajkt-annex-_proto",
+  "name": "prajkt-annex",
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
