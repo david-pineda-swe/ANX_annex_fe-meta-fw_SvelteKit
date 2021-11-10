@@ -2,5 +2,5 @@
 
 - Made with svelte
 
-## Site Node Hierarchy Tree
-Parts of the website that will hydrate the different aspects and dependencies of the annex website protoform [Concept Outline >>](./docs/site-node-tree.md)
+## Site Graph Data
+The underlying data structure that will hydrate the different aspects and requirements of the website project [Concept Outline >>](./docs/site-graph.md)

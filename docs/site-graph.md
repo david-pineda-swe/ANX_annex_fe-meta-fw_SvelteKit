@@ -1,6 +1,6 @@
 [Home](../README.md)
-# Website Object Node Hierarchy
-### (The site-node-tree)
+# Site Graph Data
+The hierarchy required to generate a project site
 
 - Site
   - Metadata: Document data and SEO
