@@ -1,6 +1,6 @@
 [Home](../README.md)
 # Website Object Node Hierarchy
-### The site-node-tree
+### (The site-node-tree)
 
 - Site
   - Metadata: Document data and SEO
