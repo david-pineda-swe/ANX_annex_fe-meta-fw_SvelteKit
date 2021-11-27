@@ -1,3 +1,8 @@
+<script>
+	// DOCS: https://kit.svelte.dev/docs#layouts-error-pages
+
+</script>
+
 <div class="page-404-wrapper">
 	
 	<section class="content">
