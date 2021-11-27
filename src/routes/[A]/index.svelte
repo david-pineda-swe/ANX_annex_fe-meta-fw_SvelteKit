@@ -2,14 +2,21 @@
 	// DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
 	export async function load(ctx) {
 		console.log('>> TST CTX on [CATEGORY]:', ctx.page.params);
-		// 1.) Create a nTier config abstraction (TBD in the sitegraph implementation)
-		const tierOneConfig = { // << Should come from SITE_GRAPH.siteMap.nTier config obj
-			type: "category"
+		// 1.) Create an nTier config abstraction (TBD in the sitegraph implementation)
+		// NOTE: tierUser or tierOrg could proceed
+			// levels: user or org, cat, resources, id
+		const firstTierConfig = { // << Should come from SITE_GRAPH.siteMap.nTier[0] config obj
+			routeKey: "A",
+			routeType: "category"
 			// todo: consider loose leaf routes
 		}
 		// 2.) Collect params
-		const firstTierSegment = ctx.page.params[tierOneConfig.type];
-		console.log('FIRST_TIER_SLUG_SEGMENT:', firstTierSegment);
+		const firstTierSegment = ctx.page.params[firstTierConfig.routeKey];
+		console.log('>> FIRST_TIER_ROUTE:');
+		console.table({
+			firstTierSegment,
+			routeType: firstTierConfig.routeType
+		});
 		
 		// 3.) verify param from FIRST tier hierarchy
 		// 4.) pass through or re-route to 404 if category param is satisfied
@@ -32,4 +39,4 @@
 	export let slugs;
 </script>
 
-<h1>{slugs.category}</h1>
+<h1>{slugs.A}</h1>

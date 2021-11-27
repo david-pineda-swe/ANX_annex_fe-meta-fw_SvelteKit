@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	export async function load(ctx) {
-		console.log('>> TST CTX on [CATEGORY]-[RESOURCE]:', ctx.page.params);
+		console.log('>> TST CTX on [A]-[B]:', ctx.page.params);
 		let slugs = ctx.page.params;
 
 		let d = { 
@@ -18,5 +18,5 @@
 	export let slugs;
 </script>
 
-<h1>{slugs.category}</h1>
-<h1>{slugs.resource}</h1>
+<h1>{slugs.A}</h1>
+<h1>{slugs.B}</h1>
