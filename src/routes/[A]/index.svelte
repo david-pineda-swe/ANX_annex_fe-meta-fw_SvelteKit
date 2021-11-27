@@ -3,38 +3,51 @@
 	export async function load(ctx) {
 		console.log('>> TST CTX on [CATEGORY]:', ctx);
 
-		const ROUTE_TIER = "A";
-		// TODO: make a drill down map mech
+		const ROUTE_TIERS = ["A"];
 
 		// 1.) Create an nTier config abstraction (TBD in the sitegraph implementation)
 		// NOTE: tierUser or tierOrg could proceed
 			// levels: user or org, cat, resources, id
-		const tierConfig = { // << Should come from SITE_GRAPH.siteMap.nTiers config obj
+		const rootTierConfig = { // << Should come from SITE_GRAPH.siteMap.nTiers config obj
 			// rootTier
-			possibleRoutes: [{
-				routeKey: "A",
+			possibleSubRoutes: [{
+				routeTierKey: "A",
 				routeType: "category", // >> product, articles, resources, projects
 				routeSlug: "merp",
-				possibleRoutes: []
+				possibleSubRoutes: []
 			}]
 			// todo: consider loose leaf routes
 		}
 
-		// 2.) Collect params
-		const requestedRouteSlug = ctx.page.params[ROUTE_TIER];
-		
-		// 3.) verify tier param is a possible match from tier config hierarchy
-		const tierSegmentConfig = tierConfig.possibleRoutes.filter((tier) => {
-			return tier.routeKey === ROUTE_TIER && requestedRouteSlug === tier.routeSlug;
+		// // TODO: make below into a sharable tier config collector util
+		const LAST_TIER = ROUTE_TIERS[ROUTE_TIERS.length - 1];
+
+		// 2.) Map through tier levels...
+		const segmentConfigs = ROUTE_TIERS.map((stage, i, tiers) => {
+			const requestedRouteSlug = ctx.page.params[stage];
+			let tierConfig: any = (i === 0) ? rootTierConfig : tiers[i - 1];
+
+			// 3.) collect by verifying tier param is a possible match from tier config hierarchy
+			const foundConfig = tierConfig.possibleSubRoutes.filter((tier: any) => {
+				return tier.routeTierKey === stage && tier.routeSlug === requestedRouteSlug;
+			})[0];
+
+			return foundConfig;
 		});
 		
+		const allTiersAreSatisfied = segmentConfigs.every((config) => {
+			return config !== undefined; // TODO or empty() util
+		});
+		
+		const targetConfig = segmentConfigs.filter(config => config && config.routeTierKey === LAST_TIER)[0];
+		
 		// 4.) re-route to 404 or pass through if tierSegment config is satisfied
-		if (!tierSegmentConfig[0]) {
+		if (!allTiersAreSatisfied || !targetConfig) {
 			console.error("(!)SHOULD 404(!)");
-			throw new Error('Could not find tier A segment');
+			throw new Error(`Could not find tier ${LAST_TIER} segment`);
 		} else {
-			console.log('>> FIRST_TIER_SEGMENT_CONFIG:', tierSegmentConfig);
-			console.table(tierSegmentConfig[0]);
+			console.log('>> TARGET_CONFIG:');
+			console.table(targetConfig);
 			console.log(">> SHOULD RENDER <<");
 			
 			
