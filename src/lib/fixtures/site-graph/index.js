@@ -9,10 +9,12 @@ export const ProtoSiteGraph = {
 		pageId: "", // >> GETS LAYOUT AND CONTENT
 		possibleRoutes: [
 			// ROUTES - STANDARD
-			// sitemap
-			// about
-			// contact
-			// privacy-policy
+			// ✅ about
+			// ✅ contact
+			// ✅ privacy-policy
+			// ✅ sitemap
+
+			// ROUTES - DYNAMIC
 			{
 				routeTierKey: "A",
 				routeType: "category", // >> product, articles, resources, projects
@@ -20,8 +22,9 @@ export const ProtoSiteGraph = {
 				pageId: "", // >> GETS LAYOUT AND CONTENT
 				// ACCESS - to r/ via these levels of precedence 
 				a_published: true,
-				b_siteMapVisible: true,
+				b_sitemapVisible: true,
 				c_mainNavVisible: true,
+				d_passThrough: true,
 				possibleRoutes: [] // << sub-r/ children
 			}
 		]
