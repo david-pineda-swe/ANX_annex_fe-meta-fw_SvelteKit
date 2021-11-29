@@ -15,13 +15,13 @@
 		const LAST_TIER = ROUTE_TIERS[ROUTE_TIERS.length - 1];
 
 		// 2.) Map through tier levels...
-		const segmentConfigs = ROUTE_TIERS.map((stage, i, tiers) => {
-			const requestedRouteSlug = ctx.page.params[stage];
+		const segmentConfigs = ROUTE_TIERS.map((currentTier, i, tiers) => {
+			const requestedRouteSlug = ctx.page.params[currentTier];
 			let tierConfig: any = (i === 0) ? sitemap : tiers[i - 1];
 
 			// 3.) collect by verifying tier param is a possible match from tier config hierarchy
-			const foundConfig = tierConfig.possibleRoutes.filter((tier: any) => {
-				return tier.routeTier === stage && tier.routeSlug === requestedRouteSlug;
+			const foundConfig = tierConfig.possibleRoutes.filter((routeConfig: any) => {
+				return routeConfig.routeTier === currentTier && routeConfig.routeSlug === requestedRouteSlug;
 			})[0];
 
 			return foundConfig;
