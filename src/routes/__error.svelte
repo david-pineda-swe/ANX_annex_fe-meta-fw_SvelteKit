@@ -21,12 +21,16 @@
 <div class="page-404-wrapper">
 	
 	<section class="content">
-		<h1>{error.message}</h1>
-		<p>
-			Sorry, the page: {page.path} that you are trying to reach is no longer in service.
-		</p>
+		<h1>
+			Whoops!...
+		</h1>
+		<h2>
+			The page: {page.path} that you are trying to reach is no longer in service.
+		</h2>
 		<p>
 			Please hang up and try again.
 		</p>
+
+		<p>Error: {error.message}</p>
 	</section>
 </div>
