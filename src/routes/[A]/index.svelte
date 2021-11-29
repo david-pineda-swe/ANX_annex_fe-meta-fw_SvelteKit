@@ -9,18 +9,7 @@
 		const ROUTE_TIERS = ["A"];
 
 		// 1.) Create an nTier config abstraction (TBD in the sitegraph implementation)
-		// NOTE: tierUser or tierOrg could proceed
-			// levels: user or org, cat, resources, id
-		const rootTierConfig = { // << Should come from SITE_GRAPH.siteMap.nTiers config obj
-			// rootTier
-			possibleSubRoutes: [{
-				routeTierKey: "A",
-				routeType: "category", // >> product, articles, resources, projects
-				routeSlug: "merp",
-				possibleSubRoutes: []
-			}]
-			// todo: consider loose leaf routes
-		}
+		const { sitemap } = SiteGraph;
 
 		// // TODO: make below into a sharable tier config collector util
 		const LAST_TIER = ROUTE_TIERS[ROUTE_TIERS.length - 1];
@@ -28,10 +17,10 @@
 		// 2.) Map through tier levels...
 		const segmentConfigs = ROUTE_TIERS.map((stage, i, tiers) => {
 			const requestedRouteSlug = ctx.page.params[stage];
-			let tierConfig: any = (i === 0) ? rootTierConfig : tiers[i - 1];
+			let tierConfig: any = (i === 0) ? sitemap : tiers[i - 1];
 
 			// 3.) collect by verifying tier param is a possible match from tier config hierarchy
-			const foundConfig = tierConfig.possibleSubRoutes.filter((tier: any) => {
+			const foundConfig = tierConfig.possibleRoutes.filter((tier: any) => {
 				return tier.routeTierKey === stage && tier.routeSlug === requestedRouteSlug;
 			})[0];
 
