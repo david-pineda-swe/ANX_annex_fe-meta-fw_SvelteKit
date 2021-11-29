@@ -1,6 +1,7 @@
 # PRAJKT | ANNEX
 
-- Made with svelte
+- Made with [Svelte](https://svelte.dev/)
+- Namely [SvelteKit](https://kit.svelte.dev/)
 
 ## Core Features
 
