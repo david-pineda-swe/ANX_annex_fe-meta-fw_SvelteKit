@@ -1,7 +1,10 @@
 <script context="module" lang="ts">
 	// DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
+	import { ProtoSiteGraph as SiteGraph } from '../../lib/fixtures/site-graph'
+
 	export async function load(ctx) {
-		console.log('>> TST CTX on [CATEGORY]:', ctx);
+
+		console.log('>> TST CTX on [CATEGORY]:', ctx, SiteGraph);
 
 		const ROUTE_TIERS = ["A"];
 
