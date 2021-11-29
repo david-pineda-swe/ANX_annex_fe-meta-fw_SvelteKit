@@ -15,12 +15,14 @@ export const ProtoSiteGraph = {
 			// ✅ sitemap
 
 			// ROUTES - DYNAMIC
+			// NOTE: tierUser or tierOrg could exist
+			// levels: org > user > cat, resources, id, etc.
 			{
 				routeTier: "A",
 				routeType: "category", // >> product, articles, resources, projects
 				routeSlug: "test-a",
 				pageId: "", // >> GETS LAYOUT AND CONTENT
-				// ACCESS - to r/ via these levels of precedence 
+				// ACCESS - to r/ via these levels of precedence
 				a_published: true,
 				b_sitemapVisible: true,
 				c_mainNavVisible: true,
@@ -28,9 +30,5 @@ export const ProtoSiteGraph = {
 				possibleRoutes: [] // << sub-r/ children
 			}
 		]
-		// todo: consider loose leaf routes
 	}
 };
-
-// NOTE: tierUser or tierOrg could proceed
-// levels: user or org, cat, resources, id
