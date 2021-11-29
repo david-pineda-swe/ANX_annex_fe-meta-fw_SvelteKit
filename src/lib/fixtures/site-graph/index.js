@@ -16,7 +16,7 @@ export const ProtoSiteGraph = {
 
 			// ROUTES - DYNAMIC
 			{
-				routeTierKey: "A",
+				routeTier: "A",
 				routeType: "category", // >> product, articles, resources, projects
 				routeSlug: "test-a",
 				pageId: "", // >> GETS LAYOUT AND CONTENT

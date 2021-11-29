@@ -21,7 +21,7 @@
 
 			// 3.) collect by verifying tier param is a possible match from tier config hierarchy
 			const foundConfig = tierConfig.possibleRoutes.filter((tier: any) => {
-				return tier.routeTierKey === stage && tier.routeSlug === requestedRouteSlug;
+				return tier.routeTier === stage && tier.routeSlug === requestedRouteSlug;
 			})[0];
 
 			return foundConfig;
@@ -31,7 +31,7 @@
 			return config !== undefined; // TODO or empty() util
 		});
 		
-		const targetConfig = segmentConfigs.filter(config => config && config.routeTierKey === LAST_TIER)[0];
+		const targetConfig = segmentConfigs.filter(config => config && config.routeTier === LAST_TIER)[0];
 		
 		// 4.) re-route to 404 or pass through if tierSegment config is satisfied
 		if (!allTiersAreSatisfied || !targetConfig) {
