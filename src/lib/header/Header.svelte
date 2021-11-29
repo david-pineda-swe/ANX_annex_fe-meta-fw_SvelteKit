@@ -17,6 +17,11 @@
 		<ul>
 			<li class:active={$page.path === '/'}><a sveltekit:prefetch href="/">Home</a></li>
 			<li class:active={$page.path === '/about'}><a sveltekit:prefetch href="/about">About</a></li>
+			<li class:active={$page.path === '/contact'}><a sveltekit:prefetch href="/contact">Contact</a></li>
+			<li class:active={$page.path === '/privacy-policy'}><a sveltekit:prefetch href="/privacy-policy">Privacy Policy</a></li>
+			<li class:active={$page.path === '/sitemap'}><a sveltekit:prefetch href="/sitemap">Site Map</a></li>
+			<li class:active={$page.path === '/test-a'}><a sveltekit:prefetch href="/test-a">Test A</a></li>
+			<li class:active={$page.path === '/test-b'}><a sveltekit:prefetch href="/test-b">test B</a></li>
 			<li class:active={$page.path === '/todos'}><a sveltekit:prefetch href="/todos">Todos</a></li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
