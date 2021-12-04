@@ -4,6 +4,7 @@ export const ProtoSiteGraph = {
 	// SITE - METADATA
 	title: "New annex",
 	// SITE - MAP
+	// - is an nTier config abstraction
 	sitemap: {
 		routeSlug: "/",
 		pageId: "", // >> GETS LAYOUT AND CONTENT
@@ -23,10 +24,10 @@ export const ProtoSiteGraph = {
 				routeSlug: "test-a",
 				pageId: "", // >> GETS LAYOUT AND CONTENT
 				// ACCESS - to r/ via these levels of precedence
-				a_published: true,
-				b_sitemapVisible: true,
-				c_mainNavVisible: true,
-				d_passThrough: true,
+				a_indexOnly: true,           // 1. if route should support child routes only (NO PAGE CONFIG)
+				b_published: true,           // 2. public accessible
+				c_sitemapVisible: true,      // 3. populate on sitemap
+				d_mainNavVisible: true,      // 4. populate on main-nav 
 				possibleRoutes: [] // << sub-r/ children
 			}
 		]
