@@ -6,10 +6,13 @@
 interface verifiedRoute {
 	allTiersAreSatisfied: boolean;
 	// routeConfig: any; // TODO
+	lastTier: string;
 }
 
 export function validateRouteRequest():verifiedRoute {
+	// NOTE: REQUIRES SiteGraph.siteMap, routeTiers
 	return {
 		allTiersAreSatisfied: true,
+		lastTier: "A"
 	};
 }

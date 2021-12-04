@@ -3,23 +3,21 @@
 	import { ProtoSiteGraph as SiteGraph } from '../../lib/fixtures/site-graph'
 
 	export async function load(ctx) {
-
 		console.log('>> TST CTX on [CATEGORY]:', ctx, SiteGraph);
 
-		const ROUTE_TIERS = ["A"];
-
-		// 1.) Create an nTier config abstraction (TBD in the sitegraph implementation)
+		// REQS
+		const routeTiers = ["A"];
 		const { sitemap } = SiteGraph;
 
-		// // TODO: make below into a sharable tier config collector util
-		const LAST_TIER = ROUTE_TIERS[ROUTE_TIERS.length - 1];
+		// ===
 
-		// 2.) Map through tier levels...
-		const segmentConfigs = ROUTE_TIERS.map((currentTier, i, tiers) => {
+		// params
+		const lastTier = routeTiers[routeTiers.length - 1];
+		const segmentConfigs = routeTiers.map((currentTier, i, tiers) => {
 			const requestedRouteSlug = ctx.page.params[currentTier];
 			let tierConfig: any = (i === 0) ? sitemap : tiers[i - 1];
 
-			// 3.) collect by verifying tier param is a possible match from tier config hierarchy
+			// Find tierConfig by routeTier & routeSlug match
 			const foundConfig = tierConfig.possibleRoutes.filter((routeConfig: any) => {
 				return routeConfig.routeTier === currentTier && routeConfig.routeSlug === requestedRouteSlug;
 			})[0];
@@ -27,19 +25,23 @@
 			return foundConfig;
 		});
 		
+		// All tiers are satisfied w/ a config
 		const allTiersAreSatisfied = segmentConfigs.every((config) => {
-			return config !== undefined; // TODO or empty() util
+			return config !== undefined; // TODO: or empty() util
 		});
 		
-		const targetConfig = segmentConfigs.filter(config => config && config.routeTier === LAST_TIER)[0];
+		// Target config was the match found for the last tier designation
+		const routeConfig = segmentConfigs.filter(config => config && config.routeTier === lastTier)[0];
 		
+	
+
 		// 4.) re-route to 404 or pass through if tierSegment config is satisfied
-		if (!allTiersAreSatisfied || !targetConfig) {
+		if (!allTiersAreSatisfied || !routeConfig) {
 			console.error("(!)SHOULD 404(!)");
-			throw new Error(`Could not find tier ${LAST_TIER} segment`);
+			throw new Error(`Could not find tier ${lastTier} segment`);
 		} else {
 			console.log('>> TARGET_CONFIG:');
-			console.table(targetConfig);
+			console.table(routeConfig);
 			console.log(">> SHOULD RENDER <<");
 			
 			
