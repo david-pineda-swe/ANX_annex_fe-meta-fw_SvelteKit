@@ -2,7 +2,6 @@
 	// DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
 
 	import { validateRouteRequest } from '../../app/router';
-
 	import { ProtoSiteGraph as SiteGraph } from '../../lib/fixtures/site-graph'
 
 	export async function load(ctx) {
@@ -14,19 +13,17 @@
 		const requestedRouteParams = ctx.page.params;
 		
 
-		// TBD: POSSIBLE ADAPTER >>>
+		// TODO: POSSIBLE ADAPTER >>>
 		const route = await validateRouteRequest({
 			routeTiers,
 			sitemap,
 			requestedRouteParams
 		});
 	
-
-		// 4.) re-route to 404 or pass through if tierSegment config is satisfied
 		if (!route.allTiersAreSatisfied || !route.config) {
-			// FAIL // TODO: ADD << TO HIGHLIGHT CASES
-			console.error("(!)SHOULD 404(!)");
-			throw new Error(`Could not find tier ${route.lastTier} segment`);
+			// FAIL
+			console.error("(!)404: ROUTE IS NOT VALID(!)");
+			throw new Error(`Could not find tier: ${route.lastTier} segment`);
 		} else {
 			// OK
 			console.log('>> TARGET_CONFIG:');
