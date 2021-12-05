@@ -1,22 +1,36 @@
 <script context="module" lang="ts">
-	export async function load(ctx) {
-		console.log('>> TST CTX on [A]-[B]:', ctx.page.params);
-		let slugs = ctx.page.params;
 
-		let d = { 
-			props: {
-				slugs,
-			} };
+  import { validateRouteRequest } from '../../../app/router';
+  import { ProtoSiteGraph as SiteGraph } from '../../../lib/fixtures/site-graph'
 
-		console.log('>> MODULE FOUND:', d);
+  export async function load(ctx) {
+    // REQS
+    const routeProgression = ['A', 'B'];
+    // TODO: POSSIBLE ADAPTER FOR SITEMAP>>>
+    const { sitemap } = SiteGraph;
+    const requestedRouteParams = ctx.page.params;
 
-		return d;
-	}
+    const route = await validateRouteRequest({
+      routeProgression,
+      sitemap,
+      requestedRouteParams
+    });
+
+    if (!route.allTiersAreSatisfied || !route.config) {
+      // FAIL
+      console.error(`(!)404: ${route.lastTier} - ROUTE IS NOT VALID(!)`);
+      throw new Error(`Could not find tier: ${route.lastTier} segment`);
+    } else {
+      // OK
+      console.log(">> SHOULD RENDER <<");
+      console.log(`>> TIER CONFIGS @ ${route.lastTier}:`);
+      route.segmentConfigs.forEach(config => console.table(config));
+      
+      return { 
+      props: {
+        page: route.config,
+        route
+      } };
+    }
+  }
 </script>
-
-<script>
-	export let slugs;
-</script>
-
-<h1>{slugs.A}</h1>
-<h1>{slugs.B}</h1>
