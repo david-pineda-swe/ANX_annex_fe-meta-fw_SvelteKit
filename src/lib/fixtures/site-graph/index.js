@@ -15,20 +15,44 @@ export const ProtoSiteGraph = {
 			// ✅ privacy-policy
 			// ✅ sitemap
 
-			// ROUTES - DYNAMIC
+			// DYNAMIC ROUTES CONFIG
 			// NOTE: tierUser or tierOrg could exist
 			// levels: org > user > cat, resources, id, etc.
 			{
 				routeTier: "A",
 				routeType: "category", // >> product, articles, resources, projects
 				routeSlug: "test-a",
-				pageId: "", // >> GETS LAYOUT AND CONTENT
+				pageId: "*", // >> GETS LAYOUT AND CONTENT
 				// ACCESS - to r/ via these levels of precedence
 				a_indexOnly: true,           // 1. if route should support child routes only (NO PAGE CONFIG)
 				b_published: true,           // 2. public accessible
 				c_sitemapVisible: true,      // 3. populate on sitemap
 				d_mainNavVisible: true,      // 4. populate on main-nav 
-				possibleRoutes: [] // << sub-r/ children
+				possibleRoutes: [ // NOTE: << sub-r/ children of TIER-A
+					{
+						routeTier: "B",
+						routeType: "resource",
+						routeSlug: "test-b",
+						pageId: "*",
+						a_indexOnly: true,
+						b_published: true,
+						c_sitemapVisible: true,
+						d_mainNavVisible: true,
+						possibleRoutes: [  // NOTE: << sub-r/ children of TIER-B
+							{
+								routeTier: "C",
+								routeType: "product",
+								routeSlug: "test-c",
+								pageId: "*",
+								a_indexOnly: true,
+								b_published: true,
+								c_sitemapVisible: true,
+								d_mainNavVisible: true,
+								possibleRoutes: [] // NOTE: << sub-r/ children of TIER-C
+							}
+						]
+					}
+				]
 			}
 		]
 	}
