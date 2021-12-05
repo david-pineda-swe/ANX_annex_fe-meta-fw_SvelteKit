@@ -2,6 +2,7 @@
 // - that constructs the router
 // - based off of the first consume of the site-graph
 // - to svelte store maybe?
+// 
 
 interface DynamicRouteConfiguration {
   routeTier: string,
@@ -14,6 +15,7 @@ interface DynamicRouteConfiguration {
   d_mainNavVisible: boolean,
   possibleRoutes: Array<DynamicRouteConfiguration>
 }
+
 interface SiteMap {
   routeSlug: string,
   pageId: string,
@@ -31,6 +33,7 @@ interface routeQueryArgs {
   sitemap: SiteMap,
   requestedRouteParams: RouteKeyDictionary
 }
+
 interface validatedRoute {
   allTiersAreSatisfied: boolean;
   config: DynamicRouteConfiguration
