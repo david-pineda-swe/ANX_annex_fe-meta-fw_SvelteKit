@@ -1,65 +1,38 @@
 <script context="module" lang="ts">
-	// DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
-	import { ProtoSiteGraph as SiteGraph } from '../../lib/fixtures/site-graph'
+  // DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
 
-	export async function load(ctx) {
+  import { validateRouteRequest } from '../../app/router';
+  import { ProtoSiteGraph as SiteGraph } from '../../lib/fixtures/site-graph'
 
-		console.log('>> TST CTX on [CATEGORY]:', ctx, SiteGraph);
+  export async function load(ctx) {
+    // REQS
+    const routeProgression = ['A'];
+    // TODO: POSSIBLE ADAPTER FOR SITEMAP>>>
+    const { sitemap } = SiteGraph;
+    const requestedRouteParams = ctx.page.params;
 
-		const ROUTE_TIERS = ["A"];
+    const route = await validateRouteRequest({
+      routeProgression,
+      sitemap,
+      requestedRouteParams
+    });
 
-		// 1.) Create an nTier config abstraction (TBD in the sitegraph implementation)
-		const { sitemap } = SiteGraph;
+    if (!route.allTiersAreSatisfied || !route.config) {
+      // FAIL
+      console.error(`(!)404: ${route.lastTier} - ROUTE IS NOT VALID(!)`);
+      throw new Error(`Could not find tier: ${route.lastTier} segment`);
+    } else {
+      // OK
+      console.log(">> SHOULD RENDER <<");
+      console.log(`>> TIER CONFIGS @ ${route.lastTier}:`);
+      route.segmentConfigs.forEach(config => console.table(config));
 
-		// // TODO: make below into a sharable tier config collector util
-		const LAST_TIER = ROUTE_TIERS[ROUTE_TIERS.length - 1];
-
-		// 2.) Map through tier levels...
-		const segmentConfigs = ROUTE_TIERS.map((currentTier, i, tiers) => {
-			const requestedRouteSlug = ctx.page.params[currentTier];
-			let tierConfig: any = (i === 0) ? sitemap : tiers[i - 1];
-
-			// 3.) collect by verifying tier param is a possible match from tier config hierarchy
-			const foundConfig = tierConfig.possibleRoutes.filter((routeConfig: any) => {
-				return routeConfig.routeTier === currentTier && routeConfig.routeSlug === requestedRouteSlug;
-			})[0];
-
-			return foundConfig;
-		});
-		
-		const allTiersAreSatisfied = segmentConfigs.every((config) => {
-			return config !== undefined; // TODO or empty() util
-		});
-		
-		const targetConfig = segmentConfigs.filter(config => config && config.routeTier === LAST_TIER)[0];
-		
-		// 4.) re-route to 404 or pass through if tierSegment config is satisfied
-		if (!allTiersAreSatisfied || !targetConfig) {
-			console.error("(!)SHOULD 404(!)");
-			throw new Error(`Could not find tier ${LAST_TIER} segment`);
-		} else {
-			console.log('>> TARGET_CONFIG:');
-			console.table(targetConfig);
-			console.log(">> SHOULD RENDER <<");
-			
-			
-			// x
-			let slugs = ctx.page.params;
-			
-			let d = { 
-			props: {
-				slugs,
-			} };
-			
-			console.log('>> MODULE FOUND:', d);
-			
-			return d;
-		}
-	}
+      return { 
+        props: {
+          page: route.config,
+          route
+        }
+      };
+    }
+  }
 </script>
-
-<script>
-	export let slugs;
-</script>
-
-<!-- <h1>{slugs.A}</h1> -->
