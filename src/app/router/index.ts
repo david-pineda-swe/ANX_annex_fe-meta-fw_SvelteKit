@@ -4,38 +4,38 @@
 // - to svelte store maybe?
 
 interface DynamicRouteConfiguration {
-routeTier: string,
-routeType: string,
-routeSlug: string,
-pageId: string,
-a_indexOnly: boolean,
-b_published: boolean,
-c_sitemapVisible: boolean,
-d_mainNavVisible: boolean,
-possibleRoutes: Array<DynamicRouteConfiguration>
+  routeTier: string,
+  routeType: string,
+  routeSlug: string,
+  pageId: string,
+  a_indexOnly: boolean,
+  b_published: boolean,
+  c_sitemapVisible: boolean,
+  d_mainNavVisible: boolean,
+  possibleRoutes: Array<DynamicRouteConfiguration>
 }
 interface SiteMap {
-routeSlug: string,
-pageId: string,
-possibleRoutes: Array<DynamicRouteConfiguration>
+  routeSlug: string,
+  pageId: string,
+  possibleRoutes: Array<DynamicRouteConfiguration>
 }
 
 interface RouteKeyDictionary {
-A: string,
-B: string,
-C: string,
+  A: string,
+  B: string,
+  C: string,
 }
 
 interface routeQueryArgs {
-routeProgression: Array<string>,
-sitemap: SiteMap,
-requestedRouteParams: RouteKeyDictionary
+  routeProgression: Array<string>,
+  sitemap: SiteMap,
+  requestedRouteParams: RouteKeyDictionary
 }
 interface validatedRoute {
-allTiersAreSatisfied: boolean;
-config: DynamicRouteConfiguration
-lastTier: string;
-segmentConfigs: Array<DynamicRouteConfiguration>;
+  allTiersAreSatisfied: boolean;
+  config: DynamicRouteConfiguration
+  lastTier: string;
+  segmentConfigs: Array<DynamicRouteConfiguration>;
 }
 
 export async function validateRouteRequest(routeQuery: routeQueryArgs):Promise<validatedRoute> {
