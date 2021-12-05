@@ -20,9 +20,10 @@
 			<li class:active={$page.path === '/contact'}><a sveltekit:prefetch href="/contact">Contact</a></li>
 			<li class:active={$page.path === '/privacy-policy'}><a sveltekit:prefetch href="/privacy-policy">Privacy Policy</a></li>
 			<li class:active={$page.path === '/sitemap'}><a sveltekit:prefetch href="/sitemap">Site Map</a></li>
-			<li class:active={$page.path === '/test-a'}><a sveltekit:prefetch href="/test-a">Test A</a></li>
-			<li class:active={$page.path === '/test-b'}><a sveltekit:prefetch href="/test-b">test B</a></li>
 			<li class:active={$page.path === '/todos'}><a sveltekit:prefetch href="/todos">Todos</a></li>
+			<li class:active={$page.path === '/test-a'}><a sveltekit:prefetch href="/test-a">Test A</a></li>
+			<li class:active={$page.path === '/test-a/test-b'}><a sveltekit:prefetch href="/test-a/test-b">test B</a></li>
+			<li class:active={$page.path === '/test-a/test-b/test-c'}><a sveltekit:prefetch href="/test-a/test-b/test-c">test C</a></li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
