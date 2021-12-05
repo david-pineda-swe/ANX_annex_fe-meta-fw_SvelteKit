@@ -3,15 +3,39 @@
 // - based off of the first consume of the site-graph
 // - to svelte store maybe?
 
-interface routeQueryArgs {
-	routeTiers: any,
-	sitemap: any,
-	requestedRouteParams: any
+interface DynamicRouteConfiguration {
+	routeTier: string,
+	routeType: string,
+	routeSlug: string,
+	pageId: string,
+	a_indexOnly: boolean,
+	b_published: boolean,
+	c_sitemapVisible: boolean,
+	d_mainNavVisible: boolean,
+	possibleRoutes: Array<DynamicRouteConfiguration>
 }
-interface verifiedRoute {
+interface SiteMap {
+	routeSlug: string,
+	pageId: string,
+	possibleRoutes: Array<DynamicRouteConfiguration>
+}
+
+interface RouteKeyDictionary {
+	A: string,
+	B: string,
+	C: string,
+}
+
+interface routeQueryArgs {
+	routeProgression: Array<string>,
+	sitemap: SiteMap,
+	requestedRouteParams: RouteKeyDictionary
+}
+interface validatedRoute {
 	allTiersAreSatisfied: boolean;
-	config: any; // TODO
+	config: DynamicRouteConfiguration
 	lastTier: string;
+	segmentConfigs: Array<DynamicRouteConfiguration>;
 }
 
 export function validateRouteRequest(routeQuery: routeQueryArgs):verifiedRoute {
