@@ -38,20 +38,27 @@ interface validatedRoute {
 	segmentConfigs: Array<DynamicRouteConfiguration>;
 }
 
-export function validateRouteRequest(routeQuery: routeQueryArgs):verifiedRoute {
-	const {routeTiers, sitemap, requestedRouteParams} = routeQuery;
+export async function validateRouteRequest(routeQuery: routeQueryArgs):Promise<validatedRoute> {
+	const {routeProgression, sitemap, requestedRouteParams} = routeQuery;
 
 	// params
-	const lastTier = routeTiers[routeTiers.length - 1];
-	const segmentConfigs = routeTiers.map((currentTier, i, tiers) => {
-		const requestedRouteSlug = requestedRouteParams[currentTier];
-		const tierConfig = (i === 0) ? sitemap : tiers[i - 1];
+	const lastTier = routeProgression[routeProgression.length - 1];
+	const segmentConfigs = [];
 
-		// Find tierConfig by routeTier & routeSlug match
-		const foundConfig = tierConfig.possibleRoutes.filter((config) => {
+	// SEGMENT CONFIG DRILL DOWN >>>
+	await routeProgression.map((currentTier: string, i: number) => {
+		const requestedRouteSlug = requestedRouteParams[currentTier];
+
+		// Find targetTierConfig by routeTier & routeSlug match from parent
+		const parentTierConfig = (i === 0) ? sitemap : segmentConfigs[i - 1];
+
+		console.log('>> >> TEST parentTierConfig:', currentTier, parentTierConfig);
+
+		const foundConfig = parentTierConfig.possibleRoutes.filter((config: { routeTier: string; routeSlug: string; }) => {
 			return config.routeTier === currentTier && config.routeSlug === requestedRouteSlug;
 		})[0];
 
+		segmentConfigs.push(foundConfig);
 		return foundConfig;
 	});
 	
@@ -65,7 +72,8 @@ export function validateRouteRequest(routeQuery: routeQueryArgs):verifiedRoute {
 	
 	return {
 		allTiersAreSatisfied,
+		config,
 		lastTier,
-		config
+		segmentConfigs
 	};
 }
