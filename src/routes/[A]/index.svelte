@@ -1,8 +1,8 @@
 <script context="module" lang="ts">
   // DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
 
-  import { validateRouteRequest } from '../../app/router';
-  import { ProtoSiteGraph as SiteGraph } from '../../lib/fixtures/site-graph'
+  import { validateRouteRequest } from '$annex-app/router';
+  import { ProtoSiteGraph as SiteGraph } from '$lib/fixtures/site-graph'
 
   export async function load(ctx) {
     // REQS
