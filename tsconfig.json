@@ -26,7 +26,7 @@
       "$annex-app/*": ["src/annex-app/*"],
       // $components
       "$lib/*": ["src/lib/*"]
-      // NOTE: ^^^ WORKING ABSOLUTE PATH FOR LIB ^^^
+      // NOTE: ^^^ WORKING ABSOLUTE PATH DEFS FOR STATIC LOCAL DEV ^^^
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],

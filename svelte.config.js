@@ -20,6 +20,7 @@ const config = {
           '$annex-app': path.resolve('./src/annex-app'),
           // $components
           '$lib': path.resolve('./src/lib')
+          // NOTE: ^^^ WORKING ABSOLUTE PATH DEFS FOR BUILD / COMPILE TIME ^^^
         }
       }
     }
