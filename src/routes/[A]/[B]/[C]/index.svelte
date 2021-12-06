@@ -3,7 +3,7 @@
   import { validateRouteRequest } from '$annex-app/router';
   import { ProtoSiteGraph as SiteGraph } from '$lib/fixtures/site-graph'
 
-  export async function load(ctx) {
+  export const load = async (ctx) => {
     // REQS
     const routeProgression = ['A', 'B', 'C'];
     // TODO: POSSIBLE ADAPTER FOR >>>
