@@ -1,10 +1,14 @@
 <script context="module" lang="ts">
   // DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
 
+  import { testAnnexCore } from '@annex/core';
+
   import { validateRouteRequest } from '$annex-app/router';
   import { ProtoSiteGraph as SiteGraph } from '$lib/fixtures/site-graph'
 
   export const load = async (ctx) => {
+    testAnnexCore();
+
     // REQS
     const routeProgression = ['A'];
     // TODO: POSSIBLE ADAPTER FOR SITEMAP>>>
