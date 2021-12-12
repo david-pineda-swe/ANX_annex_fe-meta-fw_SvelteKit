@@ -17,8 +17,11 @@ const config = {
     vite: {
       resolve: {
         alias: {
+          '@annex': path.resolve('./src/annex_modules'),
           '$annex-app': path.resolve('./src/annex-app'),
+          // $stores
           // $components
+          // $etc...
           '$lib': path.resolve('./src/lib')
           // NOTE: ^^^ WORKING ABSOLUTE PATH DEFS FOR BUILD / COMPILE TIME ^^^
         }

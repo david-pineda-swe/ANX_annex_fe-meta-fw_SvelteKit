@@ -23,8 +23,11 @@
     "allowJs": true,
     "checkJs": true,
     "paths": {
-      "$annex-app/*": ["src/annex-app/*"],
+      "@annex/*": ["src/annex_modules/*"],
+      "$annex-app/*": ["src/annex-app/*"], // Xfer to ^^^
+      // $stores
       // $components
+      // $etc...
       "$lib/*": ["src/lib/*"]
       // NOTE: ^^^ WORKING ABSOLUTE PATH DEFS FOR STATIC LOCAL DEV ^^^
     }
