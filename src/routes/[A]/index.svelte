@@ -4,7 +4,7 @@
   import { validateRouteRequest } from '$annex-app/router';
   import { ProtoSiteGraph as SiteGraph } from '$lib/fixtures/site-graph'
 
-  export async function load(ctx) {
+  export const load = async (ctx) => {
     // REQS
     const routeProgression = ['A'];
     // TODO: POSSIBLE ADAPTER FOR SITEMAP>>>
