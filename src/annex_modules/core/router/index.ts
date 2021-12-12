@@ -1,20 +1,12 @@
 'use strict'
 
-// todo: Create a class
+// TBD: Create a dynamic router class that will
 // - that constructs the router
 // - based off of the first consume of the site-graph
 // - to svelte store maybe?
-// 
-// TBD: Create a dynamic router class that will
-// - consume a site-graph
 // in order to perform ops
 // export default class AnnexRouter {
 // };
-
-
-// export const test = function():void {
-//   console.error('>> >> TEST ROUTER >> >>');
-// }
 
 interface DynamicRouteConfiguration {
   routeTier: string,
@@ -34,7 +26,7 @@ interface SiteMap {
   possibleRoutes: Array<DynamicRouteConfiguration>
 }
 
-interface RouteKeyDictionary {
+interface SerializedAnnexRouteSchema {
   A: string,
   B: string,
   C: string,
@@ -43,7 +35,7 @@ interface RouteKeyDictionary {
 interface routeQueryArgs {
   routeProgression: Array<string>,
   sitemap: SiteMap,
-  serializedUrlPath: RouteKeyDictionary
+  serializedUrlPath: SerializedAnnexRouteSchema
 }
 
 interface validatedRoute {
