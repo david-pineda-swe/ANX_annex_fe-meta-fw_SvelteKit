@@ -1,19 +1,15 @@
 <script context="module" lang="ts">
 
-  import { validateRouteRequest } from '$annex-app/router';
+  import { annexRouter } from '@annex/core';
   import { ProtoSiteGraph as SiteGraph } from '$lib/fixtures/site-graph'
 
   export const load = async (ctx) => {
-    // REQS
-    const routeProgression = ['A', 'B'];
     // TODO: POSSIBLE ADAPTER FOR SITEMAP>>>
-    const { sitemap } = SiteGraph;
-    const requestedRouteParams = ctx.page.params;
 
-    const route = await validateRouteRequest({
-      routeProgression,
-      sitemap,
-      requestedRouteParams
+    const route = await annexRouter.validatePathRequest({
+      routeProgression: ['A', 'B'],
+      sitemap: SiteGraph.sitemap,
+      serializedUrlPath: ctx.page.params
     });
 
     if (!route.allTiersAreSatisfied || !route.config) {
