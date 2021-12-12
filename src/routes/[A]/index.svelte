@@ -1,13 +1,19 @@
 <script context="module" lang="ts">
   // DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
 
-  import { testAnnexCore } from '@annex/core';
+  import Annex, { testAnnexCore, annexRouter } from '@annex/core';
 
-  import { validateRouteRequest } from '$annex-app/router';
+  import { validateRouteRequest } from '$annex-app/router'; // rekey => validatePathRequest
   import { ProtoSiteGraph as SiteGraph } from '$lib/fixtures/site-graph'
 
   export const load = async (ctx) => {
     testAnnexCore();
+
+    console.log(">> TEST Annex.router:", Annex.router);
+    Annex.router.test();
+
+    console.log(">> TEST annexRouter", annexRouter);
+    annexRouter.test();
 
     // REQS
     const routeProgression = ['A'];
