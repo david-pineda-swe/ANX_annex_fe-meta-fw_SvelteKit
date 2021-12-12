@@ -24,7 +24,7 @@
     "checkJs": true,
     "paths": {
       "@annex/*": ["src/annex_modules/*"],
-      "$annex-app/*": ["src/annex-app/*"], // Xfer to ^^^
+      "$annex-app/*": ["src/annex-app/*"],
       // $stores
       // $components
       // $etc...
