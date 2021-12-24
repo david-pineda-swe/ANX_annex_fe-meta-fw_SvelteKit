@@ -12,6 +12,24 @@
       serializedUrlPath: ctx.page.params
     });
 
+    const contentGraph = {
+      contentId: "fdsa", 
+      pageId: "asdf",
+      contentFor: "material-icons",
+      someData: "foo",
+      content: [
+        // Components
+        {
+          header: "Material Icons",
+          subHeader: "Some stuff about the feature",
+          componentType: "gallery",
+          subComponents: [
+            // Sub Components
+          ]
+        }
+      ]
+    }
+
     if (!route.allTiersAreSatisfied || !route.config) {
       // FAIL
       console.error(`(!)404: ${route.lastTier} - ROUTE IS NOT VALID(!)`);
