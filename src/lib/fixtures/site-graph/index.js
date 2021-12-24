@@ -61,6 +61,29 @@ export const ProtoSiteGraph = {
             ]
           }
         ]
+      },
+      {
+        routeTier: "A",
+        routeType: "category",
+        routeSlug: "demo",
+        pageId: "*",
+        a_indexOnly: true,
+        b_published: true,
+        c_sitemapVisible: true,
+        d_mainNavVisible: true,
+        possibleRoutes: [
+          {
+            routeTier: "B",
+            routeType: "resource",
+            routeSlug: "material-icons",
+            pageId: "asdf",
+            a_indexOnly: true,
+            b_published: true,
+            c_sitemapVisible: true,
+            d_mainNavVisible: true,
+            possibleRoutes: [] 
+          }
+        ]
       }
     ]
   }
