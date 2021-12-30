@@ -6,24 +6,26 @@
   export const load = async (ctx) => {
     // TODO: POSSIBLE ADAPTER FOR SITEMAP >>>
 
-    const route = await annexRouter.validatePathRequest({
+    // STAGE 1: VALIDATE ROUTE
+    let route = await annexRouter.validatePathRequest({
       routeProgression: ['A', 'B'],
       sitemap: SiteGraph.sitemap,
       serializedUrlPath: ctx.page.params
     });
 
-    //TODO: STAGE 2 DATA COLLECT IN ADAPTER
+    // STAGE 2: Collect contentGraph
+    //TODO: COLLECT IN ADAPTER
     const contentGraph = {
       contentId: 'fdsa', 
       pageId: 'asdf',
       contentFor: 'material-icons',
       someData: 'foo',
-      contentBlocks: [
-        // NOTE: Section Components
+      sections: [
+        // NOTE: Section Element Components
         {
           header: 'Material Icons',
           subHeader: 'Some stuff about the feature',
-          layoutClass: 'single-col', // note: ['single-col', 'double-col', 'single-row', etc]
+          layoutClass: 'single-col', // example: ['single-col', 'double-col', 'single-row', etc]
           componentType: 'gallery',
           subComponents: [
             // NOTE: Content Sub Components
