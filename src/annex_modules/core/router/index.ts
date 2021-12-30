@@ -17,13 +17,13 @@ interface DynamicRouteConfiguration {
   b_published: boolean,
   c_sitemapVisible: boolean,
   d_mainNavVisible: boolean,
-  possibleRoutes: Array<DynamicRouteConfiguration>
+  subRoutes: Array<DynamicRouteConfiguration>
 }
 
 interface SiteMap {
   routeSlug: string,
   pageId: string,
-  possibleRoutes: Array<DynamicRouteConfiguration>
+  subRoutes: Array<DynamicRouteConfiguration>
 }
 
 interface SerializedAnnexRouteSchema {
@@ -61,7 +61,7 @@ const validatePathRequest =  async function(routeQuery: routeQueryArgs):Promise<
 
     console.log('>> >> TEST parentTierConfig:', currentTier, parentTierConfig);
 
-    const foundConfig = parentTierConfig.possibleRoutes.filter((config: { routeTier: string; routeSlug: string; }) => {
+    const foundConfig = parentTierConfig.subRoutes.filter((config: { routeTier: string; routeSlug: string; }) => {
       return config.routeTier === currentTier && config.routeSlug === requestedRouteSlug;
     })[0];
 

@@ -16,7 +16,7 @@ export const ProtoSiteGraph = {
     pageId: "", // >> GETS LAYOUT AND CONTENT
 		// TBD: open graph meta conventions
 		// TBD: search tags (keywords)
-    possibleRoutes: [
+    subRoutes: [
       // ROUTES - STANDARD
       // ✅ about
       // ✅ contact
@@ -36,7 +36,7 @@ export const ProtoSiteGraph = {
         b_published: true,           // 2. public accessible
         c_sitemapVisible: true,      // 3. populate on sitemap
         d_mainNavVisible: true,      // 4. populate on main-nav 
-        possibleRoutes: [ // NOTE: << sub-r/ children of TIER-A
+        subRoutes: [ // NOTE: << sub-r/ children of TIER-A
           {
             routeTier: "B",
             routeType: "resource",
@@ -46,7 +46,7 @@ export const ProtoSiteGraph = {
             b_published: true,
             c_sitemapVisible: true,
             d_mainNavVisible: true,
-            possibleRoutes: [  // NOTE: << sub-r/ children of TIER-B
+            subRoutes: [  // NOTE: << sub-r/ children of TIER-B
               {
                 routeTier: "C",
                 routeType: "product",
@@ -56,7 +56,7 @@ export const ProtoSiteGraph = {
                 b_published: true,
                 c_sitemapVisible: true,
                 d_mainNavVisible: true,
-                possibleRoutes: [] // NOTE: << sub-r/ children of TIER-C
+                subRoutes: [] // NOTE: << sub-r/ children of TIER-C
               }
             ]
           }
@@ -71,7 +71,7 @@ export const ProtoSiteGraph = {
         b_published: true,
         c_sitemapVisible: true,
         d_mainNavVisible: true,
-        possibleRoutes: [
+        subRoutes: [
           {
             routeTier: "B",
             routeType: "resource",
@@ -81,7 +81,7 @@ export const ProtoSiteGraph = {
             b_published: true,
             c_sitemapVisible: true,
             d_mainNavVisible: true,
-            possibleRoutes: [] 
+            subRoutes: [] 
           }
         ]
       }
