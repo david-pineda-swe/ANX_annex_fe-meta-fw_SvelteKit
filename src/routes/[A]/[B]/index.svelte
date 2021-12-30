@@ -4,7 +4,7 @@
   import { ProtoSiteGraph as SiteGraph } from '$lib/fixtures/site-graph'
 
   export const load = async (ctx) => {
-    // TODO: POSSIBLE ADAPTER FOR SITEMAP>>>
+    // TODO: POSSIBLE ADAPTER FOR SITEMAP >>>
 
     const route = await annexRouter.validatePathRequest({
       routeProgression: ['A', 'B'],
@@ -12,19 +12,36 @@
       serializedUrlPath: ctx.page.params
     });
 
+    //TODO: STAGE 2 DATA COLLECT IN ADAPTER
     const contentGraph = {
-      contentId: "fdsa", 
-      pageId: "asdf",
-      contentFor: "material-icons",
-      someData: "foo",
-      content: [
-        // Components
+      contentId: 'fdsa', 
+      pageId: 'asdf',
+      contentFor: 'material-icons',
+      someData: 'foo',
+      contentBlocks: [
+        // NOTE: Section Components
         {
-          header: "Material Icons",
-          subHeader: "Some stuff about the feature",
-          componentType: "gallery",
+          header: 'Material Icons',
+          subHeader: 'Some stuff about the feature',
+          layoutClass: 'single-col', // note: ['single-col', 'double-col', 'single-row', etc]
+          componentType: 'gallery',
           subComponents: [
-            // Sub Components
+            // NOTE: Content Sub Components
+            {
+              label: 'yadda',
+              subLabel: 'yadda bing bang', 
+              layoutClass: 'portrait',
+              componentType: 'feature-card',
+              content: [
+                // NOTE: last descendant Element list
+                // h3 
+                // hr 
+                // br 
+                // p
+                // a
+                // img
+              ]
+            }
           ]
         }
       ]
