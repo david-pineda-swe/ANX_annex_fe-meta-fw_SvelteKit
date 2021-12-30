@@ -49,6 +49,12 @@
       ]
     }
 
+    // NOTE: Merge route and contentGraph for COTNENT_DRIVER iteration and render
+    route = {...route, ...{content:contentGraph}};
+
+    console.log(">> WHAT IS ROUTE:", route);
+    
+
     if (!route.allTiersAreSatisfied || !route.config) {
       // FAIL
       console.error(`(!)404: ${route.lastTier} - ROUTE IS NOT VALID(!)`);
