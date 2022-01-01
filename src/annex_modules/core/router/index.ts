@@ -8,18 +8,6 @@
 // export default class AnnexRouter {
 // };
 
-interface DynamicRouteConfiguration {
-  routeTier: string,
-  routeType: string,
-  routeSlug: string,
-  pageId: string,
-  a_indexOnly: boolean,
-  b_published: boolean,
-  c_sitemapVisible: boolean,
-  d_mainNavVisible: boolean,
-  subRoutes: Array<DynamicRouteConfiguration>
-}
-
 interface SiteMap {
   routeSlug: string,
   pageId: string,
@@ -38,12 +26,6 @@ interface routeQueryArgs {
   serializedUrlPath: SerializedAnnexRouteSchema
 }
 
-interface validatedRoute {
-  allTiersAreSatisfied: boolean;
-  config: DynamicRouteConfiguration
-  lastTier: string;
-  segmentConfigs: Array<DynamicRouteConfiguration>;
-}
 
 const validatePathRequest =  async function(routeQuery: routeQueryArgs):Promise<validatedRoute> {
   const {routeProgression, sitemap, serializedUrlPath} = routeQuery;
