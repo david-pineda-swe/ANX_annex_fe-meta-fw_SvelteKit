@@ -12,7 +12,7 @@
       serializedUrlPath: ctx.page.params
     });
 
-    if (!route.allTiersAreSatisfied || !route.config) {
+    if (!route.allTiersAreSatisfied) {
       // FAIL
       console.error(`(!)404: ${route.lastTier} - ROUTE IS NOT VALID(!)`);
       throw new Error(`Could not find tier: ${route.lastTier} segment`);
@@ -24,7 +24,6 @@
       
       return { 
       props: {
-        page: route.config,
         route
       } };
     }

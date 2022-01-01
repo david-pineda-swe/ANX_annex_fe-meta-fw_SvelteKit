@@ -27,7 +27,8 @@ interface routeQueryArgs {
 }
 
 
-const validatePathRequest =  async function(routeQuery: routeQueryArgs):Promise<validatedRoute> {
+
+const validatePathRequest = async function(routeQuery: routeQueryArgs):Promise<validatedRoute> {
   const {routeProgression, sitemap, serializedUrlPath} = routeQuery;
 
   // params

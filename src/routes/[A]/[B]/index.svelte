@@ -17,9 +17,8 @@
     route = await annexContentDriver.collectContent(route);
 
     console.log(">> WHAT IS ROUTE:", route);
-    
 
-    if (!route.allTiersAreSatisfied || !route.config) {
+    if (!route.allTiersAreSatisfied) {
       // FAIL
       console.error(`(!)404: ${route.lastTier} - ROUTE IS NOT VALID(!)`);
       throw new Error(`Could not find tier: ${route.lastTier} segment`);
@@ -31,7 +30,6 @@
       
       return { 
       props: {
-        page: route.config,
         route
       } };
     }
