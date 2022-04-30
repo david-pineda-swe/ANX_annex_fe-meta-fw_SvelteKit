@@ -1,5 +1,12 @@
 # PRAJKT | ANNEX
 
+Todo:
+- [ ] Build out Document site
+- [ ] Write up quick start
+- [ ] links to core concepts
+
+---
+
 - Made with [Svelte](https://svelte.dev/)
 - Namely [SvelteKit](https://kit.svelte.dev/)
 
