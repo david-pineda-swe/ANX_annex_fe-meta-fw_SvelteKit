@@ -7,7 +7,7 @@
     // TODO: POSSIBLE ADAPTER FOR SITEMAP>>>
 
     const route = await annexRouter.validatePathRequest({
-      routeProgression: ['A', 'B'], // todo: change to "routePath"
+      routeProgression: ['A', 'B'], // todo: change to "routeDepth"
       sitemap: SiteGraph.sitemap,
       serializedUrlPath: ctx.page.params
     });
