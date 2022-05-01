@@ -16,14 +16,14 @@ const config = {
 
     vite: {
       resolve: {
+        // NOTE: ABSOLUTE PATH DEFS FOR BUILD & COMPILE TIME - CI/CD PROCESSING
         alias: {
-          '@annex': path.resolve('./src/annex_modules'),
-          '$annex-app': path.resolve('./src/annex-app'),
-          // $stores
-          // $components
-          // $etc...
-          '$lib': path.resolve('./src/lib')
-          // NOTE: ^^^ WORKING ABSOLUTE PATH DEFS FOR BUILD / COMPILE TIME ^^^
+          // NOTE: Supported package modules > TEMPORARY !
+          // @annexjs/... is a temporary place holder until open-source package modules can be published.
+          '@annexjs': path.resolve('./src/annexjs_package_modules'),
+
+          '@nnex': path.resolve('./src/annexjs-extended'),
+          '$pec': path.resolve('./src/spec-to-project')
         }
       }
     }
