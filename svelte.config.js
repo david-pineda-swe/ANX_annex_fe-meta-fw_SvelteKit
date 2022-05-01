@@ -22,8 +22,8 @@ const config = {
           // @annexjs/... is a temporary place holder until open-source package modules can be published.
           '@annexjs': path.resolve('./src/annexjs_package_modules'),
 
-          '@nnex': path.resolve('./src/annex-extended'),
-          '$pec': path.resolve('./src/spec-project')
+          '@nnex': path.resolve('./src/annexjs-extended'),
+          '$pec': path.resolve('./src/spec-to-project')
         }
       }
     }
