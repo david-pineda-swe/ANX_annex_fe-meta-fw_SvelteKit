@@ -2,8 +2,8 @@
 
 Todo:
 - [ ] Build out Document site
-- [ ] Write up quick start
-- [ ] links to core concepts
+- [ ] Write up quick start guide
+- [ ] links to core concepts and specs from DOCS sketch
 
 ---
 
