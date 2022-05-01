@@ -23,6 +23,10 @@
 	</h1>
 
 	<h2>
+		Addition of the Annex.js "Module Development Workflow"
+	</h2>
+
+	<h2>
 		try editing <strong>src/routes/index.svelte</strong>
 	</h2>
 
