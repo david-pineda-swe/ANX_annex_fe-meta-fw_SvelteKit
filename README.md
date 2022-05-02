@@ -1,5 +1,12 @@
 # PRAJKT | ANNEX
 
+Todo:
+- [ ] Build out Document site
+- [ ] Write up quick start guide
+- [ ] links to core concepts and specs from DOCS sketch
+
+---
+
 - Made with [Svelte](https://svelte.dev/)
 - Namely [SvelteKit](https://kit.svelte.dev/)
 

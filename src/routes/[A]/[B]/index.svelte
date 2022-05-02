@@ -1,14 +1,14 @@
 <script context="module" lang="ts">
 
-  import { annexRouter, annexContentDriver } from '@annex/core';
-  import { ProtoSiteGraph as SiteGraph } from '$lib/fixtures/site-graph'
+  import { annexRouter, annexContentDriver } from '@annexjs/core';
+  import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
 
   export const load = async (ctx) => {
     // TODO: POSSIBLE ADAPTER FOR SITEMAP >>>
 
     // STAGE 1: VALIDATE ROUTE
     let route = await annexRouter.validatePathRequest({
-      routeProgression: ['A', 'B'],
+      routeProgression: ['A', 'B'], // todo: change to "routeDepth"
       sitemap: SiteGraph.sitemap,
       serializedUrlPath: ctx.page.params
     });
