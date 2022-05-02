@@ -1,20 +1,16 @@
 <script context="module" lang="ts">
   // DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
 
-  import { validateRouteRequest } from '../../app/router';
-  import { ProtoSiteGraph as SiteGraph } from '../../lib/fixtures/site-graph'
+  import { annexRouter } from '@annexjs/core';
+  import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
 
-  export async function load(ctx) {
-    // REQS
-    const routeProgression = ['A'];
+  export const load = async (ctx) => {
     // TODO: POSSIBLE ADAPTER FOR SITEMAP>>>
-    const { sitemap } = SiteGraph;
-    const requestedRouteParams = ctx.page.params;
 
-    const route = await validateRouteRequest({
-      routeProgression,
-      sitemap,
-      requestedRouteParams
+    const route = await annexRouter.validatePathRequest({
+      routeProgression: ['A'], // todo: change to "routeDepth"
+      sitemap: SiteGraph.sitemap,
+      serializedUrlPath: ctx.page.params
     });
 
     if (!route.allTiersAreSatisfied || !route.config) {
