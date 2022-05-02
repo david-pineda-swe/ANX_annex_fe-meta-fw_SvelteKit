@@ -1,7 +1,12 @@
-// todo: Create a class
+'use strict'
+
+// TBD: Create a dynamic router class that will
 // - that constructs the router
 // - based off of the first consume of the site-graph
 // - to svelte store maybe?
+// in order to perform ops
+// export default class AnnexRouter {
+// };
 
 interface DynamicRouteConfiguration {
   routeTier: string,
@@ -14,13 +19,14 @@ interface DynamicRouteConfiguration {
   d_mainNavVisible: boolean,
   possibleRoutes: Array<DynamicRouteConfiguration>
 }
+
 interface SiteMap {
   routeSlug: string,
   pageId: string,
   possibleRoutes: Array<DynamicRouteConfiguration>
 }
 
-interface RouteKeyDictionary {
+interface SerializedAnnexRouteSchema {
   A: string,
   B: string,
   C: string,
@@ -29,8 +35,9 @@ interface RouteKeyDictionary {
 interface routeQueryArgs {
   routeProgression: Array<string>,
   sitemap: SiteMap,
-  requestedRouteParams: RouteKeyDictionary
+  serializedUrlPath: SerializedAnnexRouteSchema
 }
+
 interface validatedRoute {
   allTiersAreSatisfied: boolean;
   config: DynamicRouteConfiguration
@@ -38,8 +45,8 @@ interface validatedRoute {
   segmentConfigs: Array<DynamicRouteConfiguration>;
 }
 
-export async function validateRouteRequest(routeQuery: routeQueryArgs):Promise<validatedRoute> {
-  const {routeProgression, sitemap, requestedRouteParams} = routeQuery;
+const validatePathRequest =  async function(routeQuery: routeQueryArgs):Promise<validatedRoute> {
+  const {routeProgression, sitemap, serializedUrlPath} = routeQuery;
 
   // params
   const lastTier = routeProgression[routeProgression.length - 1];
@@ -47,7 +54,7 @@ export async function validateRouteRequest(routeQuery: routeQueryArgs):Promise<v
 
   // SEGMENT CONFIG DRILL DOWN >>>
   await routeProgression.map((currentTier: string, i: number) => {
-    const requestedRouteSlug = requestedRouteParams[currentTier];
+    const requestedRouteSlug = serializedUrlPath[currentTier];
 
     // Find targetTierConfig by routeTier & routeSlug match from parent
     const parentTierConfig = (i === 0) ? sitemap : segmentConfigs[i - 1];
@@ -77,3 +84,7 @@ export async function validateRouteRequest(routeQuery: routeQueryArgs):Promise<v
     segmentConfigs
   };
 }
+
+// // //
+
+export default { validatePathRequest };

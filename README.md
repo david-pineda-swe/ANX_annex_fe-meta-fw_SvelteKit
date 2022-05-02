@@ -1,5 +1,12 @@
 # PRAJKT | ANNEX
 
+Todo:
+- [ ] Build out Document site
+- [ ] Write up quick start guide
+- [ ] links to core concepts and specs from DOCS sketch
+
+---
+
 - Made with [Svelte](https://svelte.dev/)
 - Namely [SvelteKit](https://kit.svelte.dev/)
 
@@ -7,6 +14,9 @@
 
 ### Site Graph:
 The underlying data structure that will hydrate and control the different aspects and requirements of the website project [Concept Outline >>](./docs/site-graph.md)
+
+### Dynamic Router:
+This is the mechanism that acts as a server side rendering controller when an incoming route request is made. [Concept Outline >>](./docs/dynamic-router.md)
 
 ## Deployment
 Style guide and protoform demo is on Netlify!

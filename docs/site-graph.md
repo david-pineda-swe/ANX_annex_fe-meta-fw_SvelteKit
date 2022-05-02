@@ -1,6 +1,6 @@
 [Home](../README.md)
-# Site Graph Data
-The hierarchy required to generate a project site
+# The Site Graph
+The hierarchical data blob required to generate a project site. This will feed routes with specified content and details
 
 - Site
   - Metadata: Document data and SEO

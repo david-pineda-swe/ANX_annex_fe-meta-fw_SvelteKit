@@ -2,12 +2,20 @@
 
 export const ProtoSiteGraph = {
   // SITE - METADATA
-  title: "New annex",
+	meta: {
+		title: "New annex",
+	},
+	integrations: {
+		firstParty: [],
+		thirdParty: []
+	},
   // SITE - MAP
   // - is an nTier config abstraction
   sitemap: {
     routeSlug: "/",
     pageId: "", // >> GETS LAYOUT AND CONTENT
+		// TBD: open graph meta conventions
+		// TBD: search tags (keywords)
     possibleRoutes: [
       // ROUTES - STANDARD
       // ✅ about
