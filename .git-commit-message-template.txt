@@ -1,0 +1,16 @@
+GITHUB_ISSUE_NUMBER: EFFORT_TYPE - EFFORT_DESCRIPTION
+
+EFFORT_MULTI_LINE
+
+[RELATED_GITHUB_ISSUES]
+
+# ! GITHUB_ISSUE_NUMBER: Issue pertaining to the efforts of this branch.
+# ! EFFORT_TYPE: [ bugfix, config, document, edit, feature, poc ],
+# ! EFFORT_DESCRIPTION: Less than 30 character description of work.
+# ! 
+# ! EFFORT_MULTI_LINE: Can go into detail of work here.
+# ! 
+# ! RELATED_GITHUB_ISSUES: If work from other issues is included, this is where the issue numbers should go.
+# ! 
+# ! ADD THIS TEMPLATE TO YOUR GIT CONFIGURATION WITH TERMINAL COMAND BELOW !
+# ! $ git config commit.template .git-commit-message-template.txt
