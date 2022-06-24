@@ -14,3 +14,6 @@ EFFORT_MULTI_LINE
 # ! 
 # ! ADD THIS TEMPLATE TO YOUR GIT CONFIGURATION WITH TERMINAL COMAND BELOW !
 # ! $ git config commit.template .git-commit-message-template.txt
+# !
+# ! SET VScode AS THE DEFAULT TEXT EDITOR FOR GIT COMMIT - COMMAND BELOW  !
+# ! $ git config --global core.editor "code --wait"
