@@ -1,53 +1,108 @@
 /// <reference types="@sveltejs/kit" />
 
-interface ElementAttributes {
-  name: string
+// - MODULE COMPONENTS
+
+interface ElementAttr {
+  name: string,
   value: string
 }
 
-interface ContentElement {
-  type: string,
-  id: string,
-  class: string,
-  attrs: Array<ElementAttributes>
+interface NodeMeta {
+  tags?: Array<string>
+  // TBD ? testId ?
+  // created: Date
+  // createdBy: <User>
+  // edited: Date
+  // editedBy: <User>
+  // versionId: UUID
+  notes?: string,
 }
-interface ContentSubComponent {
-  label: string,
-  subLabel: string,
-  layoutClass: string,
-  componentType: string,
-  contentElements: Array<ContentElement>
 
+interface NodeElementTraits {
+  tag: string,
+  domId: string,
+  classSet: Array<string>,
+  attrSet: Array<ElementAttr>
 }
-interface SectionComponent {
+
+interface NodeComponentTraits {
+  nodeType: string,
+  nodeTagName: string,
+  subNodes: Array<SchemaNode>
+}
+
+interface NodeContentTraits {
   header: string,
   subHeader: string,
-  layoutClass: string,
-  componentType: string,
-  subComponents: Array<ContentSubComponent>
-}
-interface ContentGraph {
-  contentId: string,
-  pageId: string,
-  contentFor: string,
-  sections: Array<SectionComponent>
+  // copyBlock  // ! TODO <<
+  nodeMeta?: NodeMeta,
 }
 
-interface DynamicRouteConfiguration {
-  content: ContentGraph
+// - BASE Node TYPES
+interface SchemaNode {
+  // - CONTENT
+  content: NodeContentTraits
+  // - COMPONENT
+  component: NodeComponentTraits
+  // - ELEMENT
+  element: NodeElementTraits
+}
+
+// - EXTENDED SchemaNode TYPES
+interface ContentModel extends SchemaNode {
+  contentId: string,
+  title: string,
+  subTitle: string,
+  schema: Array<SchemaNode> // Blocks > Segments > Features
+}
+
+// !- BLOCK(S)
+// !-- SEGMENT(S)
+// !--- FEATURES(S)
+// !--- SUB-FEATURES(S)
+// ! OTHER SITEGRAPH NODES
+
+// ! - ROUTE AND CONTENT HYDRATION BELOW -
+
+interface ControlError {
+  severity?: string,
+  process?:string,
+  error?: string
+}
+
+interface FlowControlTraits {
+  a_published: boolean,
+  b_indexOnly: boolean,
+  c_sitemapVisible: boolean,
+  d_navVisible: boolean,
+  e_subRoutesRender: boolean
+}
+
+// - PAGE ROUTE
+interface PageRoute extends SchemaNode {
+  error?: ControlError
+  contentId: string,
+  contentModel: contentModel
   routeTier: string,
   routeType: string,
   routeSlug: string,
-  pageId: string,
-  a_indexOnly: boolean,
-  b_published: boolean,
-  c_sitemapVisible: boolean,
-  d_mainNavVisible: boolean,
-  subRoutes: Array<DynamicRouteConfiguration>
+  flowControl: FlowControlTraits,
+  subRoutes: Array<pageRoute>
+  // TBD OPEN GRAPH
+  // TBD SEARCH TAGS
 }
-interface validatedRoute {
-  allTiersAreSatisfied: boolean;
-  config: DynamicRouteConfiguration
-  lastTier: string;
-  segmentConfigs: Array<DynamicRouteConfiguration>;
+
+// - CONTENT RESULT
+interface ContentResult {
+  // Is a runtime derived abstraction
+  // result state
+  allTiersAreResolved?: boolean,
+  allContentModelsAreResolved?: boolean,
+  success?:boolean,
+  errors?: Array<ControlError>,
+  tierPosition: string,
+  tierSequence: Array<string>,
+  // content models
+  targetPageRoute: PageRoute,
+  pageRouteSequence: Array<pageRoute>
 }

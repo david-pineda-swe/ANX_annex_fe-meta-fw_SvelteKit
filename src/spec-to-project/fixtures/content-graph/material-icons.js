@@ -1,16 +1,18 @@
-export const contentGraph = {
+export const contentModel = {
 	contentId: 'fdsa', 
 	pageId: 'asdf',
-	contentFor: 'material-icons',
-	sections: [
-		// NOTE: Array<SectionComponent>
+	meta: {
+		notes: 'material-icons',
+	},
+	schema: [
+		// NOTE: Array<ContentLevelModule>
 		{
 			header: 'Material Icons',
 			subHeader: 'Some stuff about the feature',
 			layoutClass: 'single-col', // example: ['single-col', 'double-col', 'single-row', etc]
 			componentType: 'gallery',
-			subComponents: [
-				// NOTE: Array<ContentSubComponent>
+			subModules: [
+				// NOTE: Array<ContentLevelModule>
 				{
 					label: 'yadda',
 					subLabel: 'yadda bing bang', 

@@ -6,26 +6,19 @@
   export const load = async (ctx) => {
     // TODO: POSSIBLE ADAPTER FOR >>>
 
-    const route = await annexRouter.validatePathRequest({
-      routeProgression: ['A', 'B', 'C'], // todo: change to "routeDepth"
+    const content = await annexRouter.fulfillDynamicContentRequest({
+      tierPositionKey: 'C', // of a tierSequenceIndex
+      // tierPositionLabel: 'COOK', // of a tierSequenceIndex
       sitemap: SiteGraph.sitemap,
       serializedUrlPath: ctx.page.params
     });
 
-    if (!route.allTiersAreSatisfied) {
-      // FAIL
-      console.error(`(!)404: ${route.lastTier} - ROUTE IS NOT VALID(!)`);
-      throw new Error(`Could not find tier: ${route.lastTier} segment`);
-    } else {
-      // OK
-      console.log(">> SHOULD RENDER <<");
-      console.log(`>> TIER CONFIGS @ ${route.lastTier}:`);
-      route.segmentConfigs.forEach(config => console.table(config));
-      
-      return { 
+    console.log(">> WHAT IS PAGE_MODEL TIER_C:", content);
+
+    return { 
       props: {
-        route
-      } };
-    }
+        content
+      }
+    };
   }
 </script>

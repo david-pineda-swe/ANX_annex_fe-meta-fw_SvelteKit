@@ -1,18 +1,11 @@
 'use strict'
 
-import router from './router';
-import contentDriver from './content-driver';
+import router from './annex-router';
+import contentDriver from './annex-content-driver';
 
 // export function testAnnexCore(): void {
 // 	console.warn('>> THIS IS THE ANNEX CORE...');
 // }
 
-// Flavor 1: standard
-export const annexRouter = router;
-export const annexContentDriver = contentDriver;
-
-// Flavor 2: default 
-// const Annex = {
-// 	router
-// };
-// export default Annex;
+export const annexRouter = router; // - for dynamic page validation
+export const annexContentDriver = contentDriver; // - for all page content collection
