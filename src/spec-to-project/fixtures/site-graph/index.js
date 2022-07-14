@@ -3,8 +3,8 @@
 // NOTE: All standard and basic website aspects and properties will be initialized by this object
 
 export const ProtoSiteGraph = {
-  // x SITE GRAPH
-	// meta: {}, // TBD - CL MODULE META
+  // - SiteGraph
+  // nodeMeta
   title: "New annex",
 	integrations: {
 		firstParty: [],

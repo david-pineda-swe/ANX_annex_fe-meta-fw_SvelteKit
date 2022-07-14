@@ -7,13 +7,26 @@ interface ElementAttr {
   value: string
 }
 
+interface UserNameTraits {
+  first: string,
+  middle: string,
+  last: string
+}
+
+interface ProjectUser {
+  userId: string,
+  name: UserNameTraits,
+  createdNodes: SchemaNode,
+  editededNodes: SchemaNode
+}
+
 interface NodeMeta {
   tags?: Array<string>
-  // TBD ? testId ?
-  // created: Date
-  // createdBy: <User>
+  // testId ? // For A/B corelation testing
+  // created: Date // ! <<
+  createdBy: ProjectUser,
   // edited: Date
-  // editedBy: <User>
+  editedBy: ProjectUser,
   // versionId: UUID
   notes?: string,
 }
@@ -81,8 +94,9 @@ interface FlowControlTraits {
 // - PAGE ROUTE
 interface PageRoute extends SchemaNode {
   error?: ControlError
+  isRoot?: boolean,
   contentId: string,
-  contentModel: contentModel
+  contentModel: ContentModel
   routeTier: string,
   routeType: string,
   routeSlug: string,
@@ -90,6 +104,12 @@ interface PageRoute extends SchemaNode {
   subRoutes: Array<pageRoute>
   // TBD OPEN GRAPH
   // TBD SEARCH TAGS
+}
+
+interface SiteGraph {
+  // integrations // !
+  nodeMeta: NodeMeta,
+  siteMap: PageRoute
 }
 
 // - CONTENT RESULT
