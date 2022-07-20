@@ -3,20 +3,24 @@
   import { annexRouter } from '@annexjs/core';
   
   // x SHOULD HAVE ACCESS TO THE ANNEX CONFIG
-  import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
+  import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph/content-driver-proto'
+  // was >
+  // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
 
   export const load = async (ctx) => {
-    // TODO: POSSIBLE ADAPTER FOR SITEMAP >>>
+    // TODO: POSSIBLE ADAPTER FOR SITETREE >>>
     // X should be coming from Svelte store if previously loaded
+
+    console.log('>> CDP SITEGRAPH:', SiteGraph);
 
     const content = await annexRouter.fulfillDynamicContentRequest({
       tierPositionKey: 'A', // of a tierSequenceIndex
       // tierPositionLabel: 'APPLE', // of a tierSequenceIndex
-      sitemap: SiteGraph.sitemap,
+      siteTree: SiteGraph.siteTree,
       serializedUrlPath: ctx.page.params
     });
 
-    console.log(">> WHAT IS CONTENT TIER_A:", content);
+    console.log(">> WHAT IS CONTENT @ TIER_A:", content);
 
     return { 
       props: {

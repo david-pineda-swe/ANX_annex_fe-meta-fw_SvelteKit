@@ -12,13 +12,10 @@ export const ProtoSiteGraph = {
 	},
   // OK - SITE - MAP
   // NOTE: - is an nTier config abstraction
-  sitemap: {
+  siteTree: {
     // PageRoute
     routeSlug: "/",
     contentId: "", // >> FOR PAGE to CONTENT MODEL IDENTIFICATION
-    content: {
-      nodeMeta: {}, // TBD - CL MODULE META
-    },
     contentModel: {
       // X CONTENT MODEL
       

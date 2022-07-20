@@ -21,7 +21,7 @@ interface SerializedAnnexRouteSchema { // ! TODO verify and refactor
 interface PathValidationQuery {
   tierPositionKey?: string,
   tierPositionLabel?: string,
-  sitemap: PageRoute,
+  siteTree: PageRoute,
   serializedUrlPath: SerializedAnnexRouteSchema
 }
 
@@ -33,7 +33,7 @@ const TIER_SEQUENCE_INDEX = {
 };
 
 const validateRouteForTier = async function(pathValidationQuery: PathValidationQuery):Promise<ContentResult> {
-  const {tierPositionKey, tierPositionLabel, sitemap, serializedUrlPath} = pathValidationQuery;
+  const {tierPositionKey, tierPositionLabel, siteTree, serializedUrlPath} = pathValidationQuery;
   
   // TODO: ABSTRACT THE DERIVED TIER PROGRESSION
   let tierPosition;
@@ -67,7 +67,7 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
     const requestedRouteSlug = serializedUrlPath[currentTier];
 
     // Find targetTierConfig by routeTier index & routeSlug match from parent
-    const parentTierRouteConfig = (i === 0) ? sitemap : tempRouteResults[i - 1];
+    const parentTierRouteConfig = (i === 0) ? siteTree : tempRouteResults[i - 1];
 
     console.log('>> >> TEST parentTierRouteConfig:', currentTier, parentTierRouteConfig);
 

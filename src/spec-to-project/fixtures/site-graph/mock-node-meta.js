@@ -1,20 +1,25 @@
 import { mockProjectUser } from "./mock-project-user"
 
 const DEFAULT_STRING ="default"
-// const DEFAULT_USER = {
-//   // ID
-//   // NAME: {}
-//   // ETC
-// }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function mockNodeMeta({testId}) {
-  return {
-    tags: ["", DEFAULT_STRING],
-    testId: testId || DEFAULT_STRING,
-    created: 1657833934849, // UTC
-    createdBy: mockProjectUser(),
-    edited: 1657833934849, // UTC
-    editedBy:mockProjectUser()
+export function mockNodeMeta(props) {
+  if (props) {
+    // DYNAMIC MOCK
+    let { testId } = props;
+
+    return { // FIX
+      tags: ["", DEFAULT_STRING],
+      testId: testId || DEFAULT_STRING,
+      created: new Date(), // UTC @ now
+      // createdBy: mockProjectUser(), // !
+      edited: new Date(), // UTC @ now
+      // editedBy:mockProjectUser(), // !
+      versionId: "adojonc33u9aj333n",
+      notes: "This is a sample note(s)"
+    }
+  } else {
+    // STATIC MOCK
+    console.log('>> SHOULD HAVE A STATIC MOCK FOR NodeMeta');
   }
 }
