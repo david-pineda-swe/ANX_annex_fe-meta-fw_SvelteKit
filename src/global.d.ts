@@ -20,7 +20,7 @@ interface ProjectUser {
   editededNodes: SchemaNode
 }
 
-interface NodeMeta { // fIX
+interface NodeMeta { // fIX // START HERE <<<
   tags?: Array<string>
   testId: string, // For A/B corelation testing
   created: Date
@@ -31,16 +31,17 @@ interface NodeMeta { // fIX
   notes?: string,
 }
 
-interface NodeContentTraits {
-  header: string,
-  subHeader: string,
-  // copyBlock  // ! TODO <<
-}
-
 interface NodeComponentTraits {
   nodeType: string,
   nodeTagName: string,
-  subNodes: Array<SchemaNode>
+  subNodes: Array<ContentNode>
+}
+
+interface NodeContentTraits {
+  header: string,
+  subHeader: string,
+  // copyBlock  // ! TODO Markdown support <<
+  subContent: Array<ContentNode> // Blocks > Segments > Features > SubFeatures
 }
 
 interface NodeElementTraits {
@@ -50,25 +51,24 @@ interface NodeElementTraits {
   attrSet: Array<ElementAttr>
 }
 
-// - BASE Node TYPES
 interface SchemaNode {
-  // - CONTENT
-  content?: NodeContentTraits
-  // - COMPONENT
-  component?: NodeComponentTraits
-  // - ELEMENT
-  element?: NodeElementTraits
+  // NOTE: IS ROOT <<
   // - META
   nodeType: string,
-  nodeMeta?: NodeMeta
+  nodeMeta: NodeMeta
 }
 
-// - EXTENDED SchemaNode TYPES
-interface ContentModel {
+interface ContentNode extends SchemaNode {
+  // - extend SchemaNode
+  // nodeType
+  // nodeMeta
+
+  component?: NodeComponentTraits
+
   contentId: string,
-  title: string,
-  subTitle: string,
-  schema: Array<SchemaNode> // Blocks > Segments > Features
+  content?: NodeContentTraits
+
+  element?: NodeElementTraits
 }
 
 // !- BLOCK(S)
@@ -94,13 +94,14 @@ interface FlowControlTraits {
 }
 
 // - PAGE ROUTE
-interface PageRoute extends SchemaNode {
-  // - extensions
-  // content // ? rename or use contentModel
-  // component
-  // element
+interface PageRoute extends ContentNode {
+  // - extend SchemaNode
   // nodeType
   // nodeMeta
+  // - extend ContentNode
+  // content
+  // component
+  // element
 
   // - state
   error?: ControlError
@@ -113,17 +114,17 @@ interface PageRoute extends SchemaNode {
   routeSlug: string,
   subRoutes?: Array<pageRoute>
 
-  // - content
-  contentId: string,
-  contentModel?: ContentModel
   // TBD OPEN GRAPH
   // TBD SEARCH TAGS
   //
 }
 
-interface SiteGraph {
+interface SiteGraph extends SchemaNode {
+  // - extend SchemaNode
+  // nodeType
+  // nodeMeta
+
   // integrations // ! <<
-  nodeMeta: NodeMeta,
   siteTree: PageRoute
 }
 
