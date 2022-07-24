@@ -1,10 +1,7 @@
-// TODO: RESTART THE PROTOTYPE SCHEMA WITH MODULAR IMPORTS FOR CONSISTENCY AND OTF CONFIGURATION
-
-// NOTE: All standard and basic website aspects and properties will be initialized by this object
+// DEPRECATED
 
 export const ProtoSiteGraph = {
   // - SiteGraph
-  // nodeMeta
   title: "New annex",
 	integrations: {
 		firstParty: [],
