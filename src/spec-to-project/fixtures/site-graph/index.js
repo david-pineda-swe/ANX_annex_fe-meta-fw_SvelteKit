@@ -12,15 +12,12 @@ export const ProtoSiteGraph = {
   siteTree: {
     // PageRoute
     routeSlug: "/",
-    contentId: "", // >> FOR PAGE to CONTENT MODEL IDENTIFICATION
-    contentModel: {
-      // X CONTENT MODEL
-      
-      contentId: '',
-      title: '',
-      subTitle: '',
+    content: {
+      contentId: '', // >> FOR PAGE to CONTENT MODEL IDENTIFICATION
+      header: '',
+      subHeader: '',
       classSet: [''], // [string]!
-      schema: []
+      subContent: []
     },
     flowControl: {
       // error?

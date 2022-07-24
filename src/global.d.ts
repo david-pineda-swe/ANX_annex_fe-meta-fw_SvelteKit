@@ -16,8 +16,8 @@ interface UserNameTraits {
 interface ProjectUser {
   userId: string,
   name: UserNameTraits,
-  createdNodes: SchemaNode,
-  editededNodes: SchemaNode
+  createdNodes?: Array<ContentNode>,
+  editededNodes?: Array<ContentNode>
 }
 
 interface NodeMeta { // fIX // START HERE <<<
@@ -32,43 +32,37 @@ interface NodeMeta { // fIX // START HERE <<<
 }
 
 interface NodeComponentTraits {
-  nodeType: string,
-  nodeTagName: string,
-  subNodes: Array<ContentNode>
+  functionType: string,
+  tagName: string,
 }
 
 interface NodeContentTraits {
-  header: string,
-  subHeader: string,
-  // copyBlock  // ! TODO Markdown support <<
-  subContent: Array<ContentNode> // Blocks > Segments > Features > SubFeatures
+  contentId: string,
+  header?: string,
+  subHeader?: string,
+  // copyBlob?  // ! TODO Markdown support <<
+  subContent?: Array<ContentNode> // Blocks > Segments > Features > SubFeatures
 }
 
 interface NodeElementTraits {
-  tag: string,
-  domId: string,
-  classSet: Array<string>,
-  attrSet: Array<ElementAttr>
+  tag?: string,
+  domId?: string,
+  classSet?: Array<string>,
+  attrSet?: Array<ElementAttr>
 }
 
-interface SchemaNode {
-  // NOTE: IS ROOT <<
+interface ContentNode {
   // - META
+  nodeId: string,
   nodeType: string,
   nodeMeta: NodeMeta
-}
 
-interface ContentNode extends SchemaNode {
-  // - extend SchemaNode
-  // nodeType
-  // nodeMeta
-
+  // - STRUCTURE
+  element?: NodeElementTraits
   component?: NodeComponentTraits
 
-  contentId: string,
+  // - CONTENT
   content?: NodeContentTraits
-
-  element?: NodeElementTraits
 }
 
 // !- BLOCK(S)
@@ -95,10 +89,9 @@ interface FlowControlTraits {
 
 // - PAGE ROUTE
 interface PageRoute extends ContentNode {
-  // - extend SchemaNode
+  // - extended from ContentNode
   // nodeType
   // nodeMeta
-  // - extend ContentNode
   // content
   // component
   // element
@@ -119,12 +112,13 @@ interface PageRoute extends ContentNode {
   //
 }
 
-interface SiteGraph extends SchemaNode {
-  // - extend SchemaNode
-  // nodeType
-  // nodeMeta
+interface SiteGraph {
+  // - META
+  nodeId: string,
+  nodeType: string,
+  nodeMeta: NodeMeta
 
-  // integrations // ! <<
+  // integrations // ! << TODO
   siteTree: PageRoute
 }
 

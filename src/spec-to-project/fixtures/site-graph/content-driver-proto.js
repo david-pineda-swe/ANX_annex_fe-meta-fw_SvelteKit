@@ -14,16 +14,15 @@ export const ProtoSiteGraph = {
     thirdParty: []
   },
   siteTree: {
-    // NOTE: PageRoute TYPE
-    // - for SchemaNode
+    // NOTE: PageRoute ContentNode TYPE
     nodeType: 'PAGE_ROUTE',
     nodeMeta: mockNodeMeta({ // fix: node meta req projectUsers // START HERE
       testId: "lip"
     }),
 
     // - for ContentNode
-    contentId: "*",
     content: mockContentForNode({ // return a root ContentNode
+      contentId: "*",
       isRoot: true,
       header: "lime",
       subHeader: "coolAid"

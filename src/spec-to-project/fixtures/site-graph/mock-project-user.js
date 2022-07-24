@@ -10,8 +10,8 @@ export function mockProjectUser(props) {
         middle: "Bob",
         last: "Thorton",
       },
-      // createdNodes // < SchemaNode(s)
-      // editedNodes // < SchemaNode(s)
+      // createdNodes // < ContentNode(s)
+      // editedNodes // < ContentNode(s)
     };
   } else {
     // STATIC MOCK
@@ -23,8 +23,8 @@ export function mockProjectUser(props) {
         middle: "Bob",
         last: "Thorton",
       },
-      // createdNodes // < SchemaNode(s)
-      // editedNodes // < SchemaNode(s)
+      // createdNodes // < ContentNode(s)
+      // editedNodes // < ContentNode(s)
     };
   }
 }
