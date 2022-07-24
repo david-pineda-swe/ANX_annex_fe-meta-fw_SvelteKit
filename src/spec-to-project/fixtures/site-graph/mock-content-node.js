@@ -5,10 +5,10 @@ const DEFAULT_STRING = "default"
 export function mockContentForNode(props) {
   if (props) {
     // DYNAMIC MOCK
-    let { isRoot, header, subHeader } = props;
+    let { contentId, header, subHeader } = props;
     
     return {
-      // contentId: id || DEFAULT_STRING,
+      contentId: contentId || DEFAULT_STRING,
       header: header || DEFAULT_STRING,
       subHeader: subHeader || DEFAULT_STRING,
       subContent: [] // ! << MOCK SCHEMA NODES

@@ -9,11 +9,11 @@ const collectContentForDynamic = async function(contentResult: ContentResult):Pr
   
   try {
     // TODO: LOGGER - VERBOSE INFO >>
-    // console.log('>> Start collectContentForDynamic(contentResult):', contentResult);
+    // console.log('>> COLLECT_CONTENT_FOR_DYNAMIC (contentResult):', contentResult);
 
     // A.) COLLECT TARGET ROUTE PRIMARY CONTENT
     // TODO: USE "SHARED" SINGLE ASYNC REQUEST METHOD
-    // via targetPageRoute.contentId (service.requestForContentModel)
+    // via targetPageRoute.content.contentId (service.requestForContentModel)
     const requestForPrimaryContent = await {
       success: true,
       result: demoContentModel // DEMO: fixture <<< 
@@ -23,7 +23,7 @@ const collectContentForDynamic = async function(contentResult: ContentResult):Pr
     // FAIL out
     // else CONTINUE...
     primaryContentIsResolved = true;
-    targetPageRoute.contentModel = requestForPrimaryContent.result;
+    targetPageRoute.content = requestForPrimaryContent.result;
 
     // B.) COLLECT REMAINING SECONDARY CONTENT
     // X: ABSTRACT
@@ -31,15 +31,15 @@ const collectContentForDynamic = async function(contentResult: ContentResult):Pr
     const hydratedRoutes = await pageRouteSequence.map((pageRoute) => {
       // TODO: USE .promiseAll() >
       // TODO: REQUEST FOR EACH SUB [pageRouteSequence]
-      if (pageRoute.contentId === targetPageRoute.contentId) {
+      if (pageRoute.content.contentId === targetPageRoute.content.contentId) {
         // Bypass and re-use previously collected pageRoute contentModel
         return {...pageRoute};
       } else {
-        // Collect contentModel(s) for current route.contentId (service.requestForContentModel)
+        // Collect contentModel(s) for current route.content.contentId (service.requestForContentModel)
         // TODO: USE "SHARED" SINGLE ASYNC REQUEST METHOD
         const requestForSecondaryContent = {
           success: true,
-          result: { // DEMO: fixture <<< 
+          result: { // DEMO: fixture <<<  // X replace with mock method
             contentId: 'static-demo-content',
             meta: {
               notes: 'demo',
