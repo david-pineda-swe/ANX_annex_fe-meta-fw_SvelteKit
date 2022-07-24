@@ -1,6 +1,6 @@
 /// <reference types="@sveltejs/kit" />
 
-// - MODULE COMPONENTS
+// - S-NODE COMPONENTS
 
 interface ElementAttr {
   name: string,
@@ -20,15 +20,27 @@ interface ProjectUser {
   editededNodes: SchemaNode
 }
 
-interface NodeMeta {
+interface NodeMeta { // fIX
   tags?: Array<string>
-  // testId ? // For A/B corelation testing
-  // created: Date // ! <<
-  createdBy: ProjectUser,
-  // edited: Date
-  editedBy: ProjectUser,
-  // versionId: UUID
+  testId: string, // For A/B corelation testing
+  created: Date
+  // createdBy: ProjectUser, // !
+  edited: Date
+  // editedBy: ProjectUser, // !
+  versionId: string, // UUID,
   notes?: string,
+}
+
+interface NodeContentTraits {
+  header: string,
+  subHeader: string,
+  // copyBlock  // ! TODO <<
+}
+
+interface NodeComponentTraits {
+  nodeType: string,
+  nodeTagName: string,
+  subNodes: Array<SchemaNode>
 }
 
 interface NodeElementTraits {
@@ -38,31 +50,21 @@ interface NodeElementTraits {
   attrSet: Array<ElementAttr>
 }
 
-interface NodeComponentTraits {
-  nodeType: string,
-  nodeTagName: string,
-  subNodes: Array<SchemaNode>
-}
-
-interface NodeContentTraits {
-  header: string,
-  subHeader: string,
-  // copyBlock  // ! TODO <<
-  nodeMeta?: NodeMeta,
-}
-
 // - BASE Node TYPES
 interface SchemaNode {
   // - CONTENT
-  content: NodeContentTraits
+  content?: NodeContentTraits
   // - COMPONENT
-  component: NodeComponentTraits
+  component?: NodeComponentTraits
   // - ELEMENT
-  element: NodeElementTraits
+  element?: NodeElementTraits
+  // - META
+  nodeType: string,
+  nodeMeta?: NodeMeta
 }
 
 // - EXTENDED SchemaNode TYPES
-interface ContentModel extends SchemaNode {
+interface ContentModel {
   contentId: string,
   title: string,
   subTitle: string,
@@ -93,23 +95,36 @@ interface FlowControlTraits {
 
 // - PAGE ROUTE
 interface PageRoute extends SchemaNode {
+  // - extensions
+  // content // ? rename or use contentModel
+  // component
+  // element
+  // nodeType
+  // nodeMeta
+
+  // - state
   error?: ControlError
   isRoot?: boolean,
-  contentId: string,
-  contentModel: ContentModel
+  flowControl: FlowControlTraits,
+
+  // - route
   routeTier: string,
   routeType: string,
   routeSlug: string,
-  flowControl: FlowControlTraits,
-  subRoutes: Array<pageRoute>
+  subRoutes?: Array<pageRoute>
+
+  // - content
+  contentId: string,
+  contentModel?: ContentModel
   // TBD OPEN GRAPH
   // TBD SEARCH TAGS
+  //
 }
 
 interface SiteGraph {
-  // integrations // !
+  // integrations // ! <<
   nodeMeta: NodeMeta,
-  siteMap: PageRoute
+  siteTree: PageRoute
 }
 
 // - CONTENT RESULT
