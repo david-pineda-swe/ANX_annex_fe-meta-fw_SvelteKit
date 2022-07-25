@@ -1,3 +1,4 @@
+// TODO: CONSIDER SURPLUS META REMOVAL IF IN DISPLAY/PERFORMACE MODE
 //x TEMPORARY FIXTURE FOR DEVELOPMENT >>>
 import { contentModel as demoContentModel } from '$pec/fixtures/content-graph/material-icons';
 

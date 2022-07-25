@@ -10,12 +10,11 @@ export function mockProjectUser(props) {
         middle: "Bob",
         last: "Thorton",
       },
-      // createdNodes // < ContentNode(s)
-      // editedNodes // < ContentNode(s)
+      title: 'test',
+      role: 'admin'
     };
   } else {
     // STATIC MOCK
-    console.log('>> SHOULD HAVE A STATIC MOCK FOR ProjectUser');
     return {
       userId: "adsf938?",
       name: {
@@ -23,8 +22,8 @@ export function mockProjectUser(props) {
         middle: "Bob",
         last: "Thorton",
       },
-      // createdNodes // < ContentNode(s)
-      // editedNodes // < ContentNode(s)
+      title: 'test',
+      role: 'admin'
     };
   }
 }

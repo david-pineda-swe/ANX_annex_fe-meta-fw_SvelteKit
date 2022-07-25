@@ -1,7 +1,7 @@
 // NOTE: All website property aspects and content will be initialized by this object
 
 import { mockNodeMeta } from "./mock-node-meta";
-import { mockContentForNode } from "./mock-content-node";
+import { mockNodeContent } from "./mock-node-content";
 
 export const ProtoSiteGraph = {
   // - SiteGraph
@@ -9,29 +9,32 @@ export const ProtoSiteGraph = {
   nodeMeta: mockNodeMeta({
     testId: "merc"
   }),
-  integrations: { // ! <<
+  integrations: { // !
     firstParty: [],
     thirdParty: []
   },
   siteTree: {
-    // NOTE: PageRoute ContentNode TYPE
+    // NOTE: is PageRoute ContentNode TYPE
+    nodeId: '*',
     nodeType: 'PAGE_ROUTE',
-    nodeMeta: mockNodeMeta({ // fix: node meta req projectUsers // START HERE
+    nodeMeta: mockNodeMeta({
       testId: "lip"
     }),
+    //
+    // element // !
+    // component // !
 
     // - for ContentNode
-    content: mockContentForNode({ // return a root ContentNode
-      contentId: "*",
-      isRoot: true,
+    content: mockNodeContent({ // return a root ContentNode
+      contentId: '',
       header: "lime",
-      subHeader: "coolAid"
+      subHeader: "coolAid",
+      // copyBlob // !
+      subContent: []
     }),
 
     // - for PageRoute
-
     // state
-    isRoot: true, // ! or consider lack of parent computed
     flowControl: {
       a_published: true,
       b_indexOnly: true,

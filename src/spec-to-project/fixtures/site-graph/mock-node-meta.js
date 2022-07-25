@@ -6,15 +6,15 @@ const DEFAULT_STRING ="default"
 export function mockNodeMeta(props) {
   if (props) {
     // DYNAMIC MOCK
-    let { testId } = props;
+    let { tags, testId } = props;
 
-    return { // FIX
-      tags: ["", DEFAULT_STRING],
+    return {
+      tags: tags || [DEFAULT_STRING, DEFAULT_STRING],
       testId: testId || DEFAULT_STRING,
       created: new Date(), // UTC @ now
-      // createdBy: mockProjectUser(), // !
+      createdBy: mockProjectUser(),
       edited: new Date(), // UTC @ now
-      // editedBy:mockProjectUser(), // !
+      editedBy:mockProjectUser(),
       versionId: "adojonc33u9aj333n",
       notes: "This is a sample note(s)"
     }

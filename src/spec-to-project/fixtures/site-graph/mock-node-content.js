@@ -2,16 +2,17 @@ const DEFAULT_STRING = "default"
 
 // ! fix this lint
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function mockContentForNode(props) {
+export function mockNodeContent(props) {
   if (props) {
     // DYNAMIC MOCK
-    let { contentId, header, subHeader } = props;
+    let { contentId, header, subHeader, subContent } = props;
     
     return {
       contentId: contentId || DEFAULT_STRING,
       header: header || DEFAULT_STRING,
       subHeader: subHeader || DEFAULT_STRING,
-      subContent: [] // ! << MOCK SCHEMA NODES
+      // copyBlob // !
+      subContent: subContent || []
     };
   } else {
     // STATIC MOCK

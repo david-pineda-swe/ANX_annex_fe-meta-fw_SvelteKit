@@ -14,20 +14,20 @@ interface UserNameTraits {
 }
 
 interface ProjectUser {
-  userId: string,
+  userId: string, // UUID
   name: UserNameTraits,
-  createdNodes?: Array<ContentNode>,
-  editededNodes?: Array<ContentNode>
+  title: sting,
+  role:string
 }
 
-interface NodeMeta { // fIX // START HERE <<<
+interface NodeMeta {
   tags?: Array<string>
-  testId: string, // For A/B corelation testing
+  testId: string, // UUID for A/B corelation testing
   created: Date
-  // createdBy: ProjectUser, // !
+  createdBy: ProjectUser,
   edited: Date
-  // editedBy: ProjectUser, // !
-  versionId: string, // UUID,
+  editedBy: ProjectUser,
+  versionId: string, // UUID
   notes?: string,
 }
 
@@ -37,11 +37,11 @@ interface NodeComponentTraits {
 }
 
 interface NodeContentTraits {
-  contentId: string,
+  contentId: string, // UUID
   header?: string,
   subHeader?: string,
   // copyBlob?  // ! TODO Markdown support <<
-  subContent?: Array<ContentNode> // Blocks > Segments > Features > SubFeatures
+  subContent?: Array<ContentNode> // Blocks < Segments < Features < SubFeatures
 }
 
 interface NodeElementTraits {
@@ -53,7 +53,7 @@ interface NodeElementTraits {
 
 interface ContentNode {
   // - META
-  nodeId: string,
+  nodeId: string, // UUID
   nodeType: string,
   nodeMeta: NodeMeta
 
@@ -114,7 +114,7 @@ interface PageRoute extends ContentNode {
 
 interface SiteGraph {
   // - META
-  nodeId: string,
+  nodeId: string, // UUID
   nodeType: string,
   nodeMeta: NodeMeta
 
