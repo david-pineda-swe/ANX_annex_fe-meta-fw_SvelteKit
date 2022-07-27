@@ -1,12 +1,6 @@
 /// <reference types="@sveltejs/kit" />
 
-// - S-NODE COMPONENTS
-
-interface ElementAttr {
-  name: string,
-  value: string
-}
-
+//! ---META---
 interface UserNameTraits {
   first: string,
   middle: string,
@@ -21,14 +15,27 @@ interface ProjectUser {
 }
 
 interface NodeMeta {
-  tags?: Array<string>
+  versionId: string, // UUID
   testId: string, // UUID for A/B corelation testing
+  tags?: Array<string>
   created: Date
   createdBy: ProjectUser,
   edited: Date
   editedBy: ProjectUser,
-  versionId: string, // UUID
   notes?: string,
+}
+
+//! ---CONTENT_NODE---
+interface ElementAttr {
+  name: string,
+  value: string
+}
+
+interface NodeElementTraits {
+  tag?: string,
+  domId?: string,
+  classSet?: Array<string>,
+  attrSet?: Array<ElementAttr>
 }
 
 interface NodeComponentTraits {
@@ -42,13 +49,6 @@ interface NodeContentTraits {
   subHeader?: string,
   // copyBlob?  // ! TODO Markdown support <<
   subContent?: Array<ContentNode> // Blocks < Segments < Features < SubFeatures
-}
-
-interface NodeElementTraits {
-  tag?: string,
-  domId?: string,
-  classSet?: Array<string>,
-  attrSet?: Array<ElementAttr>
 }
 
 interface ContentNode {
@@ -69,10 +69,8 @@ interface ContentNode {
 // !-- SEGMENT(S)
 // !--- FEATURES(S)
 // !--- SUB-FEATURES(S)
-// ! OTHER SITEGRAPH NODES
 
-// ! - ROUTE AND CONTENT HYDRATION BELOW -
-
+// ! ---PAGE_ROUTE---
 interface ControlError {
   severity?: string,
   process?:string,
@@ -97,8 +95,8 @@ interface PageRoute extends ContentNode {
   // element
 
   // - state
-  error?: ControlError
   isRoot?: boolean,
+  error?: ControlError
   flowControl: FlowControlTraits,
 
   // - route
@@ -107,11 +105,11 @@ interface PageRoute extends ContentNode {
   routeSlug: string,
   subRoutes?: Array<pageRoute>
 
-  // TBD OPEN GRAPH
-  // TBD SEARCH TAGS
-  //
+  // openGraph //!
+  // searchTags //!
 }
 
+//! ---SITE_GRAPH---
 interface SiteGraph {
   // - META
   nodeId: string, // UUID
@@ -122,7 +120,7 @@ interface SiteGraph {
   siteTree: PageRoute
 }
 
-// - CONTENT RESULT
+//! ---ANNEX_SYSTEM---
 interface ContentResult {
   // Is a runtime derived abstraction
   // result state

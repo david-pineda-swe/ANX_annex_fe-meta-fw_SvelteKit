@@ -7,7 +7,14 @@ export const ProtoSiteGraph = {
   // - SiteGraph
   nodeType: "SITE_GRAPH",
   nodeMeta: mockNodeMeta({
-    testId: "merc"
+    versionId: 'qjkdsaf3493cj3',
+    testId: "merc",
+    // tags ?
+    created: new Date(), // UTC @ now,
+    createdBy: null,
+    edited: null,
+    editedBy: null,
+    notes: ''
   }),
   integrations: { // !
     firstParty: [],
@@ -18,7 +25,14 @@ export const ProtoSiteGraph = {
     nodeId: '*',
     nodeType: 'PAGE_ROUTE',
     nodeMeta: mockNodeMeta({
-      testId: "lip"
+      versionId: 'qjkdsaf3493cj3',
+      testId: "merc",
+      // tags ?
+      created: new Date(), // UTC @ now,
+      createdBy: null,
+      edited: null,
+      editedBy: null,
+      notes: ''
     }),
     //
     // element // !

@@ -1,11 +1,9 @@
-const DEFAULT_STRING = "default"
+const DEFAULT_STRING = "default";
 
-// ! fix this lint
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function mockNodeContent(props) {
+export function mockNodeContent(props: NodeContentTraits): NodeContentTraits {
   if (props) {
     // DYNAMIC MOCK
-    let { contentId, header, subHeader, subContent } = props;
+    const { contentId, header, subHeader, subContent } = props;
     
     return {
       contentId: contentId || DEFAULT_STRING,

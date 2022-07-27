@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function mockProjectUser(props) {
+export function mockProjectUser(props: ProjectUser): ProjectUser {
   if (props) {
     // DYNAMIC MOCK
     // let {} = props;
