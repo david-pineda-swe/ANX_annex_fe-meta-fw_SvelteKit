@@ -1,6 +1,6 @@
 const DEFAULT_STRING = "default";
 
-export function mockNodeContent(props: NodeContentTraits): NodeContentTraits {
+export function mockSegmentContent(props: NodeContentTraits): NodeContentTraits {
   if (props) {
     // DYNAMIC MOCK
     const { contentId, header, subHeader, subContent } = props;

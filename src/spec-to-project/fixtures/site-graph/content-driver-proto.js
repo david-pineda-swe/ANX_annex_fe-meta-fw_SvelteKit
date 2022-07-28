@@ -1,10 +1,12 @@
 // NOTE: All website property aspects and content will be initialized by this object
 
 import { mockNodeMeta } from "./mock-node-meta";
-import { mockNodeContent } from "./mock-node-content";
+import { mockPageRoute } from "./mock-page-route";
+import { mockSegmentContent } from "./mock-segment-content";
 
 export const ProtoSiteGraph = {
   // - SiteGraph
+  nodeId: 'asdf',
   nodeType: "SITE_GRAPH",
   nodeMeta: mockNodeMeta({
     versionId: 'qjkdsaf3493cj3',
@@ -16,12 +18,13 @@ export const ProtoSiteGraph = {
     editedBy: null,
     notes: ''
   }),
-  integrations: { // !
-    firstParty: [],
-    thirdParty: []
-  },
-  siteTree: {
-    // NOTE: is PageRoute ContentNode TYPE
+
+  // integrations: { // !
+  //   firstParty: [],
+  //   thirdParty: []
+  // },
+
+  siteTree: mockPageRoute({
     nodeId: '*',
     nodeType: 'PAGE_ROUTE',
     nodeMeta: mockNodeMeta({
@@ -34,21 +37,20 @@ export const ProtoSiteGraph = {
       editedBy: null,
       notes: ''
     }),
-    //
-    // element // !
-    // component // !
-
-    // - for ContentNode
-    content: mockNodeContent({ // return a root ContentNode
+    content: mockSegmentContent({ // return a root SegmentNode
       contentId: '',
       header: "lime",
       subHeader: "coolAid",
       // copyBlob // !
       subContent: []
     }),
+    //
+    // component // !
+    // element // !
 
-    // - for PageRoute
     // state
+    isRoot: true,
+    // error
     flowControl: {
       a_published: true,
       b_indexOnly: true,
@@ -60,7 +62,8 @@ export const ProtoSiteGraph = {
     // route
     routeTier: 'A',
     routeType: 'category',
-    routeSlug: "/",
-    // subRoutes?
-  }
+    routeSlug: "/"
+    // routeMeta: // !
+    // subRoutes
+  })
 }

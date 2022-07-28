@@ -8,7 +8,7 @@ export const contentModel = {
 		subHeader: 'Test Page Sub Header',
 		// ! copyBlob
 		subContent: [
-			// NOTE: Array<ContentNode>
+			// NOTE: Array<SegmentNode>
 			{
 				// CONTENT_NODE
 				// ! BLOCK_CONTAINER
@@ -33,7 +33,7 @@ export const contentModel = {
 					subHeader: 'Test Block Sub Header',
 					// ! copyBlob
 					subContent: [
-						// NOTE: Array<ContentNode>
+						// NOTE: Array<SegmentNode>
 						{
 							// CONTENT_NODE
 							// ! SEGMENT_CONTAINER

@@ -48,10 +48,10 @@ interface NodeContentTraits {
   header?: string,
   subHeader?: string,
   // copyBlob?  // ! TODO Markdown support <<
-  subContent?: Array<ContentNode> // Blocks < Segments < Features < SubFeatures
+  subContent?: Array<SegmentNode> // Rows < Columns < Features < SubFeatures
 }
 
-interface ContentNode {
+interface SegmentNode {
   // - META
   nodeId: string, // UUID
   nodeType: string,
@@ -86,8 +86,13 @@ interface FlowControlTraits {
 }
 
 // - PAGE ROUTE
-interface PageRoute extends ContentNode {
-  // - extended from ContentNode
+interface RouteMeta {
+  openGraph: string, // !
+  searchTags: Array<string>
+}
+interface PageRoute extends SegmentNode {
+  // - extended from SegmentNode
+  // nodeId
   // nodeType
   // nodeMeta
   // content
@@ -103,10 +108,8 @@ interface PageRoute extends ContentNode {
   routeTier: string,
   routeType: string,
   routeSlug: string,
+  routeMeta?: RouteMeta,
   subRoutes?: Array<pageRoute>
-
-  // openGraph //!
-  // searchTags //!
 }
 
 //! ---SITE_GRAPH---
@@ -116,7 +119,7 @@ interface SiteGraph {
   nodeType: string,
   nodeMeta: NodeMeta
 
-  // integrations // ! << TODO
+  // integrations // !
   siteTree: PageRoute
 }
 
