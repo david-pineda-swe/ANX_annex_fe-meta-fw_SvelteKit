@@ -2,13 +2,14 @@
 
 import { mockNodeMeta } from "./mock-node-meta";
 import { mockPageRoute } from "./mock-page-route";
-import { mockSegmentContent } from "./mock-segment-content";
+import { mockNodeContent } from "./mock-segment-content";
 
 export const ProtoSiteGraph = {
-  // - SiteGraph
-  nodeId: 'asdf',
-  nodeType: "SITE_GRAPH",
-  nodeMeta: mockNodeMeta({
+  // ! SITE_GRAPH 
+  type: "SITE_GRAPH",
+  id: 'adsfdd',
+  meta: mockNodeMeta({
+    nodeId: 'asdf',
     versionId: 'qjkdsaf3493cj3',
     testId: "merc",
     // tags ?
@@ -24,10 +25,12 @@ export const ProtoSiteGraph = {
   //   thirdParty: []
   // },
 
-  siteTree: mockPageRoute({
-    nodeId: '*',
-    nodeType: 'PAGE_ROUTE',
-    nodeMeta: mockNodeMeta({
+  routeSequence: mockPageRoute({
+    // ! PAGE_ROUTE - SCHEMA_NODE
+    type: 'PAGE_ROUTE',
+    id: '*',
+    meta: mockNodeMeta({
+      nodeId: '*',
       versionId: 'qjkdsaf3493cj3',
       testId: "merc",
       // tags ?
@@ -37,33 +40,31 @@ export const ProtoSiteGraph = {
       editedBy: null,
       notes: ''
     }),
-    content: mockSegmentContent({ // return a root SegmentNode
+
+    content: mockNodeContent({ // return a root CONTENT_SEGMENT
       contentId: '',
       header: "lime",
       subHeader: "coolAid",
-      // copyBlob // !
+      copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
       subContent: []
     }),
-    //
-    // component // !
-    // element // !
 
-    // state
-    isRoot: true,
-    // error
-    flowControl: {
-      a_published: true,
-      b_indexOnly: true,
-      c_sitemapVisible: true,
-      d_navVisible: true,
-      e_subRoutesRender: true,
-    },
+    displayConfig: {
+      isRoot: true,
+      // error
+      flowControl: {
+        a_published: true,
+        b_indexOnly: true,
+        c_sitemapVisible: true,
+        d_navVisible: true,
+        e_subRoutesRender: true,
+      },
+      routeTier: 'A',
+      routeType: 'category',
+      routeSlug: "/"
+      // routeMeta: // !
+    }
 
-    // route
-    routeTier: 'A',
-    routeType: 'category',
-    routeSlug: "/"
-    // routeMeta: // !
-    // subRoutes
+    // subRoutes // !
   })
 }

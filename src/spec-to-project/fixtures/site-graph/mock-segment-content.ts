@@ -1,15 +1,21 @@
 const DEFAULT_STRING = "default";
 
-export function mockSegmentContent(props: NodeContentTraits): NodeContentTraits {
+export function mockNodeContent(props: NodeContentTraits): NodeContentTraits {
   if (props) {
     // DYNAMIC MOCK
-    const { contentId, header, subHeader, subContent } = props;
+    const {
+      contentId,
+      header,
+      subHeader,
+      copyBlock,
+      subContent
+    } = props;
     
     return {
       contentId: contentId || DEFAULT_STRING,
       header: header || DEFAULT_STRING,
       subHeader: subHeader || DEFAULT_STRING,
-      // copyBlob // !
+      copyBlock: copyBlock || '',
       subContent: subContent || []
     };
   } else {

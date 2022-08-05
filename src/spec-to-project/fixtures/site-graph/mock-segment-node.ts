@@ -1,6 +1,6 @@
 const DEFAULT_STRING = "default";
 
-export function mockSegmentNode(props: SegmentNode): SegmentNode {
+export function mockSegmentNode(props: SchemaNode): SchemaNode {
   if (props) {
     // DYNAMIC MOCK
     const {

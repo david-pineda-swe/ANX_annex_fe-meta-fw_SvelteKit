@@ -8,7 +8,7 @@
   // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
 
   export const load = async (ctx) => {
-    // TODO: POSSIBLE ADAPTER FOR SITETREE >>>
+    // TODO: POSSIBLE ADAPTER FOR ROUTE_SEQUNECE >>>
     // X should be coming from Svelte store if previously loaded
 
     console.log('>> CDP SITEGRAPH:', SiteGraph);
@@ -16,7 +16,7 @@
     const content = await annexRouter.fulfillDynamicContentRequest({
       tierPositionKey: 'A', // of a tierSequenceIndex
       // tierPositionLabel: 'APPLE', // of a tierSequenceIndex
-      siteTree: SiteGraph.siteTree,
+      routeSequence: SiteGraph.routeSequence,
       serializedUrlPath: ctx.page.params
     });
 

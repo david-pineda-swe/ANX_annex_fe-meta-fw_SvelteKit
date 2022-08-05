@@ -1,6 +1,6 @@
 /// <reference types="@sveltejs/kit" />
 
-//! ---META---
+//! ---SUB_META TRAITS---
 interface UserNameTraits {
   first: string,
   middle: string,
@@ -15,8 +15,11 @@ interface ProjectUser {
 }
 
 interface NodeMeta {
-  versionId: string, // UUID
-  testId: string, // UUID for A/B corelation testing
+  //--- RESOURCE TRACKING
+  nodeId: string,
+  versionId: string,                // UUID
+  testId: string,                   // UUID for A/B corelation testing
+  //--- CMS AUTHOR / EDITING
   tags?: Array<string>
   created: Date
   createdBy: ProjectUser,
@@ -25,7 +28,13 @@ interface NodeMeta {
   notes?: string,
 }
 
-//! ---CONTENT_NODE---
+interface SchemaNode {
+  type: string,
+  id: string,
+  meta: NodeMeta
+}
+
+//! ---CONTENT_SEGMENT---
 interface ElementAttr {
   name: string,
   value: string
@@ -39,36 +48,34 @@ interface NodeElementTraits {
 }
 
 interface NodeComponentTraits {
-  functionType: string,
-  tagName: string,
+  componentType?: string,           // STRUCTURE, FUNCTION, DISPLAY, SYSTEM, METRICS
+  componentTag?: string,            // STRUCTURES_AVLB_EXAMPLE: Row(s) < Column(s) < Feature(s) < SubFeature(s)
+  element?: NodeElementTraits       // !
 }
 
 interface NodeContentTraits {
-  contentId: string, // UUID
+  contentId: string,               // UUID
   header?: string,
   subHeader?: string,
-  // copyBlob?  // ! TODO Markdown support <<
-  subContent?: Array<SegmentNode> // Rows < Columns < Features < SubFeatures
+  copyBlock?  // ! TODO Markdown support << // START HERE <<
+  // todo: callout to a copy only svelte component
+  // todo: TRY INJECTING MARKDOWN - simulate a server provided segment node
+  subContent?: Array<ContentSegment>
 }
 
-interface SegmentNode {
-  // - META
-  nodeId: string, // UUID
-  nodeType: string,
-  nodeMeta: NodeMeta
+interface ContentSegment extends SchemaNode {
+  // - extended from SchemaNode
+  // type
+  // id
+  // meta
 
-  // - STRUCTURE
-  element?: NodeElementTraits
-  component?: NodeComponentTraits
+  component: NodeComponentTraits,
+  content?: NodeContentTraits,
 
-  // - CONTENT
-  content?: NodeContentTraits
+  isRoot?: boolean,
+  isParalax?: boolean,
+  isFlex?: boolean,
 }
-
-// !- BLOCK(S)
-// !-- SEGMENT(S)
-// !--- FEATURES(S)
-// !--- SUB-FEATURES(S)
 
 // ! ---PAGE_ROUTE---
 interface ControlError {
@@ -87,43 +94,41 @@ interface FlowControlTraits {
 
 // - PAGE ROUTE
 interface RouteMeta {
-  openGraph: string, // !
+  openGraph: string, // ! TODO
   searchTags: Array<string>
 }
-interface PageRoute extends SegmentNode {
-  // - extended from SegmentNode
-  // nodeId
-  // nodeType
-  // nodeMeta
-  // content
-  // component
-  // element
 
-  // - state
+interface RouteDisplaytraits {
   isRoot?: boolean,
   error?: ControlError
   flowControl: FlowControlTraits,
-
-  // - route
   routeTier: string,
   routeType: string,
   routeSlug: string,
-  routeMeta?: RouteMeta,
+  routeMeta?: RouteMeta, // ! TODO
+}
+interface PageRoute extends SchemaNode {
+  // - extended from SchemaNode
+  // type
+  // id
+  // meta
+  content: NodeContentTraits
+  displayConfig: RouteDisplayTraits,
   subRoutes?: Array<pageRoute>
 }
 
 //! ---SITE_GRAPH---
-interface SiteGraph {
-  // - META
-  nodeId: string, // UUID
-  nodeType: string,
-  nodeMeta: NodeMeta
+interface SiteGraph extends SchemaNode {
+  // - extended from SchemaNode
+  // type: string,
+  // id: string,
+  // meta: NodeMeta
 
-  // integrations // !
-  siteTree: PageRoute
+  // integrations // ! TODO
+  routeSequence: PageRoute
 }
 
-//! ---ANNEX_SYSTEM---
+//! ---ANNEX_CONTENT_DRIVER_RESULTS---
 interface ContentResult {
   // Is a runtime derived abstraction
   // result state

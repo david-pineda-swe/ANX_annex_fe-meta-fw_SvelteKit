@@ -21,7 +21,7 @@ interface SerializedAnnexRouteSchema { // ! TODO verify and refactor
 interface PathValidationQuery {
   tierPositionKey?: string,
   tierPositionLabel?: string,
-  siteTree: PageRoute,
+  routeSequence: PageRoute,
   serializedUrlPath: SerializedAnnexRouteSchema
 }
 
@@ -33,7 +33,7 @@ const TIER_SEQUENCE_INDEX = {
 };
 
 const validateRouteForTier = async function(pathValidationQuery: PathValidationQuery):Promise<ContentResult> {
-  const {tierPositionKey, tierPositionLabel, siteTree, serializedUrlPath} = pathValidationQuery;
+  const {tierPositionKey, tierPositionLabel, routeSequence, serializedUrlPath} = pathValidationQuery;
   
   // TODO: ABSTRACT THE DERIVED TIER PROGRESSION
   let tierPosition;
@@ -67,7 +67,7 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
     const requestedRouteSlug = serializedUrlPath[currentTier];
 
     // Find targetTierConfig by routeTier index & routeSlug match from parent
-    const parentTierRouteConfig = (i === 0) ? siteTree : tempRouteResults[i - 1];
+    const parentTierRouteConfig = (i === 0) ? routeSequence : tempRouteResults[i - 1];
 
     console.log('>> >> TEST parentTierRouteConfig:', currentTier, parentTierRouteConfig);
 
@@ -109,7 +109,7 @@ const fulfillDynamicContentRequest = async function(pathValidationQuery: PathVal
   
     if (!validatedPageModel.allTiersAreResolved) {
       // FAIL:
-      const { tierPosition, targetPageRoute: { routeSlug }} = validatedPageModel;
+      const { tierPosition, targetPageRoute: { displayConfig: { routeSlug }}} = validatedPageModel;
       console.error(`(!)404 - Tier: ${tierPosition} Route Slug: ${routeSlug} - ROUTE IS NOT VALID(!)`);
       throw new Error(`Could not find Tier: ${tierPosition} Route Slug: ${routeSlug} segment`);
     }

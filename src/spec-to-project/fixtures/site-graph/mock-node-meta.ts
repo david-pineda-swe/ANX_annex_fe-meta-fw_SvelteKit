@@ -15,11 +15,24 @@ const RANDO_USER = {
 export function mockNodeMeta(props: NodeMeta): NodeMeta {
   if (props) {
     // DYNAMIC MOCK
-    const { versionId, testId, tags, created, createdBy, edited, editedBy, notes } = props;
+    const {
+      nodeId,
+      versionId,
+      testId,
+      tags,
+      created,
+      createdBy,
+      edited,
+      editedBy,
+      notes
+    } = props;
 
     return {
+      // RESOURCE TRACKING
+      nodeId: nodeId || '*',
       versionId: versionId || "adojonc33u9aj333n",
       testId: testId || DEFAULT_STRING,
+      // - CMS AUTHOR / EDITING
       tags: tags || [DEFAULT_STRING, DEFAULT_STRING],
       created: created || new Date(), // UTC @ now
       createdBy: createdBy || mockProjectUser(RANDO_USER),

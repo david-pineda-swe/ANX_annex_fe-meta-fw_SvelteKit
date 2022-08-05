@@ -1,47 +1,57 @@
-const DEFAULT_STRING = 'default_page_route';
+// const DEFAULT_STRING = 'default_page_route';
 
 // START HERE BY MOCKING A PAGE_ROUTE FROM THE CONTENT DRIVER PROTO
+
+const DEFAULT_DISPLAY_CONFIG = {
+  isRoot: false,
+  // error
+  flowControl: {
+    a_published: true,
+    b_indexOnly: true,
+    c_sitemapVisible: true,
+    d_navVisible: true,
+    e_subRoutesRender: true,
+  },
+  routeTier: 'ERROR',
+  routeType: 'N/A',
+  routeSlug: 'N/A',
+  routeMeta: {
+    // openGraph
+    // searchtags
+  },
+};
 
 export function mockPageRoute(props: PageRoute): PageRoute {
   if (props) {
     // DYNAMIC MOCK
     const {
-      nodeId,
-      nodeType,
-      nodeMeta, // ! => routeMeta
+      type,
+      id,
+      meta,
+      //
       content,
-      // component,
-      // element,
-      isRoot,
-      // error,
-      flowControl,
-      routeTier,
-      routeType,
-      routeSlug,
-      routeMeta,
+      //
+      displayConfig,
+      // - isRoot,
+      // - error,
+      // - flowControl,
+      // - routeTier,
+      // - routeType,
+      // - routeSlug,
+      // - routeMeta
+      // -- openGraph
+      // -- searchTags
       subRoutes
-      // searchTags
     } = props;
     return {
-      nodeId: nodeId || DEFAULT_STRING,
-      nodeType: nodeType || DEFAULT_STRING,
-      nodeMeta,
+      type: type || 'n/a',
+      id: id,
+      meta,
+      //
       content,
-      // component // !
-      // element // !
-      isRoot: isRoot || false,
-      // error
-      flowControl: flowControl || {
-        a_published: true,
-        b_indexOnly: true,
-        c_sitemapVisible: true,
-        d_navVisible: true,
-        e_subRoutesRender: true,
-      },
-      routeTier: routeTier || '',
-      routeType: routeType || '',
-      routeSlug: routeSlug || '',
-      routeMeta: routeMeta || null,
+      //
+      displayConfig: displayConfig || DEFAULT_DISPLAY_CONFIG,
+      //
       subRoutes: subRoutes || []
 
     };

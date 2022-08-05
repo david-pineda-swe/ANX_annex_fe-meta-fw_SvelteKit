@@ -6,9 +6,9 @@ export const contentModel = {
 		contentId: 'nerp',
 		header: 'Test Page Header',
 		subHeader: 'Test Page Sub Header',
-		// ! copyBlob
+		// ! copyBlock
 		subContent: [
-			// NOTE: Array<SegmentNode>
+			// NOTE: Array<SchemaNode>
 			{
 				// CONTENT_NODE
 				// ! BLOCK_CONTAINER
@@ -23,17 +23,17 @@ export const contentModel = {
 					classSet: ['single-col'] // example: ['single-col', 'double-col', 'single-row', etc]
 					// attrSet
 				},
-				component: {
-					functionType: 'container',
-					tagName: 'page-block'
-				},
+				// component: { // X
+				// 	functionType: 'container',
+				// 	tagName: 'page-block'
+				// },
 				content: {
 					contentId: 'foo',
 					header: 'Test Block Header',
 					subHeader: 'Test Block Sub Header',
-					// ! copyBlob
+					// ! copyBlock
 					subContent: [
-						// NOTE: Array<SegmentNode>
+						// NOTE: Array<SchemaNode>
 						{
 							// CONTENT_NODE
 							// ! SEGMENT_CONTAINER
@@ -56,7 +56,7 @@ export const contentModel = {
 								contentId: 'bar',
 								header: 'yadda',
 								subHeader: 'yadda bing bang',
-								// ! copyBlob
+								// ! copyBlock
 								// subContent
 
 								// TRACE: ETC ETC...

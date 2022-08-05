@@ -9,7 +9,7 @@ export const ProtoSiteGraph = {
 	},
   // OK - SITE - MAP
   // NOTE: - is an nTier config abstraction
-  siteTree: {
+  routeSequence: {
     // PageRoute
     routeSlug: "/",
     content: {
