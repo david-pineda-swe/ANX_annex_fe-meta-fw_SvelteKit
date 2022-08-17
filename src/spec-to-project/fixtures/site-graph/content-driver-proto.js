@@ -8,7 +8,7 @@ export const ProtoSiteGraph = {
   // ! SITE_GRAPH 
   type: "SITE_GRAPH",
   id: 'adsfdd',
-  meta: mockNodeMeta({
+  nodeMeta: mockNodeMeta({
     nodeId: 'asdf',
     versionId: 'qjkdsaf3493cj3',
     testId: "merc",
@@ -25,11 +25,11 @@ export const ProtoSiteGraph = {
   //   thirdParty: []
   // },
 
-  routeSequence: mockPageRoute({
+  routeStructure: mockPageRoute({ // REKEY:  => routeStructure
     // ! PAGE_ROUTE - SCHEMA_NODE
     type: 'PAGE_ROUTE',
     id: '*',
-    meta: mockNodeMeta({
+    nodeMeta: mockNodeMeta({
       nodeId: '*',
       versionId: 'qjkdsaf3493cj3',
       testId: "merc",
@@ -48,23 +48,20 @@ export const ProtoSiteGraph = {
       copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
       subContent: []
     }),
-
-    displayConfig: {
-      isRoot: true,
-      // error
-      flowControl: {
-        a_published: true,
-        b_indexOnly: true,
-        c_sitemapVisible: true,
-        d_navVisible: true,
-        e_subRoutesRender: true,
-      },
-      routeTier: 'A',
-      routeType: 'category',
-      routeSlug: "/"
-      // routeMeta: // !
-    }
-
     // subRoutes // !
+
+    isRoot: true,
+    // error
+    flowControl: {
+      a_published: true,
+      b_indexOnly: true,
+      c_sitemapVisible: true,
+      d_navVisible: true,
+      e_subRoutesRender: true,
+    },
+    tier: 'A',
+    category: 'category',
+    slug: "/test-a"
+    // routeMeta: // !
   })
 }

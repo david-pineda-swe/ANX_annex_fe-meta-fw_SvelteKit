@@ -13,7 +13,7 @@
     const content = await annexRouter.fulfillDynamicContentRequest({
       tierPositionKey: 'C', // of a tierSequenceIndex
       // tierPositionLabel: 'COOK', // of a tierSequenceIndex
-      routeSequence: SiteGraph.routeSequence,
+      routeStructure: SiteGraph.routeStructure,
       serializedUrlPath: ctx.page.params
     });
 

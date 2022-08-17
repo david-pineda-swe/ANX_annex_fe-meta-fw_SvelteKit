@@ -1,4 +1,4 @@
-import { mockNodeMeta } from "../site-graph/mock-node-meta";
+// import { mockNodeMeta } from "../site-graph/mock-node-meta";
 
 export const contentModel = {
 	// ! CONTENT SEGMENT result for PageRoute
@@ -7,70 +7,86 @@ export const contentModel = {
 		header: 'Test Page Header',
 		subHeader: 'Test Page Sub Header',
 		// ! copyBlock
-		subContent: [
-			// NOTE: Array<SchemaNode>
-			{
-				// CONTENT_NODE
-				// ! BLOCK_CONTAINER
-				nodeId: "asdd3idnfameennenfnf33",
-				nodeType: "BLOCK",
-				nodeMeta: mockNodeMeta({
-					testId: 'test-block-node'
-				}),
-				element: {
-					// tag
-					// domId
-					classSet: ['single-col'] // example: ['single-col', 'double-col', 'single-row', etc]
-					// attrSet
-				},
-				// component: { // X
-				// 	functionType: 'container',
-				// 	tagName: 'page-block'
-				// },
-				content: {
-					contentId: 'foo',
-					header: 'Test Block Header',
-					subHeader: 'Test Block Sub Header',
-					// ! copyBlock
-					subContent: [
-						// NOTE: Array<SchemaNode>
-						{
-							// CONTENT_NODE
-							// ! SEGMENT_CONTAINER
-							nodeId: 'moop',
-							nodeType: 'SEGMENT',
-							nodeMeta: mockNodeMeta({
-								testId: 'test-segment-node'
-							}),
-							element: {
-								// tag
-								// domId
-								classSet: ['test-seg'] // example: ['single-col', 'double-col', 'single-row', etc]
-								// attrSet
-							},
-							component: {
-								functionType: 'container',
-								tagName: 'page-segment'
-							},
-							content: {
-								contentId: 'bar',
-								header: 'yadda',
-								subHeader: 'yadda bing bang',
-								// ! copyBlock
-								// subContent
+		// subContent: [
+		// 	// NOTE: Array<SchemaNode>
+		// 	{
+		// 		// CONTENT_NODE
+		// 		// ! BLOCK_CONTAINER
+		// 		nodeId: "asdd3idnfameennenfnf33",
+		// 		nodeType: "BLOCK",
+		// 		nodeMeta: mockNodeMeta({
+		// 			nodeId: 'asdf',
+		// 			versionId: 'qjkdsaf3493cj3',
+		// 			testId: 'test-block-node',
+		// 			// tags ?
+		// 			created: new Date(), // UTC @ now,
+		// 			createdBy: null,
+		// 			edited: null,
+		// 			editedBy: null,
+		// 			notes: ''
+		// 		}),
+		// 		element: {
+		// 			// tag
+		// 			// domId
+		// 			classSet: ['single-col'] // example: ['single-col', 'double-col', 'single-row', etc]
+		// 			// attrSet
+		// 		},
+		// 		// component: { // X
+		// 		// 	functionType: 'container',
+		// 		// 	tagName: 'page-block'
+		// 		// },
+		// 		content: {
+		// 			contentId: 'foo',
+		// 			header: 'Test Block Header',
+		// 			subHeader: 'Test Block Sub Header',
+		// 			// ! copyBlock
+		// 			subContent: [
+		// 				// NOTE: Array<SchemaNode>
+		// 				{
+		// 					// CONTENT_NODE
+		// 					// ! SEGMENT_CONTAINER
+		// 					nodeId: 'moop',
+		// 					nodeType: 'SEGMENT',
+		// 					nodeMeta: mockNodeMeta({
+		// 						nodeId: 'asdf',
+		// 						versionId: 'qjkdsaf3493cj3',
+		// 						testId: 'test-segment-node',
+		// 						// tags ?
+		// 						created: new Date(), // UTC @ now,
+		// 						createdBy: null,
+		// 						edited: null,
+		// 						editedBy: null,
+		// 						notes: ''
+		// 					}),
+		// 					element: {
+		// 						// tag
+		// 						// domId
+		// 						classSet: ['test-seg'] // example: ['single-col', 'double-col', 'single-row', etc]
+		// 						// attrSet
+		// 					},
+		// 					component: {
+		// 						functionType: 'container',
+		// 						tagName: 'page-segment'
+		// 					},
+		// 					content: {
+		// 						contentId: 'bar',
+		// 						header: 'yadda',
+		// 						subHeader: 'yadda bing bang',
+		// 						// ! copyBlock
+		// 						// subContent
 
-								// TRACE: ETC ETC...
-								// NOTE: Array<ContentElement>
-								// h3 
-								// hr 
-								// br 
-								// p
-								// a
-								// img
-							}
-						}
-					]
-				}
-			}
-		]
+		// 						// TRACE: ETC ETC...
+		// 						// NOTE: Array<ContentElement>
+		// 						// h3 
+		// 						// hr 
+		// 						// br 
+		// 						// p
+		// 						// a
+		// 						// img
+		// 					}
+		// 				}
+		// 			]
+		// 		}
+		// 	}
+		// ]
 }

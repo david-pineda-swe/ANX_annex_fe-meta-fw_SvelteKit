@@ -8,7 +8,7 @@ interface UserNameTraits {
 }
 
 interface ProjectUser {
-  userId: string, // UUID
+  userId: string,                   // UUID
   name: UserNameTraits,
   title: sting,
   role:string
@@ -31,7 +31,7 @@ interface NodeMeta {
 interface SchemaNode {
   type: string,
   id: string,
-  meta: NodeMeta
+  nodeMeta: NodeMeta
 }
 
 //! ---CONTENT_SEGMENT---
@@ -67,7 +67,7 @@ interface ContentSegment extends SchemaNode {
   // - extended from SchemaNode
   // type
   // id
-  // meta
+  // nodeMeta
 
   component: NodeComponentTraits,
   content?: NodeContentTraits,
@@ -93,39 +93,40 @@ interface FlowControlTraits {
 }
 
 // - PAGE ROUTE
-interface RouteMeta {
-  openGraph: string, // ! TODO
-  searchTags: Array<string>
-}
+interface PageRoute extends SchemaNode {
+  // - EXTENDED FROM SchemaNode
+  // type
+  // id
+  // nodeMeta
 
-interface RouteDisplaytraits {
+  // - CONTENT
+  content: NodeContentTraits
+  subRoutes?: Array<pageRoute>,
+
+  // - ROUTE STATE
   isRoot?: boolean,
   error?: ControlError
   flowControl: FlowControlTraits,
-  routeTier: string,
-  routeType: string,
-  routeSlug: string,
-  routeMeta?: RouteMeta, // ! TODO
-}
-interface PageRoute extends SchemaNode {
-  // - extended from SchemaNode
-  // type
-  // id
-  // meta
-  content: NodeContentTraits
-  displayConfig: RouteDisplayTraits,
-  subRoutes?: Array<pageRoute>
+
+  // - ROUTE DEFINITION KEYS
+  tier: string,
+  category: string,
+  slug: string,
+
+  // - ROUTE DETAILS
+  // openGraph: string, // ! < TODO
+  // searchTags: Array<string>
 }
 
 //! ---SITE_GRAPH---
 interface SiteGraph extends SchemaNode {
-  // - extended from SchemaNode
+  // - EXTENDED FROM SchemaNode
   // type: string,
   // id: string,
-  // meta: NodeMeta
+  // nodeMeta: NodeMeta
 
   // integrations // ! TODO
-  routeSequence: PageRoute
+  routeStructure: PageRoute
 }
 
 //! ---ANNEX_CONTENT_DRIVER_RESULTS---

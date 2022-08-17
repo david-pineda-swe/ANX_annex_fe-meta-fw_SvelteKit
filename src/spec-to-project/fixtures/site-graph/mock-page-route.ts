@@ -2,58 +2,48 @@
 
 // START HERE BY MOCKING A PAGE_ROUTE FROM THE CONTENT DRIVER PROTO
 
-const DEFAULT_DISPLAY_CONFIG = {
-  isRoot: false,
-  // error
-  flowControl: {
-    a_published: true,
-    b_indexOnly: true,
-    c_sitemapVisible: true,
-    d_navVisible: true,
-    e_subRoutesRender: true,
-  },
-  routeTier: 'ERROR',
-  routeType: 'N/A',
-  routeSlug: 'N/A',
-  routeMeta: {
-    // openGraph
-    // searchtags
-  },
-};
-
 export function mockPageRoute(props: PageRoute): PageRoute {
   if (props) {
     // DYNAMIC MOCK
     const {
       type,
       id,
-      meta,
+      nodeMeta,
       //
       content,
+      subRoutes,
       //
-      displayConfig,
-      // - isRoot,
-      // - error,
-      // - flowControl,
-      // - routeTier,
-      // - routeType,
-      // - routeSlug,
-      // - routeMeta
-      // -- openGraph
-      // -- searchTags
-      subRoutes
+      isRoot,
+      // error,
+      flowControl,
+      tier,
+      category,
+      slug,
+      // openGraph
+      // searchTags
     } = props;
     return {
       type: type || 'n/a',
       id: id,
-      meta,
+      nodeMeta,
       //
       content,
+      subRoutes: subRoutes || [],
       //
-      displayConfig: displayConfig || DEFAULT_DISPLAY_CONFIG,
-      //
-      subRoutes: subRoutes || []
-
+      isRoot: isRoot || false,
+      // error
+      flowControl: flowControl || {
+        a_published: true,
+        b_indexOnly: true,
+        c_sitemapVisible: true,
+        d_navVisible: true,
+        e_subRoutesRender: true,
+      },
+      tier: tier || 'ERROR',
+      category: category || 'N/A',
+      slug: slug || 'N/A'
+      // openGraph // ! << TODO
+      // searchtags // ! << TODO
     };
   } else {
     // ! NO PROPS !

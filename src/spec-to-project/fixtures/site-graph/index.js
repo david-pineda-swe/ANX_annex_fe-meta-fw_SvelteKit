@@ -9,9 +9,9 @@ export const ProtoSiteGraph = {
 	},
   // OK - SITE - MAP
   // NOTE: - is an nTier config abstraction
-  routeSequence: {
+  routeStructure: {
     // PageRoute
-    routeSlug: "/",
+    slug: "/",
     content: {
       contentId: '', // >> FOR PAGE to CONTENT MODEL IDENTIFICATION
       header: '',
@@ -42,9 +42,9 @@ export const ProtoSiteGraph = {
       // levels: org > user > cat, resources, id, etc.
       // {
       //   // X ROUTE CONFIGURATION
-      //   routeTier: "A",
-      //   routeType: "category", // >> product, articles, resources, projects
-      //   routeSlug: "test-a",
+      //   tier: "A",
+      //   category: "category", // >> product, articles, resources, projects
+      //   slug: "test-a",
       //   contentId: "*", // >> GETS LAYOUT AND CONTENT
       //   contentModel: { }, // use DEMO fixture...
       //   flowControl: {
@@ -59,9 +59,9 @@ export const ProtoSiteGraph = {
       //   subRoutes: [ // NOTE: << sub-r/ children of TIER-A
       //     {
       //       // X ROUTE CONFIGURATION
-      //       routeTier: "B",
-      //       routeType: "resource",
-      //       routeSlug: "test-b",
+      //       tier: "B",
+      //       category: "resource",
+      //       slug: "test-b",
       //       contentId: "*",
       //       contentModel: {}, // use DEMO fixture...
       //       flowControl: {
@@ -75,9 +75,9 @@ export const ProtoSiteGraph = {
       //       subRoutes: [  // NOTE: << sub-r/ children of TIER-B
       //         {
       //           // X ROUTE CONFIGURATION
-      //           routeTier: "C",
-      //           routeType: "product",
-      //           routeSlug: "test-c",
+      //           tier: "C",
+      //           category: "product",
+      //           slug: "test-c",
       //           contentId: "*",
       //           contentModel: {}, // use DEMO fixture...
       //           flowControl: {
@@ -96,9 +96,9 @@ export const ProtoSiteGraph = {
       // },
       // {
       //   // X ROUTE CONFIGURATION
-      //   routeTier: "A",
-      //   routeType: "category",
-      //   routeSlug: "demo",
+      //   tier: "A",
+      //   category: "category",
+      //   slug: "demo",
       //   contentId: "*",
       //   contentModel: {}, // use DEMO fixture...
       //   flowControl: {
@@ -112,9 +112,9 @@ export const ProtoSiteGraph = {
       //   subRoutes: [
       //     {
       //       // X ROUTE CONFIGURATION
-      //       routeTier: "B",
-      //       routeType: "resource",
-      //       routeSlug: "material-icons",
+      //       tier: "B",
+      //       category: "resource",
+      //       slug: "material-icons",
       //       contentId: "asdf",
       //       contentModel: {}, // use DEMO fixture...
       //       flowControl: {

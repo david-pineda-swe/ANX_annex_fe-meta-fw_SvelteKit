@@ -16,7 +16,7 @@
     const content = await annexRouter.fulfillDynamicContentRequest({
       tierPositionKey: 'A', // of a tierSequenceIndex
       // tierPositionLabel: 'APPLE', // of a tierSequenceIndex
-      routeSequence: SiteGraph.routeSequence,
+      routeStructure: SiteGraph.routeStructure,
       serializedUrlPath: ctx.page.params
     });
 

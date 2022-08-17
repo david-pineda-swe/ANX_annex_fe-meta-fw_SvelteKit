@@ -21,7 +21,7 @@ interface SerializedAnnexRouteSchema { // ! TODO verify and refactor
 interface PathValidationQuery {
   tierPositionKey?: string,
   tierPositionLabel?: string,
-  routeSequence: PageRoute,
+  routeStructure: PageRoute,
   serializedUrlPath: SerializedAnnexRouteSchema
 }
 
@@ -33,7 +33,7 @@ const TIER_SEQUENCE_INDEX = {
 };
 
 const validateRouteForTier = async function(pathValidationQuery: PathValidationQuery):Promise<ContentResult> {
-  const {tierPositionKey, tierPositionLabel, routeSequence, serializedUrlPath} = pathValidationQuery;
+  const {tierPositionKey, tierPositionLabel, routeStructure, serializedUrlPath} = pathValidationQuery;
   
   // TODO: ABSTRACT THE DERIVED TIER PROGRESSION
   let tierPosition;
@@ -56,9 +56,6 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   }
 
   const tierProgression = tierSequence.slice(0, indexOfTargetTier + 1)
-  //
-
-  console.log('>> TEST: What is the TIER_PROGRESSION:', tierProgression);
 
   const tempRouteResults = [];
 
