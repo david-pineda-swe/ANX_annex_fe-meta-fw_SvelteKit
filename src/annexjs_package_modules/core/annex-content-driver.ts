@@ -92,8 +92,7 @@ const collectContentForDynamic = async function(contentResult: ContentResult):Pr
 
     // Recapture contentResult type for return
     const hydratedPageModel = {...contentResult, ...{
-      allContentModelsAreResolved,
-      collectedRoutes: hydratedRoutes
+      allContentModelsAreResolved
     }};
 
     // TODO: LOGGER - VERBOSE INFO >>

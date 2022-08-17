@@ -36,9 +36,9 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   const {tierPositionKey, tierPositionLabel, routeStructure, serializedUrlPath} = pathValidationQuery;
   
   // TODO: ABSTRACT THE DERIVED TIER PROGRESSION
-  let tierPosition;
-  let tierSequence;
-  let indexOfTargetTier;
+  let tierPosition: string;
+  let tierSequence: Array<string>;
+  let indexOfTargetTier: number;
 
   // TODO: ACCOUNT FOR DEFAULT AND ALIAS tierPosition(s)
   // TODO: ERROR IF NEITHER KEY OR LABEL WAS PROVIDED
@@ -59,18 +59,21 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
 
   const tempRouteResults = [];
 
-  // SEGMENT CONFIG DRILL DOWN >>>
   const pageRouteSequence = await tierProgression.map((currentTier: string, i: number) => {
+    let targetRoute: PageRoute;
     const requestedRouteSlug = serializedUrlPath[currentTier];
 
-    // Find targetTierConfig by routeTier index & routeSlug match from parent
-    const parentTierRouteConfig = (i === 0) ? routeSequence : tempRouteResults[i - 1];
+    if (i === 0) {
+      targetRoute = routeStructure;
+    } else {
+      // Find targetTierRoute by routeTier index & routeSlug match from parent
+      const parentTierRoute = tempRouteResults[i - 1];
+      targetRoute = parentTierRoute.subRoutes.filter((pageRoute: PageRoute) => {
+        const { tier, slug } = pageRoute;
+        return tier === currentTier && slug === requestedRouteSlug;
+      })[0];
 
-    console.log('>> >> TEST parentTierRouteConfig:', currentTier, parentTierRouteConfig);
-
-    const targetRoute = parentTierRouteConfig.subRoutes.filter((config: { routeTier: string; routeSlug: string; }) => {
-      return config.routeTier === currentTier && config.routeSlug === requestedRouteSlug;
-    })[0];
+    }
 
     // TODO: ERROR HANDLE FOR NULL RESULT
 
@@ -78,14 +81,13 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
     return targetRoute;
   });
 
-  // ! All tiers must be satisfied w/ a config
-  const allTiersAreResolved = pageRouteSequence.every((config) => {
-    return config !== undefined; // TODO: or empty() util
+  // ! All tiers must be satisfied w/ a PAGE_ROUTE
+  const allTiersAreResolved = pageRouteSequence.every((pageRoute) => {
+    return pageRoute !== undefined; // TODO: or empty() util
   });
-
-  // ! Target config was the match found for the last tier designation
-  const targetPageRoute = pageRouteSequence.filter(config => config && config.routeTier === tierPosition)[0];
-
+  
+  const targetPageRoute = pageRouteSequence.filter(pageRoute => pageRoute && pageRoute.tier === tierPosition)[0];
+  
   return {
     // state
     allTiersAreResolved,
@@ -97,36 +99,41 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   };
 }
 
-// - for dynamic page hydration management
-// todo: make pageRequestResult interface
 const fulfillDynamicContentRequest = async function(pathValidationQuery: PathValidationQuery) :Promise<ContentResult> {
   try {
-    // STAGE 1: VALIDATE ROUTE - on PAGE_MODEL
+    // STAGE 1: VALIDATE URL_PATH for PAGE_ROUTE_SEQUENCE
     const validatedPageModel = await validateRouteForTier(pathValidationQuery);
-  
+
     if (!validatedPageModel.allTiersAreResolved) {
-      // FAIL:
-      const { tierPosition, targetPageRoute: { displayConfig: { routeSlug }}} = validatedPageModel;
-      console.error(`(!)404 - Tier: ${tierPosition} Route Slug: ${routeSlug} - ROUTE IS NOT VALID(!)`);
-      throw new Error(`Could not find Tier: ${tierPosition} Route Slug: ${routeSlug} segment`);
-    }
+      // FAIL: (!) No PageRoute model for requested URL path (!) 
+      const { tierPosition, targetPageRoute} = validatedPageModel;
 
-    // STAGE 2: HYDRATE contentModel(s) FOR ALL TIERS - on PAGE_MODEL
-    const hydratedPageModel = await annexContentDriver.collectContentForDynamic(validatedPageModel);
+      const errorMessage = (validatedPageModel.targetPageRoute)
+      ? `(!) 404 - Tier: ${tierPosition} Route Slug: ${targetPageRoute.slug} - ROUTE IS NOT VALID(!)`
+      : `(!) No PageRoute model for requested URL path (!) `
 
-    // TODO: LOGGER - VERBOSE INFO >>
-    // hydratedPageModel.collectedRoutes.forEach(routeConfig => console.table(routeConfig));
-
-    // Validate that all content is collected
-    if (!hydratedPageModel.allContentModelsAreResolved) {
-        // FAIL: 
-        // todo: test missing content fail over
+      console.error(errorMessage);
+      throw new Error(errorMessage);
     } else {
-      hydratedPageModel.success = true;
+      // STAGE 2: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
+      const hydratedPageModel = await annexContentDriver.collectContentForDynamic(validatedPageModel);
+  
+      // TODO: LOGGER - VERBOSE INFO >>
+      // hydratedPageModel.pageRouteSequence.forEach(routeConfig => console.table(routeConfig));
+  
+      // Validate that all content is collected
+      if (!hydratedPageModel.allContentModelsAreResolved) {
+          // FAIL: 
+          // todo: test missing content fail over
+      } else {
+        hydratedPageModel.success = true;
+      }
+  
+      return hydratedPageModel;
     }
-
-    return hydratedPageModel;
   } catch(err) {
+    console.log('>> MERP');
+    
     // todo: test error handling
     // todo: infra error logging goes here
 
