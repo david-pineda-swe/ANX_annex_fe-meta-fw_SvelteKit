@@ -1,31 +1,37 @@
 <script context="module" lang="ts">
-  // DOCS: https://kit.svelte.dev/docs#routing-advanced-rest-parameters
   import { annexRouter } from '@annexjs/core';
-  
-  // x SHOULD HAVE ACCESS TO THE ANNEX CONFIG
-  import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph/content-driver-proto'
-  // was >
-  // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
+  import ContentCaster from '@annexjs/core/content-caster/render-controller.svelte';
 
   export const load = async (ctx) => {
-    // TODO: POSSIBLE ADAPTER FOR ROUTE_SEQUNECE >>>
-    // X should be coming from Svelte store if previously loaded
-
-    console.log('>> CDP SITEGRAPH:', SiteGraph);
-
-    const content = await annexRouter.fulfillDynamicContentRequest({
+    const pageModel = await annexRouter.fulfillPageModelRequestedBy({
       tierPositionKey: 'A', // of a tierSequenceIndex
       // tierPositionLabel: 'APPLE', // of a tierSequenceIndex
-      routeStructure: SiteGraph.routeStructure,
       serializedUrlPath: ctx.page.params
     });
 
-    console.log(">> WHAT IS CONTENT @ TIER_A:", content);
+    console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_A:", pageModel);
 
     return { 
       props: {
-        content
+        pageModel
       }
     };
+
+    // x FOR TESTING THE CONTENT_CASTER.ErrorOutDefault
+    // return {
+    //   props: {
+    //     pageModel: {
+    //       success: false,
+    //       allTiersAreResolved: true,
+    //       allContentIsResolved: false
+    //     }
+    //   }
+    // };
   }
 </script>
+
+<script>
+  export let pageModel;
+</script>
+
+<ContentCaster {pageModel}/>

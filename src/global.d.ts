@@ -29,8 +29,8 @@ interface NodeMeta {
 }
 
 interface SchemaNode {
-  type: string,
-  id: string,
+  nodeId: string,
+  nodeType: string,
   nodeMeta: NodeMeta
 }
 
@@ -48,31 +48,25 @@ interface NodeElementTraits {
 }
 
 interface NodeComponentTraits {
-  componentType?: string,           // STRUCTURE, FUNCTION, DISPLAY, SYSTEM, METRICS
-  componentTag?: string,            // STRUCTURES_AVLB_EXAMPLE: Row(s) < Column(s) < Feature(s) < SubFeature(s)
+  componentType?: string,           // STRUCTURE, FUNCTION, DISPLAY, SYSTEM, METRICS, ETC...
+  componentTag?: string,            // STRUCTURES_AVLB_EXAMPLE: row(s) < column(s) < feature(s) < subFeature(s)
   element?: NodeElementTraits       // !
-}
-
-interface NodeContentTraits {
-  contentId: string,               // UUID
-  header?: string,
-  subHeader?: string,
-  copyBlock?  // ! TODO Markdown support << // START HERE <<
-  // todo: callout to a copy only svelte component
-  // todo: TRY INJECTING MARKDOWN - simulate a server provided segment node
-  subContent?: Array<ContentSegment>
 }
 
 interface ContentSegment extends SchemaNode {
   // - extended from SchemaNode
-  // type
-  // id
+  // nodeId
+  // nodeType
   // nodeMeta
-
+  
   component: NodeComponentTraits,
-  content?: NodeContentTraits,
+  header?: string, // X for copyBlock
+  subHeader?: string, // X for copyBlock
+  copyBlock?  // ! TODO Markdown support << // START HERE <<
+  // todo: TRY INJECTING MARKDOWN - simulate a server provided segment node
+  subContent?: Array<ContentSegment>
 
-  isRoot?: boolean,
+  isRoot?: boolean, // X
   isParalax?: boolean,
   isFlex?: boolean,
 }
@@ -95,12 +89,12 @@ interface FlowControlTraits {
 // - PAGE ROUTE
 interface PageRoute extends SchemaNode {
   // - EXTENDED FROM SchemaNode
-  // type
-  // id
+  // nodeId
+  // nodeType
   // nodeMeta
 
   // - CONTENT
-  content: NodeContentTraits
+  content: ContentSegment
   subRoutes?: Array<pageRoute>,
 
   // - ROUTE STATE
@@ -121,8 +115,8 @@ interface PageRoute extends SchemaNode {
 //! ---SITE_GRAPH---
 interface SiteGraph extends SchemaNode {
   // - EXTENDED FROM SchemaNode
-  // type: string,
-  // id: string,
+  // nodeId: string,
+  // nodeType: string,
   // nodeMeta: NodeMeta
 
   // integrations // ! TODO
@@ -130,11 +124,11 @@ interface SiteGraph extends SchemaNode {
 }
 
 //! ---ANNEX_CONTENT_DRIVER_RESULTS---
-interface ContentResult {
+interface PageModelResult {
   // Is a runtime derived abstraction
   // result state
   allTiersAreResolved?: boolean,
-  allContentModelsAreResolved?: boolean,
+  allContentIsResolved?: boolean,
   success?:boolean,
   errors?: Array<ControlError>,
   tierPosition: string,

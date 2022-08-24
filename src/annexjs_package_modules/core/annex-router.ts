@@ -1,5 +1,8 @@
 import { annexContentDriver } from ".";
 
+// import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
+import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph/content-driver-proto'
+
 // TBD: Create a dynamic router class that will
 // - that constructs the router
 // - based off of the first consume of the site-graph
@@ -21,7 +24,7 @@ interface SerializedAnnexRouteSchema { // ! TODO verify and refactor
 interface PathValidationQuery {
   tierPositionKey?: string,
   tierPositionLabel?: string,
-  routeStructure: PageRoute,
+  // routeStructure: PageRoute,
   serializedUrlPath: SerializedAnnexRouteSchema
 }
 
@@ -32,9 +35,16 @@ const TIER_SEQUENCE_INDEX = {
   C: 'COOK'
 };
 
-const validateRouteForTier = async function(pathValidationQuery: PathValidationQuery):Promise<ContentResult> {
-  const {tierPositionKey, tierPositionLabel, routeStructure, serializedUrlPath} = pathValidationQuery;
+const validateRouteForTier = async function(pathValidationQuery: PathValidationQuery):Promise<PageModelResult> {
+  const {tierPositionKey, tierPositionLabel, serializedUrlPath} = pathValidationQuery;
+
+  // TODO: POSSIBLE ADAPTER FOR ROUTE_SEQUNECE >>>
+  // X should be coming from Svelte store if previously loaded
+  // TODO: ACCESS TO SITE-GRAPH
+  console.log('>> SITE_GRAPH FIXTURE:', SiteGraph);
+  const routeStructure = SiteGraph.routeStructure; // fix <<<<<<<<<<<<<<<<<<<<<<<<<<<<
   
+
   // TODO: ABSTRACT THE DERIVED TIER PROGRESSION
   let tierPosition: string;
   let tierSequence: Array<string>;
@@ -99,30 +109,31 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   };
 }
 
-const fulfillDynamicContentRequest = async function(pathValidationQuery: PathValidationQuery) :Promise<ContentResult> {
+const fulfillPageModelRequestedBy = async function(pathValidationQuery: PathValidationQuery):Promise<PageModelResult> {
   try {
     // STAGE 1: VALIDATE URL_PATH for PAGE_ROUTE_SEQUENCE
-    const validatedPageModel = await validateRouteForTier(pathValidationQuery);
+    const incomingPageModel = await validateRouteForTier(pathValidationQuery);
 
-    if (!validatedPageModel.allTiersAreResolved) {
+    if (!incomingPageModel.allTiersAreResolved) {
       // FAIL: (!) No PageRoute model for requested URL path (!) 
-      const { tierPosition, targetPageRoute} = validatedPageModel;
+      const { tierPosition, targetPageRoute} = incomingPageModel;
 
-      const errorMessage = (validatedPageModel.targetPageRoute)
+      const errorMessage = (incomingPageModel.targetPageRoute)
       ? `(!) 404 - Tier: ${tierPosition} Route Slug: ${targetPageRoute.slug} - ROUTE IS NOT VALID(!)`
       : `(!) No PageRoute model for requested URL path (!) `
 
       console.error(errorMessage);
-      throw new Error(errorMessage);
+      // throw new Error(errorMessage); // FIX <<
+      return incomingPageModel
     } else {
       // STAGE 2: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
-      const hydratedPageModel = await annexContentDriver.collectContentForDynamic(validatedPageModel);
+      const hydratedPageModel = await annexContentDriver.collectContentForDynamic(incomingPageModel);
   
       // TODO: LOGGER - VERBOSE INFO >>
       // hydratedPageModel.pageRouteSequence.forEach(routeConfig => console.table(routeConfig));
   
       // Validate that all content is collected
-      if (!hydratedPageModel.allContentModelsAreResolved) {
+      if (!hydratedPageModel.allContentIsResolved) {
           // FAIL: 
           // todo: test missing content fail over
       } else {
@@ -144,4 +155,4 @@ const fulfillDynamicContentRequest = async function(pathValidationQuery: PathVal
   }
 }
 
-export default { validateRouteForTier, fulfillDynamicContentRequest };
+export default { validateRouteForTier, fulfillPageModelRequestedBy };

@@ -1,28 +1,26 @@
 <script context="module" lang="ts">
-
   import { annexRouter } from '@annexjs/core';
-  import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph/content-driver-proto'
-  // was >
-  // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
+  import ContentCaster from '@annexjs/core/content-caster/render-controller.svelte';
 
   export const load = async (ctx) => {
-    // TODO: POSSIBLE ADAPTER FOR ROUTE_SEQUENCE RESOLVER >>>
-
-    console.log('>> CDP SITEGRAPH:', SiteGraph);
-
-    const content = await annexRouter.fulfillDynamicContentRequest({
+    const pageModel = await annexRouter.fulfillPageModelRequestedBy({
       tierPositionKey: 'C', // of a tierSequenceIndex
       // tierPositionLabel: 'COOK', // of a tierSequenceIndex
-      routeStructure: SiteGraph.routeStructure,
       serializedUrlPath: ctx.page.params
     });
 
-    console.log(">> WHAT IS PAGE_MODEL @ TIER_C:", content);
+    console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_C:", pageModel);
 
     return { 
       props: {
-        content
+        pageModel
       }
     };
   }
 </script>
+
+<script>
+  export let pageModel;
+</script>
+
+<ContentCaster {pageModel}/>

@@ -1,30 +1,32 @@
 // TODO: CONSIDER SURPLUS META REMOVAL IF IN DISPLAY/PERFORMACE MODE
 //x TEMPORARY FIXTURE FOR DEVELOPMENT >>>
-import { contentModel as demoContentModel } from '$pec/fixtures/content-graph/material-icons';
 
-const collectContentForDynamic = async function(contentResult: ContentResult):Promise<ContentResult> {
-  const { targetPageRoute, pageRouteSequence } = contentResult;
+// TODO: CONCEPTUALIZE A STATIC CMS CONVENTION 
+// import { contentModel as demoContentModel } from '$pec/fixtures/content-graph/material-icons';
+
+const collectContentForDynamic = async function(pageModel: PageModelResult):Promise<PageModelResult> {
+  const { targetPageRoute, pageRouteSequence } = pageModel;
   let primaryContentIsResolved = false;
   let allSecondaryContentIsResolved = false;
-  let allContentModelsAreResolved = false;
+  let allContentIsResolved = false;
   
   try {
     // TODO: LOGGER - VERBOSE INFO >>
-    // console.log('>> COLLECT_CONTENT_FOR_DYNAMIC (contentResult):', contentResult);
 
     // A.) COLLECT TARGET ROUTE PRIMARY CONTENT
     // TODO: USE "SHARED" SINGLE ASYNC REQUEST METHOD
     // via targetPageRoute.content.contentId (service.requestForContentModel)
-    const requestForPrimaryContent = await {
-      success: true,
-      result: demoContentModel // DEMO: fixture <<< 
-    };
+    // const requestForPrimaryContent = await {
+    //   success: true,
+    //   result: demoContentModel // DEMO: fixture <<< 
+    // };
 
     // TODO: if (!requestForPrimaryContent.success) =>
     // FAIL out
     // else CONTINUE...
+    // ! MOCKING THE REQUEST AND RESPONSE RESULT
     primaryContentIsResolved = true;
-    targetPageRoute.content = requestForPrimaryContent.result;
+    // targetPageRoute.content = requestForPrimaryContent.result;
 
     // B.) COLLECT REMAINING SECONDARY CONTENT
     // X: ABSTRACT
@@ -32,7 +34,7 @@ const collectContentForDynamic = async function(contentResult: ContentResult):Pr
     const hydratedRoutes = await pageRouteSequence.map((pageRoute) => {
       // TODO: USE .promiseAll() >
       // TODO: REQUEST FOR EACH SUB [pageRouteSequence]
-      if (pageRoute.content.contentId === targetPageRoute.content.contentId) {
+      if (pageRoute.content.nodeId === targetPageRoute.content.nodeId) {
         // Bypass and re-use previously collected pageRoute contentModel
         return {...pageRoute};
       } else {
@@ -86,13 +88,13 @@ const collectContentForDynamic = async function(contentResult: ContentResult):Pr
       // OK
       allSecondaryContentIsResolved = true;
       if (primaryContentIsResolved && allSecondaryContentIsResolved) {
-        allContentModelsAreResolved = true;
+        allContentIsResolved = true;
       }
     }
 
-    // Recapture contentResult type for return
-    const hydratedPageModel = {...contentResult, ...{
-      allContentModelsAreResolved
+    // Recapture pageModel type for return
+    const hydratedPageModel = {...pageModel, ...{
+      allContentIsResolved
     }};
 
     // TODO: LOGGER - VERBOSE INFO >>
@@ -102,8 +104,8 @@ const collectContentForDynamic = async function(contentResult: ContentResult):Pr
 
   } catch (err) {
     // TODO: INTEGRATE LOGGER ERROR HANDLING
-    // add errors to contentResult for graceful failing
-    return contentResult;
+    // add errors to pageModel for graceful failing
+    return pageModel;
   }
 };
 

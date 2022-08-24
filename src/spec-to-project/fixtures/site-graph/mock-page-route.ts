@@ -6,8 +6,8 @@ export function mockPageRoute(props: PageRoute): PageRoute {
   if (props) {
     // DYNAMIC MOCK
     const {
-      type,
-      id,
+      nodeId,
+      nodeType,
       nodeMeta,
       //
       content,
@@ -23,8 +23,8 @@ export function mockPageRoute(props: PageRoute): PageRoute {
       // searchTags
     } = props;
     return {
-      type: type || 'n/a',
-      id: id,
+      nodeType: nodeType || 'n/a',
+      nodeId: nodeId,
       nodeMeta,
       //
       content,

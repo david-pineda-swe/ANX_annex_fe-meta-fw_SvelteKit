@@ -2,12 +2,12 @@
 
 import { mockNodeMeta } from "./mock-node-meta";
 import { mockPageRoute } from "./mock-page-route";
-import { mockNodeContent } from "./mock-segment-content";
+import { mockContentSegment } from "./mock-content-segment";
 
 export const ProtoSiteGraph = {
   // ! SITE_GRAPH 
-  type: "SITE_GRAPH",
-  id: 'adsfdd',
+  nodeId: 'adsfdd',
+  nodeType: "SITE_GRAPH",
   nodeMeta: mockNodeMeta({
     nodeId: 'asdf',
     versionId: 'qjkdsaf3493cj3',
@@ -27,8 +27,8 @@ export const ProtoSiteGraph = {
 
   routeStructure: mockPageRoute({ // REKEY:  => routeStructure
     // ! PAGE_ROUTE - SCHEMA_NODE
-    type: 'PAGE_ROUTE',
-    id: '*',
+    nodeId: '*',
+    nodeType: 'PAGE_ROUTE',
     nodeMeta: mockNodeMeta({
       nodeId: '*',
       versionId: 'qjkdsaf3493cj3',
@@ -41,8 +41,26 @@ export const ProtoSiteGraph = {
       notes: ''
     }),
 
-    content: mockNodeContent({ // return a root CONTENT_SEGMENT
-      contentId: '',
+    content: mockContentSegment({ // return a root CONTENT_SEGMENT
+      nodeId: '',
+      nodeType: 'CONTENT_SEGMENT',
+      nodeMeta: mockNodeMeta({
+        nodeId: '*',
+        versionId: 'qjkdsaf3493cj3',
+        testId: "merc",
+        // tags ?
+        created: new Date(), // UTC @ now,
+        createdBy: null,
+        edited: null,
+        editedBy: null,
+        notes: ''
+      }),
+      //
+      component: {
+        componentType: 'STRUCTURE',
+        componentTag: 'row',
+        // element: {}
+      },
       header: "lime",
       subHeader: "coolAid",
       copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
