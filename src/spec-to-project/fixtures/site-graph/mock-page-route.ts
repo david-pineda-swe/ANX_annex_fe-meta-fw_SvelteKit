@@ -37,7 +37,7 @@ export function mockPageRoute(props: PageRoute): PageRoute {
         b_indexOnly: true,
         c_sitemapVisible: true,
         d_navVisible: true,
-        e_subRoutesRender: true,
+        e_renderAsParentRoute: true,
       },
       tier: tier || 'ERROR',
       category: category || 'N/A',

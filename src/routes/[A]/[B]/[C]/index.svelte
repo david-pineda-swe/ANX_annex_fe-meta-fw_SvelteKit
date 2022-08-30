@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import { annexRouter } from '@annexjs/core';
-  import ContentCaster from '@annexjs/core/content-caster/render-controller.svelte';
+  import ContentPlotter from '@annexjs/core/content-plotter/render-controller.svelte';
 
   export const load = async (ctx) => {
     const pageModel = await annexRouter.fulfillPageModelRequestedBy({
@@ -23,4 +23,4 @@
   export let pageModel;
 </script>
 
-<ContentCaster {pageModel}/>
+<ContentPlotter {pageModel}/>

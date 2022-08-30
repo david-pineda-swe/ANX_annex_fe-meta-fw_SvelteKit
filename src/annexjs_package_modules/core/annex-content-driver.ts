@@ -4,8 +4,8 @@
 // TODO: CONCEPTUALIZE A STATIC CMS CONVENTION 
 // import { contentModel as demoContentModel } from '$pec/fixtures/content-graph/material-icons';
 
-const collectContentForDynamic = async function(pageModel: PageModelResult):Promise<PageModelResult> {
-  const { targetPageRoute, pageRouteSequence } = pageModel;
+export const collectDynamicContentFor = async function(pageModel: PageModelResult):Promise<PageModelResult> {
+  const { pageRouteSequence } = pageModel;
   let primaryContentIsResolved = false;
   let allSecondaryContentIsResolved = false;
   let allContentIsResolved = false;
@@ -15,7 +15,7 @@ const collectContentForDynamic = async function(pageModel: PageModelResult):Prom
 
     // A.) COLLECT TARGET ROUTE PRIMARY CONTENT
     // TODO: USE "SHARED" SINGLE ASYNC REQUEST METHOD
-    // via targetPageRoute.content.contentId (service.requestForContentModel)
+    // via target_x_PageRoute.content.contentId (service.requestForContentModel)
     // const requestForPrimaryContent = await {
     //   success: true,
     //   result: demoContentModel // DEMO: fixture <<< 
@@ -26,15 +26,15 @@ const collectContentForDynamic = async function(pageModel: PageModelResult):Prom
     // else CONTINUE...
     // ! MOCKING THE REQUEST AND RESPONSE RESULT
     primaryContentIsResolved = true;
-    // targetPageRoute.content = requestForPrimaryContent.result;
+    // target_x_PageRoute.content = requestForPrimaryContent.result;
 
     // B.) COLLECT REMAINING SECONDARY CONTENT
     // X: ABSTRACT
     let hasErrors = false;
-    const hydratedRoutes = await pageRouteSequence.map((pageRoute) => {
+    const hydratedRoutes = await pageRouteSequence.map((pageRoute, sequenceIndex) => {
       // TODO: USE .promiseAll() >
       // TODO: REQUEST FOR EACH SUB [pageRouteSequence]
-      if (pageRoute.content.nodeId === targetPageRoute.content.nodeId) {
+      if (sequenceIndex === 0) { // << First PAGE_ROUTE.CONTENT was already collected
         // Bypass and re-use previously collected pageRoute contentModel
         return {...pageRoute};
       } else {
@@ -109,6 +109,28 @@ const collectContentForDynamic = async function(pageModel: PageModelResult):Prom
   }
 };
 
-// // //
+export const stackNestedContentStructure = async function(pageModel: PageModelResult):Promise<PageModelResult> {
+  const { pageRouteSequence } = pageModel;
 
-export default { collectContentForDynamic };
+  const contentStructure = pageRouteSequence.reverse().reduce((lastTierContent, pageRoute: PageRoute ) => {
+    const { tier, content, flowControl: { e_renderAsParentRoute } } = pageRoute;
+    
+    const tierContent = {
+      tier,
+      content: (lastTierContent === null || (lastTierContent && e_renderAsParentRoute)) ? content : null,
+      subRouteContent: (lastTierContent) ? lastTierContent : null
+    }
+
+    return tierContent;
+  }, null);
+
+  return {
+    ...pageModel,
+    ...{
+      contentStructure,
+      success: true
+    }
+  };
+};
+
+export default { collectDynamicContentFor, stackNestedContentStructure };

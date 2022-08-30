@@ -25,7 +25,7 @@ export const ProtoSiteGraph = {
       b_indexOnly: true,
       c_sitemapVisible: true,
       d_navVisible: true,
-      e_subRoutesRender: true,
+      e_renderAsParentRoute: true,
     },
     //
 		// TBD: open graph meta conventions > for copy paste support
@@ -54,7 +54,7 @@ export const ProtoSiteGraph = {
       //     b_indexOnly: true,           // 2. if route should support child routes only (NO PAGE CONFIG)
       //     c_sitemapVisible: true,      // 3. assignable to sitemap
       //     d_navVisible: true,      // 4. assignable to navigation
-      //     e_subRoutesRender: true, // 5. displayed as child module in parent route
+      //     e_renderAsParentRoute: true, // 5. displayed as child module in parent route
       //   },
       //   subRoutes: [ // NOTE: << sub-r/ children of TIER-A
       //     {
@@ -70,7 +70,7 @@ export const ProtoSiteGraph = {
       //         b_indexOnly: true,
       //         c_sitemapVisible: true,
       //         d_navVisible: true,
-      //         e_subRoutesRender: true,
+      //         e_renderAsParentRoute: true,
       //       },
       //       subRoutes: [  // NOTE: << sub-r/ children of TIER-B
       //         {
@@ -86,7 +86,7 @@ export const ProtoSiteGraph = {
       //             b_indexOnly: true,
       //             c_sitemapVisible: true,
       //             d_navVisible: true,
-      //             e_subRoutesRender: true,
+      //             e_renderAsParentRoute: true,
       //           },
       //           subRoutes: [] // NOTE: << sub-r/ children of TIER-C
       //         }
@@ -107,7 +107,7 @@ export const ProtoSiteGraph = {
       //     b_indexOnly: true,
       //     c_sitemapVisible: true,
       //     d_navVisible: true,
-      //     e_subRoutesRender: true,
+      //     e_renderAsParentRoute: true,
       //   },
       //   subRoutes: [
       //     {
@@ -123,7 +123,7 @@ export const ProtoSiteGraph = {
       //         b_indexOnly: true,
       //         c_sitemapVisible: true,
       //         d_navVisible: true,
-      //         e_subRoutesRender: true,
+      //         e_renderAsParentRoute: true,
       //       },
       //       subRoutes: [] 
       //     }

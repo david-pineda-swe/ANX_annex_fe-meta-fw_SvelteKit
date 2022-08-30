@@ -1,4 +1,4 @@
-import { annexContentDriver } from ".";
+import { collectDynamicContentFor, stackNestedContentStructure } from "./annex-content-driver";
 
 // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
 import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph/content-driver-proto'
@@ -42,7 +42,7 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   // X should be coming from Svelte store if previously loaded
   // TODO: ACCESS TO SITE-GRAPH
   console.log('>> SITE_GRAPH FIXTURE:', SiteGraph);
-  const routeStructure = SiteGraph.routeStructure; // fix <<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  const routeStructure = SiteGraph.routeStructure; // X TBD
   
 
   // TODO: ABSTRACT THE DERIVED TIER PROGRESSION
@@ -80,9 +80,9 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
       const parentTierRoute = tempRouteResults[i - 1];
       targetRoute = parentTierRoute.subRoutes.filter((pageRoute: PageRoute) => {
         const { tier, slug } = pageRoute;
-        return tier === currentTier && slug === requestedRouteSlug;
-      })[0];
-
+        
+        return tier === currentTier && slug.includes(requestedRouteSlug); // ! << /example-slug || example-slug
+      })[0];      
     }
 
     // TODO: ERROR HANDLE FOR NULL RESULT
@@ -96,38 +96,36 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
     return pageRoute !== undefined; // TODO: or empty() util
   });
   
-  const targetPageRoute = pageRouteSequence.filter(pageRoute => pageRoute && pageRoute.tier === tierPosition)[0];
-  
   return {
     // state
     allTiersAreResolved,
     // models
     tierPosition,
     tierSequence,
-    targetPageRoute,
     pageRouteSequence
   };
 }
 
 const fulfillPageModelRequestedBy = async function(pathValidationQuery: PathValidationQuery):Promise<PageModelResult> {
   try {
-    // STAGE 1: VALIDATE URL_PATH for PAGE_ROUTE_SEQUENCE
-    const incomingPageModel = await validateRouteForTier(pathValidationQuery);
+    // ! STAGE 1: VALIDATE URL_PATH for PAGE_ROUTE_SEQUENCE
+    const validatedPageModel = await validateRouteForTier(pathValidationQuery);
 
-    if (!incomingPageModel.allTiersAreResolved) {
+    if (!validatedPageModel.allTiersAreResolved) {
       // FAIL: (!) No PageRoute model for requested URL path (!) 
-      const { tierPosition, targetPageRoute} = incomingPageModel;
+      const { tierPosition, pageRouteSequence} = validatedPageModel;
+      const firstPageRoute = pageRouteSequence[0] // TODO: TARGET BY THE TIER POSITION THAT APP IS ON
 
-      const errorMessage = (incomingPageModel.targetPageRoute)
-      ? `(!) 404 - Tier: ${tierPosition} Route Slug: ${targetPageRoute.slug} - ROUTE IS NOT VALID(!)`
+      const errorMessage = (pageRouteSequence[0])
+      ? `(!) 404 - Tier: ${tierPosition} Route Slug: ${firstPageRoute.slug} - ROUTE IS NOT VALID(!)`
       : `(!) No PageRoute model for requested URL path (!) `
 
       console.error(errorMessage);
       // throw new Error(errorMessage); // FIX <<
-      return incomingPageModel
+      return validatedPageModel
     } else {
-      // STAGE 2: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
-      const hydratedPageModel = await annexContentDriver.collectContentForDynamic(incomingPageModel);
+      // ! STAGE 2: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
+      const hydratedPageModel = await collectDynamicContentFor(validatedPageModel);
   
       // TODO: LOGGER - VERBOSE INFO >>
       // hydratedPageModel.pageRouteSequence.forEach(routeConfig => console.table(routeConfig));
@@ -137,10 +135,11 @@ const fulfillPageModelRequestedBy = async function(pathValidationQuery: PathVali
           // FAIL: 
           // todo: test missing content fail over
       } else {
-        hydratedPageModel.success = true;
+        // ! STAGE 3: COMPILE the contentModel(s) into a CONTENT_STRUCTURE_SCHEMA
+        const finishedPageModel = await stackNestedContentStructure(hydratedPageModel);
+
+        return finishedPageModel;
       }
-  
-      return hydratedPageModel;
     }
   } catch(err) {
     console.log('>> MERP');

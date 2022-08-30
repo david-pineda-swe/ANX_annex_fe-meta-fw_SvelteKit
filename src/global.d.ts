@@ -31,7 +31,7 @@ interface NodeMeta {
 interface SchemaNode {
   nodeId: string,
   nodeType: string,
-  nodeMeta: NodeMeta
+  nodeMeta?: NodeMeta
 }
 
 //! ---CONTENT_SEGMENT---
@@ -83,7 +83,7 @@ interface FlowControlTraits {
   b_indexOnly: boolean,
   c_sitemapVisible: boolean,
   d_navVisible: boolean,
-  e_subRoutesRender: boolean
+  e_renderAsParentRoute: boolean
 }
 
 // - PAGE ROUTE
@@ -112,6 +112,12 @@ interface PageRoute extends SchemaNode {
   // searchTags: Array<string>
 }
 
+interface TierContent {
+  content: ContentSegment,
+  subRouteContent: TierContent,
+  tier: string
+}
+
 //! ---SITE_GRAPH---
 interface SiteGraph extends SchemaNode {
   // - EXTENDED FROM SchemaNode
@@ -134,6 +140,6 @@ interface PageModelResult {
   tierPosition: string,
   tierSequence: Array<string>,
   // content models
-  targetPageRoute: PageRoute,
   pageRouteSequence: Array<pageRoute>
+  contentStructure?: TierContent;
 }
