@@ -181,8 +181,8 @@ export const ProtoSiteGraph = {
                 componentTag: 'row',
                 // element: {}
               },
-              header: "GATORADE",
-              subHeader: "CUCUMBER",
+              header: "SPRITE",
+              subHeader: "& Coke",
               copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
               subContent: []
             }),

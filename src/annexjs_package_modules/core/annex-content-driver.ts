@@ -115,13 +115,13 @@ export const stackNestedContentStructure = async function(pageModel: PageModelRe
   const contentStructure = pageRouteSequence.reverse().reduce((lastTierContent, pageRoute: PageRoute ) => {
     const { tier, content, flowControl: { e_renderAsParentRoute } } = pageRoute;
     
-    const tierContent = {
+    const contentTier = {
       tier,
       content: (lastTierContent === null || (lastTierContent && e_renderAsParentRoute)) ? content : null,
       subRouteContent: (lastTierContent) ? lastTierContent : null
     }
 
-    return tierContent;
+    return contentTier;
   }, null);
 
   return {

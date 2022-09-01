@@ -112,9 +112,9 @@ interface PageRoute extends SchemaNode {
   // searchTags: Array<string>
 }
 
-interface TierContent {
+interface ContentTier {
   content: ContentSegment,
-  subRouteContent: TierContent,
+  subRouteContent: ContentTier,
   tier: string
 }
 
@@ -141,5 +141,5 @@ interface PageModelResult {
   tierSequence: Array<string>,
   // content models
   pageRouteSequence: Array<pageRoute>
-  contentStructure?: TierContent;
+  contentStructure?: ContentTier;
 }
