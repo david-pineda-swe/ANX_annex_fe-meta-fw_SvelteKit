@@ -35,8 +35,8 @@ export function mockContentSegment(props: ContentSegment): ContentSegment {
       nodeMeta,
       //
       component: component || DEFAULT_COMPONENT,
-      header: header || DEFAULT_STRING, // X
-      subHeader: subHeader || DEFAULT_STRING,// X
+      header: header,
+      subHeader: subHeader,
       copyBlock: copyBlock || '', // ! TODO
       subContent: subContent || []
     };

@@ -26,3 +26,8 @@
   {/if}
 </div>
 
+<style>
+  .content-tier {
+    border: 2px dotted blue; 
+  }
+</style>
