@@ -86,4 +86,16 @@
     padding: 15px;
     border: 2px solid red;
   }
+
+  .order-col.structure-n.w25 {
+    flex-grow: 1;
+  }
+  
+  .order-col.structure-n.w50 {
+    flex-grow: 2;
+  }
+
+  .order-col.structure-n.w75 {
+    flex-grow: 3;
+  }
 </style>
