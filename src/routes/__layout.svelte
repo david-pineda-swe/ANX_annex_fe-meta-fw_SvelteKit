@@ -1,17 +1,25 @@
 <script lang="ts">
+	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
 	import Header from '$pec/components/header/Header.svelte';
 	import '../app.css';
 </script>
 
-<Header />
-
-<main>
-	<slot />
-</main>
-
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-</footer>
+<NavInterface>
+	<!-- TODO - COMP FOR HANDLING DT SCENARIO -->
+	<!-- TODO - $PEC CONTAINER FOR DT HEADER NAVIGATION -->
+	<div class="desktop-navigation">
+			<Header />
+	</div>
+	
+	<main class="page-content">
+		<slot />
+	</main>
+	
+	<!-- TODO - $PEC CONTAINER FOR FOOTER -->
+	<footer>
+		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	</footer>
+</NavInterface>
 
 <style>
 	main {
