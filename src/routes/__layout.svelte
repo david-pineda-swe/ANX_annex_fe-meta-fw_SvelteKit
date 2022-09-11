@@ -5,20 +5,26 @@
 </script>
 
 <NavInterface>
-	<!-- TODO - COMP FOR HANDLING DT SCENARIO -->
-	<!-- TODO - $PEC CONTAINER FOR DT HEADER NAVIGATION -->
-	<div class="desktop-navigation">
+	<!-- TODO - $PEC COMP FOR HANDLING MOBILE SCENARIO -->
+	<!-- TODO - SLOTS FOR EACH NAV TRAY POLE TOP, LEFT, RIGHT, BOTTOM -->
+	<!-- TODO - $PEC COMP FOR HANDLING DT SCENARIO -->
+
+	<!-- DESKTOP_NAVIGATION_SLOT -->
+	<div class="desktop-navigation" slot="desktop-navigation">
 			<Header />
 	</div>
 	
-	<main class="page-content">
-		<slot />
-	</main>
-	
-	<!-- TODO - $PEC CONTAINER FOR FOOTER -->
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
+	<!-- PAGE_LAYOUT_SLOT -->
+	<div class="page-layout" slot="page-layout">
+		<main id="page-content">
+			<slot />
+		</main>
+		
+		<!-- TODO - $PEC CONTAINER FOR FOOTER -->
+		<footer>
+			<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		</footer>
+	</div>
 </NavInterface>
 
 <style>
