@@ -10,9 +10,7 @@
 	<!-- TODO - $PEC COMP FOR HANDLING DT SCENARIO -->
 
 	<!-- DESKTOP_NAVIGATION_SLOT -->
-	<div class="desktop-navigation" slot="desktop-navigation">
-			<Header />
-	</div>
+	<Header slot="desktop-navigation"/>
 	
 	<!-- PAGE_LAYOUT_SLOT -->
 	<div class="page-layout" slot="page-layout">
