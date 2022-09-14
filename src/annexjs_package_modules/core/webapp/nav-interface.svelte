@@ -7,9 +7,9 @@
 <div id="annex-nav-interface" class="nav-interface-container">
 
     <!-- TODO - mobile-navigation-top, left, right, bottom... -->
-    <h3 class="sm:hidden">- Mobile nav slot goes here!</h3>
+    <slot name="mobile-header"/>
 
-    <slot name="desktop-navigation"/>
+    <slot name="desktop-header"/>
 
     <slot name="page-layout"/>
 </div>

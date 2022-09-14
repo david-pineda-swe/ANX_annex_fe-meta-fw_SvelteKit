@@ -1,20 +1,22 @@
 <script lang="ts">
 	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
-	import Header from '$pec/components/header/Header.svelte';
+	import MobileHeader from '$pec/components/header/mobile-header.svelte';
+	import DesktopHeader from '$pec/components/header/desktop-header.svelte';
 	import '../app.css';
 </script>
 
 <NavInterface>
-	<!-- TODO - $PEC COMP FOR HANDLING MOBILE SCENARIO -->
 	<!-- TODO - SLOTS FOR EACH NAV TRAY POLE TOP, LEFT, RIGHT, BOTTOM -->
-	<!-- TODO - $PEC COMP FOR HANDLING DT SCENARIO -->
+
+	<!-- MOBILE_NAVIGATION_SLOT -->
+	<MobileHeader slot="mobile-header"/>
 
 	<!-- DESKTOP_NAVIGATION_SLOT -->
-	<Header slot="desktop-navigation"/>
+	<DesktopHeader slot="desktop-header"/>
 	
 	<!-- PAGE_LAYOUT_SLOT -->
 	<div class="page-layout" slot="page-layout">
-		<main id="page-content">
+		<main id="page-content" class="container mx-auto">
 			<slot />
 		</main>
 		
@@ -30,9 +32,6 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		width: 100%;
-		max-width: 1024px;
-		margin: 0 auto;
 		box-sizing: border-box;
 		border: 2px solid green;
 	}

@@ -3,7 +3,7 @@
   import logo from './svelte-logo.svg';
 </script>
 
-<header class="desktop-navigation hidden sm:block">
+<header class="desktop-header hidden sm:flex">
   <div class="corner">
     <a href="https://kit.svelte.dev">
       <img src={logo} alt="SvelteKit" />
@@ -36,10 +36,9 @@
 </header>
 
 <style>
-  /* header {
-    display: flex;
+  header {
     justify-content: space-between;
-  } */
+  }
 
   .corner {
     width: 3em;
