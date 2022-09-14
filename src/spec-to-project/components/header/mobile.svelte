@@ -5,7 +5,8 @@
 
 <header class="mobile-header flex sm:hidden py-2">
   <div class="corner left">
-    
+    <button class="tray-toggle top">Top</button>
+    <button class="tray-toggle right">Right</button>
   </div>
 
   <div class="branding center">
@@ -15,7 +16,8 @@
   </div>
 
   <div class="corner right">
-    <!-- TODO hamburger menu icon -->
+    <button class="tray-toggle bottom">Bottom</button>
+    <button class="tray-toggle left">Left</button>
   </div>
 </header>
 
@@ -26,7 +28,8 @@
   }
 
   .corner {
-    width: 3em;
+    display: flex;
+    gap: 10px;
     height: 3em;
   }
 
@@ -34,6 +37,14 @@
     width: 3em;
     height: 3em;
     object-fit: contain;
+  }
+
+  .tray-toggle{
+    color: white;
+    background-color: teal;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 7px;
   }
 
   a:hover {

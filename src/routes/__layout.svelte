@@ -1,18 +1,40 @@
 <script lang="ts">
 	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
-	import MobileHeader from '$pec/components/header/mobile-header.svelte';
-	import DesktopHeader from '$pec/components/header/desktop-header.svelte';
+
+	import MobileHeader from '$pec/components/header/mobile.svelte';
+	import DesktopHeader from '$pec/components/header/desktop.svelte';
+
+	// TODO - $pec/TopTrayInterface
+	// TODO - $pec/RightTrayInterface
+	// TODO - $pec/BottomTrayInterface
+	// TODO - $pec/LeftTrayInterface
 	import '../app.css';
 </script>
 
 <NavInterface>
 	<!-- TODO - SLOTS FOR EACH NAV TRAY POLE TOP, LEFT, RIGHT, BOTTOM -->
+	<!-- TOP_TRAY_INTERFACE -->
+	<div slot="tray-interface-tp">
+		test TOP menu-tray | TBD by $pec/interface
+	</div>
+	<!-- RIGHT_TRAY_INTERFACE -->
+	<div slot="tray-interface-rt">
+		test RIGHT menu-tray | TBD by $pec/interface
+	</div>
+	<!-- BOTTOM_TRAY_INTERFACE -->
+	<div slot="tray-interface-bt">
+		test BOTTOM menu-tray | TBD by $pec/interface
+	</div>
+	<!-- LEFT_TRAY_INTERFACE -->
+	<div slot="tray-interface-lt">
+		test LEFT menu-tray | TBD by $pec/interface
+	</div>
 
-	<!-- MOBILE_NAVIGATION_SLOT -->
-	<MobileHeader slot="mobile-header"/>
+	<!-- MOBILE_HEADER_SLOT -->
+	<MobileHeader slot="header-mobile"/>
 
-	<!-- DESKTOP_NAVIGATION_SLOT -->
-	<DesktopHeader slot="desktop-header"/>
+	<!-- DESKTOP_HEADER_SLOT -->
+	<DesktopHeader slot="header-desktop"/>
 	
 	<!-- PAGE_LAYOUT_SLOT -->
 	<div class="page-layout" slot="page-layout">
