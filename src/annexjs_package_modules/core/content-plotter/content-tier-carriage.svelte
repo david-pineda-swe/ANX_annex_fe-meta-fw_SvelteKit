@@ -16,7 +16,7 @@
 
 
 <div class="content-tier tier-{tier}">
-  <!-- TODO: CREATE A CONFIG FOR RENDER DEBUGS -->
+  <!-- TODO - CREATE A CONFIG FOR RENDER DEBUGS -->
   <h1 class="debug-header">DEBUG WORKING_TIER: {tier}</h1>
   
   <ContentSegmentCarriage contentSegment={content}/>
@@ -25,9 +25,3 @@
     <ContentTierCarriage contentTier={subRouteContent}/>
   {/if}
 </div>
-
-<style>
-  .content-tier {
-    border: 2px dotted blue; 
-  }
-</style>

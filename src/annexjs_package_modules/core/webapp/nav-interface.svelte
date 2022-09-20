@@ -1,42 +1,81 @@
 <script lang="ts">
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
-  console.log('Here is the webapp/nav-interface SLOTS', $$slots);
+  import MobileHeader from '$pec/components/header/mobile.svelte';
+  import DesktopHeader from '$pec/components/header/desktop.svelte';
+
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
+
+  let headerIsFixed: boolean = true;
+  let currentMenuTray: string;
+
+  const toggleMenuTray = (selectedTray: string) :void => {
+    currentMenuTray = selectedTray;
+  }
 </script>
 
-<div id="annex-nav-interface" class="nav-interface-container">
-
-    <!-- TODO - mobile-navigation-top, left, right, bottom... -->
+<div id="annex-nav-interface" class="nav-interface-container" class:fixed-header={headerIsFixed}>
+  <div class="menu-dock">
     {#if $$slots["tray-interface-tp"]}
-      <MenuTray trayType="top">
+      <MenuTray trayType="top" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
         <slot name="tray-interface-tp"/>
       </MenuTray>
     {/if}
     {#if $$slots["tray-interface-rt"]}
-      <MenuTray trayType="right">
+      <MenuTray trayType="right" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
         <slot name="tray-interface-rt"/>
       </MenuTray>
     {/if}
     {#if $$slots["tray-interface-bt"]}
-      <MenuTray trayType="bottom">
+      <MenuTray trayType="bottom" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
         <slot name="tray-interface-bt"/>
       </MenuTray>
     {/if}
     {#if $$slots["tray-interface-lt"]}
-      <MenuTray trayType="left">
+      <MenuTray trayType="left" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
         <slot name="tray-interface-lt"/>
       </MenuTray>
     {/if}
+    <!-- TODO - CONSIDER WILDCARD CUSTOM MENU -->
+  </div>
 
-    <div class="nav-interface-outlet">
-      <slot name="header-mobile"/>
-  
-      <slot name="header-desktop"/>
-  
-      <slot name="page-layout"/>
+  <div class="nav-interface-outlet">
+    <div class="header-dock">
+      <!-- MOBILE_HEADER_SLOT -->
+      <MobileHeader toggleMenuTray={toggleMenuTray}/>
+
+      <!-- DESKTOP_HEADER_SLOT -->
+      <DesktopHeader toggeleMenuTray={toggleMenuTray}/>
     </div>
+
+    <slot name="page-layout"/>
+  </div>
 </div>
 
 <style>
+  .nav-interface-container {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    /* border: 2px solid fuchsia; */
+  }
+
+  .nav-interface-container.fixed-header .menu-dock {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    /* border: 1px solid green; */
+  }
+
+  .nav-interface-container.fixed-header {
+    padding-top: 65px;
+  }
+
+  .nav-interface-container.fixed-header .nav-interface-outlet .header-dock {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+  }
 </style>

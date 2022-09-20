@@ -1,12 +1,14 @@
 <script lang="ts">
   // import { page } from '$app/stores';
   import logo from './svelte-logo.svg';
+
+  export let toggleMenuTray: any;
 </script>
 
 <header class="mobile-header flex sm:hidden py-2">
   <div class="corner left">
-    <button class="tray-toggle top">Top</button>
-    <button class="tray-toggle right">Right</button>
+    <button class="tray-toggle top" on:click={toggleMenuTray('top')}>TP</button>
+    <button class="tray-toggle right" on:click={toggleMenuTray('right')}>RT</button>
   </div>
 
   <div class="branding center">
@@ -16,8 +18,8 @@
   </div>
 
   <div class="corner right">
-    <button class="tray-toggle bottom">Bottom</button>
-    <button class="tray-toggle left">Left</button>
+    <button class="tray-toggle bottom" on:click={toggleMenuTray('bottom')}>BT</button>
+    <button class="tray-toggle left" on:click={toggleMenuTray('left')}>LT</button>
   </div>
 </header>
 

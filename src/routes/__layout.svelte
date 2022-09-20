@@ -1,9 +1,6 @@
 <script lang="ts">
 	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
 
-	import MobileHeader from '$pec/components/header/mobile.svelte';
-	import DesktopHeader from '$pec/components/header/desktop.svelte';
-
 	// TODO - $pec/TopTrayInterface
 	// TODO - $pec/RightTrayInterface
 	// TODO - $pec/BottomTrayInterface
@@ -12,7 +9,6 @@
 </script>
 
 <NavInterface>
-	<!-- TODO - SLOTS FOR EACH NAV TRAY POLE TOP, LEFT, RIGHT, BOTTOM -->
 	<!-- TOP_TRAY_INTERFACE -->
 	<div slot="tray-interface-tp">
 		test TOP menu-tray | TBD by $pec/interface
@@ -29,12 +25,6 @@
 	<div slot="tray-interface-lt">
 		test LEFT menu-tray | TBD by $pec/interface
 	</div>
-
-	<!-- MOBILE_HEADER_SLOT -->
-	<MobileHeader slot="header-mobile"/>
-
-	<!-- DESKTOP_HEADER_SLOT -->
-	<DesktopHeader slot="header-desktop"/>
 	
 	<!-- PAGE_LAYOUT_SLOT -->
 	<div class="page-layout" slot="page-layout">
@@ -55,7 +45,7 @@
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
-		border: 2px solid green;
+		/* border: 2px solid green; */
 	}
 
 	footer {
