@@ -14,6 +14,8 @@
   }
 </script>
 
+<!-- TODO - MAKE THE .nav-interface-container TOP SPACING REACTIVE TO CUMULATIVE HIGHT OF THE .header-dock -->
+
 <div id="annex-nav-interface" class="nav-interface-container" class:fixed-header={headerIsFixed}>
   <div class="menu-dock">
     {#if $$slots["tray-interface-tp"]}

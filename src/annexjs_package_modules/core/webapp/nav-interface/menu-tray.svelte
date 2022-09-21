@@ -1,20 +1,29 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
-  import { cubicOut } from 'svelte/easing';
+  import { sineIn, quintOut } from 'svelte/easing';
 
   export let trayType: string;
   export let toggleMenuTray: any;
   export let currentMenuTray: string;
 
   let openTray: boolean;
-  const duration = 300;
+  $:openTray = currentMenuTray === trayType;
 
-  const traySlide = () => {
+  const trayFade = (_domNode: any, { into }) => {
+    return {
+      delay: (into) ? 0 : 550,
+      duration: 400,
+      easing: sineIn,
+      css: (t: number) => `opacity: ${t};`
+    };
+  }
+
+  const traySlide = (_domNode: any, { into }) => {
     // _domNode: any, _invocationParams: any
     // console.log('>> Transition setup includes:', _domNode, _invocationParams);
     const defaultTransition = {
-      duration,
-      easing: cubicOut,
+      delay: (into) ? 450 : 0,
+      duration: (into) ? 500 : 700,
+      easing: quintOut,
       css: (t: number) => `transform: translate(${-100 + 100*t}%);`
     };
 
@@ -23,7 +32,7 @@
         return {
           ...defaultTransition,
           ...{
-            css: (t: number) => `transform: translatey(${-100 + 100*t}%);`
+            css: (t: number) => `transform: translatey(${-110 + 110*t}%);`
           }
         };
       case 'right':
@@ -47,14 +56,12 @@
         return defaultTransition;
     };
   };
-
-  $:openTray = currentMenuTray === trayType;  
 </script>
 
 {#if openTray}
-  <div class="menu-tray {trayType}"  transition:fade>
+  <div class="menu-tray {trayType}"  in:trayFade={{into: true}} out:trayFade={{into: false}}>
     <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
-    <div class="interface-container" transition:traySlide>
+    <div class="interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
       <slot/>
     </div>
   </div>
