@@ -2,7 +2,7 @@
   import RenderErrorOut from './render-error-out.svelte';
 import ContentTierCarriage from './content-tier-carriage.svelte';
 
-  export let pageModel;
+  export let pageModel: PageModelResult;
 
   // VERIFY PAGE MODEL FULFILLMENT
   const { success, allContentIsResolved, allTiersAreResolved, contentStructure } = pageModel;

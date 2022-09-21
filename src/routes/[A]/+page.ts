@@ -1,23 +1,24 @@
-<script context="module" lang="ts">
-  import { annexRouter } from '@annexjs/core';
-  import ContentPlotter from '@annexjs/core/content-plotter/render-controller.svelte';
+import { annexRouter } from '@annexjs/core';
+import type { LoadEvent } from '@sveltejs/kit';
 
-  export const load = async (ctx) => {
+  // TODO - VERIFY WHAT HAPPEMS TO request.params IF URL INCLUDES QUERY PARAMS
+
+  export const load = async (request: LoadEvent): Promise<DynamicRouteData> => {    
     const pageModel = await annexRouter.fulfillPageModelRequestedBy({
       tierPositionKey: 'A', // of a tierSequenceIndex
       // tierPositionLabel: 'APPLE', // of a tierSequenceIndex
-      serializedUrlPath: ctx.page.params
+      serializedUrlPath: request.params
     });
 
     // DEBUG -
     console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_A:", pageModel);
 
-    return { 
-      props: {
-        pageModel
-      }
+    return {
+      pageModel
     };
 
+    // TODO - RETEST ERROR HANDLING
+    // TODO -  CREATE PROJECT SPIN UP CHECK LIST
     // x FOR TESTING THE CONTENT_CASTER.RenderErrorOut
     // return {
     //   props: {
@@ -29,10 +30,3 @@
     //   }
     // };
   }
-</script>
-
-<script>
-  export let pageModel;
-</script>
-
-<ContentPlotter {pageModel}/>
