@@ -1,4 +1,5 @@
 <script lang="ts">
+  import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte";
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
   import MobileHeader from '$pec/components/header/mobile.svelte';
@@ -49,6 +50,8 @@
       <!-- DESKTOP_HEADER_SLOT -->
       <DesktopHeader toggeleMenuTray={toggleMenuTray}/>
     </div>
+
+    <MediaMonitorHud/>
 
     <slot name="page-layout"/>
   </div>
