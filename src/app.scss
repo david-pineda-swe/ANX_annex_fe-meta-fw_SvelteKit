@@ -1,9 +1,13 @@
 @import '@fontsource/fira-mono';
 
+/* - PROJECT $PEC STYLES - */
+@import './spec-to-project/css/_spec-styles.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* - ANNEX.JS BOILERPLATE STANDARDS */
 
 :root {
 	font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,

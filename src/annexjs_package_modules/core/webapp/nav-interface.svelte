@@ -2,8 +2,8 @@
   import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte";
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
-  import MobileHeader from '$pec/components/header/mobile.svelte';
-  import DesktopHeader from '$pec/components/header/desktop.svelte';
+  import HeaderMobile from '$pec/components/interface/header-mobile.svelte';
+  import HeaderDesktop from '$pec/components/interface/header-desktop.svelte';
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 
@@ -15,7 +15,7 @@
   }
 </script>
 
-<!-- TODO - MAKE THE .nav-interface-container TOP SPACING REACTIVE TO CUMULATIVE HIGHT OF THE .header-dock -->
+<!-- TODO >>> MAKE THE .nav-interface-container TOP SPACING REACTIVE TO CUMULATIVE HIGHT OF THE .header-dock -->
 
 <div id="annex-nav-interface" class="nav-interface-container" class:fixed-header={headerIsFixed}>
   <div class="menu-dock">
@@ -45,10 +45,10 @@
   <div class="nav-interface-outlet">
     <div class="header-dock">
       <!-- MOBILE_HEADER_SLOT -->
-      <MobileHeader toggleMenuTray={toggleMenuTray}/>
+      <HeaderMobile toggleMenuTray={toggleMenuTray}/>
 
       <!-- DESKTOP_HEADER_SLOT -->
-      <DesktopHeader toggeleMenuTray={toggleMenuTray}/>
+      <HeaderDesktop toggeleMenuTray={toggleMenuTray}/>
     </div>
 
     <MediaMonitorHud/>

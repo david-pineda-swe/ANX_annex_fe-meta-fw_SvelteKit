@@ -1,30 +1,27 @@
 <script lang="ts">
 	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
 
-	// TODO - $pec/TopTrayInterface
-	// TODO - $pec/RightTrayInterface
-	// TODO - $pec/BottomTrayInterface
-	// TODO - $pec/LeftTrayInterface
-	import '../app.css';
+	import TopTray from '$pec/components/interface/menus/tray-top.svelte';
+	import RightTray from '$pec/components/interface/menus/tray-right.svelte';
+	import BottomTray from '$pec/components/interface/menus/tray-bottom.svelte';
+	import LeftTray from '$pec/components/interface/menus/tray-left.svelte';
+	import Footer from '$pec/components/interface/footer.svelte';
+
+	import '../app.scss';
 </script>
 
 <NavInterface>
 	<!-- TOP_TRAY_INTERFACE -->
-	<div slot="tray-interface-tp">
-		test TOP menu-tray | TBD by $pec/interface
-	</div>
+	<TopTray slot="tray-interface-tp"/>
+
 	<!-- RIGHT_TRAY_INTERFACE -->
-	<div slot="tray-interface-rt">
-		test RIGHT menu-tray | TBD by $pec/interface
-	</div>
+	<RightTray slot="tray-interface-rt"/>
+	
 	<!-- BOTTOM_TRAY_INTERFACE -->
-	<div slot="tray-interface-bt">
-		test BOTTOM menu-tray | TBD by $pec/interface
-	</div>
+	<BottomTray slot="tray-interface-bt"/>
+	
 	<!-- LEFT_TRAY_INTERFACE -->
-	<div slot="tray-interface-lt">
-		test LEFT menu-tray | TBD by $pec/interface
-	</div>
+	<LeftTray slot="tray-interface-lt"/>
 	
 	<!-- PAGE_LAYOUT_SLOT -->
 	<div class="page-layout" slot="page-layout">
@@ -32,10 +29,8 @@
 			<slot />
 		</main>
 		
-		<!-- TODO - $PEC CONTAINER FOR FOOTER -->
-		<footer>
-			<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-		</footer>
+		<Footer/>
+		
 	</div>
 </NavInterface>
 
@@ -46,23 +41,5 @@
 		flex-direction: column;
 		box-sizing: border-box;
 		/* border: 2px solid green; */
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
-		}
 	}
 </style>
