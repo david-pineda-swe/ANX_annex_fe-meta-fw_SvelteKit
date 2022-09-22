@@ -16,7 +16,7 @@
       <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
     </svg>
     <ul>
-      <li><button on:click={toggeleMenuTray('left')}>Left</button></li>
+      <li><button on:click={toggeleMenuTray('right')}>Right</button></li>
       <li class:active={$page.url.pathname === '/'}><a sveltekit:prefetch href="/">Home</a></li>
       <li class:active={$page.url.pathname === '/about'}><a sveltekit:prefetch href="/about">About</a></li>
       <li class:active={$page.url.pathname === '/contact'}><a sveltekit:prefetch href="/contact">Contact</a></li>
@@ -25,7 +25,7 @@
       <li class:active={$page.url.pathname === '/test-a'}><a sveltekit:prefetch href="/test-a">Test A</a></li>
       <li class:active={$page.url.pathname === '/test-a/test-b'}><a sveltekit:prefetch href="/test-a/test-b">test B</a></li>
       <li class:active={$page.url.pathname === '/test-a/test-b/test-c'}><a sveltekit:prefetch href="/test-a/test-b/test-c">test C</a></li>
-      <li><button on:click={toggeleMenuTray('right')}>Right</button></li>
+      <li><button on:click={toggeleMenuTray('left')}>Left</button></li>
     </ul>
     <svg viewBox="0 0 2 3" aria-hidden="true">
       <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />

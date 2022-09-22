@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { mediaIsMobile } from "@annexjs/core/webapp/stores/reactive-media";
   import { sineIn, quintOut } from 'svelte/easing';
 
   export let trayType: string;
@@ -18,10 +19,11 @@
   }
 
   const traySlide = (_domNode: any, { into }) => {
+    const intoDelay = (into) ? 450 : 0;
     // _domNode: any, _invocationParams: any
     // console.log('>> Transition setup includes:', _domNode, _invocationParams);
     const defaultTransition = {
-      delay: (into) ? 450 : 0,
+      delay: intoDelay,
       duration: (into) ? 500 : 700,
       easing: quintOut,
       css: (t: number) => `transform: translate(${-100 + 100*t}%);`
@@ -43,6 +45,7 @@
           }
         };
       case 'bottom':
+        // TODO - still quirks with iP 13 pro max chrome
         return {
           ...defaultTransition,
           ...{
@@ -58,13 +61,26 @@
   };
 </script>
 
-{#if openTray}
-  <div class="menu-tray {trayType}"  in:trayFade={{into: true}} out:trayFade={{into: false}}>
-    <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
-    <div class="interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
-      <slot/>
+{#if $mediaIsMobile}
+  <!-- MOBILE -->
+  {#if openTray}
+    <div class="menu-tray {trayType}"  in:traySlide={{into:true}} out:traySlide={{into:false}}>
+      <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
+      <div class="interface-container">
+        <slot/>
+      </div>
     </div>
-  </div>
+  {/if}
+{:else}
+  <!-- DESKTOP -->
+  {#if openTray}
+    <div class="menu-tray {trayType}"  in:trayFade={{into: true}} out:trayFade={{into: false}}>
+      <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
+      <div class="interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
+        <slot/>
+      </div>
+    </div>
+  {/if}
 {/if}
 
 <style>
