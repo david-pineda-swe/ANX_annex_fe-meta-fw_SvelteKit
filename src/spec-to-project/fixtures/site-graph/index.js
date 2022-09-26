@@ -1,22 +1,36 @@
-// NOTE: All standard and basic website aspects and properties will be initialized by this object
+// DEPRECATED
 
 export const ProtoSiteGraph = {
-  // SITE - METADATA
-	meta: {
-		title: "New annex",
-	},
+  // - SiteGraph
+  title: "New annex",
 	integrations: {
 		firstParty: [],
 		thirdParty: []
 	},
-  // SITE - MAP
-  // - is an nTier config abstraction
-  sitemap: {
-    routeSlug: "/",
-    pageId: "", // >> GETS LAYOUT AND CONTENT
-		// TBD: open graph meta conventions
+  // OK - SITE - MAP
+  // NOTE: - is an nTier config abstraction
+  routeStructure: {
+    // PageRoute
+    slug: "/",
+    content: {
+      contentId: '', // >> FOR PAGE to CONTENT MODEL IDENTIFICATION
+      header: '',
+      subHeader: '',
+      classSet: [''], // [string]!
+      subContent: []
+    },
+    flowControl: {
+      // error?
+      a_published: true,
+      b_indexOnly: true,
+      c_sitemapVisible: true,
+      d_navVisible: true,
+      e_renderAsParentRoute: true,
+    },
+    //
+		// TBD: open graph meta conventions > for copy paste support
 		// TBD: search tags (keywords)
-    possibleRoutes: [
+    subRoutes: [
       // ROUTES - STANDARD
       // ✅ about
       // ✅ contact
@@ -26,42 +40,95 @@ export const ProtoSiteGraph = {
       // DYNAMIC ROUTES CONFIG
       // NOTE: tierUser or tierOrg could exist
       // levels: org > user > cat, resources, id, etc.
-      {
-        routeTier: "A",
-        routeType: "category", // >> product, articles, resources, projects
-        routeSlug: "test-a",
-        pageId: "*", // >> GETS LAYOUT AND CONTENT
-        // ACCESS - to r/ via these levels of precedence
-        a_indexOnly: true,           // 1. if route should support child routes only (NO PAGE CONFIG)
-        b_published: true,           // 2. public accessible
-        c_sitemapVisible: true,      // 3. populate on sitemap
-        d_mainNavVisible: true,      // 4. populate on main-nav 
-        possibleRoutes: [ // NOTE: << sub-r/ children of TIER-A
-          {
-            routeTier: "B",
-            routeType: "resource",
-            routeSlug: "test-b",
-            pageId: "*",
-            a_indexOnly: true,
-            b_published: true,
-            c_sitemapVisible: true,
-            d_mainNavVisible: true,
-            possibleRoutes: [  // NOTE: << sub-r/ children of TIER-B
-              {
-                routeTier: "C",
-                routeType: "product",
-                routeSlug: "test-c",
-                pageId: "*",
-                a_indexOnly: true,
-                b_published: true,
-                c_sitemapVisible: true,
-                d_mainNavVisible: true,
-                possibleRoutes: [] // NOTE: << sub-r/ children of TIER-C
-              }
-            ]
-          }
-        ]
-      }
+      // {
+      //   // X ROUTE CONFIGURATION
+      //   tier: "A",
+      //   category: "category", // >> product, articles, resources, projects
+      //   slug: "test-a",
+      //   contentId: "*", // >> GETS LAYOUT AND CONTENT
+      //   contentModel: { }, // use DEMO fixture...
+      //   flowControl: {
+      //     // error?
+      //     // ACCESS - to r/ via these levels of precedence
+      //     a_published: true,           // 1. public accessible
+      //     b_indexOnly: true,           // 2. if route should support child routes only (NO PAGE CONFIG)
+      //     c_sitemapVisible: true,      // 3. assignable to sitemap
+      //     d_navVisible: true,      // 4. assignable to navigation
+      //     e_renderAsParentRoute: true, // 5. displayed as child module in parent route
+      //   },
+      //   subRoutes: [ // NOTE: << sub-r/ children of TIER-A
+      //     {
+      //       // X ROUTE CONFIGURATION
+      //       tier: "B",
+      //       category: "resource",
+      //       slug: "test-b",
+      //       contentId: "*",
+      //       contentModel: {}, // use DEMO fixture...
+      //       flowControl: {
+      //         // error?
+      //         a_published: true,
+      //         b_indexOnly: true,
+      //         c_sitemapVisible: true,
+      //         d_navVisible: true,
+      //         e_renderAsParentRoute: true,
+      //       },
+      //       subRoutes: [  // NOTE: << sub-r/ children of TIER-B
+      //         {
+      //           // X ROUTE CONFIGURATION
+      //           tier: "C",
+      //           category: "product",
+      //           slug: "test-c",
+      //           contentId: "*",
+      //           contentModel: {}, // use DEMO fixture...
+      //           flowControl: {
+      //             // error?
+      //             a_published: true,
+      //             b_indexOnly: true,
+      //             c_sitemapVisible: true,
+      //             d_navVisible: true,
+      //             e_renderAsParentRoute: true,
+      //           },
+      //           subRoutes: [] // NOTE: << sub-r/ children of TIER-C
+      //         }
+      //       ]
+      //     }
+      //   ]
+      // },
+      // {
+      //   // X ROUTE CONFIGURATION
+      //   tier: "A",
+      //   category: "category",
+      //   slug: "demo",
+      //   contentId: "*",
+      //   contentModel: {}, // use DEMO fixture...
+      //   flowControl: {
+      //     // error?
+      //     a_published: true,
+      //     b_indexOnly: true,
+      //     c_sitemapVisible: true,
+      //     d_navVisible: true,
+      //     e_renderAsParentRoute: true,
+      //   },
+      //   subRoutes: [
+      //     {
+      //       // X ROUTE CONFIGURATION
+      //       tier: "B",
+      //       category: "resource",
+      //       slug: "material-icons",
+      //       contentId: "asdf",
+      //       contentModel: {}, // use DEMO fixture...
+      //       flowControl: {
+      //         // error?
+      //         a_published: true,
+      //         b_indexOnly: true,
+      //         c_sitemapVisible: true,
+      //         d_navVisible: true,
+      //         e_renderAsParentRoute: true,
+      //       },
+      //       subRoutes: [] 
+      //     }
+      //   ]
+      // }
     ]
   }
 };

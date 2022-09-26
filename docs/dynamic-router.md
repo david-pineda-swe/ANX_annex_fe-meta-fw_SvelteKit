@@ -6,6 +6,7 @@ This is the server side control mechanism that will consume and pair a requested
 - In ```/src/routes``` there is a nested folder structure of ```/[A]/[B]/[C]```.
 - Each dir index.svelte accesses the ```/src/app/router```
 - on pre-render or request that route or sub-route will: 
-  - compare the ```routeProgression``` to the ```serializedUrlPath```
-  - and access/collect the required route config for the current page 
+  - compare a provided ```tierPositionKey``` or ```tierPositionLabel``` to a config provided ```TIER_SEQUENCE_INDEX```
+  - the ```serializedUrlPath``` will be matched to the ```tierProgression``` and ```SiteGraph.Sitemap```
+  - to access/collect the required route config for the current page 
   - along with it's assoc. parent configs from a provided ```SiteGraph.sitemap```

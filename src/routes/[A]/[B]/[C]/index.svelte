@@ -1,32 +1,27 @@
 <script context="module" lang="ts">
-
   import { annexRouter } from '@annexjs/core';
-  import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
+  import ContentPlotter from '@annexjs/core/content-plotter/render-controller.svelte';
 
   export const load = async (ctx) => {
-    // TODO: POSSIBLE ADAPTER FOR >>>
-
-    const route = await annexRouter.validatePathRequest({
-      routeProgression: ['A', 'B', 'C'], // todo: change to "routeDepth"
-      sitemap: SiteGraph.sitemap,
+    const pageModel = await annexRouter.fulfillPageModelRequestedBy({
+      tierPositionKey: 'C', // of a tierSequenceIndex
+      // tierPositionLabel: 'COOK', // of a tierSequenceIndex
       serializedUrlPath: ctx.page.params
     });
 
-    if (!route.allTiersAreSatisfied || !route.config) {
-      // FAIL
-      console.error(`(!)404: ${route.lastTier} - ROUTE IS NOT VALID(!)`);
-      throw new Error(`Could not find tier: ${route.lastTier} segment`);
-    } else {
-      // OK
-      console.log(">> SHOULD RENDER <<");
-      console.log(`>> TIER CONFIGS @ ${route.lastTier}:`);
-      route.segmentConfigs.forEach(config => console.table(config));
-      
-      return { 
+    // DEBUG -
+    console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_C:", pageModel);
+
+    return { 
       props: {
-        page: route.config,
-        route
-      } };
-    }
+        pageModel
+      }
+    };
   }
 </script>
+
+<script>
+  export let pageModel;
+</script>
+
+<ContentPlotter {pageModel}/>
