@@ -1,0 +1,86 @@
+<script lang="ts">
+  import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte";
+  import MenuTray from "./nav-interface/menu-tray.svelte";
+
+  import HeaderMobile from '$pec/components/interface/header-mobile.svelte';
+  import HeaderDesktop from '$pec/components/interface/header-desktop.svelte';
+
+  // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
+
+  let headerIsFixed: boolean = true;
+  let currentMenuTray: string;
+
+  const toggleMenuTray = (selectedTray: string) :void => {
+    currentMenuTray = selectedTray;
+  }
+</script>
+
+<!-- TODO >>> MAKE THE .nav-interface-container TOP SPACING REACTIVE TO CUMULATIVE HIGHT OF THE .header-dock -->
+
+<div id="annex-nav-interface" class="nav-interface-container" class:fixed-header={headerIsFixed}>
+  <div class="menu-dock">
+    {#if $$slots["tray-interface-tp"]}
+      <MenuTray trayType="top" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
+        <slot name="tray-interface-tp"/>
+      </MenuTray>
+    {/if}
+    {#if $$slots["tray-interface-rt"]}
+      <MenuTray trayType="right" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
+        <slot name="tray-interface-rt"/>
+      </MenuTray>
+    {/if}
+    {#if $$slots["tray-interface-bt"]}
+      <MenuTray trayType="bottom" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
+        <slot name="tray-interface-bt"/>
+      </MenuTray>
+    {/if}
+    {#if $$slots["tray-interface-lt"]}
+      <MenuTray trayType="left" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
+        <slot name="tray-interface-lt"/>
+      </MenuTray>
+    {/if}
+    <!-- TODO - CONSIDER WILDCARD CUSTOM MENU -->
+  </div>
+
+  <div class="nav-interface-outlet">
+    <div class="header-dock">
+      <!-- MOBILE_HEADER_SLOT -->
+      <HeaderMobile toggleMenuTray={toggleMenuTray}/>
+
+      <!-- DESKTOP_HEADER_SLOT -->
+      <HeaderDesktop toggeleMenuTray={toggleMenuTray}/>
+    </div>
+
+    <MediaMonitorHud/>
+
+    <slot name="page-layout"/>
+  </div>
+</div>
+
+<style>
+  .nav-interface-container {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    /* border: 2px solid fuchsia; */
+  }
+
+  .nav-interface-container.fixed-header .menu-dock {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    /* border: 1px solid green; */
+  }
+
+  .nav-interface-container.fixed-header {
+    padding-top: 65px;
+  }
+
+  .nav-interface-container.fixed-header .nav-interface-outlet .header-dock {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+  }
+</style>
