@@ -30,7 +30,7 @@ interface NodeMeta {
 
 interface SchemaNode {
   nodeId: string,
-  nodeType: string,
+  nodeType: string, // SITE_GRAPH, PAGE_ROUTE, PAGE_CONTENT, CONTENT_SEGMENT, APP_FUNCTION_ENTRY
   nodeMeta?: NodeMeta
 }
 
@@ -48,7 +48,7 @@ interface NodeElementTraits {
 }
 
 interface NodeComponentTraits {
-  componentType?: string,           // STRUCTURE, FUNCTION, DISPLAY, SYSTEM, METRICS, ETC...
+  componentType?: string,           // STRUCTURE, STANDARD, DISPLAY, FUNCTION, SYSTEMS, METRICS, DIAGNOSTICS
   componentTag?: string,            // STRUCTURES_AVLB_EXAMPLE: row(s) < column(s) < feature(s) < subFeature(s)
   element?: NodeElementTraits       // !
 }

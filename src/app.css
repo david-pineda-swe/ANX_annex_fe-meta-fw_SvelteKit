@@ -44,10 +44,11 @@ body::before {
 	opacity: 0.05;
 }
 
-#svelte {
+#svelte.app-container {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	border: 2px solid red;
 }
 
 h1,

@@ -53,9 +53,9 @@ export const ProtoSiteGraph = {
     category: 'category',
     slug: "/test-a",
     // routeMeta: // !
-    content: mockContentSegment({ // return a root-page CONTENT_SEGMENT
+    content: mockContentSegment({ // START - PAGE_CONTENT
       nodeId: 'page-test-a',
-      nodeType: 'PAGE_CONTENT_SEGMENT',
+      nodeType: 'PAGE_CONTENT',
       nodeMeta: mockNodeMeta({
         nodeId: '*',
         versionId: 'qjkdsaf3493cj3',
@@ -70,13 +70,139 @@ export const ProtoSiteGraph = {
       //
       component: {
         componentType: 'STRUCTURE',
-        componentTag: 'row',
+        componentTag: 'page-content',
         // element: {}
       },
-      header: "lime",
-      subHeader: "coolAid",
-      copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
-      subContent: []
+      // header: "lime",
+      // subHeader: "coolAid",
+      // copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
+      subContent: [
+        // DEMO - A CONTENT STRUCTURE
+        mockContentSegment({
+          nodeId: 'test-stack-a-1',
+          nodeType: 'CONTENT_SEGMENT',
+          // nodeMeta
+          component: {
+            componentType: 'STRUCTURE',
+            componentTag: 'stack-row',
+            element: {
+              tag: 'span',
+              // domId: 'ta-dur',
+              classSet: ['apple', 'bapple', 'stock-test', 'nerp-derp-querp']
+              // attrSet
+            }
+          },
+          subContent: [
+            mockContentSegment({
+              nodeId: 'test-col-a-1-1',
+              nodeType: 'CONTENT_SEGMENT',
+              // nodeMeta
+              component: {
+                componentType: 'STRUCTURE',
+                componentTag: 'order-column',
+                element: {
+                  // tag: 'div',
+                  // domId: 'ta-dur',
+                  // classSet: []
+                  // attrSet
+                }
+              },
+              subContent: []
+            }),
+            mockContentSegment({
+              nodeId: 'test-col-a-1-2',
+              nodeType: 'CONTENT_SEGMENT',
+              // nodeMeta
+              component: {
+                componentType: 'STRUCTURE',
+                componentTag: 'order-column',
+                element: {
+                  // tag: 'div',
+                  // domId: 'ta-dur',
+                  // classSet: []
+                  // attrSet
+                }
+              },
+              subContent: []
+            }),
+            mockContentSegment({
+              nodeId: 'test-col-a-1-3',
+              nodeType: 'CONTENT_SEGMENT',
+              // nodeMeta
+              component: {
+                componentType: 'STRUCTURE',
+                componentTag: 'order-column',
+                element: {
+                  // tag: 'div',
+                  // domId: 'ta-dur',
+                  // classSet: []
+                  // attrSet
+                }
+              },
+              subContent: []
+            }),
+            mockContentSegment({
+              nodeId: 'test-col-a-1-4',
+              nodeType: 'CONTENT_SEGMENT',
+              // nodeMeta
+              component: {
+                componentType: 'STRUCTURE',
+                componentTag: 'order-column',
+                element: {
+                  // tag: 'div',
+                  // domId: 'ta-dur',
+                  // classSet: []
+                  // attrSet
+                }
+              },
+              subContent: []
+            })
+          ]
+        }),
+        mockContentSegment({
+          nodeId: 'test-stack-a-2',
+          nodeType: 'CONTENT_SEGMENT',
+          // nodeMeta
+          component: {
+            componentType: 'STRUCTURE',
+            componentTag: 'stack-row'
+          },
+          subContent: [
+            mockContentSegment({
+              nodeId: 'test-col-a-2-1',
+              nodeType: 'CONTENT_SEGMENT',
+              // nodeMeta
+              component: {
+                componentType: 'STRUCTURE',
+                componentTag: 'order-column',
+                element: {
+                  // tag: 'div',
+                  // domId: 'ta-dur',
+                  classSet: ['w75']
+                  // attrSet
+                }
+              },
+              subContent: []
+            }),
+            mockContentSegment({
+              nodeId: 'test-col-a-2-2',
+              nodeType: 'CONTENT_SEGMENT',
+              // nodeMeta
+              component: {
+                componentType: 'STRUCTURE',
+                componentTag: 'order-column',
+                element: {
+                  // tag: 'div',
+                  // domId: 'ta-dur',
+                  classSet: ['w25']
+                  // attrSet
+                }
+              },
+              subContent: []
+            }),
+          ]
+        })
+      ]
     }),
     subRoutes: [
       mockPageRoute({
@@ -107,9 +233,9 @@ export const ProtoSiteGraph = {
         category: 'category',
         slug: "/test-b",
         // routeMeta: // !
-        content: mockContentSegment({ // return a root-page CONTENT_SEGMENT
+        content: mockContentSegment({ // START - PAGE_CONTENT
           nodeId: 'page-test-b',
-          nodeType: 'PAGE_CONTENT_SEGMENT',
+          nodeType: 'PAGE_CONTENT',
           nodeMeta: mockNodeMeta({
             nodeId: '*',
             versionId: 'qjkdsaf3493cj3',
@@ -127,10 +253,114 @@ export const ProtoSiteGraph = {
             componentTag: 'row',
             // element: {}
           },
-          header: "GATORADE",
-          subHeader: "CUCUMBER",
-          copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
-          subContent: []
+          // header: "GATORADE",
+          // subHeader: "CUCUMBER",
+          // copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
+          subContent: [
+            // DEMO - B CONTENT STRUCTURE
+            mockContentSegment({
+              nodeId: 'test-stack-b-1',
+              nodeType: 'CONTENT_SEGMENT',
+              // nodeMeta
+              component: {
+                componentType: 'STRUCTURE',
+                componentTag: 'stack-row'
+              },
+              subContent: [
+                mockContentSegment({
+                  nodeId: 'test-col-b-1-1',
+                  nodeType: 'CONTENT_SEGMENT',
+                  // nodeMeta
+                  component: {
+                    componentType: 'STRUCTURE',
+                    componentTag: 'order-column',
+                    element: {
+                      // tag: 'div',
+                      // domId: 'ta-dur',
+                      // classSet: []
+                      // attrSet
+                    }
+                  },
+                  subContent: []
+                }),
+                mockContentSegment({
+                  nodeId: 'test-col-b-1-2',
+                  nodeType: 'CONTENT_SEGMENT',
+                  // nodeMeta
+                  component: {
+                    componentType: 'STRUCTURE',
+                    componentTag: 'order-column',
+                    element: {
+                      // tag: 'div',
+                      // domId: 'ta-dur',
+                      // classSet: []
+                      // attrSet
+                    }
+                  },
+                  subContent: []
+                }),
+                mockContentSegment({
+                  nodeId: 'test-col-b-1-3',
+                  nodeType: 'CONTENT_SEGMENT',
+                  // nodeMeta
+                  component: {
+                    componentType: 'STRUCTURE',
+                    componentTag: 'order-column',
+                    element: {
+                      // tag: 'div',
+                      // domId: 'ta-dur',
+                      // classSet: []
+                      // attrSet
+                    }
+                  },
+                  subContent: []
+                })
+              ]
+            }),
+            mockContentSegment({
+              nodeId: 'test-stack-b-2',
+              nodeType: 'CONTENT_SEGMENT',
+              // nodeMeta
+              component: {
+                componentType: 'STRUCTURE',
+                componentTag: 'stack-row'
+              },
+              subContent: [
+                mockContentSegment({
+                  nodeId: 'test-col-b-2-1',
+                  nodeType: 'CONTENT_SEGMENT',
+                  // nodeMeta
+                  component: {
+                    componentType: 'STRUCTURE',
+                    componentTag: 'order-column',
+                    element: {
+                      // tag: 'div',
+                      // domId: 'ta-dur',
+                      classSet: ['w25']
+                      // attrSet
+                    }
+                  },
+                  subContent: []
+                }),
+                mockContentSegment({
+                  nodeId: 'test-col-b-2-2',
+                  nodeType: 'CONTENT_SEGMENT',
+                  // nodeMeta
+                  component: {
+                    componentType: 'STRUCTURE',
+                    componentTag: 'order-column',
+                    element: {
+                      // tag: 'div',
+                      // domId: 'ta-dur',
+                      classSet: ['w75']
+                      // attrSet
+                    }
+                  },
+                  subContent: []
+                }),
+              ]
+            })
+          ]
         }),
         subRoutes: [
           mockPageRoute({
@@ -161,9 +391,9 @@ export const ProtoSiteGraph = {
             category: 'category',
             slug: "/test-c",
             // routeMeta: // !
-            content: mockContentSegment({ // return a root-page CONTENT_SEGMENT
+            content: mockContentSegment({ // START - PAGE_CONTENT
               nodeId: 'page-test-c',
-              nodeType: 'PAGE_CONTENT_SEGMENT',
+              nodeType: 'PAGE_CONTENT',
               nodeMeta: mockNodeMeta({
                 nodeId: '*',
                 versionId: 'qjkdsaf3493cj3',
@@ -181,10 +411,114 @@ export const ProtoSiteGraph = {
                 componentTag: 'row',
                 // element: {}
               },
-              header: "SPRITE",
-              subHeader: "& Coke",
-              copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
-              subContent: []
+              // header: "SPRITE",
+              // subHeader: "& Coke",
+              // copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
+              subContent: [
+                // DEMO - C CONTENT STRUCTURE
+                mockContentSegment({
+                  nodeId: 'test-stack-c-1',
+                  nodeType: 'CONTENT_SEGMENT',
+                  // nodeMeta
+                  component: {
+                    componentType: 'STRUCTURE',
+                    componentTag: 'stack-row'
+                  },
+                  subContent: [
+                    mockContentSegment({
+                      nodeId: 'test-col-c-1-1',
+                      nodeType: 'CONTENT_SEGMENT',
+                      // nodeMeta
+                      component: {
+                        componentType: 'STRUCTURE',
+                        componentTag: 'order-column',
+                        element: {
+                          // tag: 'div',
+                          // domId: 'ta-dur',
+                          // classSet: []
+                          // attrSet
+                        }
+                      },
+                      subContent: []
+                    }),
+                    mockContentSegment({
+                      nodeId: 'test-col-c-1-2',
+                      nodeType: 'CONTENT_SEGMENT',
+                      // nodeMeta
+                      component: {
+                        componentType: 'STRUCTURE',
+                        componentTag: 'order-column',
+                        element: {
+                          // tag: 'div',
+                          // domId: 'ta-dur',
+                          // classSet: []
+                          // attrSet
+                        }
+                      },
+                      subContent: []
+                    })
+                  ]
+                }),
+                mockContentSegment({
+                  nodeId: 'test-stack-c-2',
+                  nodeType: 'CONTENT_SEGMENT',
+                  // nodeMeta
+                  component: {
+                    componentType: 'STRUCTURE',
+                    componentTag: 'stack-row'
+                  },
+                  subContent: [
+                    mockContentSegment({
+                      nodeId: 'test-col-c-2-1',
+                      nodeType: 'CONTENT_SEGMENT',
+                      // nodeMeta
+                      component: {
+                        componentType: 'STRUCTURE',
+                        componentTag: 'order-column',
+                        element: {
+                          // tag: 'div',
+                          // domId: 'ta-dur',
+                          classSet: ['w25']
+                          // attrSet
+                        }
+                      },
+                      subContent: []
+                    }),
+                    mockContentSegment({
+                      nodeId: 'test-col-c-2-2',
+                      nodeType: 'CONTENT_SEGMENT',
+                      // nodeMeta
+                      component: {
+                        componentType: 'STRUCTURE',
+                        componentTag: 'order-column',
+                        element: {
+                          // tag: 'div',
+                          // domId: 'ta-dur',
+                          classSet: ['w50']
+                          // attrSet
+                        }
+                      },
+                      subContent: []
+                    }),
+                    mockContentSegment({
+                      nodeId: 'test-col-c-2-3',
+                      nodeType: 'CONTENT_SEGMENT',
+                      // nodeMeta
+                      component: {
+                        componentType: 'STRUCTURE',
+                        componentTag: 'order-column',
+                        element: {
+                          // tag: 'div',
+                          // domId: 'ta-dur',
+                          classSet: ['w25']
+                          // attrSet
+                        }
+                      },
+                      subContent: []
+                    }),
+                  ]
+                })
+              ]
             }),
             subRoutes: [] // NULL PAST THIS
           })
