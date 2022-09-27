@@ -16,9 +16,9 @@ import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph/content-dr
 // NOTE: INHERITS <CONTENT_LEVEL_MODULE>
 
 interface SerializedAnnexRouteSchema { // ! TODO verify and refactor
-  A: string,
-  B: string,
-  C: string,
+  A?: string,
+  B?: string,
+  C?: string,
 }
 
 interface PathValidationQuery {

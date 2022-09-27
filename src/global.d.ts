@@ -143,3 +143,7 @@ interface PageModelResult {
   pageRouteSequence: Array<pageRoute>
   contentStructure?: ContentTier;
 }
+
+interface DynamicRouteData {
+  pageModel: PageModelResult
+}
