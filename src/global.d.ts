@@ -1,3 +1,5 @@
+import type { GrayMatterFile } from 'gray-matter';
+
 /// <reference types="@sveltejs/kit" />
 
 //! ---SUB_META TRAITS---
@@ -45,6 +47,9 @@ interface NodeElementTraits {
   domId?: string,
   classSet?: Array<string>,
   attrSet?: Array<ElementAttr>
+  //
+  // DOCS - https://www.npmjs.com/package/gray-matter #Returned object
+  mdInsert?: GrayMatterFile
 }
 
 interface NodeComponentTraits {
@@ -62,8 +67,7 @@ interface ContentSegment extends SchemaNode {
   component: NodeComponentTraits,
   header?: string, // X for copyBlock
   subHeader?: string, // X for copyBlock
-  copyBlock?  // ! TODO Markdown support << // START HERE <<
-  // todo: TRY INJECTING MARKDOWN - simulate a server provided segment node
+  
   subContent?: Array<ContentSegment>
 
   isRoot?: boolean, // X

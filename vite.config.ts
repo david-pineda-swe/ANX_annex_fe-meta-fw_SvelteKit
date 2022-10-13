@@ -1,6 +1,7 @@
-import { sveltekit } from '@sveltejs/kit/vite';
 import type { UserConfig } from 'vite';
 import path from "path";
+import { sveltekit } from '@sveltejs/kit/vite';
+import restartOnMarkdownEdit from './vite-dev-support/for-markdown';
 
 /** @type {import('vite').UserConfig} */
 const config: UserConfig = {
@@ -14,7 +15,10 @@ const config: UserConfig = {
       '$pec': path.resolve('./src/spec-to-project')
     }
   },
-  plugins: [sveltekit()]
+  plugins: [
+    sveltekit(),
+    restartOnMarkdownEdit()
+  ]
 };
 
 export default config;

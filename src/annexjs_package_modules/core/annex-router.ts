@@ -41,7 +41,7 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   // TODO: POSSIBLE ADAPTER FOR ROUTE_SEQUNECE >>>
   // X should be coming from Svelte store if previously loaded
   // TODO: ACCESS TO SITE-GRAPH
-  console.log('>> SITE_GRAPH FIXTURE:', SiteGraph);
+  // console.log('>> SITE_GRAPH FIXTURE:', SiteGraph);
   const routeStructure = SiteGraph.routeStructure; // X TBD
   
 

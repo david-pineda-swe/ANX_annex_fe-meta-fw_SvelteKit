@@ -5,7 +5,7 @@
   export let contentTier;
 
   // DEBUG -
-  console.log('>> CONTENT_TIER_CARRIAGE USES:', contentTier);
+  // console.log('>> CONTENT_TIER_CARRIAGE USES:', contentTier);
 
   const { tier, content, subRouteContent } = contentTier;
 
