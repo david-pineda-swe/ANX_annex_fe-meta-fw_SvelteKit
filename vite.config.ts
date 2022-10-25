@@ -1,7 +1,8 @@
 import type { UserConfig } from 'vite';
 import path from "path";
 import { sveltekit } from '@sveltejs/kit/vite';
-import restartOnMarkdownEdit from './vite-dev-support/for-markdown';
+import { restartOnMarkdownEdit } from './vite-dev-support/restarts';
+// import {restartOnFixtureEdit, restartOnMarkdownEdit } from './vite-dev-support/restarts';
 
 /** @type {import('vite').UserConfig} */
 const config: UserConfig = {
@@ -17,7 +18,8 @@ const config: UserConfig = {
   },
   plugins: [
     sveltekit(),
-    restartOnMarkdownEdit()
+    restartOnMarkdownEdit(),
+    // restartOnFixtureEdit() // TODO - NEEDS WORK <<
   ]
 };
 
