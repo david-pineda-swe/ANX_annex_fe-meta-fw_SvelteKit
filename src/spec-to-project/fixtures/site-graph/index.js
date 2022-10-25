@@ -14,8 +14,6 @@ export const ProtoSiteGraph = {
     slug: "/",
     content: {
       contentId: '', // >> FOR PAGE to CONTENT MODEL IDENTIFICATION
-      header: '',
-      subHeader: '',
       classSet: [''], // [string]!
       subContent: []
     },

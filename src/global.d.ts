@@ -49,13 +49,13 @@ interface NodeElementTraits {
   attrSet?: Array<ElementAttr>
   //
   // DOCS - https://www.npmjs.com/package/gray-matter #Returned object
-  mdInsert?: GrayMatterFile
+  mdInsert?: GrayMatterFile         // This is an abstraction of a markdown file gnerated by the gray-matter package module
 }
 
 interface NodeComponentTraits {
   componentType?: string,           // STRUCTURE, STANDARD, DISPLAY, FUNCTION, SYSTEMS, METRICS, DIAGNOSTICS
   componentTag?: string,            // STRUCTURES_AVLB_EXAMPLE: row(s) < column(s) < feature(s) < subFeature(s)
-  element?: NodeElementTraits       // !
+  element?: NodeElementTraits
 }
 
 interface ContentSegment extends SchemaNode {
@@ -65,14 +65,7 @@ interface ContentSegment extends SchemaNode {
   // nodeMeta
   
   component: NodeComponentTraits,
-  header?: string, // X for copyBlock
-  subHeader?: string, // X for copyBlock
-  
-  subContent?: Array<ContentSegment>
-
-  isRoot?: boolean, // X
-  isParalax?: boolean,
-  isFlex?: boolean,
+  subContent?: Array<ContentSegment> 
 }
 
 // ! ---PAGE_ROUTE---
@@ -102,7 +95,6 @@ interface PageRoute extends SchemaNode {
   subRoutes?: Array<pageRoute>,
 
   // - ROUTE STATE
-  isRoot?: boolean,
   error?: ControlError
   flowControl: FlowControlTraits,
 

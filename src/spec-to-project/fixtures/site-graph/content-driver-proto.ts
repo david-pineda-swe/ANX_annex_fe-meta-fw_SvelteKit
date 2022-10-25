@@ -75,7 +75,6 @@ export const ProtoSiteGraph = {
       editedBy: null,
       notes: ''
     }),
-    // isRoot: true,
     // error
     flowControl: {
       a_published: true,
@@ -108,9 +107,6 @@ export const ProtoSiteGraph = {
         componentTag: 'page-content',
         // element: {}
       },
-      // header: "lime",
-      // subHeader: "coolAid",
-      // copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
       subContent: [
         // DEMO - A CONTENT STRUCTURE
         mockContentSegment({
@@ -272,7 +268,6 @@ export const ProtoSiteGraph = {
           editedBy: null,
           notes: ''
         }),
-        // isRoot: false,
         // error
         flowControl: {
           a_published: true,
@@ -305,9 +300,6 @@ export const ProtoSiteGraph = {
             componentTag: 'row',
             // element: {}
           },
-          // header: "GATORADE",
-          // subHeader: "CUCUMBER",
-          // copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
           subContent: [
             // DEMO - B CONTENT STRUCTURE
             mockContentSegment({
@@ -430,7 +422,6 @@ export const ProtoSiteGraph = {
               editedBy: null,
               notes: ''
             }),
-            // isRoot: false,
             // error
             flowControl: {
               a_published: true,
@@ -463,9 +454,6 @@ export const ProtoSiteGraph = {
                 componentTag: 'row',
                 // element: {}
               },
-              // header: "SPRITE",
-              // subHeader: "& Coke",
-              // copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
               subContent: [
                 // DEMO - C CONTENT STRUCTURE
                 mockContentSegment({
