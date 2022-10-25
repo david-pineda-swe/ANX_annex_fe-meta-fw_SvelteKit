@@ -77,11 +77,12 @@ export const ProtoSiteGraph = {
     }),
     // error
     flowControl: {
-      a_published: true,
-      b_indexOnly: true,
-      c_sitemapVisible: true,
-      d_navVisible: true,
-      e_renderAsParentRoute: true,
+      A_indexOnly: true,
+      B_sitemapVisible: true,
+      C_navVisible: true,
+      D_published: true,
+      E_renderAsParentRoute: false,
+      F_renderAsIndependentRoute: true
     },
     tier: 'A',
     category: 'category',
@@ -270,11 +271,12 @@ export const ProtoSiteGraph = {
         }),
         // error
         flowControl: {
-          a_published: true,
-          b_indexOnly: true,
-          c_sitemapVisible: true,
-          d_navVisible: true,
-          e_renderAsParentRoute: true,
+          A_indexOnly: true,
+          B_sitemapVisible: true,
+          C_navVisible: true,
+          D_published: true,
+          E_renderAsParentRoute: true,
+          F_renderAsIndependentRoute: false
         },
         tier: 'B',
         category: 'category',
@@ -424,11 +426,12 @@ export const ProtoSiteGraph = {
             }),
             // error
             flowControl: {
-              a_published: true,
-              b_indexOnly: true,
-              c_sitemapVisible: true,
-              d_navVisible: true,
-              e_renderAsParentRoute: true,
+              A_indexOnly: true,
+              B_sitemapVisible: true,
+              C_navVisible: true,
+              D_published: true,
+              E_renderAsParentRoute: true,
+              F_renderAsIndependentRoute: false
             },
             tier: 'C',
             category: 'category',

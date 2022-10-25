@@ -76,11 +76,14 @@ interface ControlError {
 }
 
 interface FlowControlTraits {
-  a_published: boolean,
-  b_indexOnly: boolean,
-  c_sitemapVisible: boolean,
-  d_navVisible: boolean,
-  e_renderAsParentRoute: boolean
+  // for MENU
+  A_indexOnly: boolean,
+  B_sitemapVisible: boolean,
+  C_navVisible: boolean,
+  // for RENDERING
+  D_published: boolean,
+  E_renderAsParentRoute: boolean,
+  F_renderAsIndependentRoute: booleant
 }
 
 // - PAGE ROUTE

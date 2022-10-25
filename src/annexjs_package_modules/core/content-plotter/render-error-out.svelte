@@ -5,8 +5,7 @@
 
   let header: string;
   let subHeader: string;
-  
-  // 1.) verify fulfillment
+
   if (!allTiersAreResolved) {
     header = 'Sorry, Wrong Page!';
     subHeader = 'The route you are trying to reach is not available. Please got to the home page or check if the URL is correct.'
