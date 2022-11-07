@@ -1,5 +1,6 @@
 import { annexRouter } from '@annexjs/core';
 import type { LoadEvent } from '@sveltejs/kit';
+import type { DynamicRouteData } from 'src/global';
 
   // TODO - VERIFY WHAT HAPPEMS TO request.params IF URL INCLUDES QUERY PARAMS
 
@@ -11,7 +12,7 @@ import type { LoadEvent } from '@sveltejs/kit';
     });
 
     // DEBUG -
-    console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_A:", pageModel);
+    // console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_A:", pageModel);
 
     return {
       pageModel

@@ -109,16 +109,29 @@ export const collectDynamicContentFor = async function(pageModel: PageModelResul
   }
 };
 
-export const stackNestedContentStructure = async function(pageModel: PageModelResult):Promise<PageModelResult> {
+export const stackNestedContentStructure = async function(pageModel: PageModelResult, targetTier: string):Promise<PageModelResult> {
   const { pageRouteSequence } = pageModel;
+  let independentRouteMarked = false;
 
+  // C into => B into => A
   const contentStructure = pageRouteSequence.reverse().reduce((lastTierContent, pageRoute: PageRoute ) => {
-    const { tier, content, flowControl: { e_renderAsParentRoute } } = pageRoute;
+    const { tier, content, flowControl: { D_published, E_renderAsParentRoute, F_renderAsIndependentRoute } } = pageRoute;
+    
+    const isIndependentTargetTier = F_renderAsIndependentRoute && tier === targetTier;
+    const noPreviousContent = lastTierContent === null;
+    const shouldProvideParentTierContent = !independentRouteMarked && lastTierContent && E_renderAsParentRoute;
+    const provideContent = (noPreviousContent || shouldProvideParentTierContent) && D_published;
     
     const contentTier = {
       tier,
-      content: (lastTierContent === null || (lastTierContent && e_renderAsParentRoute)) ? content : null,
+      content: (provideContent) ? content : null,
       subRouteContent: (lastTierContent) ? lastTierContent : null
+    }
+    
+    if (isIndependentTargetTier) {
+      // ! OVERRIDE AND REMOVE SUB ROUTE CONTENT
+      independentRouteMarked = true;
+      contentTier.subRouteContent = null;
     }
 
     return contentTier;

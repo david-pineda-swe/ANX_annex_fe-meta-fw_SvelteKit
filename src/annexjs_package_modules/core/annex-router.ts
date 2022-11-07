@@ -41,7 +41,7 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   // TODO: POSSIBLE ADAPTER FOR ROUTE_SEQUNECE >>>
   // X should be coming from Svelte store if previously loaded
   // TODO: ACCESS TO SITE-GRAPH
-  console.log('>> SITE_GRAPH FIXTURE:', SiteGraph);
+  // console.log('>> SITE_GRAPH FIXTURE:', SiteGraph);
   const routeStructure = SiteGraph.routeStructure; // X TBD
   
 
@@ -136,7 +136,8 @@ const fulfillPageModelRequestedBy = async function(pathValidationQuery: PathVali
           // todo: test missing content fail over
       } else {
         // ! STAGE 3: COMPILE the contentModel(s) into a CONTENT_STRUCTURE_SCHEMA
-        const finishedPageModel = await stackNestedContentStructure(hydratedPageModel);
+        const targetTier = validatedPageModel.tierPosition;
+        const finishedPageModel = await stackNestedContentStructure(hydratedPageModel, targetTier);
 
         return finishedPageModel;
       }

@@ -1,3 +1,5 @@
+import type { GrayMatterFile } from 'gray-matter';
+
 /// <reference types="@sveltejs/kit" />
 
 //! ---SUB_META TRAITS---
@@ -45,12 +47,15 @@ interface NodeElementTraits {
   domId?: string,
   classSet?: Array<string>,
   attrSet?: Array<ElementAttr>
+  //
+  // DOCS - https://www.npmjs.com/package/gray-matter #Returned object
+  mdInsert?: GrayMatterFile         // This is an abstraction of a markdown file gnerated by the gray-matter package module
 }
 
 interface NodeComponentTraits {
   componentType?: string,           // STRUCTURE, STANDARD, DISPLAY, FUNCTION, SYSTEMS, METRICS, DIAGNOSTICS
   componentTag?: string,            // STRUCTURES_AVLB_EXAMPLE: row(s) < column(s) < feature(s) < subFeature(s)
-  element?: NodeElementTraits       // !
+  element?: NodeElementTraits
 }
 
 interface ContentSegment extends SchemaNode {
@@ -60,15 +65,7 @@ interface ContentSegment extends SchemaNode {
   // nodeMeta
   
   component: NodeComponentTraits,
-  header?: string, // X for copyBlock
-  subHeader?: string, // X for copyBlock
-  copyBlock?  // ! TODO Markdown support << // START HERE <<
-  // todo: TRY INJECTING MARKDOWN - simulate a server provided segment node
-  subContent?: Array<ContentSegment>
-
-  isRoot?: boolean, // X
-  isParalax?: boolean,
-  isFlex?: boolean,
+  subContent?: Array<ContentSegment> 
 }
 
 // ! ---PAGE_ROUTE---
@@ -79,11 +76,14 @@ interface ControlError {
 }
 
 interface FlowControlTraits {
-  a_published: boolean,
-  b_indexOnly: boolean,
-  c_sitemapVisible: boolean,
-  d_navVisible: boolean,
-  e_renderAsParentRoute: boolean
+  // for MENU
+  A_indexOnly: boolean,
+  B_sitemapVisible: boolean,
+  C_navVisible: boolean,
+  // for RENDERING
+  D_published: boolean,
+  E_renderAsParentRoute: boolean,
+  F_renderAsIndependentRoute: booleant
 }
 
 // - PAGE ROUTE
@@ -98,7 +98,6 @@ interface PageRoute extends SchemaNode {
   subRoutes?: Array<pageRoute>,
 
   // - ROUTE STATE
-  isRoot?: boolean,
   error?: ControlError
   flowControl: FlowControlTraits,
 

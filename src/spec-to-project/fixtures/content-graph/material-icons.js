@@ -4,9 +4,6 @@ export const contentModel = {
 	// ! CONTENT SEGMENT result for PageRoute
 
 		contentId: 'nerp',
-		header: 'Test Page Header',
-		subHeader: 'Test Page Sub Header',
-		// ! copyBlock
 		// subContent: [
 		// 	// NOTE: Array<SchemaNode>
 		// 	{
@@ -37,9 +34,6 @@ export const contentModel = {
 		// 		// },
 		// 		content: {
 		// 			contentId: 'foo',
-		// 			header: 'Test Block Header',
-		// 			subHeader: 'Test Block Sub Header',
-		// 			// ! copyBlock
 		// 			subContent: [
 		// 				// NOTE: Array<SchemaNode>
 		// 				{
@@ -70,9 +64,6 @@ export const contentModel = {
 		// 					},
 		// 					content: {
 		// 						contentId: 'bar',
-		// 						header: 'yadda',
-		// 						subHeader: 'yadda bing bang',
-		// 						// ! copyBlock
 		// 						// subContent
 
 		// 						// TRACE: ETC ETC...

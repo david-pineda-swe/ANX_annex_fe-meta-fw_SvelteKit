@@ -14,18 +14,16 @@ export const ProtoSiteGraph = {
     slug: "/",
     content: {
       contentId: '', // >> FOR PAGE to CONTENT MODEL IDENTIFICATION
-      header: '',
-      subHeader: '',
       classSet: [''], // [string]!
       subContent: []
     },
     flowControl: {
       // error?
-      a_published: true,
-      b_indexOnly: true,
-      c_sitemapVisible: true,
-      d_navVisible: true,
-      e_renderAsParentRoute: true,
+      A_indexOnly: true,
+      B_sitemapVisible: true,
+      C_navVisible: true,
+      D_published: true,
+      E_renderAsParentRoute: true,
     },
     //
 		// TBD: open graph meta conventions > for copy paste support
@@ -50,11 +48,11 @@ export const ProtoSiteGraph = {
       //   flowControl: {
       //     // error?
       //     // ACCESS - to r/ via these levels of precedence
-      //     a_published: true,           // 1. public accessible
-      //     b_indexOnly: true,           // 2. if route should support child routes only (NO PAGE CONFIG)
-      //     c_sitemapVisible: true,      // 3. assignable to sitemap
-      //     d_navVisible: true,      // 4. assignable to navigation
-      //     e_renderAsParentRoute: true, // 5. displayed as child module in parent route
+      //     A_indexOnly: true,           // 2. if route should support child routes only (NO PAGE CONFIG)
+      //     B_sitemapVisible: true,      // 3. assignable to sitemap
+      //     C_navVisible: true,      // 4. assignable to navigation
+      //     D_published: true,           // 1. public accessible
+      //     E_renderAsParentRoute: true, // 5. displayed as child module in parent route
       //   },
       //   subRoutes: [ // NOTE: << sub-r/ children of TIER-A
       //     {
@@ -66,11 +64,11 @@ export const ProtoSiteGraph = {
       //       contentModel: {}, // use DEMO fixture...
       //       flowControl: {
       //         // error?
-      //         a_published: true,
-      //         b_indexOnly: true,
-      //         c_sitemapVisible: true,
-      //         d_navVisible: true,
-      //         e_renderAsParentRoute: true,
+      //         A_indexOnly: true,
+      //         B_sitemapVisible: true,
+      //         C_navVisible: true,
+      //         D_published: true,
+      //         E_renderAsParentRoute: true,
       //       },
       //       subRoutes: [  // NOTE: << sub-r/ children of TIER-B
       //         {
@@ -82,11 +80,11 @@ export const ProtoSiteGraph = {
       //           contentModel: {}, // use DEMO fixture...
       //           flowControl: {
       //             // error?
-      //             a_published: true,
-      //             b_indexOnly: true,
-      //             c_sitemapVisible: true,
-      //             d_navVisible: true,
-      //             e_renderAsParentRoute: true,
+      //             A_indexOnly: true,
+      //             B_sitemapVisible: true,
+      //             C_navVisible: true,
+      //             D_published: true,
+      //             E_renderAsParentRoute: true,
       //           },
       //           subRoutes: [] // NOTE: << sub-r/ children of TIER-C
       //         }
@@ -103,11 +101,11 @@ export const ProtoSiteGraph = {
       //   contentModel: {}, // use DEMO fixture...
       //   flowControl: {
       //     // error?
-      //     a_published: true,
-      //     b_indexOnly: true,
-      //     c_sitemapVisible: true,
-      //     d_navVisible: true,
-      //     e_renderAsParentRoute: true,
+      //     A_indexOnly: true,
+      //     B_sitemapVisible: true,
+      //     C_navVisible: true,
+      //     D_published: true,
+      //     E_renderAsParentRoute: true,
       //   },
       //   subRoutes: [
       //     {
@@ -119,11 +117,11 @@ export const ProtoSiteGraph = {
       //       contentModel: {}, // use DEMO fixture...
       //       flowControl: {
       //         // error?
-      //         a_published: true,
-      //         b_indexOnly: true,
-      //         c_sitemapVisible: true,
-      //         d_navVisible: true,
-      //         e_renderAsParentRoute: true,
+      //         A_indexOnly: true,
+      //         B_sitemapVisible: true,
+      //         C_navVisible: true,
+      //         D_published: true,
+      //         E_renderAsParentRoute: true,
       //       },
       //       subRoutes: [] 
       //     }

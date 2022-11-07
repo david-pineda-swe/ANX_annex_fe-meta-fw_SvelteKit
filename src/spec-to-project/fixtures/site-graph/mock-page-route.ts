@@ -13,7 +13,6 @@ export function mockPageRoute(props: PageRoute): PageRoute {
       content,
       subRoutes,
       //
-      isRoot,
       // error,
       flowControl,
       tier,
@@ -30,14 +29,13 @@ export function mockPageRoute(props: PageRoute): PageRoute {
       content,
       subRoutes: subRoutes || [],
       //
-      isRoot: isRoot || false,
       // error
       flowControl: flowControl || {
-        a_published: true,
-        b_indexOnly: true,
-        c_sitemapVisible: true,
-        d_navVisible: true,
-        e_renderAsParentRoute: true,
+        A_indexOnly: true,
+        B_sitemapVisible: true,
+        C_navVisible: true,
+        D_published: true,
+        E_renderAsParentRoute: true,
       },
       tier: tier || 'ERROR',
       category: category || 'N/A',

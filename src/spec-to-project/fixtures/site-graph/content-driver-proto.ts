@@ -4,6 +4,41 @@ import { mockNodeMeta } from "./mock-node-meta";
 import { mockPageRoute } from "./mock-page-route";
 import { mockContentSegment } from "./mock-content-segment";
 
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+
+const locateAndParse_md_Insert = (targetInsertContentFile: string) => {
+  const targetInsertDirectory = 'src/spec-to-project/fixtures/site-graph/test-content';
+
+  // available files
+  const files = fs.readdirSync(path.join(targetInsertDirectory));
+  console.log('>> aval insert files:', files);
+
+  // matter and content
+  // TODO - TEST THAT EXTENSION OF FILE ENDS IN ".md"
+  //! or account and parse a .js version to satisfy "GrayMatterFile" type interface
+  // TODO - KILL THE matter().buffer output
+  
+  if (!files.includes(targetInsertContentFile)) {
+    // FAIL - to find target insert .md file
+    return {
+      content: '',
+      data: null,
+      isEmpty: true,
+      excerpt: ''
+    }
+  } else {
+    // OK
+    const targetFileContent = fs.readFileSync(path.join(targetInsertDirectory, targetInsertContentFile), 'utf-8');
+    const mdInsertParsed = matter(targetFileContent)
+  
+    console.log(`>> Target: ${targetInsertContentFile} found .md insert: ${mdInsertParsed}`);
+
+    return mdInsertParsed;
+  }
+}
+
 export const ProtoSiteGraph = {
   // ! SITE_GRAPH 
   nodeId: 'adsfdd',
@@ -40,14 +75,14 @@ export const ProtoSiteGraph = {
       editedBy: null,
       notes: ''
     }),
-    // isRoot: true,
     // error
     flowControl: {
-      a_published: true,
-      b_indexOnly: true,
-      c_sitemapVisible: true,
-      d_navVisible: true,
-      e_renderAsParentRoute: true,
+      A_indexOnly: true,
+      B_sitemapVisible: true,
+      C_navVisible: true,
+      D_published: true,
+      E_renderAsParentRoute: false,
+      F_renderAsIndependentRoute: true
     },
     tier: 'A',
     category: 'category',
@@ -73,9 +108,6 @@ export const ProtoSiteGraph = {
         componentTag: 'page-content',
         // element: {}
       },
-      // header: "lime",
-      // subHeader: "coolAid",
-      // copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
       subContent: [
         // DEMO - A CONTENT STRUCTURE
         mockContentSegment({
@@ -107,7 +139,24 @@ export const ProtoSiteGraph = {
                   // attrSet
                 }
               },
-              subContent: []
+              subContent: [
+                mockContentSegment({
+                  nodeId: 'test-md-render-a',
+                  nodeType: 'CONTENT_SEGMENT',
+                  // nodeMeta
+                  component: {
+                    componentType: 'INSERT',
+                    componentTag: 'md-block',
+                    element: {
+                      // tag: 'div',
+                      // domId: 'ta-dur',
+                      // classSet: []
+                      // attrSet
+                      mdInsert: locateAndParse_md_Insert('test-splash_A-1.md')
+                    }
+                  }
+                })
+              ]
             }),
             mockContentSegment({
               nodeId: 'test-col-a-1-2',
@@ -220,14 +269,14 @@ export const ProtoSiteGraph = {
           editedBy: null,
           notes: ''
         }),
-        // isRoot: false,
         // error
         flowControl: {
-          a_published: true,
-          b_indexOnly: true,
-          c_sitemapVisible: true,
-          d_navVisible: true,
-          e_renderAsParentRoute: true,
+          A_indexOnly: true,
+          B_sitemapVisible: true,
+          C_navVisible: true,
+          D_published: true,
+          E_renderAsParentRoute: true,
+          F_renderAsIndependentRoute: false
         },
         tier: 'B',
         category: 'category',
@@ -253,9 +302,6 @@ export const ProtoSiteGraph = {
             componentTag: 'row',
             // element: {}
           },
-          // header: "GATORADE",
-          // subHeader: "CUCUMBER",
-          // copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
           subContent: [
             // DEMO - B CONTENT STRUCTURE
             mockContentSegment({
@@ -378,14 +424,14 @@ export const ProtoSiteGraph = {
               editedBy: null,
               notes: ''
             }),
-            // isRoot: false,
             // error
             flowControl: {
-              a_published: true,
-              b_indexOnly: true,
-              c_sitemapVisible: true,
-              d_navVisible: true,
-              e_renderAsParentRoute: true,
+              A_indexOnly: true,
+              B_sitemapVisible: true,
+              C_navVisible: true,
+              D_published: true,
+              E_renderAsParentRoute: true,
+              F_renderAsIndependentRoute: false
             },
             tier: 'C',
             category: 'category',
@@ -411,9 +457,6 @@ export const ProtoSiteGraph = {
                 componentTag: 'row',
                 // element: {}
               },
-              // header: "SPRITE",
-              // subHeader: "& Coke",
-              // copyBlock: 'TEST MARKDOWN COMING SOON! <<<<<<<', // !
               subContent: [
                 // DEMO - C CONTENT STRUCTURE
                 mockContentSegment({
