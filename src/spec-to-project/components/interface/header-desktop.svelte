@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/stores'; // X - nav sample to be deprecated for dynamic siteGraph nav
   import logo from './svelte-logo.svg';
   export let toggeleMenuTray: any;
 </script>

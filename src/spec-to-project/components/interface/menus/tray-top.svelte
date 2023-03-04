@@ -1,4 +1,5 @@
 <script lang="ts">
+  // import { page } from '$app/stores'; // TODO - use for "$page.url.pathname active page check"
   console.log('>> TOP_TRAY_MENU INTERFACE >>');
 </script>
 
