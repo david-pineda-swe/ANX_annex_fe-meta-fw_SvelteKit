@@ -106,7 +106,7 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   };
 }
 
-const fulfillPageModelRequestedBy = async function(pathValidationQuery: PathValidationQuery):Promise<PageModelResult> {
+const renderURLrequestedModels = async function(pathValidationQuery: PathValidationQuery):Promise<PageModelResult> {
   try {
     // ! STAGE 1: VALIDATE URL_PATH for PAGE_ROUTE_SEQUENCE
     const validatedPageModel = await validateRouteForTier(pathValidationQuery);
@@ -155,4 +155,4 @@ const fulfillPageModelRequestedBy = async function(pathValidationQuery: PathVali
   }
 }
 
-export default { validateRouteForTier, fulfillPageModelRequestedBy };
+export default { validateRouteForTier, renderURLrequestedModels };

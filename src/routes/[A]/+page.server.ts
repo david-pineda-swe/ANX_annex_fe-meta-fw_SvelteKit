@@ -5,7 +5,7 @@ import type { DynamicRouteData } from 'src/global';
   // TODO - VERIFY WHAT HAPPEMS TO request.params IF URL INCLUDES QUERY PARAMS
 
   export const load = async (request: LoadEvent): Promise<DynamicRouteData> => {    
-    const pageModel = await annexRouter.fulfillPageModelRequestedBy({
+    const pageModel = await annexRouter.renderURLrequestedModels({
       tierPositionKey: 'A', // of a tierSequenceIndex
       // tierPositionLabel: 'APPLE', // of a tierSequenceIndex
       serializedUrlPath: request.params

@@ -3,7 +3,7 @@ import type { LoadEvent } from '@sveltejs/kit';
 import type { DynamicRouteData } from 'src/global';
 
   export const load = async (request:LoadEvent): Promise<DynamicRouteData> => {
-    const pageModel = await annexRouter.fulfillPageModelRequestedBy({
+    const pageModel = await annexRouter.renderURLrequestedModels({
       tierPositionKey: 'B', // of a tierSequenceIndex
       // tierPositionLabel: 'BANANA', // of a tierSequenceIndex
       serializedUrlPath: request.params
