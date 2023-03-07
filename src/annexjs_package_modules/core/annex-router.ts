@@ -1,7 +1,9 @@
 import { collectDynamicContentFor, stackNestedContentStructure } from "./annex-content-driver";
 
+// X - siteGraph fixture will be replaced by call to HCMS
 // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
 import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph/content-driver-proto'
+import type { DynamicRouteData, PageModelResult, PageRoute } from "src/global";
 
 // TBD: Create a dynamic router class that will
 // - that constructs the router
@@ -24,7 +26,6 @@ interface SerializedAnnexRouteSchema { // ! TODO verify and refactor
 interface PathValidationQuery {
   tierPositionKey?: string,
   tierPositionLabel?: string,
-  // routeStructure: PageRoute,
   serializedUrlPath: SerializedAnnexRouteSchema
 }
 
@@ -106,7 +107,7 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   };
 }
 
-const renderURLrequestedModels = async function(pathValidationQuery: PathValidationQuery):Promise<PageModelResult> {
+const renderURLrequestedModels = async function(pathValidationQuery: PathValidationQuery):Promise<DynamicRouteData> {
   try {
     // ! STAGE 1: VALIDATE URL_PATH for PAGE_ROUTE_SEQUENCE
     const validatedPageModel = await validateRouteForTier(pathValidationQuery);
@@ -149,15 +150,12 @@ const renderURLrequestedModels = async function(pathValidationQuery: PathValidat
       }
     }
   } catch(err) {
-    console.log('>> MERP');
+    //TODO - FIND ERROR LOGGING SERVICE PATTERN
+    console.error('>> renderURLrequestedModels has failed (!)', err);
     
-    // todo: test error handling
-    // todo: infra error logging goes here
+    // TODO - test error handling
 
-    // page.success = false;
-    // page.errors = [err];
-
-    // ! return  a dummy error ContentResult for testing;
+    // ! return a dummy error ContentResult for testing;
   }
 }
 

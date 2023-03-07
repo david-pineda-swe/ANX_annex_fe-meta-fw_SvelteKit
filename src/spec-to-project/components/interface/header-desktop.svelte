@@ -17,14 +17,14 @@
     </svg>
     <ul>
       <li><button on:click={toggeleMenuTray('right')}>Right</button></li>
-      <li class:active={$page.url.pathname === '/'}><a data-sveltekit-prefetch href="/">Home</a></li>
-      <li class:active={$page.url.pathname === '/about'}><a data-sveltekit-prefetch href="/about">About</a></li>
-      <li class:active={$page.url.pathname === '/contact'}><a data-sveltekit-prefetch href="/contact">Contact</a></li>
-      <li class:active={$page.url.pathname === '/privacy-policy'}><a data-sveltekit-prefetch href="/privacy-policy">Privacy Policy</a></li>
-      <li class:active={$page.url.pathname === '/sitemap'}><a data-sveltekit-prefetch href="/sitemap">Site Map</a></li>
-      <li class:active={$page.url.pathname === '/test-a'}><a data-sveltekit-prefetch href="/test-a">Test A</a></li>
-      <li class:active={$page.url.pathname === '/test-a/test-b'}><a data-sveltekit-prefetch href="/test-a/test-b">test B</a></li>
-      <li class:active={$page.url.pathname === '/test-a/test-b/test-c'}><a data-sveltekit-prefetch href="/test-a/test-b/test-c">test C</a></li>
+      <li class:active={$page.url.pathname === '/'}><a data-sveltekit-preload-data href="/">Home</a></li>
+      <li class:active={$page.url.pathname === '/about'}><a data-sveltekit-preload-data href="/about">About</a></li>
+      <li class:active={$page.url.pathname === '/contact'}><a data-sveltekit-preload-data href="/contact">Contact</a></li>
+      <li class:active={$page.url.pathname === '/privacy-policy'}><a data-sveltekit-preload-data href="/privacy-policy">Privacy Policy</a></li>
+      <li class:active={$page.url.pathname === '/sitemap'}><a data-sveltekit-preload-data href="/sitemap">Site Map</a></li>
+      <li class:active={$page.url.pathname === '/test-a'}><a data-sveltekit-preload-data href="/test-a">Test A</a></li>
+      <li class:active={$page.url.pathname === '/test-a/test-b'}><a data-sveltekit-preload-data href="/test-a/test-b">test B</a></li>
+      <li class:active={$page.url.pathname === '/test-a/test-b/test-c'}><a data-sveltekit-preload-data href="/test-a/test-b/test-c">test C</a></li>
       <li><button on:click={toggeleMenuTray('left')}>Left</button></li>
     </ul>
     <svg viewBox="0 0 2 3" aria-hidden="true">
