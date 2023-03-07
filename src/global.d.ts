@@ -144,5 +144,6 @@ interface PageModelResult {
 }
 
 interface DynamicRouteData {
-  pageModel: PageModelResult
+  pageModel: PageModelResult;
+  contentNavigation: Array<unknown>
 }

@@ -3,7 +3,7 @@ import type { LoadEvent } from '@sveltejs/kit';
 import type { DynamicRouteData } from 'src/global';
 
   export const load = async (request:LoadEvent): Promise<DynamicRouteData> => {
-    const pageModel = await annexRouter.renderURLrequestedModels({
+    const requestedModels = await annexRouter.renderURLrequestedModels({
       tierPositionKey: 'C', // of a tierSequenceIndex
       // tierPositionLabel: 'COOK', // of a tierSequenceIndex
       serializedUrlPath: request.params
@@ -12,7 +12,5 @@ import type { DynamicRouteData } from 'src/global';
     // DEBUG -
     // console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_C:", pageModel);
 
-    return { 
-      pageModel
-    };
+    return requestedModels;
   }

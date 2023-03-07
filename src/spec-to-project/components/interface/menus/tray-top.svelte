@@ -1,5 +1,11 @@
 <script lang="ts">
   // import { page } from '$app/stores'; // TODO - use for "$page.url.pathname active page check"
+  import { contentNavigation } from "@annexjs/core/webapp/stores/navigation-outlines";
+
+  let contentNavigationData;
+  contentNavigation.subscribe((data) => contentNavigationData = data);
+
+  console.log('>> TEST: CONFIRM ACCESS OF PAGE MODEL VIA STORE:', contentNavigationData);
   console.log('>> TOP_TRAY_MENU INTERFACE >>');
 </script>
 

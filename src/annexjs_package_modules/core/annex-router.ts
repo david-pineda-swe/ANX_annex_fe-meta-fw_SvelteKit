@@ -122,7 +122,10 @@ const renderURLrequestedModels = async function(pathValidationQuery: PathValidat
 
       console.error(errorMessage);
       // throw new Error(errorMessage); // FIX <<
-      return validatedPageModel
+      return {
+        pageModel: validatedPageModel,
+        contentNavigation: []
+      };
     } else {
       // ! STAGE 2: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
       const hydratedPageModel = await collectDynamicContentFor(validatedPageModel);
@@ -137,9 +140,12 @@ const renderURLrequestedModels = async function(pathValidationQuery: PathValidat
       } else {
         // ! STAGE 3: COMPILE the contentModel(s) into a CONTENT_STRUCTURE_SCHEMA
         const targetTier = validatedPageModel.tierPosition;
-        const finishedPageModel = await stackNestedContentStructure(hydratedPageModel, targetTier);
+        const finalizedPageModel = await stackNestedContentStructure(hydratedPageModel, targetTier);
 
-        return finishedPageModel;
+        return {
+          pageModel: finalizedPageModel,
+          contentNavigation: [{test: 'nerp'}]
+        };
       }
     }
   } catch(err) {

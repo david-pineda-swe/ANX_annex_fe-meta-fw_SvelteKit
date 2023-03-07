@@ -13,3 +13,5 @@ import { writable } from "svelte/store";
 
 // TODO - [] 
 // TODO - [] -
+
+export const contentNavigation = writable([]); // ! FOR DYNAMIC HCMS PAGES ONLY

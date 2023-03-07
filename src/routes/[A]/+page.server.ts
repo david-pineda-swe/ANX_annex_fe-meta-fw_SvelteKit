@@ -4,19 +4,18 @@ import type { DynamicRouteData } from 'src/global';
 
   // TODO - VERIFY WHAT HAPPEMS TO request.params IF URL INCLUDES QUERY PARAMS
 
-  export const load = async (request: LoadEvent): Promise<DynamicRouteData> => {    
-    const pageModel = await annexRouter.renderURLrequestedModels({
+  export const load = async (request: LoadEvent): Promise<DynamicRouteData> => {
+    const requestedModels = await annexRouter.renderURLrequestedModels({
       tierPositionKey: 'A', // of a tierSequenceIndex
       // tierPositionLabel: 'APPLE', // of a tierSequenceIndex
       serializedUrlPath: request.params
     });
 
     // DEBUG -
-    // console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_A:", pageModel);
+    console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_A:", requestedModels.pageModel);
+    console.log(">> WHAT IS THE COTNENT_NAV_OUTLINE @ TIER_A:", requestedModels.contentNavigation);
 
-    return {
-      pageModel
-    };
+    return requestedModels;
 
     // TODO - RETEST ERROR HANDLING
     // TODO -  CREATE PROJECT SPIN UP CHECK LIST
@@ -33,7 +32,7 @@ import type { DynamicRouteData } from 'src/global';
   }
 
   // START HERE >>
-  // TODO - [] verify pageModel data can get to layout
+  // TODO - [X] verify pageModel data can get to layout - via svelte store "navigation-outlines"
   // TODO - [] parse main navigation from site-graph
   // TODO - [] consider secondary navigation models
   // TODO - [] render on mobile first
