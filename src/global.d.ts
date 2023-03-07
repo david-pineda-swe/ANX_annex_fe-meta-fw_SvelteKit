@@ -70,9 +70,9 @@ interface ContentSegment extends SchemaNode {
 
 // ! ---PAGE_ROUTE---
 interface ControlError {
-  severity?: string,
+  severity?: string, // warn, hign, priority
   process?:string,
-  error?: string
+  message?: string
 }
 
 interface FlowControlTraits {
@@ -94,12 +94,12 @@ interface PageRoute extends SchemaNode {
   // nodeMeta
 
   // - CONTENT
-  content: ContentSegment
+  content?: ContentSegment
   subRoutes?: Array<pageRoute>,
 
   // - ROUTE STATE
   error?: ControlError
-  flowControl: FlowControlTraits,
+  flowControl?: FlowControlTraits,
 
   // - ROUTE DEFINITION KEYS
   tier: string,

@@ -70,12 +70,12 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
 
   const tempRouteResults = [];
 
-  const pageRouteSequence = await tierProgression.map((currentTier: string, i: number) => {
+  const pageRouteSequence = tierProgression.map((currentTier: string, i: number) => {
     let targetRoute: PageRoute;
     const requestedRouteSlug = serializedUrlPath[currentTier];
 
     if (i === 0) {
-      targetRoute = routeStructure;
+      targetRoute = routeStructure.slug.includes(requestedRouteSlug) ? routeStructure : undefined;
     } else {
       // Find targetTierRoute by routeTier index & routeSlug match from parent
       const parentTierRoute = tempRouteResults[i - 1];
@@ -83,10 +83,22 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
         const { tier, slug } = pageRoute;
         
         return tier === currentTier && slug.includes(requestedRouteSlug); // ! << /example-slug || example-slug
-      })[0];      
+      })[0]; // ! << FIRST RESULT      
     }
 
-    // TODO: ERROR HANDLE FOR NULL RESULT
+    // Add a default error proxy for undefined targetRoute
+    targetRoute = (targetRoute != undefined) ? targetRoute : {
+      error: {
+        severity: 'warn',
+        process: 'validateRouteForTier > pageRouteSequence filtering',
+        message: 'route not available'
+      },
+      nodeType: 'PAGE_ROUTE',
+      nodeId: 'n/a',
+      tier: currentTier,
+      category: 'n/a',
+      slug: requestedRouteSlug
+    };
 
     tempRouteResults.push(targetRoute);
     return targetRoute;
@@ -94,8 +106,11 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
 
   // ! All tiers must be satisfied w/ a PAGE_ROUTE
   const allTiersAreResolved = pageRouteSequence.every((pageRoute) => {
-    return pageRoute !== undefined; // TODO: or empty() util
+    return pageRoute !== undefined && !pageRoute.error; // TODO: or empty() util
   });
+
+  // console.log('\n>> ALL TIERS RESOLVED:\n', allTiersAreResolved);
+  // console.log('\n>> PAGE_ROUTE_SEQ:\n', pageRouteSequence);
   
   return {
     // state
@@ -114,7 +129,7 @@ const renderURLrequestedModels = async function(pathValidationQuery: PathValidat
 
     if (!validatedPageModel.allTiersAreResolved) {
       // FAIL: (!) No PageRoute model for requested URL path (!) 
-      const { tierPosition, pageRouteSequence} = validatedPageModel;
+      const { tierPosition, pageRouteSequence } = validatedPageModel;
       const firstPageRoute = pageRouteSequence[0] // TODO: TARGET BY THE TIER POSITION THAT APP IS ON
 
       const errorMessage = (pageRouteSequence[0])
