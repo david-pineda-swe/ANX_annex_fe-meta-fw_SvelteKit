@@ -75,6 +75,7 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
     const requestedRouteSlug = serializedUrlPath[currentTier];
 
     if (i === 0) {
+      // FIX - PARTIAL MATCHES WORK te => test-a
       targetRoute = routeStructure.slug.includes(requestedRouteSlug) ? routeStructure : undefined;
     } else {
       // Find targetTierRoute by routeTier index & routeSlug match from parent
@@ -122,14 +123,32 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   };
 }
 
+interface ParseNaveArgs {
+  routeStructure: PageRoute
+}
+const parseContentNavigation = async function(parseNavArgs: ParseNaveArgs):Promise<any> {
+
+  console.log('>> working with ROUTE_STRUCTURE:', parseNavArgs.routeStructure);
+  
+
+  return [];
+};
+
 const renderURLrequestedModels = async function(pathValidationQuery: PathValidationQuery):Promise<DynamicRouteData> {
   try {
     // ! STAGE 1: VALIDATE URL_PATH for PAGE_ROUTE_SEQUENCE
-    const validatedPageModel = await validateRouteForTier(pathValidationQuery);
+    // TODO - ABSTRACT THE COLLECTION OF THE SITE-GRAPH
 
-    if (!validatedPageModel.allTiersAreResolved) {
+    // TODO - NAVIGATION PARSING HERE AS WELL
+
+    // TODO - PROVIDE THE SG INTO THIS PROCESS
+    const workingPageModel = await validateRouteForTier(pathValidationQuery);
+
+    // console.log('>> TEST VALIDATED_PAGE_MODEL:', workingPageModel);
+
+    if (!workingPageModel.allTiersAreResolved) {
       // FAIL: (!) No PageRoute model for requested URL path (!) 
-      const { tierPosition, pageRouteSequence } = validatedPageModel;
+      const { tierPosition, pageRouteSequence } = workingPageModel;
       const firstPageRoute = pageRouteSequence[0] // TODO: TARGET BY THE TIER POSITION THAT APP IS ON
 
       const errorMessage = (pageRouteSequence[0])
@@ -139,12 +158,13 @@ const renderURLrequestedModels = async function(pathValidationQuery: PathValidat
       console.error(errorMessage);
       // throw new Error(errorMessage); // FIX <<
       return {
-        pageModel: validatedPageModel,
+        pageModel: workingPageModel,
+        // TODO - CREATE PARSE PROCESS OF siteGraph.routeStructure
         contentNavigation: []
       };
     } else {
       // ! STAGE 2: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
-      const hydratedPageModel = await collectDynamicContentFor(validatedPageModel);
+      const hydratedPageModel = await collectDynamicContentFor(workingPageModel);
   
       // TODO: LOGGER - VERBOSE INFO >>
       // hydratedPageModel.pageRouteSequence.forEach(routeConfig => console.table(routeConfig));
@@ -155,11 +175,14 @@ const renderURLrequestedModels = async function(pathValidationQuery: PathValidat
           // todo: test missing content fail over
       } else {
         // ! STAGE 3: COMPILE the contentModel(s) into a CONTENT_STRUCTURE_SCHEMA
-        const targetTier = validatedPageModel.tierPosition;
-        const finalizedPageModel = await stackNestedContentStructure(hydratedPageModel, targetTier);
+        const targetTier = workingPageModel.tierPosition;
+        const completePageModel = await stackNestedContentStructure(hydratedPageModel, targetTier);
+
+        console.log('>> TEST COMPLETED_PAGE_MODEL:', completePageModel);
 
         return {
-          pageModel: finalizedPageModel,
+          pageModel: completePageModel,
+          // TODO - CREATE PARSE PROCESS OF siteGraph.routeStructure - Should be a navigation outline at this point - X too many requests for the same data ?
           contentNavigation: [{test: 'nerp'}]
         };
       }

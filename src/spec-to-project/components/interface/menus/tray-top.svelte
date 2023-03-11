@@ -11,6 +11,8 @@
 
 <div class="menu-interface top-menu">
   <h1>test TOP menu-tray <span class="merp">@$pec/interface/menus</span></h1>
+  
+  <!-- TODO - dynamic nav insertion here -->
   <nav class="test-nav">
     <ul class="nav-list">
       <li class="nav-item">test item</li>
