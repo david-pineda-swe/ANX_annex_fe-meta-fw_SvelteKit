@@ -1,30 +1,38 @@
 // const DEFAULT_STRING = 'default_page_route';
 
+import type { PageRoute } from "src/global";
+
 // START HERE BY MOCKING A PAGE_ROUTE FROM THE CONTENT DRIVER PROTO
 
 export function mockPageRoute(props: PageRoute): PageRoute {
   if (props) {
     // DYNAMIC MOCK
     const {
+      // ! META
       nodeId,
       nodeType,
       nodeMeta,
-      //
-      content,
-      subRoutes,
-      //
-      // error,
-      flowControl,
+      // routeMeta - TBD
+      // - searchTags
+      // - openGraph
+      // ! NAVIGATION
       tier,
+      label,
       category,
       slug,
-      // openGraph
-      // searchTags
+      // ! STATE MANAGEMENT
+      // error,
+      flowControl,
+      // ! CONTENT
+      content,
+      subRoutes,
     } = props;
     return {
       nodeType: nodeType || 'n/a',
       nodeId: nodeId,
       nodeMeta,
+      //
+      label,
       //
       content,
       subRoutes: subRoutes || [],
@@ -36,6 +44,7 @@ export function mockPageRoute(props: PageRoute): PageRoute {
         C_navVisible: true,
         D_published: true,
         E_renderAsParentRoute: true,
+        F_renderAsIndependentRoute: true
       },
       tier: tier || 'ERROR',
       category: category || 'N/A',

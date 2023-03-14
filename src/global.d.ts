@@ -89,26 +89,24 @@ interface FlowControlTraits {
 // - PAGE ROUTE
 interface PageRoute extends SchemaNode {
   // - EXTENDED FROM SchemaNode
+  // ! META
   // nodeId
   // nodeType
   // nodeMeta
-
-  // - CONTENT
-  content?: ContentSegment
-  subRoutes?: Array<pageRoute>,
-
-  // - ROUTE STATE
-  error?: ControlError
-  flowControl?: FlowControlTraits,
-
-  // - ROUTE DEFINITION KEYS
-  tier: string,
-  category: string,
-  slug: string,
-
-  // - ROUTE DETAILS
-  // openGraph: string, // ! < TODO
-  // searchTags: Array<string>
+  // routeMeta - TBD
+  // - searchTags
+  // - openGraph
+  // ! NAVIGATION
+  tier: string;
+  label: string;
+  category: string;
+  slug: string;
+  // ! STATE MANAGEMENT
+  error?: ControlError;
+  flowControl?: FlowControlTraits;
+  // ! CONTENT
+  content?: ContentSegment;
+  subRoutes?: Array<pageRoute>;
 }
 
 interface ContentTier {

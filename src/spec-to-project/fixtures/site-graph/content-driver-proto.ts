@@ -75,6 +75,13 @@ export const ProtoSiteGraph = {
       editedBy: null,
       notes: ''
     }),
+    // routeMeta - TBD
+    // - searchTags
+    // - openGraph
+    tier: 'A',
+    label: 'Test Route A-1: Alice',
+    category: 'category',
+    slug: "/test-a",
     // error
     flowControl: {
       A_indexOnly: true,
@@ -84,10 +91,6 @@ export const ProtoSiteGraph = {
       E_renderAsParentRoute: false,
       F_renderAsIndependentRoute: true
     },
-    tier: 'A',
-    category: 'category',
-    slug: "/test-a",
-    // routeMeta: // !
     content: mockContentSegment({ // START - PAGE_CONTENT
       nodeId: 'page-test-a',
       nodeType: 'PAGE_CONTENT',
@@ -269,6 +272,13 @@ export const ProtoSiteGraph = {
           editedBy: null,
           notes: ''
         }),
+        // routeMeta - TBD
+        // - searchTags
+        // - openGraph
+        tier: 'B',
+        label: 'Test Route B-1: Bob',
+        category: 'category',
+        slug: "/test-b",
         // error
         flowControl: {
           A_indexOnly: true,
@@ -278,10 +288,6 @@ export const ProtoSiteGraph = {
           E_renderAsParentRoute: true,
           F_renderAsIndependentRoute: false
         },
-        tier: 'B',
-        category: 'category',
-        slug: "/test-b",
-        // routeMeta: // !
         content: mockContentSegment({ // START - PAGE_CONTENT
           nodeId: 'page-test-b',
           nodeType: 'PAGE_CONTENT',
@@ -424,6 +430,13 @@ export const ProtoSiteGraph = {
               editedBy: null,
               notes: ''
             }),
+            // routeMeta - TBD
+            // - searchTags
+            // - openGraph
+            tier: 'C',
+            label: 'Test Route C-1: Casey',
+            category: 'category',
+            slug: "/test-c",
             // error
             flowControl: {
               A_indexOnly: true,
@@ -433,10 +446,6 @@ export const ProtoSiteGraph = {
               E_renderAsParentRoute: true,
               F_renderAsIndependentRoute: false
             },
-            tier: 'C',
-            category: 'category',
-            slug: "/test-c",
-            // routeMeta: // !
             content: mockContentSegment({ // START - PAGE_CONTENT
               nodeId: 'page-test-c',
               nodeType: 'PAGE_CONTENT',
