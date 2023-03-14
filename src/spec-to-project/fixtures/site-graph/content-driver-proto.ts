@@ -55,12 +55,13 @@ export const ProtoSiteGraph = {
     notes: ''
   }),
 
-  // integrations: { // !
+  // TODO - THIRD PARTY INTEGRATIONS
+  // integrations: {
   //   firstParty: [],
   //   thirdParty: []
   // },
 
-  routeStructure: mockPageRoute({ // REKEY:  => routeStructure
+  routeStructure: [mockPageRoute({ // REKEY:  => serializePageRoute
     // ! PAGE_ROUTE: A-1
     nodeId: 'A-1',
     nodeType: 'PAGE_ROUTE',
@@ -577,5 +578,5 @@ export const ProtoSiteGraph = {
         ]
         })
       ]
-  })
+  })]
 }

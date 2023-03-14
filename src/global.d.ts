@@ -123,7 +123,7 @@ interface SiteGraph extends SchemaNode {
   // nodeMeta: NodeMeta
 
   // integrations // ! TODO
-  routeStructure: PageRoute
+  routeStructure: Array<PageRoute>
 }
 
 //! ---ANNEX_CONTENT_DRIVER_RESULTS---
