@@ -2,8 +2,8 @@ import { collectDynamicContentFor, stackNestedContentStructure } from "./annex-c
 
 // X - siteGraph fixture will be replaced by call to HCMS
 // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
-import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph/content-driver-proto'
-import type { DynamicRouteData, PageModelResult, PageRoute } from "src/global";
+import { ProtoSiteGraph as SiteGraphFixture } from '$pec/fixtures/site-graph/content-driver-proto'
+import type { DynamicRouteData, PageModelResult, PageRoute, SiteGraph } from "src/global";
 
 // TBD: Create a dynamic router class that will
 // - that constructs the router
@@ -36,15 +36,16 @@ const TIER_SEQUENCE_INDEX = {
   C: 'COOK'
 };
 
-const validateRouteForTier = async function(pathValidationQuery: PathValidationQuery):Promise<PageModelResult> {
-  const {tierPositionKey, tierPositionLabel, serializedUrlPath} = pathValidationQuery;
-
-  // TODO: POSSIBLE ADAPTER FOR ROUTE_SEQUNECE >>>
+const requestSiteGraphData = async function():Promise<SiteGraph> {
+  // TODO: POSSIBLE NETWORK ADAPTER FOR ROUTE_SEQUNECE >>>
   // X should be coming from Svelte store if previously loaded
-  // TODO: ACCESS TO SITE-GRAPH
-  // console.log('>> SITE_GRAPH FIXTURE:', SiteGraph);
-  const routeStructure = SiteGraph.routeStructure; // X TBD
-  
+  // console.log('>> requestSiteGraphData SITE_GRAPH FIXTURE:', SiteGraphFixture);
+
+  return SiteGraphFixture; // NOTE - <<< CONNECTION TO FIXTURE IMPORT - WILL BE A STORE CHECK THEN NETWORK REQUEST <<<
+};
+
+const validateRouteForTier = async function(pathValidationQuery: PathValidationQuery, routeStructure: Array<PageRoute>):Promise<PageModelResult> {
+  const {tierPositionKey, tierPositionLabel, serializedUrlPath} = pathValidationQuery;  
 
   // TODO: ABSTRACT THE DERIVED TIER PROGRESSION
   let tierPosition: string;
@@ -76,7 +77,7 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
 
     if (i === 0) {
       // FIX - PARTIAL MATCHES WORK te => test-a
-      targetRoute = routeStructure.slug.includes(requestedRouteSlug) ? routeStructure : undefined;
+      targetRoute = routeStructure[0].slug.includes(requestedRouteSlug) ? routeStructure[0] : null;
     } else {
       // Find targetTierRoute by routeTier index & routeSlug match from parent
       const parentTierRoute = tempRouteResults[i - 1];
@@ -123,26 +124,44 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   };
 }
 
-interface ParseNaveArgs {
-  routeStructure: PageRoute
+const createNavNodeFrom = function(pageRoute:PageRoute) {
+  const { label, slug, nodeId } = pageRoute;
+
+   // TODO - NOT EMPTY
+  const subNodes = pageRoute.subRoutes.map((subPageRoute: PageRoute) => {
+    return createNavNodeFrom(subPageRoute);
+  });
+
+  return {
+    label,
+    slug,
+    nodeId,
+    subNodes
+  }
 }
-const parseContentNavigation = async function(parseNavArgs: ParseNaveArgs):Promise<any> {
 
-  console.log('>> working with ROUTE_STRUCTURE:', parseNavArgs.routeStructure);
+const parseContentNavigationFrom = async function(routeStructure: Array<PageRoute>):Promise<any> {
+  // TODO - INTEGRATE PROJECT CONFIG - CONTENT_NAV_RENDER_DEPTH
+  console.log('>> CONFIRMED ROUTE_STRUCTURE for parseContentNavigationFrom:', routeStructure);
   
+  const result = await routeStructure.map((pageRoute:PageRoute) => {
+    return createNavNodeFrom(pageRoute);
+  });
 
-  return [];
+  return result;
 };
 
 const renderURLrequestedModels = async function(pathValidationQuery: PathValidationQuery):Promise<DynamicRouteData> {
   try {
-    // ! STAGE 1: VALIDATE URL_PATH for PAGE_ROUTE_SEQUENCE
-    // TODO - ABSTRACT THE COLLECTION OF THE SITE-GRAPH
-
-    // TODO - NAVIGATION PARSING HERE AS WELL
-
-    // TODO - PROVIDE THE SG INTO THIS PROCESS
-    const workingPageModel = await validateRouteForTier(pathValidationQuery);
+    // ! STAGE 1: COLLECT SITE_GRAPH
+    const collectedSiteGraph = await requestSiteGraphData();
+    const { routeStructure } = collectedSiteGraph;
+    
+    // ! STAGE 2: PARSE THE CONTENT_NAVIGATION
+    const contentNavigation = await parseContentNavigationFrom(routeStructure);
+    
+    // ! STAGE 3: VALIDATE REQUESTED URL_PATH VIA PAGE_ROUTE_SEQUENCE OF ROUTE_STRUCTURE
+    const workingPageModel = await validateRouteForTier(pathValidationQuery, routeStructure);
 
     // console.log('>> TEST VALIDATED_PAGE_MODEL:', workingPageModel);
 
@@ -160,10 +179,10 @@ const renderURLrequestedModels = async function(pathValidationQuery: PathValidat
       return {
         pageModel: workingPageModel,
         // TODO - CREATE PARSE PROCESS OF siteGraph.routeStructure
-        contentNavigation: []
+        contentNavigation
       };
     } else {
-      // ! STAGE 2: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
+      // ! STAGE 4: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
       const hydratedPageModel = await collectDynamicContentFor(workingPageModel);
   
       // TODO: LOGGER - VERBOSE INFO >>
@@ -174,16 +193,16 @@ const renderURLrequestedModels = async function(pathValidationQuery: PathValidat
           // FAIL: 
           // todo: test missing content fail over
       } else {
-        // ! STAGE 3: COMPILE the contentModel(s) into a CONTENT_STRUCTURE_SCHEMA
+        // OK >>
+        // ! STAGE 5: COMPILE the contentModel(s) into a CONTENT_STRUCTURE_SCHEMA
         const targetTier = workingPageModel.tierPosition;
         const completePageModel = await stackNestedContentStructure(hydratedPageModel, targetTier);
 
-        console.log('>> TEST COMPLETED_PAGE_MODEL:', completePageModel);
+        // console.log('>> TEST COMPLETED_PAGE_MODEL:', completePageModel);
 
         return {
           pageModel: completePageModel,
-          // TODO - CREATE PARSE PROCESS OF siteGraph.routeStructure - Should be a navigation outline at this point - X too many requests for the same data ?
-          contentNavigation: [{test: 'nerp'}]
+          contentNavigation
         };
       }
     }
