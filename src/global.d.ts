@@ -87,18 +87,36 @@ interface FlowControlTraits {
 }
 
 // - PAGE ROUTE
+interface NavigationNode {
+  nodeId: string;
+  label: string;
+  alt: string;
+  prefetch: bool;
+  internalNavigation: bool;
+  //
+  targetSource?: string;
+  elementId?: string;
+  classes?: string;
+  url?: string;
+  slug?: string;
+  subNodes?: Array<NavigationNode>
+}
+
+interface RouteMeta {
+  // searchTags? // TBD 
+  // openGraph? // TBD 
+  navigationNode?: NavigationNode
+}
+
 interface PageRoute extends SchemaNode {
   // - EXTENDED FROM SchemaNode
   // ! META
   // nodeId
   // nodeType
   // nodeMeta
-  // routeMeta - TBD
-  // - searchTags
-  // - openGraph
+  routeMeta?: RouteMeta;
   // ! NAVIGATION
   tier: string;
-  label: string;
   category: string;
   slug: string;
   // ! STATE MANAGEMENT
@@ -143,6 +161,5 @@ interface PageModelResult {
 
 interface DynamicRouteData {
   pageModel: PageModelResult;
-  // TODO - Make Interface
-  contentNavigation: Array<unknown>
+  contentNavigation: Array<NavigationNode>
 }

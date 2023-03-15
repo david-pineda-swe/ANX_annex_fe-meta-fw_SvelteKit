@@ -2,6 +2,7 @@
 
 import { mockNodeMeta } from "./mock-node-meta";
 import { mockPageRoute } from "./mock-page-route";
+import { mockNavigationNode } from "./mock-navigation-node";
 import { mockContentSegment } from "./mock-content-segment";
 
 import fs from 'fs';
@@ -76,11 +77,18 @@ export const ProtoSiteGraph = {
       editedBy: null,
       notes: ''
     }),
-    // routeMeta - TBD
-    // - searchTags
-    // - openGraph
+    routeMeta: {
+      // - searchTags
+      // - openGraph
+      navigationNode: mockNavigationNode({
+        nodeId: '*',
+        label: 'Test Route A-1: Alice',
+        alt: "Test route a-1 Alice",
+        prefetch: true,
+        internalNavigation: true
+      })
+    },
     tier: 'A',
-    label: 'Test Route A-1: Alice',
     category: 'category',
     slug: "/test-a",
     // error
@@ -273,11 +281,18 @@ export const ProtoSiteGraph = {
           editedBy: null,
           notes: ''
         }),
-        // routeMeta - TBD
-        // - searchTags
-        // - openGraph
+        routeMeta: {
+          // - searchTags
+          // - openGraph
+          navigationNode: mockNavigationNode({
+            nodeId: '*',
+            label: 'Test Route B-1: Bob',
+            alt: "Test route b-1 Bob",
+            prefetch: true,
+            internalNavigation: true
+          })
+        },
         tier: 'B',
-        label: 'Test Route B-1: Bob',
         category: 'category',
         slug: "/test-b",
         // error
@@ -431,11 +446,18 @@ export const ProtoSiteGraph = {
               editedBy: null,
               notes: ''
             }),
-            // routeMeta - TBD
-            // - searchTags
-            // - openGraph
+            routeMeta: {
+              // - searchTags
+              // - openGraph
+              navigationNode: mockNavigationNode({
+                nodeId: '*',
+                label: 'Test Route C-1: Casey',
+                alt: "Test route c-1 Casey",
+                prefetch: true,
+                internalNavigation: true
+              })
+            },
             tier: 'C',
-            label: 'Test Route C-1: Casey',
             category: 'category',
             slug: "/test-c",
             // error

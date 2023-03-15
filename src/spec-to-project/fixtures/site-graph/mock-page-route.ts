@@ -12,12 +12,12 @@ export function mockPageRoute(props: PageRoute): PageRoute {
       nodeId,
       nodeType,
       nodeMeta,
-      // routeMeta - TBD
+      routeMeta,
       // - searchTags
       // - openGraph
+      // - navigationNode
       // ! NAVIGATION
       tier,
-      label,
       category,
       slug,
       // ! STATE MANAGEMENT
@@ -28,15 +28,19 @@ export function mockPageRoute(props: PageRoute): PageRoute {
       subRoutes,
     } = props;
     return {
-      nodeType: nodeType || 'n/a',
+      // ! META
       nodeId: nodeId,
+      nodeType: nodeType || 'n/a',
       nodeMeta,
-      //
-      label,
-      //
-      content,
-      subRoutes: subRoutes || [],
-      //
+      routeMeta,
+      // - searchTags
+      // - openGraph
+      // - navigationNode
+      // ! NAVIGATION
+      tier: tier || 'ERROR',
+      category: category || 'N/A',
+      slug: slug || 'N/A',
+      // ! STATE MANAGEMENT
       // error
       flowControl: flowControl || {
         A_indexOnly: true,
@@ -46,11 +50,9 @@ export function mockPageRoute(props: PageRoute): PageRoute {
         E_renderAsParentRoute: true,
         F_renderAsIndependentRoute: true
       },
-      tier: tier || 'ERROR',
-      category: category || 'N/A',
-      slug: slug || 'N/A'
-      // openGraph // ! << TODO
-      // searchtags // ! << TODO
+      // ! CONTENT
+      content,
+      subRoutes: subRoutes || [],
     };
   } else {
     // ! NO PROPS !

@@ -3,7 +3,7 @@ import { collectDynamicContentFor, stackNestedContentStructure } from "./annex-c
 // X - siteGraph fixture will be replaced by call to HCMS
 // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
 import { ProtoSiteGraph as SiteGraphFixture } from '$pec/fixtures/site-graph/content-driver-proto'
-import type { DynamicRouteData, PageModelResult, PageRoute, SiteGraph } from "src/global";
+import type { DynamicRouteData, NavigationNode, PageModelResult, PageRoute, SiteGraph } from "src/global";
 
 // TBD: Create a dynamic router class that will
 // - that constructs the router
@@ -90,16 +90,16 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
 
     // Add a default error proxy for undefined targetRoute
     targetRoute = (targetRoute != undefined) ? targetRoute : {
-      error: {
-        severity: 'warn',
-        process: 'validateRouteForTier > pageRouteSequence filtering',
-        message: 'route not available'
-      },
       nodeType: 'PAGE_ROUTE',
       nodeId: 'n/a',
       tier: currentTier,
       category: 'n/a',
-      slug: requestedRouteSlug
+      slug: requestedRouteSlug,
+      error: {
+        severity: 'warn',
+        process: 'validateRouteForTier > pageRouteSequence filtering',
+        message: 'route not available'
+      }
     };
 
     tempRouteResults.push(targetRoute);
@@ -124,8 +124,14 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   };
 }
 
-const createNavNodeFrom = function(pageRoute:PageRoute) {
-  const { label, slug, nodeId } = pageRoute;
+const createNavNodeFrom = function(pageRoute:PageRoute): NavigationNode {
+  const { slug, routeMeta: { navigationNode: {
+    nodeId,
+    label,
+    alt,
+    prefetch,
+    internalNavigation
+  } } } = pageRoute;
 
    // TODO - NOT EMPTY
   const subNodes = pageRoute.subRoutes.map((subPageRoute: PageRoute) => {
@@ -133,22 +139,24 @@ const createNavNodeFrom = function(pageRoute:PageRoute) {
   });
 
   return {
-    label,
-    slug,
     nodeId,
+    label,
+    alt,
+    prefetch,
+    internalNavigation,
+    //
+    slug,
     subNodes
   }
 }
 
-const parseContentNavigationFrom = async function(routeStructure: Array<PageRoute>):Promise<any> {
+const parseContentNavigationFrom = async function(routeStructure: Array<PageRoute>):Promise<NavigationNode[]> {
   // TODO - INTEGRATE PROJECT CONFIG - CONTENT_NAV_RENDER_DEPTH
-  console.log('>> CONFIRMED ROUTE_STRUCTURE for parseContentNavigationFrom:', routeStructure);
-  
-  const result = await routeStructure.map((pageRoute:PageRoute) => {
+  const parseResult = await routeStructure.map((pageRoute:PageRoute) => {
     return createNavNodeFrom(pageRoute);
   });
 
-  return result;
+  return parseResult;
 };
 
 const renderURLrequestedModels = async function(pathValidationQuery: PathValidationQuery):Promise<DynamicRouteData> {
