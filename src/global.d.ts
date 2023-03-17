@@ -163,3 +163,21 @@ interface DynamicRouteData {
   pageModel: PageModelResult;
   contentNavigation: Array<NavigationNode>
 }
+
+interface NavigationConfig {
+  dataSource: string;
+  menuLocation: string;
+  mobileOnly: boolean;
+  navigationType: string; // shallow, nested, expandable
+  navListItems: Array<NavigationNode>
+  //
+  elementId?: string;
+  classes?: string;
+}
+
+interface ProjectConfig {
+  // siteMeta: ???
+  // indexRouteMeta: RouteMeta
+  // thirdPartyConfigs: any
+  navigations: Array<NavigationConfig>
+}

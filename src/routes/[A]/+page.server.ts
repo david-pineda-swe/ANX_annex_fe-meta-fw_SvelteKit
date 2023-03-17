@@ -33,7 +33,8 @@ import type { DynamicRouteData } from 'src/global';
 
   // START HERE >>
   // TODO - [X] verify pageModel data can get to layout - via svelte store "navigation-outlines"
-  // TODO - [] parse main navigation from site-graph
+  // TODO - [x] parse main navigation from site-graph
+  // TODO - [x] create project config and subset for navigation configuration
   // TODO - [] consider secondary navigation models
   // TODO - [] render on mobile first
   // TODO - [] render on desktop
