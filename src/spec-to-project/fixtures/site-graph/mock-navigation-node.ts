@@ -10,7 +10,7 @@ export function mockNavigationNode(props: NavigationNode): NavigationNode {
       label,
       alt,
       prefetch,
-      internalNavigation,
+      internalRoute,
       //
       targetSource,
       elementId,
@@ -25,7 +25,7 @@ export function mockNavigationNode(props: NavigationNode): NavigationNode {
       label: label || 'N/A',
       alt: alt || 'Not available',
       prefetch: prefetch || true,
-      internalNavigation: internalNavigation || true,
+      internalRoute: internalRoute || true,
       //
       targetSource: targetSource || '',
       elementId: elementId || '',

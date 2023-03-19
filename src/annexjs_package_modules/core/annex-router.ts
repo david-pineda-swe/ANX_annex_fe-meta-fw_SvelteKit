@@ -130,7 +130,7 @@ const createNavNodeFrom = function(pageRoute:PageRoute): NavigationNode {
     label,
     alt,
     prefetch,
-    internalNavigation
+    internalRoute
   } } } = pageRoute;
 
    // TODO - NOT EMPTY
@@ -143,7 +143,7 @@ const createNavNodeFrom = function(pageRoute:PageRoute): NavigationNode {
     label,
     alt,
     prefetch,
-    internalNavigation,
+    internalRoute,
     //
     slug,
     subNodes

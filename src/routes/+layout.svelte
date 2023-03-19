@@ -1,6 +1,7 @@
 <script lang="ts">
 	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
 
+	import generateProjectConfiguration from "$pec/config/project";
 	import TopTray from '$pec/components/interface/menus/tray-top.svelte';
 	import RightTray from '$pec/components/interface/menus/tray-right.svelte';
 	import BottomTray from '$pec/components/interface/menus/tray-bottom.svelte';
@@ -8,9 +9,11 @@
 	import Footer from '$pec/components/interface/footer.svelte';
 
 	import '../app.scss';
+
+	const { navigations } = generateProjectConfiguration();	
 </script>
 
-<NavInterface>
+<NavInterface navigations={navigations}>
 	<!-- TOP_TRAY_INTERFACE -->
 	<TopTray slot="tray-interface-tp"/>
 

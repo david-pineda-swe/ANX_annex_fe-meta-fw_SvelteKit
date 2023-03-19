@@ -85,7 +85,7 @@ export const ProtoSiteGraph = {
         label: 'Test Route A-1: Alice',
         alt: "Test route a-1 Alice",
         prefetch: true,
-        internalNavigation: true
+        internalRoute: true
       })
     },
     tier: 'A',
@@ -289,7 +289,7 @@ export const ProtoSiteGraph = {
             label: 'Test Route B-1: Bob',
             alt: "Test route b-1 Bob",
             prefetch: true,
-            internalNavigation: true
+            internalRoute: true
           })
         },
         tier: 'B',
@@ -454,7 +454,7 @@ export const ProtoSiteGraph = {
                 label: 'Test Route C-1: Casey',
                 alt: "Test route c-1 Casey",
                 prefetch: true,
-                internalNavigation: true
+                internalRoute: true
               })
             },
             tier: 'C',

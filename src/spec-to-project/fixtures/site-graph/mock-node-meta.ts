@@ -1,3 +1,4 @@
+import type { NodeMeta } from "src/global";
 import { mockProjectUser } from "./mock-project-user"
 
 const DEFAULT_STRING = "default_node_meta";

@@ -1,11 +1,13 @@
 import type { ProjectConfig } from "src/global";
 import { NavigationConfigurations } from "./navigation";
 
-export const ProjectConfiguration = (): ProjectConfig => {
+const generateProjectConfiguration = (): ProjectConfig => {
   return {
-    // siteMeta: {} // override site Graph
+    // siteMeta: {} // deffers to site Graph
     // indexRouteMeta
     // thirdPartyConfigs: {}
     navigations: NavigationConfigurations()
   };
 }
+
+export default generateProjectConfiguration;

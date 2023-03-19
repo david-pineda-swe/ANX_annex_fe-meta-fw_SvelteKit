@@ -92,13 +92,14 @@ interface NavigationNode {
   label: string;
   alt: string;
   prefetch: bool;
-  internalNavigation: bool;
+  internalRoute: bool;
+  slug: string;
   //
+  url?: string;
   targetSource?: string;
   elementId?: string;
   classes?: string;
-  url?: string;
-  slug?: string;
+  icon?: string;
   subNodes?: Array<NavigationNode>
 }
 
@@ -165,14 +166,16 @@ interface DynamicRouteData {
 }
 
 interface NavigationConfig {
-  dataSource: string;
-  menuLocation: string;
-  mobileOnly: boolean;
-  navigationType: string; // shallow, nested, expandable
+  dataSource: string; // SPEC_CONFIG, CONTENT_NAV, CMS_CALL_[QUERY_KEY]
+  menuLocations: Array<string>; // PRIMARY, TP_TRAY, RT_TRAY, BT_TRAY, LT_TRAY, FOOTER
+  navigationType: string; // SHALLOW, NESTED, EXPANDABLE
   navListItems: Array<NavigationNode>
   //
+  menuOrder?: number;
+  navListLabel?: string;
   elementId?: string;
   classes?: string;
+  mobileOnly?: boolean;
 }
 
 interface ProjectConfig {

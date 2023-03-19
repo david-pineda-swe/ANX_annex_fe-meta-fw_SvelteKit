@@ -1,4 +1,6 @@
 <script lang="ts">
+  import type { NavigationConfig } from "src/global";
+
   import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte";
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
@@ -7,6 +9,8 @@
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 
+  export let navigations: Array<NavigationConfig>;
+  
   let headerIsFixed: boolean = true;
   let currentMenuTray: string;
 

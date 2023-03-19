@@ -1,0 +1,68 @@
+{
+  "items": [
+    {
+      "nodeId": "to-home",
+      "label": "Home",
+      "slug": "/",
+      "alt": "go to home page",
+      "prefetch": true,
+      "internalRoute": true
+    },
+    {
+      "nodeId": "to-about",
+      "label": "About",
+      "slug": "/about",
+      "alt": "go to about page",
+      "prefetch": true,
+      "internalRoute": true
+    },
+    {
+      "nodeId": "to-contact",
+      "label": "Contact",
+      "slug": "/contact",
+      "alt": "get in touch and contact us",
+      "prefetch": true,
+      "internalRoute": true
+    },
+    {
+      "nodeId": "to-privacy-policy",
+      "label": "Privacy Policy",
+      "slug": "/privacy-policy",
+      "alt": "See our privacy policy",
+      "prefetch": true,
+      "internalRoute": true
+    },
+    {
+      "nodeId": "to-site-map",
+      "label": "Site Map",
+      "slug": "/sitemap",
+      "alt": "This is Katsup",
+      "prefetch": true,
+      "internalRoute": true
+    },
+    {
+      "nodeId": "to-test-a",
+      "label": "TEST A",
+      "slug": "/test-a",
+      "alt": "This is Katsup",
+      "prefetch": true,
+      "internalRoute": true
+    },
+    {
+      "nodeId": "to-test-b",
+      "label": "TEST B",
+      "slug": "/test-b",
+      "alt": "This is Mustard",
+      "prefetch": true,
+      "internalRoute": true
+    },
+    {
+      "nodeId": "to-test-c",
+      "label": "TEST C",
+      "slug": "/test-c",
+      "alt": "This is hot sauce",
+      "prefetch": true,
+      "internalRoute": true
+    }
+  ]
+}
