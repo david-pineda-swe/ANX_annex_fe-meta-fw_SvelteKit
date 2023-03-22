@@ -77,6 +77,11 @@
     <div class="menu-tray {trayType}"  in:traySlide={{into:true}} out:traySlide={{into:false}}>
       <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
       <div class="interface-container">
+        
+        {#if targetNavigations}
+          <MenuPlotter/>
+        {/if}
+        
         <slot/>
       </div>
     </div>
@@ -87,6 +92,11 @@
     <div class="menu-tray {trayType}"  in:trayFade={{into: true}} out:trayFade={{into: false}}>
       <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
       <div class="interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
+        
+        {#if targetNavigations}
+          <MenuPlotter/>
+        {/if}
+        
         <slot/>
       </div>
     </div>
