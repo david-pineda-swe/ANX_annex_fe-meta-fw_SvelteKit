@@ -30,22 +30,34 @@
 <div id="annex-nav-interface" class="nav-interface-container" class:fixed-header={headerIsFixed}>
   <div class="menu-dock">
     {#if $$slots["tray-interface-tp"]}
-      <MenuTray trayType="top" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
+      <MenuTray
+        trayType="TP_TRAY"
+        toggleMenuTray={toggleMenuTray}
+        currentMenuTray={currentMenuTray}
         <slot name="tray-interface-tp"/>
       </MenuTray>
     {/if}
     {#if $$slots["tray-interface-rt"]}
-      <MenuTray trayType="right" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
+      <MenuTray
+        trayType="RT_TRAY"
+        toggleMenuTray={toggleMenuTray}
+        currentMenuTray={currentMenuTray}
         <slot name="tray-interface-rt"/>
       </MenuTray>
     {/if}
     {#if $$slots["tray-interface-bt"]}
-      <MenuTray trayType="bottom" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
+      <MenuTray
+        trayType="BT_TRAY"
+        toggleMenuTray={toggleMenuTray}
+        currentMenuTray={currentMenuTray}
         <slot name="tray-interface-bt"/>
       </MenuTray>
     {/if}
     {#if $$slots["tray-interface-lt"]}
-      <MenuTray trayType="left" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
+      <MenuTray
+        trayType="LT_TRAY"
+        toggleMenuTray={toggleMenuTray}
+        currentMenuTray={currentMenuTray}
         <slot name="tray-interface-lt"/>
       </MenuTray>
     {/if}
@@ -55,10 +67,12 @@
   <div class="nav-interface-outlet">
     <div class="header-dock">
       <!-- MOBILE_HEADER_SLOT -->
-      <HeaderMobile toggleMenuTray={toggleMenuTray}/>
+      <HeaderMobile
+        toggleMenuTray={toggleMenuTray}
 
       <!-- DESKTOP_HEADER_SLOT -->
-      <HeaderDesktop toggeleMenuTray={toggleMenuTray}/>
+      <HeaderDesktop
+        toggeleMenuTray={toggleMenuTray}
     </div>
 
     <MediaMonitorHud/>

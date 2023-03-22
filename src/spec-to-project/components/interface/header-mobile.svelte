@@ -8,8 +8,8 @@
 
 <header class="mobile-header flex sm:hidden py-2">
   <div class="corner left">
-    <button class="tray-toggle top" on:click={toggleMenuTray('top')}>TP</button>
-    <button class="tray-toggle right" on:click={toggleMenuTray('right')}>RT</button>
+    <button class="tray-toggle tp-tray-btn" on:click={toggleMenuTray('TP_TRAY')}>TP</button>
+    <button class="tray-toggle rt-tray-btn" on:click={toggleMenuTray('RT_TRAY')}>RT</button>
   </div>
 
   <div class="branding center">
@@ -19,8 +19,8 @@
   </div>
 
   <div class="corner right">
-    <button class="tray-toggle bottom" on:click={toggleMenuTray('bottom')}>BT</button>
-    <button class="tray-toggle left" on:click={toggleMenuTray('left')}>LT</button>
+    <button class="tray-toggle bt-tray-btn" on:click={toggleMenuTray('BT_TRAY')}>BT</button>
+    <button class="tray-toggle lt-tray-btn" on:click={toggleMenuTray('LT_TRAY')}>LT</button>
   </div>
 </header>
 
