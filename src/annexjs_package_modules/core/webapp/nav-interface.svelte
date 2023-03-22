@@ -9,6 +9,12 @@
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 
+  // TODO - Collect and merge [siteGraph, $pec/config] navigations
+  // import { contentNavigation } from "@annexjs/core/webapp/stores/navigation-outlines";
+  // let contentNavigationData;
+  // contentNavigation.subscribe((data) => contentNavigationData = data);
+  // console.log('>> TEST: CONFIRM ACCESS OF PAGE MODEL VIA STORE:', contentNavigationData);
+
   export let navigations: Array<NavigationConfig>;
   
   let headerIsFixed: boolean = true;

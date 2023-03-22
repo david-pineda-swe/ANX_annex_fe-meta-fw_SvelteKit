@@ -1,3 +1,5 @@
+<!-- TODO - MOVE TO ANNEX CORE -->
+
 <script lang="ts">
   import logo from './svelte-logo.svg';
 

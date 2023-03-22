@@ -1,3 +1,5 @@
+<!-- TODO - MOVE TO ANNEX CORE -->
+
 <script lang="ts">
   console.log('>> FOOTER_MENU INTERFACE >>');
 </script>

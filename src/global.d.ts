@@ -168,7 +168,8 @@ interface DynamicRouteData {
 interface NavigationConfig {
   dataSource: string; // SPEC_CONFIG, CONTENT_NAV, CMS_CALL_[QUERY_KEY]
   menuLocations: Array<string>; // PRIMARY, TP_TRAY, RT_TRAY, BT_TRAY, LT_TRAY, FOOTER
-  navigationType: string; // SHALLOW, NESTED, EXPANDABLE
+  // TODO - Consider "SWAP_PROXY" for dynamic spec component swap
+  navigationType: string; // SHALLOW, NESTED, EXPANDABLE, SWAP_PROXY(replace w/ $pec component)
   navListItems: Array<NavigationNode>
   //
   menuOrder?: number;
