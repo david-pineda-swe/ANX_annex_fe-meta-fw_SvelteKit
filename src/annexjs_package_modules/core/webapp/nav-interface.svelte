@@ -16,11 +16,12 @@
   // console.log('>> TEST: CONFIRM ACCESS OF PAGE MODEL VIA STORE:', contentNavigationData);
 
   export let navigations: Array<NavigationConfig>;
-  
+
   let headerIsFixed: boolean = true;
   let currentMenuTray: string;
 
   const toggleMenuTray = (selectedTray: string) :void => {
+    // console.log('>> CHECK SELECTED_TRAY:', selectedTray);
     currentMenuTray = selectedTray;
   }
 </script>
@@ -34,6 +35,7 @@
         trayType="TP_TRAY"
         toggleMenuTray={toggleMenuTray}
         currentMenuTray={currentMenuTray}
+        navigations={navigations}>
         <slot name="tray-interface-tp"/>
       </MenuTray>
     {/if}
@@ -42,6 +44,7 @@
         trayType="RT_TRAY"
         toggleMenuTray={toggleMenuTray}
         currentMenuTray={currentMenuTray}
+        navigations={navigations}>
         <slot name="tray-interface-rt"/>
       </MenuTray>
     {/if}
@@ -50,6 +53,7 @@
         trayType="BT_TRAY"
         toggleMenuTray={toggleMenuTray}
         currentMenuTray={currentMenuTray}
+        navigations={navigations}>
         <slot name="tray-interface-bt"/>
       </MenuTray>
     {/if}
@@ -58,6 +62,7 @@
         trayType="LT_TRAY"
         toggleMenuTray={toggleMenuTray}
         currentMenuTray={currentMenuTray}
+        navigations={navigations}>
         <slot name="tray-interface-lt"/>
       </MenuTray>
     {/if}
@@ -69,10 +74,12 @@
       <!-- MOBILE_HEADER_SLOT -->
       <HeaderMobile
         toggleMenuTray={toggleMenuTray}
+        navigations={navigations}/>
 
       <!-- DESKTOP_HEADER_SLOT -->
       <HeaderDesktop
         toggeleMenuTray={toggleMenuTray}
+        navigations={navigations}/>
     </div>
 
     <MediaMonitorHud/>

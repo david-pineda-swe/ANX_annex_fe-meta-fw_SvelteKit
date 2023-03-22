@@ -1,10 +1,20 @@
 <script lang="ts">
-  import { mediaIsMobile } from "@annexjs/core/webapp/stores/reactive-media";
   import { sineIn, quintOut } from 'svelte/easing';
+  import type { NavigationConfig } from "src/global";
+  import filterTargetNavigations from "./filter-target-navigations";
+  import { mediaIsMobile } from "@annexjs/core/webapp/stores/reactive-media";
+    import MenuPlotter from './menu-plotter.svelte';
 
   export let trayType: string;
   export let toggleMenuTray: any;
   export let currentMenuTray: string;
+
+  // Pull targetNav configs
+  export let navigations: Array<NavigationConfig>;
+  const targetNavigations = filterTargetNavigations({
+    navigations,
+    targetMenuLocation: trayType
+  });
 
   let openTray: boolean;
   $:openTray = currentMenuTray === trayType;

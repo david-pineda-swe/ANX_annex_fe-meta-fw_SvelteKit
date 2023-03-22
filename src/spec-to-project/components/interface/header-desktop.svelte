@@ -2,8 +2,22 @@
 
 <script lang="ts">
   import { page } from '$app/stores'; // X - nav sample to be deprecated for dynamic siteGraph nav
+
+  import type { NavigationConfig } from 'src/global';
+  import filterTargetNavigations from '@annexjs/core/webapp/nav-interface/filter-target-navigations';
+
   import logo from './svelte-logo.svg';
+
   export let toggeleMenuTray: any;
+
+  // Pull targetNav configs
+  export let navigations: Array<NavigationConfig>;
+  const targetNavigations = filterTargetNavigations({
+    navigations,
+    targetMenuLocation: 'HEADER_DESKTOP'
+  });
+
+  console.log('>> HEADER_DESKTOP HAS MENUS:', targetNavigations);
 </script>
 
 <header class="desktop-header hidden sm:flex">

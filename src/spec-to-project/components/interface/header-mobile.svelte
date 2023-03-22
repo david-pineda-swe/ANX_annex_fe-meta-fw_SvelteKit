@@ -1,9 +1,22 @@
 <!-- TODO - MOVE TO ANNEX CORE -->
 
 <script lang="ts">
+  import type { NavigationConfig } from 'src/global';
+  import filterTargetNavigations from '@annexjs/core/webapp/nav-interface/filter-target-navigations';
+
   import logo from './svelte-logo.svg';
 
   export let toggleMenuTray: any;
+
+  // Pull targetNav configs
+  export let navigations: Array<NavigationConfig>;
+  const targetNavigations = filterTargetNavigations({
+    navigations,
+    targetMenuLocation: 'HEADER_MOBILE'
+  });
+
+  console.log('>> HEADER_MOBILE HAS MENUS:', targetNavigations);
+  
 </script>
 
 <header class="mobile-header flex sm:hidden py-2">

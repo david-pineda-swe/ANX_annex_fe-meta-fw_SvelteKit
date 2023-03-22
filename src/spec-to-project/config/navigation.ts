@@ -11,7 +11,17 @@ export const NavigationConfigurations = (): NavigationConfig[] => {
     // PRIMARY_NAV
     mockNavigationConfig({
       dataSource: 'SPEC_CONFIG',
-      menuLocations: ['PRIMARY', 'SITE_MENU?'],
+      menuLocations: [
+        'HEADER_MOBILE',
+        'HEADER_DESKTOP',
+        // 'TP_TRAY', 
+        // 'RT_TRAY',
+        // 'BT_TRAY',
+        'LT_TRAY',
+        'FOOTER_MENU',
+        'SITE_MENU'
+        // ETC...
+      ],
       navigationType: "EXPANDABLE",
       navListItems: primaryMenu.items,
       // navListLabel

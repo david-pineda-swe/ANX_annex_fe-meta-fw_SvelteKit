@@ -1,7 +1,20 @@
 <!-- TODO - MOVE TO ANNEX CORE -->
 
 <script lang="ts">
+  // import filterTargetNavigations from "@annexjs/core/webapp/nav-interface/filter-target-navigations";
+  // import type { NavigationConfig } from "src/global";
+
+
   console.log('>> FOOTER_MENU INTERFACE >>');
+
+  // Pull targetNav configs
+  // export let navigations: Array<NavigationConfig>;
+  // const targetNavigations = filterTargetNavigations({
+  //   navigations,
+  //   targetMenuLocation: 'FOOTER_MENU'
+  // });
+
+  // console.log('>> FOOTER_MENU HAS MENUS:', targetNavigations);
 </script>
 
 <footer class="menu-interface footer-menu">
