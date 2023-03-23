@@ -1,7 +1,7 @@
 import type { NavigationConfig } from "src/global";
 
 
-export function mockNavigationConfig(props: NavigationConfig): NavigationConfig {
+export function generateNavigationConfig(props: NavigationConfig): NavigationConfig {
   const {
     dataSource,
     menuLocations,
@@ -20,7 +20,7 @@ export function mockNavigationConfig(props: NavigationConfig): NavigationConfig 
     navigationType: navigationType || 'SHALLOW',
     navListItems: navListItems || [],
     //
-    navListLabel: navListLabel || null,
+    navListLabel: navListLabel || '',
     elementId: elementId || '',
     classes:classes || '',
     mobileOnly: mobileOnly || false,

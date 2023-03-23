@@ -2,7 +2,7 @@ import type { NavigationNode } from "src/global";
 
 // const DEFAULT_STRING = "default_nav_node";
 
-export function mockNavigationNode(props: NavigationNode): NavigationNode {
+export function generateNavigationNode(props: NavigationNode): NavigationNode {
   if (props) {
     // DYNAMIC MOCK
     const {

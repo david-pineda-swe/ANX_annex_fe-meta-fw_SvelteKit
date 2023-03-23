@@ -2,7 +2,7 @@
 
 import { mockNodeMeta } from "./mock-node-meta";
 import { mockPageRoute } from "./mock-page-route";
-import { mockNavigationNode } from "./mock-navigation-node";
+import { generateNavigationNode } from "./generate-navigation-node";
 import { mockContentSegment } from "./mock-content-segment";
 
 import fs from 'fs';
@@ -80,7 +80,7 @@ export const ProtoSiteGraph = {
     routeMeta: {
       // - searchTags
       // - openGraph
-      navigationNode: mockNavigationNode({
+      navigationNode: generateNavigationNode({
         nodeId: '*',
         label: 'Test Route A-1: Alice',
         actionType: 'INTERNAL_ROUTE'
@@ -282,7 +282,7 @@ export const ProtoSiteGraph = {
         routeMeta: {
           // - searchTags
           // - openGraph
-          navigationNode: mockNavigationNode({
+          navigationNode: generateNavigationNode({
             nodeId: '*',
             label: 'Test Route B-1: Bob',
             actionType: 'INTERNAL_ROUTE'
@@ -445,7 +445,7 @@ export const ProtoSiteGraph = {
             routeMeta: {
               // - searchTags
               // - openGraph
-              navigationNode: mockNavigationNode({
+              navigationNode: generateNavigationNode({
                 nodeId: '*',
                 label: 'Test Route C-1: Casey',
                 actionType: 'INTERNAL_ROUTE'
