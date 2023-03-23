@@ -8,30 +8,29 @@ export function mockNavigationNode(props: NavigationNode): NavigationNode {
     const {
       nodeId,
       label,
-      alt,
-      prefetch,
-      internalRoute,
+      actionType,
       //
-      targetSource,
+      slug,
+      url,
+      linkTarget,
       elementId,
       classes,
-      url,
-      // slug,
-      // subnodes
+      // icon
+      subNodes
     } = props;
 
     return {
-      nodeId: nodeId || '*',
-      label: label || 'N/A',
-      alt: alt || 'Not available',
-      prefetch: prefetch || true,
-      internalRoute: internalRoute || true,
+      nodeId: nodeId || null,
+      label: label || null,
+      actionType: actionType || 'INTERNAL_ROUTE',
       //
-      targetSource: targetSource || '',
-      elementId: elementId || '',
-      classes: classes || '',
-      // slug: slug || ,
-      url
+      slug: slug || '',
+      url: url || '',
+      linkTarget: linkTarget || null,
+      elementId: elementId || null,
+      classes: classes || null,
+      // icon
+      subNodes: subNodes || []
     }
   } else {
     // STATIC MOCK

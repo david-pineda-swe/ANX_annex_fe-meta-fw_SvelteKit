@@ -90,10 +90,8 @@ interface FlowControlTraits {
 interface NavigationNode {
   nodeId: string;
   label: string;
-  alt: string;
   actionType: string; // [INTERNAL_ROUTE, EXTERNAL_LINK, PROCESS_[target_handle]
   //
-  prefetch?: bool;
   slug?: string;
   url?: string;
   linkTarget?: string; // DOCS linkTarget - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
@@ -177,6 +175,7 @@ interface NavigationConfig {
   elementId?: string;
   classes?: string;
   mobileOnly?: boolean;
+  renderActive?: boolean;
 }
 
 interface ProjectConfig {

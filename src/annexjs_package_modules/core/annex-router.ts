@@ -129,7 +129,6 @@ const createNavNodeFrom = function(pageRoute:PageRoute, parentSlug: string): Nav
   const { slug, subRoutes, routeMeta: { navigationNode: {
     nodeId,
     label,
-    alt,
   } } } = pageRoute;
 
   const slugChain = `${parentSlug}${slug}`;
@@ -142,10 +141,8 @@ const createNavNodeFrom = function(pageRoute:PageRoute, parentSlug: string): Nav
   return {
     nodeId,
     label,
-    alt,
     actionType: 'INTERNAL_ROUTE',
     //
-    prefetch: true,
     slug: slugChain,
     subNodes
   }
