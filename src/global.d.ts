@@ -91,12 +91,12 @@ interface NavigationNode {
   nodeId: string;
   label: string;
   alt: string;
-  prefetch: bool;
-  internalRoute: bool;
-  slug: string;
+  actionType: string; // [INTERNAL_ROUTE, EXTERNAL_LINK, PROCESS_[target_handle]
   //
+  prefetch?: bool;
+  slug?: string;
   url?: string;
-  targetSource?: string;
+  linkTarget?: string; // DOCS linkTarget - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
   elementId?: string;
   classes?: string;
   icon?: string;
