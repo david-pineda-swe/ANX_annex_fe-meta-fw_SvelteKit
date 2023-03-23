@@ -1,9 +1,10 @@
+import type { DynamicRouteData, NavigationNode, PageModelResult, PageRoute, SiteGraph } from "src/global";
 import { collectDynamicContentFor, stackNestedContentStructure } from "./annex-content-driver";
+import { isEmpty } from "@annexjs/uitils";
 
 // X - siteGraph fixture will be replaced by call to HCMS
 // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
 import { ProtoSiteGraph as SiteGraphFixture } from '$pec/fixtures/site-graph/content-driver-proto'
-import type { DynamicRouteData, NavigationNode, PageModelResult, PageRoute, SiteGraph } from "src/global";
 
 // TBD: Create a dynamic router class that will
 // - that constructs the router
@@ -124,40 +125,40 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   };
 }
 
-const createNavNodeFrom = function(pageRoute:PageRoute): NavigationNode {
-  const { slug, routeMeta: { navigationNode: {
+const createNavNodeFrom = function(pageRoute:PageRoute, parentSlug: string): NavigationNode {
+  const { slug, subRoutes, routeMeta: { navigationNode: {
     nodeId,
     label,
     alt,
-    prefetch,
-    internalRoute
   } } } = pageRoute;
 
-   // TODO - NOT EMPTY
-  const subNodes = pageRoute.subRoutes.map((subPageRoute: PageRoute) => {
-    return createNavNodeFrom(subPageRoute);
+  const slugChain = `${parentSlug}${slug}`;
+  // console.log('>> TEST SLUG_CHAIN', slugChain);
+
+  const subNodes = (isEmpty(subRoutes)) ? [] : pageRoute.subRoutes.map((subPageRoute: PageRoute) => {
+    return createNavNodeFrom(subPageRoute, slugChain);
   });
 
   return {
     nodeId,
     label,
     alt,
-    prefetch,
-    internalRoute,
+    actionType: 'INTERNAL_ROUTE',
     //
-    slug,
+    prefetch: true,
+    slug: slugChain,
     subNodes
   }
 }
 
 const parseContentNavigationFrom = async function(routeStructure: Array<PageRoute>):Promise<NavigationNode[]> {
-  // TODO - INTEGRATE PROJECT CONFIG - CONTENT_NAV_RENDER_DEPTH
+  // TODO - INTEGRATE PROJECT_CONFIG - CONTENT_NAV_RENDER_DEPTH
   const parseResult = await routeStructure.map((pageRoute:PageRoute) => {
-    return createNavNodeFrom(pageRoute);
+    return createNavNodeFrom(pageRoute, '');
   });
 
   return parseResult;
-};
+}
 
 const renderURLrequestedModels = async function(pathValidationQuery: PathValidationQuery):Promise<DynamicRouteData> {
   try {
