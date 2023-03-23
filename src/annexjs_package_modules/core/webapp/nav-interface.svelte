@@ -9,7 +9,7 @@
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 
-  // TODO - Collect and merge [siteGraph, $pec/config] navigations
+  // TODO - Collect and merge [siteGraph => contentNavigation, $pec/config navigation] navigations
   // import { contentNavigation } from "@annexjs/core/webapp/stores/navigation-outlines";
   // let contentNavigationData;
   // contentNavigation.subscribe((data) => contentNavigationData = data);
