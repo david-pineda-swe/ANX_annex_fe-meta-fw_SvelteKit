@@ -79,7 +79,9 @@
       <div class="interface-container">
         
         {#if targetNavigations}
-          <MenuPlotter/>
+          <MenuPlotter
+            navigations={targetNavigations}
+            locationClasses='menu-tray {trayType} mobile'/>
         {/if}
         
         <slot/>
@@ -94,7 +96,9 @@
       <div class="interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
         
         {#if targetNavigations}
-          <MenuPlotter/>
+          <MenuPlotter
+            navigations={targetNavigations}
+            locationClasses='menu-tray {trayType} desktop'/>
         {/if}
         
         <slot/>
