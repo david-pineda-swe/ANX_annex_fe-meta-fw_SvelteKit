@@ -6,7 +6,7 @@
 	import RightTray from '$pec/components/interface/menus/tray-right.svelte';
 	import BottomTray from '$pec/components/interface/menus/tray-bottom.svelte';
 	import LeftTray from '$pec/components/interface/menus/tray-left.svelte';
-	import Footer from '$pec/components/interface/footer.svelte';
+	import Footer from '@annexjs/core/webapp/nav-interface/footer.svelte';
 
 	import '../app.scss';
 
@@ -32,7 +32,7 @@
 			<slot />
 		</main>
 		
-		<Footer/>
+		<Footer navigations={navigations}/>
 		
 	</div>
 </NavInterface>

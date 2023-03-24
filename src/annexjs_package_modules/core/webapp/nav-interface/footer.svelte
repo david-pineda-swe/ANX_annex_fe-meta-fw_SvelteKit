@@ -1,20 +1,17 @@
 <!-- TODO - MOVE TO ANNEX CORE -->
 
 <script lang="ts">
-  // import filterTargetNavigations from "@annexjs/core/webapp/nav-interface/filter-target-navigations";
-  // import type { NavigationConfig } from "src/global";
-
-
-  console.log('>> FOOTER_MENU INTERFACE >>');
+  import filterTargetNavigations from "@annexjs/core/webapp/nav-interface/filter-target-navigations";
+  import type { NavigationConfig } from "src/global";
 
   // Pull targetNav configs
-  // export let navigations: Array<NavigationConfig>;
-  // const targetNavigations = filterTargetNavigations({
-  //   navigations,
-  //   targetMenuLocation: 'FOOTER_MENU'
-  // });
+  export let navigations: Array<NavigationConfig>;
+  const targetNavigations = filterTargetNavigations({
+    navigations,
+    targetMenuLocation: 'FOOTER_MENU'
+  });
 
-  // console.log('>> FOOTER_MENU HAS MENUS:', targetNavigations);
+  console.log('>> FOOTER_MENU HAS MENUS:', targetNavigations);
 </script>
 
 <footer class="menu-interface footer-menu">
@@ -28,6 +25,7 @@
 		justify-content: center;
 		align-items: center;
 		padding: 40px;
+		border-top: 2px solid red;
 	}
 
 	footer a {

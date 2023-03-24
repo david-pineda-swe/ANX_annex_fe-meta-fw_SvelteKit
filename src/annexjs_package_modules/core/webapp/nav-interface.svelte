@@ -4,8 +4,8 @@
   import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte";
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
-  import HeaderMobile from '$pec/components/interface/header-mobile.svelte';
-  import HeaderDesktop from '$pec/components/interface/header-desktop.svelte';
+  import HeaderMobile from '@annexjs/core/webapp/nav-interface/header-mobile.svelte';
+  import HeaderDesktop from '@annexjs/core/webapp/nav-interface/header-desktop.svelte';
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 

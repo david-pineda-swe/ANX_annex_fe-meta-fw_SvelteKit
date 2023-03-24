@@ -1,12 +1,8 @@
-<!-- TODO - MOVE TO ANNEX CORE -->
-
 <script lang="ts">
   import { page } from '$app/stores'; // X - nav sample to be deprecated for dynamic siteGraph nav
 
   import type { NavigationConfig } from 'src/global';
   import filterTargetNavigations from '@annexjs/core/webapp/nav-interface/filter-target-navigations';
-
-  import logo from './svelte-logo.svg';
 
   export let toggeleMenuTray: any;
 
@@ -21,11 +17,33 @@
 </script>
 
 <header class="desktop-header hidden sm:flex">
-  <div class="corner">
-    <a href="https://kit.svelte.dev">
-      <img src={logo} alt="SvelteKit" />
-    </a>
-  </div>
+
+  <!-- TODO - SLOT HERE -->
+  <!-- import logo from './svelte-logo.svg'; -->
+  <!-- 
+      <div class="corner">
+      <a href="https://kit.svelte.dev">
+        <img src={logo} alt="SvelteKit" /> 
+         .corner img {
+    width: 2em;
+    height: 2em;
+    object-fit: contain;
+  }
+    .corner {
+    width: 3em;
+    height: 3em;
+  }
+
+  .corner a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+</a>
+</div>
+      -->
 
   <nav>
     <svg viewBox="0 0 2 3" aria-hidden="true">
@@ -46,35 +64,14 @@
     <svg viewBox="0 0 2 3" aria-hidden="true">
       <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
     </svg>
+    <!-- TODO - SLOT HERE -->
   </nav>
 
-  <div class="corner">
-    <!-- TODO put something else here? github link? -->
-  </div>
 </header>
 
 <style>
   header {
-    justify-content: space-between;
-  }
-
-  .corner {
-    width: 3em;
-    height: 3em;
-  }
-
-  .corner a {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-
-  .corner img {
-    width: 2em;
-    height: 2em;
-    object-fit: contain;
   }
 
   nav {

@@ -1,10 +1,6 @@
-<!-- TODO - MOVE TO ANNEX CORE -->
-
 <script lang="ts">
   import type { NavigationConfig } from 'src/global';
   import filterTargetNavigations from '@annexjs/core/webapp/nav-interface/filter-target-navigations';
-
-  import logo from './svelte-logo.svg';
 
   export let toggleMenuTray: any;
 
@@ -16,19 +12,40 @@
   });
 
   console.log('>> HEADER_MOBILE HAS MENUS:', targetNavigations);
-  
 </script>
 
-<header class="mobile-header flex sm:hidden py-2">
+<header class="mobile-header flex sm:hidden p-2">
+  <!-- import logo from './svelte-logo.svg'; -->
+
   <div class="corner left">
     <button class="tray-toggle tp-tray-btn" on:click={toggleMenuTray('TP_TRAY')}>TP</button>
     <button class="tray-toggle rt-tray-btn" on:click={toggleMenuTray('RT_TRAY')}>RT</button>
   </div>
 
   <div class="branding center">
-    <a href="https://kit.svelte.dev">
-      <img src={logo} alt="SvelteKit" />
-    </a>
+    <!-- TODO - SLOT HERE -->
+    <!-- import logo from './svelte-logo.svg';
+      <a href="https://kit.svelte.dev">
+        <img src={logo} alt="SvelteKit" />
+      </a>
+
+       .corner {
+    display: flex;
+    gap: 10px;
+    height: 3em;
+  }
+
+  .branding.center img {
+    width: 3em;
+    height: 3em;
+    object-fit: contain;
+  }
+
+   a:hover {
+    color: var(--accent-color);
+  }
+    -->
+
   </div>
 
   <div class="corner right">
@@ -43,27 +60,11 @@
     background-color: #fff;
   }
 
-  .corner {
-    display: flex;
-    gap: 10px;
-    height: 3em;
-  }
-
-  .branding.center img {
-    width: 3em;
-    height: 3em;
-    object-fit: contain;
-  }
-
   .tray-toggle{
     color: white;
     background-color: teal;
     padding: 5px;
     display: inline-block;
     border-radius: 7px;
-  }
-
-  a:hover {
-    color: var(--accent-color);
   }
 </style>
