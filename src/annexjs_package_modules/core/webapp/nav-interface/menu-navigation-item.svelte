@@ -6,6 +6,7 @@
 
   export let navItem: NavigationNode;
   export let renderActive: boolean;
+  export let targetActions: {};
 
   const {
     nodeId,
@@ -22,13 +23,19 @@
   const useActiveClass = renderActive && $page.url.pathname === slug;
   const linkIsActive = (useActiveClass) ? ' active' : '';
   const isProcessAction: boolean = actionType.includes('PROCESS_');
-
+  const processTargetAction = () => {
+    const params = actionType.split('_');
+    const _ATswitch = params.shift();
+    const handleKey = params.shift();
+    targetActions[handleKey](params);
+  };
 
   // TODO 
   // linkTarget?: string; // DOCS linkTarget - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
   // icon?: string;
   // subNodes?: Array<NavigationNode>
 </script>
+
 
 
 <!-- MENU_NAV_ITEM -->
@@ -50,7 +57,8 @@
   {:else if isProcessAction}
     <button
       id={actingId}
-      class={classes}>
+      class={classes}
+      on:click={() => processTargetAction()}>
         {label}</button>
   {:else}
     -

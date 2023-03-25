@@ -17,6 +17,8 @@
 
   export let navigations: Array<NavigationConfig>;
 
+  // TODO - PROJECT_CONFIG FOR headerIsFixed setting
+  // TODO - PROJECT_CONFIG FOR headerFixedHeightDefault setting
   let headerIsFixed: boolean = true;
   let currentMenuTray: string;
 

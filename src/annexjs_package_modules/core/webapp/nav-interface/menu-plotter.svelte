@@ -4,6 +4,7 @@
 
   export let navigations: Array<NavigationConfig>
   export let locationClasses: string;
+  export let targetActions: {};
 
   // TODO - MENU_PLOTTER SUB FEATURES
   // [] mobileOnly
@@ -16,7 +17,8 @@
   {#each navigations as nav}
     <MenuNavigation
       nav={nav}
-      locationClasses={locationClasses}/>
+      locationClasses={locationClasses}
+      targetActions={targetActions}/>
   {/each}
 </div>
 

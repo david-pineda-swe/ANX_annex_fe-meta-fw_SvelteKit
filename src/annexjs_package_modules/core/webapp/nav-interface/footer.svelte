@@ -21,7 +21,8 @@
   {#if targetNavigations}
     <MenuPlotter
       navigations={targetNavigations}
-      locationClasses='footer-menu'/>
+      locationClasses='footer-menu'
+      targetActions={{}}/>
   {/if}
 
   <slot name="insert-footer"/>

@@ -5,6 +5,7 @@
 
   export let nav: NavigationConfig;
   export let locationClasses: string;
+  export let targetActions: {};
 
   const [locationMark] = locationClasses.split(' ');
 
@@ -15,7 +16,7 @@
 
 
 <!-- NAV_MENU -->
-<div id="{nav.elementId}-{locationMark}" class="nav-menu {nav.classes}">
+<nav id="{nav.elementId}-{locationMark}" class="nav-menu {nav.classes}">
   {#if nav.navListLabel}
     <h3 class="nav-menu-label">
       {nav.navListLabel}
@@ -26,10 +27,11 @@
     {#each nav.navListItems as navItem}
       <MenuNavigationItem
         navItem={navItem}
-        renderActive={nav.renderActive}/>
+        renderActive={nav.renderActive}
+        targetActions={targetActions}/>
     {/each}
   </ul>
-</div>
+</nav>
 
 
 

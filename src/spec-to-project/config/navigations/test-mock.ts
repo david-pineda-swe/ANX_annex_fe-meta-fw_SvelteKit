@@ -28,12 +28,48 @@ const sampleMockConfig = {
   renderActive: true
 };
 
+const customHeaderDeskNavList = [
+  ...[
+    {
+      "nodeId": "open-top-tray",
+      "label": "Top",
+      "actionType": "PROCESS_handleToggleMenuTray_TP"
+    },
+    {
+      "nodeId": "open-right-tray",
+      "label": "Right",
+      "actionType": "PROCESS_handleToggleMenuTray_RT"
+    }
+  ],
+  ...sampleMockConfig.navListItems,
+  ...[
+    {
+      "nodeId": "open-bottom-tray",
+      "label": "Bottom",
+      "actionType": "PROCESS_handleToggleMenuTray_BT"
+    },
+    {
+      "nodeId": "open-left-tray",
+      "label": "Left",
+      "actionType": "PROCESS_handleToggleMenuTray_LT"
+    }
+  ],
+];
 export const testMockNavigations = [
-  // HEADER_DESK +
+  // HEADER_DESK
   generateNavigationConfig({
     ...sampleMockConfig,
     ...{
-      menuLocations: ['HEADER_DESKTOP', 'HEADER_MOBILE'],
+      menuLocations: ['HEADER_DESKTOP'],
+      // navListLabel: 'DESKTOP Primary'
+      navListItems: customHeaderDeskNavList
+    }
+  }),
+  // HEADER_MOBILE
+  generateNavigationConfig({
+    ...sampleMockConfig,
+    ...{
+      menuLocations: ['HEADER_MOBILE'],
       // navListLabel: 'DESKTOP Primary'
     }
   }),

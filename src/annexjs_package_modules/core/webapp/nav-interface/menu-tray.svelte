@@ -81,7 +81,8 @@
         {#if targetNavigations}
           <MenuPlotter
             navigations={targetNavigations}
-            locationClasses='menu-tray {trayType} mobile'/>
+            locationClasses='menu-tray {trayType} mobile'
+            targetActions={{}}/>
         {/if}
         
         <slot/>
@@ -98,7 +99,8 @@
         {#if targetNavigations}
           <MenuPlotter
             navigations={targetNavigations}
-            locationClasses='menu-tray {trayType} desktop'/>
+            locationClasses='menu-tray {trayType} desktop'
+            targetActions={{}}/>
         {/if}
         
         <slot/>
