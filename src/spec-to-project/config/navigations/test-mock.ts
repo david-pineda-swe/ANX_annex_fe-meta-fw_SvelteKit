@@ -29,11 +29,11 @@ const sampleMockConfig = {
 };
 
 export const testMockNavigations = [
-  // HEADER_DESK
+  // HEADER_DESK +
   generateNavigationConfig({
     ...sampleMockConfig,
     ...{
-      menuLocations: ['HEADER_DESKTOP'],
+      menuLocations: ['HEADER_DESKTOP', 'HEADER_MOBILE'],
       // navListLabel: 'DESKTOP Primary'
     }
   }),
@@ -87,4 +87,12 @@ export const testMockNavigations = [
   }),
   // OTHER $PEC
   // ...
+  // FOOTER_MENU
+  generateNavigationConfig({
+    ...sampleMockConfig,
+    ...{
+      menuLocations: ['FOOTER_MENU'],
+      navListLabel: 'SITE MENU Footer Mock Primary'
+    }
+  })
 ];
