@@ -30,40 +30,40 @@
 
 <div id="annex-nav-interface" class="nav-interface-container" class:fixed-header={headerIsFixed}>
   <div class="menu-dock">
-    {#if $$slots["tray-interface-tp"]}
+    {#if $$slots["insert-tray-tp"]}
       <MenuTray
         trayType="TP_TRAY"
         toggleMenuTray={toggleMenuTray}
         currentMenuTray={currentMenuTray}
         navigations={navigations}>
-        <slot name="tray-interface-tp"/>
+        <slot name="insert-tray-tp"/>
       </MenuTray>
     {/if}
-    {#if $$slots["tray-interface-rt"]}
+    {#if $$slots["insert-tray-rt"]}
       <MenuTray
         trayType="RT_TRAY"
         toggleMenuTray={toggleMenuTray}
         currentMenuTray={currentMenuTray}
         navigations={navigations}>
-        <slot name="tray-interface-rt"/>
+        <slot name="insert-tray-rt"/>
       </MenuTray>
     {/if}
-    {#if $$slots["tray-interface-bt"]}
+    {#if $$slots["insert-tray-bt"]}
       <MenuTray
         trayType="BT_TRAY"
         toggleMenuTray={toggleMenuTray}
         currentMenuTray={currentMenuTray}
         navigations={navigations}>
-        <slot name="tray-interface-bt"/>
+        <slot name="insert-tray-bt"/>
       </MenuTray>
     {/if}
-    {#if $$slots["tray-interface-lt"]}
+    {#if $$slots["insert-tray-lt"]}
       <MenuTray
         trayType="LT_TRAY"
         toggleMenuTray={toggleMenuTray}
         currentMenuTray={currentMenuTray}
         navigations={navigations}>
-        <slot name="tray-interface-lt"/>
+        <slot name="insert-tray-lt"/>
       </MenuTray>
     {/if}
     <!-- TODO - CONSIDER WILDCARD CUSTOM MENU -->

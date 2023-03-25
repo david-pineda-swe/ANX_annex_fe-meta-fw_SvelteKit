@@ -4,10 +4,10 @@
 	import InsertHeaderDesktopA from '$pec/components/interface/menus/insert-header-desktop-a.svelte';
 	import InsertHeaderDesktopB from '$pec/components/interface/menus/insert-header-desktop-b.svelte';
 	import InsertHeaderMobile from "$pec/components/interface/menus/insert-header-mobile.svelte";
-	import TopTray from '$pec/components/interface/menus/tray-top.svelte';
-	import RightTray from '$pec/components/interface/menus/tray-right.svelte';
-	import BottomTray from '$pec/components/interface/menus/tray-bottom.svelte';
-	import LeftTray from '$pec/components/interface/menus/tray-left.svelte';
+	import InsertTrayTop from '$pec/components/interface/menus/insert-tray-top.svelte';
+	import InsertTrayRight from '$pec/components/interface/menus/insert-tray-right.svelte';
+	import InsertTrayBottom from '$pec/components/interface/menus/insert-tray-bottom.svelte';
+	import InsertTrayLeft from '$pec/components/interface/menus/insert-tray-left.svelte';
 	import Footer from '@annexjs/core/webapp/nav-interface/footer.svelte';
 	
 	import generateProjectConfiguration from "$pec/config/project";
@@ -26,13 +26,13 @@
 	<InsertHeaderMobile slot="insert-header-mobile"/>
 
 	<!-- TOP_TRAY_INTERFACE -->
-	<TopTray slot="tray-interface-tp"/>
+	<InsertTrayTop slot="insert-tray-tp"/>
 	<!-- RIGHT_TRAY_INTERFACE -->
-	<RightTray slot="tray-interface-rt"/>
+	<InsertTrayRight slot="insert-tray-rt"/>
 	<!-- BOTTOM_TRAY_INTERFACE -->
-	<BottomTray slot="tray-interface-bt"/>
+	<InsertTrayBottom slot="insert-tray-bt"/>
 	<!-- LEFT_TRAY_INTERFACE -->
-	<LeftTray slot="tray-interface-lt"/>
+	<InsertTrayLeft slot="insert-tray-lt"/>
 	
 	<!-- PAGE_LAYOUT_SLOT -->
 	<div class="page-layout" slot="page-layout">
