@@ -1,9 +1,25 @@
-<script lang="ts"></script>
+<script lang="ts">
+  import logo from './images/svelte-logo.svg';
+</script>
 
-<span class="p-3 test-insert">TEST INSERT HEADER MOBILE</span>
+
+
+<div class="branding center">
+  <a href="https://kit.svelte.dev">
+    <img src={logo} alt="SvelteKit" />
+  </a>
+</div>
+
+
 
 <style>
-  .test-insert {
-    border: 1px solid red;
+  .branding.center img {
+    width: 3em;
+    height: 3em;
+    object-fit: contain;
+  }
+
+   a:hover {
+    color: var(--accent-color);
   }
 </style>

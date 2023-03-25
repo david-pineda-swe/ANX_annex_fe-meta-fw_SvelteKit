@@ -14,36 +14,19 @@
   });
 
   console.log('>> HEADER_DESKTOP HAS MENUS:', targetNavigations);
+
+  // TODO - PROJECT CONFIG FOR TRAY-TOGGLE CONTROL OF POSITIONING
+  // TODO - PROJECT CONFIG FOR MODULE-CONTROL POSITIONING
 </script>
 
+
+
 <header class="desktop-header hidden sm:flex">
-
-  <!-- TODO - SLOT HERE -->
-  <!-- import logo from './svelte-logo.svg'; -->
-  <!-- 
-      <div class="corner">
-      <a href="https://kit.svelte.dev">
-        <img src={logo} alt="SvelteKit" /> 
-         .corner img {
-    width: 2em;
-    height: 2em;
-    object-fit: contain;
-  }
-    .corner {
-    width: 3em;
-    height: 3em;
-  }
-
-  .corner a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-</a>
-</div>
-      -->
+  {#if $$slots["insert-header-desktop-aa"]}
+    <div class="corner">
+      <slot name="insert-header-desktop-aa"/>
+    </div>
+  {/if}
 
   <nav>
     <svg viewBox="0 0 2 3" aria-hidden="true">
@@ -67,11 +50,23 @@
     <!-- TODO - SLOT HERE -->
   </nav>
 
+  {#if $$slots["insert-header-desktop-bb"]}
+    <div class="corner">
+      <slot name="insert-header-desktop-bb"/>
+    </div>
+  {/if}
 </header>
+
+
 
 <style>
   header {
-    justify-content: center;
+    justify-content: space-between;
+  }
+
+  .corner {
+    width: 3em;
+    height: 3em;
   }
 
   nav {

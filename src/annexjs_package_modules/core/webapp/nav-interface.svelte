@@ -4,8 +4,8 @@
   import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte";
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
-  import HeaderMobile from '@annexjs/core/webapp/nav-interface/header-mobile.svelte';
   import HeaderDesktop from '@annexjs/core/webapp/nav-interface/header-desktop.svelte';
+  import HeaderMobile from '@annexjs/core/webapp/nav-interface/header-mobile.svelte';
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 
@@ -71,17 +71,24 @@
 
   <div class="nav-interface-outlet">
     <div class="header-dock">
+      <!-- DESKTOP_HEADER_SLOTS -->
+      <HeaderDesktop
+        toggeleMenuTray={toggleMenuTray}
+        navigations={navigations}>
+          <slot slot="insert-header-desktop-aa">
+            <slot name="insert-header-desktop-a"/>
+          </slot>
+          <slot slot="insert-header-desktop-bb">
+            <slot name="insert-header-desktop-b"/>
+          </slot>
+      </HeaderDesktop>
+
       <!-- MOBILE_HEADER_SLOT -->
       <HeaderMobile
         toggleMenuTray={toggleMenuTray}
         navigations={navigations}>
-        <slot name="insert-header-mobile"/>
+          <slot name="insert-header-mobile"/>
       </HeaderMobile>
-
-      <!-- DESKTOP_HEADER_SLOT -->
-      <HeaderDesktop
-        toggeleMenuTray={toggleMenuTray}
-        navigations={navigations}/>
     </div>
 
     <MediaMonitorHud/>

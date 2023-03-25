@@ -12,42 +12,18 @@
   });
 
   console.log('>> HEADER_MOBILE HAS MENUS:', targetNavigations);
+
+  // TODO - PROJECT CONFIG FOR TRAY-TOGGLE CONTROL OF POSITIONING
+  // TODO - PROJECT CONFIG FOR MODULE-CONTROL POSITIONING
 </script>
 
 <header class="mobile-header flex sm:hidden p-2">
-  <!-- import logo from './svelte-logo.svg'; -->
-
   <div class="corner left">
     <button class="tray-toggle tp-tray-btn" on:click={toggleMenuTray('TP_TRAY')}>TP</button>
     <button class="tray-toggle rt-tray-btn" on:click={toggleMenuTray('RT_TRAY')}>RT</button>
   </div>
 
-  <div class="branding center">
-    <slot/>
-    <!-- TODO - SLOT HERE -->
-    <!-- import logo from './svelte-logo.svg';
-      <a href="https://kit.svelte.dev">
-        <img src={logo} alt="SvelteKit" />
-      </a>
-
-       .corner {
-    display: flex;
-    gap: 10px;
-    height: 3em;
-  }
-
-  .branding.center img {
-    width: 3em;
-    height: 3em;
-    object-fit: contain;
-  }
-
-   a:hover {
-    color: var(--accent-color);
-  }
-    -->
-
-  </div>
+  <slot/>
 
   <div class="corner right">
     <button class="tray-toggle bt-tray-btn" on:click={toggleMenuTray('BT_TRAY')}>BT</button>
@@ -56,6 +32,12 @@
 </header>
 
 <style>
+  .corner {
+    display: flex;
+    gap: 10px;
+    height: 3em;
+  }
+
   header.mobile-header {
     justify-content: space-between;
     background-color: #fff;
