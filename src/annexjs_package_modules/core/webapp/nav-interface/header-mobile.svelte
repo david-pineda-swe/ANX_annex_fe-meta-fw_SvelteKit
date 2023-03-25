@@ -23,6 +23,7 @@
   </div>
 
   <div class="branding center">
+    <slot/>
     <!-- TODO - SLOT HERE -->
     <!-- import logo from './svelte-logo.svg';
       <a href="https://kit.svelte.dev">

@@ -16,8 +16,10 @@ const filterTargetNavigations = (args: FilterTargetNavArgs) => {
     return navConfig.menuLocations.includes(targetMenuLocation);
   });
 
-  // console.log('>> NAV_CONFIGS for TARGET_MENU_LOCATION:', targetMenuLocation);
-  // console.log(configurations);
+  // if (targetMenuLocation === 'HEADER_DESKTOP') {
+  //   console.log('>> NAV_CONFIGS for TARGET_MENU_LOCATION:', targetMenuLocation);
+  //   console.log(configurations);
+  // }
 
   return (!isEmpty(configurations)) ? configurations : null;
 }

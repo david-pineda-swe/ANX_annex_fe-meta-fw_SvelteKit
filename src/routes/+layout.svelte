@@ -1,19 +1,23 @@
 <script lang="ts">
 	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
-
-	import generateProjectConfiguration from "$pec/config/project";
+	
+	import InsertHeaderMobile from "$pec/components/interface/menus/insert-header-mobile.svelte";
 	import TopTray from '$pec/components/interface/menus/tray-top.svelte';
 	import RightTray from '$pec/components/interface/menus/tray-right.svelte';
 	import BottomTray from '$pec/components/interface/menus/tray-bottom.svelte';
 	import LeftTray from '$pec/components/interface/menus/tray-left.svelte';
 	import Footer from '@annexjs/core/webapp/nav-interface/footer.svelte';
-
+	
+	import generateProjectConfiguration from "$pec/config/project";
 	import '../app.scss';
 
 	const { navigations } = generateProjectConfiguration();	
 </script>
 
 <NavInterface navigations={navigations}>
+	<!-- INSERT_HEADER_MOBILE -->
+	<InsertHeaderMobile slot="insert-header-mobile"/>
+
 	<!-- TOP_TRAY_INTERFACE -->
 	<TopTray slot="tray-interface-tp"/>
 

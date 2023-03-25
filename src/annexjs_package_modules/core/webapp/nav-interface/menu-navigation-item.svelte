@@ -37,19 +37,19 @@
       id={actingId}
       class={classes}
       data-sveltekit-preload-data
-      href={slug}
-      >{label}</a>
+      href={slug}>
+        {label}</a>
   {:else if actionType === 'EXTERNAL_LINK'}
     <a
       id={actingId}
       class={classes}
-      href={url} 
-      >{label}</a>
+      href={url}>
+        {label}</a>
   {:else if isProcessAction}
     <button
       id={actingId}
-      class={classes}
-      >{label}</button>
+      class={classes}>
+        {label}</button>
   {:else}
     -
   {/if}

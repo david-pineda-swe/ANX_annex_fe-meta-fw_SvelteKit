@@ -74,7 +74,9 @@
       <!-- MOBILE_HEADER_SLOT -->
       <HeaderMobile
         toggleMenuTray={toggleMenuTray}
-        navigations={navigations}/>
+        navigations={navigations}>
+        <slot name="insert-header-mobile"/>
+      </HeaderMobile>
 
       <!-- DESKTOP_HEADER_SLOT -->
       <HeaderDesktop
