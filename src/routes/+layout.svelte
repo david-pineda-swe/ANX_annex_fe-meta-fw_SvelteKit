@@ -1,5 +1,6 @@
 <script lang="ts">
 	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
+	import Footer from '@annexjs/core/webapp/nav-interface/footer.svelte';
 	
 	import InsertHeaderDesktopA from '$pec/components/interface/menus/insert-header-desktop-a.svelte';
 	import InsertHeaderDesktopB from '$pec/components/interface/menus/insert-header-desktop-b.svelte';
@@ -8,13 +9,15 @@
 	import InsertTrayRight from '$pec/components/interface/menus/insert-tray-right.svelte';
 	import InsertTrayBottom from '$pec/components/interface/menus/insert-tray-bottom.svelte';
 	import InsertTrayLeft from '$pec/components/interface/menus/insert-tray-left.svelte';
-	import Footer from '@annexjs/core/webapp/nav-interface/footer.svelte';
+	import InsertFooter from '$pec/components/interface/menus/insert-footer.svelte';
 	
 	import generateProjectConfiguration from "$pec/config/project";
 	import '../app.scss';
 
 	const { navigations } = generateProjectConfiguration();	
 </script>
+
+
 
 <NavInterface navigations={navigations}>
 	<!-- INSERT_HEADER_DESKTOP_A -->
@@ -40,10 +43,14 @@
 			<slot />
 		</main>
 		
-		<Footer navigations={navigations}/>
+		<Footer navigations={navigations}>
+			<InsertFooter slot="insert-footer"/>
+		</Footer>
 		
 	</div>
 </NavInterface>
+
+
 
 <style>
 	main {

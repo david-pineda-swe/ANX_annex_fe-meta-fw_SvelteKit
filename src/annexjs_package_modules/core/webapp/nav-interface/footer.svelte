@@ -1,5 +1,3 @@
-<!-- TODO - MOVE TO ANNEX CORE -->
-
 <script lang="ts">
   import filterTargetNavigations from "@annexjs/core/webapp/nav-interface/filter-target-navigations";
   import type { NavigationConfig } from "src/global";
@@ -12,11 +10,18 @@
   });
 
   console.log('>> FOOTER_MENU HAS MENUS:', targetNavigations);
+
+  // TODO - PROJECT CONFIG FOR TRAY-TOGGLE CONTROL OF POSITIONING
+  // TODO - PROJECT CONFIG FOR MODULE-CONTROL POSITIONING
 </script>
 
+
+
 <footer class="menu-interface footer-menu">
-  <p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+  <slot name="insert-footer"/>
 </footer>
+
+
 
 <style>
   footer {
@@ -26,10 +31,6 @@
 		align-items: center;
 		padding: 40px;
 		border-top: 2px solid red;
-	}
-
-	footer a {
-		font-weight: bold;
 	}
 
 	@media (min-width: 480px) {
