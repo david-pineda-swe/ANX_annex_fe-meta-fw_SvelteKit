@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/stores'; // FIX <<<
   import type { NavigationNode } from "src/global";
-  
+
   // TODO - ACCOUNT FOR SLOT CONTENT REPLACEMENT
 
   export let navItem: NavigationNode;
@@ -30,6 +30,8 @@
   // subNodes?: Array<NavigationNode>
 </script>
 
+
+<!-- MENU_NAV_ITEM -->
 <li id={`li-${actingId}`} class="nav-menu-list-item{linkIsActive}">
   <!-- switch on actionType -->
   {#if actionType === 'INTERNAL_ROUTE'}
@@ -54,5 +56,7 @@
     -
   {/if}
 </li>
+
+
 
 <style></style>
