@@ -90,7 +90,7 @@ interface FlowControlTraits {
 interface NavigationNode {
   nodeId: string;
   label: string;
-  actionType: string; // [INTERNAL_ROUTE, EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]
+  actionType: string; // [INTERNAL_ROUTE, EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]]
   //
   slug?: string;
   url?: string;

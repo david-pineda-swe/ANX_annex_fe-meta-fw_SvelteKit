@@ -11,7 +11,7 @@
   const {
     nodeId,
     label,
-    actionType, // [INTERNAL_ROUTE, EXTERNAL_LINK, PROCESS_[target_handle]
+    actionType, // [INTERNAL_ROUTE, EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]]
     //
     slug,
     url,
