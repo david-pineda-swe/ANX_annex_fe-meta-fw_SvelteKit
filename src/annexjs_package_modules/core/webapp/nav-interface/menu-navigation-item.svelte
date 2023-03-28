@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores'; // FIX <<<
   import type { NavigationNode } from "src/global";
+  import MenuNavigationItemLabel from './menu-navigation-item-label.svelte';
 
   // TODO - ACCOUNT FOR SLOT CONTENT REPLACEMENT
 
@@ -10,13 +11,12 @@
 
   const {
     nodeId,
-    label,
-    actionType, // [INTERNAL_ROUTE, EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]]
+    actionType, // [INTERNAL_ROUTE(d), EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]]
     //
     slug,
     url,
     elementId,
-    classes
+    classes,
   } = navItem;
 
   const actingId = elementId || nodeId // || or derived imp
@@ -32,7 +32,6 @@
 
   // TODO 
   // linkTarget?: string; // DOCS linkTarget - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
-  // icon?: string;
   // subNodes?: Array<NavigationNode>
 </script>
 
@@ -47,19 +46,22 @@
       class={classes}
       data-sveltekit-preload-data
       href={slug}>
-        {label}</a>
+        <MenuNavigationItemLabel navItem={navItem}/>
+    </a>
   {:else if actionType === 'EXTERNAL_LINK'}
     <a
       id={actingId}
       class={classes}
       href={url}>
-        {label}</a>
+        <MenuNavigationItemLabel navItem={navItem}/>
+    </a>
   {:else if isProcessAction}
     <button
       id={actingId}
       class={classes}
       on:click={() => processTargetAction()}>
-        {label}</button>
+        <MenuNavigationItemLabel navItem={navItem}/>
+    </button>
   {:else}
     -
   {/if}

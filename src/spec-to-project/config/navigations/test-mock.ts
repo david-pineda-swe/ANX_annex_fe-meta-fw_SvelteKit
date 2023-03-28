@@ -33,12 +33,16 @@ const customHeaderDeskNavList = [
     {
       "nodeId": "open-top-tray",
       "label": "Top",
-      "actionType": "PROCESS_handleToggleMenuTray_TP"
+      "actionType": "PROCESS_handleToggleMenuTray_TP",
+      "displayTypes": ["icon"],
+      "icon": "test-icon-name"
     },
     {
       "nodeId": "open-right-tray",
       "label": "Right",
-      "actionType": "PROCESS_handleToggleMenuTray_RT"
+      "actionType": "PROCESS_handleToggleMenuTray_RT",
+      "displayTypes": ["image"],
+      "image": "test-image-name.png"
     }
   ],
   ...sampleMockConfig.navListItems,
@@ -46,12 +50,14 @@ const customHeaderDeskNavList = [
     {
       "nodeId": "open-bottom-tray",
       "label": "Bottom",
-      "actionType": "PROCESS_handleToggleMenuTray_BT"
+      "actionType": "PROCESS_handleToggleMenuTray_BT",
+      // "displayTypes": ["label"]
     },
     {
       "nodeId": "open-left-tray",
       "label": "Left",
-      "actionType": "PROCESS_handleToggleMenuTray_LT"
+      "actionType": "PROCESS_handleToggleMenuTray_LT",
+      // "displayTypes": ["label"]
     }
   ],
 ];

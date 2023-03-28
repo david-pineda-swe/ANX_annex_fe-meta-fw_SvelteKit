@@ -8,28 +8,32 @@ export function generateNavigationNode(props: NavigationNode): NavigationNode {
     const {
       nodeId,
       label,
-      actionType,
+      actionType, // [INTERNAL_ROUTE(d), EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]]
       //
+      displayTypes, // [label(d), icon, image]
       slug,
       url,
       linkTarget,
       elementId,
       classes,
-      // icon
+      icon,
+      image,
       subNodes
     } = props;
 
     return {
-      nodeId: nodeId || null,
-      label: label || null,
+      nodeId: nodeId || '',
+      label: label || '',
       actionType: actionType || 'INTERNAL_ROUTE',
       //
+      displayTypes: displayTypes || ['label'],
       slug: slug || '',
       url: url || '',
-      linkTarget: linkTarget || null,
-      elementId: elementId || null,
-      classes: classes || null,
-      // icon
+      linkTarget: linkTarget || '',
+      elementId: elementId || '',
+      classes: classes || '',
+      icon: icon || '',
+      image: image || '',
       subNodes: subNodes || []
     }
   } else {

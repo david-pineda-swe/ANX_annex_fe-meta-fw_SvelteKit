@@ -90,14 +90,16 @@ interface FlowControlTraits {
 interface NavigationNode {
   nodeId: string;
   label: string;
-  actionType: string; // [INTERNAL_ROUTE, EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]]
+  actionType: string; // [INTERNAL_ROUTE(d), EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]]
   //
+  displayTypes?: Array<string>; // [label(d), icon, image]
   slug?: string;
   url?: string;
   linkTarget?: string; // DOCS linkTarget - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
   elementId?: string;
   classes?: string;
   icon?: string;
+  image?: string;
   subNodes?: Array<NavigationNode>
 }
 
