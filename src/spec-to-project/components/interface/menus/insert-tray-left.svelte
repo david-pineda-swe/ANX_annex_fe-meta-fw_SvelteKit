@@ -4,7 +4,7 @@
 
 
 
-<div class="menu-interface left-menu">
+<div class="left-menu">
   <h1>INSERT TRAY LEFT $pec/interface/menus</h1>
 </div>
 

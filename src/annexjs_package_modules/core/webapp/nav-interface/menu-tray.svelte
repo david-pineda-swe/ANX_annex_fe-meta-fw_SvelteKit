@@ -71,12 +71,14 @@
   };
 </script>
 
+
+
 {#if $mediaIsMobile}
   <!-- MOBILE BROWSER -->
   {#if openTray}
     <div class="menu-tray {trayType}"  in:traySlide={{into:true}} out:traySlide={{into:false}}>
       <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
-      <div class="interface-container">
+      <div class="menu-interface tray-menu mobile interface-container">
         
         {#if targetNavigations}
           <MenuPlotter
@@ -94,7 +96,7 @@
   {#if openTray}
     <div class="menu-tray {trayType}"  in:trayFade={{into: true}} out:trayFade={{into: false}}>
       <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
-      <div class="interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
+      <div class="menu-interface tray-menu desktop interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
         
         {#if targetNavigations}
           <MenuPlotter
@@ -134,7 +136,7 @@
   .interface-container {
     position: absolute;
     overflow-x: hidden;
-    padding: 10px;
+    padding: 20px;
     background-color: #fff;
   }
 
