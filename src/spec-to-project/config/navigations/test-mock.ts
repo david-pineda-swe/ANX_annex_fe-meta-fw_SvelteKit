@@ -34,15 +34,18 @@ const customHeaderDeskNavList = [
       "nodeId": "open-top-tray",
       "label": "Top",
       "actionType": "PROCESS_handleToggleMenuTray_TP",
-      "displayTypes": ["icon"],
-      "icon": "test-icon-name"
+      // "displayTypes": ["label", "icon"],
+      "displayTypes": ["icon", "label"],
+      "icon": "mdi:chevron-up",
+      "classes": "vert-display"
     },
     {
       "nodeId": "open-right-tray",
       "label": "Right",
       "actionType": "PROCESS_handleToggleMenuTray_RT",
-      "displayTypes": ["image"],
-      "image": "test-image-name.png"
+      "displayTypes": ["icon", "label"],
+      "icon": "mdi:chevron-right",
+      "classes": "vert-display"
     }
   ],
   ...sampleMockConfig.navListItems,
@@ -51,13 +54,20 @@ const customHeaderDeskNavList = [
       "nodeId": "open-bottom-tray",
       "label": "Bottom",
       "actionType": "PROCESS_handleToggleMenuTray_BT",
-      // "displayTypes": ["label"]
+      "displayTypes": ["icon", "label"],
+      "icon": "mdi:chevron-down",
+      "classes": "vert-display"
     },
     {
       "nodeId": "open-left-tray",
       "label": "Left",
       "actionType": "PROCESS_handleToggleMenuTray_LT",
-      // "displayTypes": ["label"]
+      "displayTypes": ["icon", "label"],
+      "icon": "mdi:chevron-left",
+      "classes": "vert-display"
+      // TODO
+      // "displayTypes": ["image"],
+      // "image": "test-image-name.png"
     }
   ],
 ];

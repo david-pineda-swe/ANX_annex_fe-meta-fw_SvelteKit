@@ -2,6 +2,8 @@
   import { isEmpty } from "@annexjs/uitils";
   import type { NavigationNode } from "src/global";
 
+  import IconIndex from "../display/icon-index.svelte";
+
   export let navItem: NavigationNode;
 
   // console.log('>> NAV_ITEM_LABEL:', navItem);
@@ -9,7 +11,7 @@
   const {
     label,
     icon,
-    image,
+    image, // TODO <<
     displayTypes
   } = navItem;
 
@@ -23,7 +25,7 @@
     {#if display === 'label'}
       {label}
     {:else if display === 'icon'}
-      icon - tbd
+      <IconIndex iconName={icon}/>
     {:else if display === 'image'}
       image - tbd
     {/if}
