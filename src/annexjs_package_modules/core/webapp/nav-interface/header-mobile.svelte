@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { NavigationConfig } from 'src/global';
   import filterTargetNavigations from '@annexjs/core/webapp/nav-interface/filter-target-navigations';
+    import MenuPlotter from './menu-plotter.svelte';
 
   export let toggleMenuTray: any;
 
@@ -13,10 +14,28 @@
 
   console.log('>> HEADER_MOBILE HAS MENUS:', targetNavigations);
 
+  // TARGET_ACTIONS
+  const targetActions = {
+    handleToggleMenuTray: (provided) => {
+      const targetSide = provided[0];
+      toggleMenuTray(`${targetSide}_TRAY`);
+    }
+  };
+
   // TODO - PROJECT CONFIG FOR TRAY-TOGGLE CONTROL OF POSITIONING
   // TODO - PROJECT CONFIG FOR MODULE-CONTROL POSITIONING
 </script>
 
+
+
+<header class="mobile-header sm:hidden">
+  {#if targetNavigations}
+    <MenuPlotter
+      navigations={targetNavigations}
+      locationClasses='header-mobile-menu'
+      targetActions={targetActions}/>
+  {/if}
+</header>
 <header class="mobile-header flex sm:hidden p-2">
   <div class="corner left">
     <button class="tray-toggle tp-tray-btn" on:click={toggleMenuTray('TP_TRAY')}>TP</button>

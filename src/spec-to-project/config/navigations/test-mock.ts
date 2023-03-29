@@ -28,6 +28,47 @@ const sampleMockConfig = {
   renderActive: true
 };
 
+const leftTrayActions = [
+  {
+    "nodeId": "open-top-tray",
+    "label": "Top",
+    "actionType": "PROCESS_handleToggleMenuTray_TP",
+    // "displayTypes": ["label", "icon"],
+    "displayTypes": ["icon", "label"],
+    "icon": "mdi:chevron-up",
+    "classes": "vert-display"
+  },
+  {
+    "nodeId": "open-right-tray",
+    "label": "Right",
+    "actionType": "PROCESS_handleToggleMenuTray_RT",
+    "displayTypes": ["icon", "label"],
+    "icon": "mdi:chevron-right",
+    "classes": "vert-display"
+  }
+];
+const rightTrayActions = [
+  {
+    "nodeId": "open-bottom-tray",
+    "label": "Bottom",
+    "actionType": "PROCESS_handleToggleMenuTray_BT",
+    "displayTypes": ["icon", "label"],
+    "icon": "mdi:chevron-down",
+    "classes": "vert-display"
+  },
+  {
+    "nodeId": "open-left-tray",
+    "label": "Left",
+    "actionType": "PROCESS_handleToggleMenuTray_LT",
+    "displayTypes": ["icon", "label"],
+    "icon": "mdi:chevron-left",
+    "classes": "vert-display"
+    // TODO
+    // "displayTypes": ["image"],
+    // "image": "test-image-name.png"
+  }
+];
+
 const customHeaderDeskNavList = [
   ...[
     {
@@ -86,7 +127,11 @@ export const testMockNavigations = [
     ...sampleMockConfig,
     ...{
       menuLocations: ['HEADER_MOBILE'],
-      // navListLabel: 'DESKTOP Primary'
+      // navListLabel: 'MOBILE Primary'
+      navListItems: [
+        ...leftTrayActions,
+        ...rightTrayActions
+      ]
     }
   }),
   // TP_TRAY
