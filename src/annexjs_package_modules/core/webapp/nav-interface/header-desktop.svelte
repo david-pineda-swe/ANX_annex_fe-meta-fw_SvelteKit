@@ -5,7 +5,7 @@
   import filterTargetNavigations from '@annexjs/core/webapp/nav-interface/filter-target-navigations';
     import MenuPlotter from './menu-plotter.svelte';
 
-  export let toggeleMenuTray: any; // << action
+  export let toggleMenuTray: any; // << action
 
   // Pull targetNav configs
   export let navigations: Array<NavigationConfig>;
@@ -20,7 +20,7 @@
   const targetActions = {
     handleToggleMenuTray: (provided) => {
       const targetSide = provided[0];
-      toggeleMenuTray(`${targetSide}_TRAY`);
+      toggleMenuTray(`${targetSide}_TRAY`);
     }
   };
 
@@ -52,7 +52,7 @@
     <!-- 
       TODO - GET ACTIVE LINK WORKING
       <ul>
-      <li><button on:click={toggeleMenuTray('RT_TRAY')}>Right</button></li>
+      <li><button on:click={toggleMenuTray('RT_TRAY')}>Right</button></li>
       <li class:active={$page.url.pathname === '/'}><a data-sveltekit-preload-data href="/">Home</a></li>
       <li class:active={$page.url.pathname === '/about'}><a data-sveltekit-preload-data href="/about">About</a></li>
       <li class:active={$page.url.pathname === '/contact'}><a data-sveltekit-preload-data href="/contact">Contact</a></li>
@@ -61,7 +61,7 @@
       <li class:active={$page.url.pathname === '/test-a'}><a data-sveltekit-preload-data href="/test-a">Test A</a></li>
       <li class:active={$page.url.pathname === '/test-a/test-b'}><a data-sveltekit-preload-data href="/test-a/test-b">test B</a></li>
       <li class:active={$page.url.pathname === '/test-a/test-b/test-c'}><a data-sveltekit-preload-data href="/test-a/test-b/test-c">test C</a></li>
-      <li><button on:click={toggeleMenuTray('LT_TRAY')}>Left</button></li>
+      <li><button on:click={toggleMenuTray('LT_TRAY')}>Left</button></li>
     </ul> -->
 
     <svg class="menu-motif right" viewBox="0 0 2 3" aria-hidden="true">

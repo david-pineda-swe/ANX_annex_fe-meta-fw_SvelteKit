@@ -75,7 +75,7 @@
     <div class="header-dock">
       <!-- DESKTOP_HEADER_SLOTS -->
       <HeaderDesktop
-        toggeleMenuTray={toggleMenuTray}
+        toggleMenuTray={toggleMenuTray}
         navigations={navigations}>
           <slot slot="insert-header-desktop-aa">
             <slot name="insert-header-desktop-a"/>
