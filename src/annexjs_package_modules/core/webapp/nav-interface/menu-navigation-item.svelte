@@ -11,7 +11,7 @@
 
   const {
     nodeId,
-    actionType, // [INTERNAL_ROUTE(d), EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]]
+    actionType, // [INTERNAL_ROUTE(d), EXTERNAL_LINK, SLOT, PROCESS_[target_handle_key]_[...params]]
     //
     slug,
     url,
@@ -22,6 +22,12 @@
   const actingId = elementId || nodeId // || or derived imp
   const useActiveClass = renderActive && $page.url.pathname === slug;
   const linkIsActive = (useActiveClass) ? ' active' : '';
+
+  // SLOT INJECTION
+  const isSlotInjection: boolean = actionType.includes('SLOT_');
+  const [_ATswitch, targetSlot] = actionType.split('_');
+
+  // PROCESS ACTION
   const isProcessAction: boolean = actionType.includes('PROCESS_');
   const processTargetAction = () => {
     const params = actionType.split('_');
@@ -40,7 +46,11 @@
 <!-- MENU_NAV_ITEM -->
 <li id={`li-${actingId}`} class="nav-menu-list-item{linkIsActive}">
   <!-- switch on actionType -->
-  {#if actionType === 'INTERNAL_ROUTE'}
+  {#if isSlotInjection}
+    {#if targetSlot === 'A'}
+      <slot name='A'/>
+    {/if}
+  {:else if actionType === 'INTERNAL_ROUTE'}
     <a
       id={actingId}
       class={classes}

@@ -8,7 +8,7 @@ export function generateNavigationNode(props: NavigationNode): NavigationNode {
     const {
       nodeId,
       label,
-      actionType, // [INTERNAL_ROUTE(d), EXTERNAL_LINK, PROCESS_[target_handle_key]_[...params]]
+      actionType, // [INTERNAL_ROUTE(d), EXTERNAL_LINK, SLOT, PROCESS_[target_handle_key]_[...params]]
       //
       displayTypes, // [label(d), icon, image]
       slug,

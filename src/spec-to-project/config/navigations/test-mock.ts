@@ -33,8 +33,8 @@ const leftTrayActions = [
     "nodeId": "open-top-tray",
     "label": "Top",
     "actionType": "PROCESS_handleToggleMenuTray_TP",
-    // "displayTypes": ["label", "icon"],
-    "displayTypes": ["icon", "label"],
+    "displayTypes": ["label", "icon"],
+    // "displayTypes": ["icon", "label"],
     "icon": "mdi:chevron-up",
     "classes": "vert-display"
   },
@@ -42,7 +42,7 @@ const leftTrayActions = [
     "nodeId": "open-right-tray",
     "label": "Right",
     "actionType": "PROCESS_handleToggleMenuTray_RT",
-    "displayTypes": ["icon", "label"],
+    "displayTypes": ["label", "icon"],
     "icon": "mdi:chevron-right",
     "classes": "vert-display"
   }
@@ -52,7 +52,7 @@ const rightTrayActions = [
     "nodeId": "open-bottom-tray",
     "label": "Bottom",
     "actionType": "PROCESS_handleToggleMenuTray_BT",
-    "displayTypes": ["icon", "label"],
+    "displayTypes": ["label", "icon"],
     "icon": "mdi:chevron-down",
     "classes": "vert-display"
   },
@@ -60,7 +60,7 @@ const rightTrayActions = [
     "nodeId": "open-left-tray",
     "label": "Left",
     "actionType": "PROCESS_handleToggleMenuTray_LT",
-    "displayTypes": ["icon", "label"],
+    "displayTypes": ["label", "icon"],
     "icon": "mdi:chevron-left",
     "classes": "vert-display"
     // TODO
@@ -130,6 +130,11 @@ export const testMockNavigations = [
       // navListLabel: 'MOBILE Primary'
       navListItems: [
         ...leftTrayActions,
+        ...[{
+          nodeId: 'test-slot-inj-a',
+          label: 'Logo brand',
+          actionType: 'SLOT_A'
+        }],
         ...rightTrayActions
       ]
     }

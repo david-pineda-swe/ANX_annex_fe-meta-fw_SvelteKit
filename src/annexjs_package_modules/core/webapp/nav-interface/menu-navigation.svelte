@@ -28,7 +28,11 @@
       <MenuNavigationItem
         navItem={navItem}
         renderActive={nav.renderActive}
-        targetActions={targetActions}/>
+        targetActions={targetActions}>
+          <slot slot="A">
+            <slot name="A"/>
+          </slot>
+      </MenuNavigationItem>
     {/each}
   </ul>
 </nav>

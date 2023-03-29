@@ -18,7 +18,11 @@
     <MenuNavigation
       nav={nav}
       locationClasses={locationClasses}
-      targetActions={targetActions}/>
+      targetActions={targetActions}>
+        <slot slot="A">
+          <slot name="A"/>
+        </slot>
+    </MenuNavigation>
   {/each}
 </div>
 

@@ -89,7 +89,9 @@
       <HeaderMobile
         toggleMenuTray={toggleMenuTray}
         navigations={navigations}>
-          <slot name="insert-header-mobile"/>
+          <slot slot="insert-header-mobile">
+            <slot name="insert-header-mobile"/>
+          </slot>
       </HeaderMobile>
     </div>
 

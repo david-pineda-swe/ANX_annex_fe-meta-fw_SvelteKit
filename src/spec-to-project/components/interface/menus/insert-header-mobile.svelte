@@ -5,7 +5,7 @@
 
 
 <div class="branding center">
-  <a href="https://kit.svelte.dev">
+  <a href="https://kit.svelte.dev" target="_blank">
     <img src={logo} alt="SvelteKit" />
   </a>
 </div>

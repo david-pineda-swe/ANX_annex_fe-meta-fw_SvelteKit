@@ -1,21 +1,18 @@
-  /* MENU INTERFACE STANDARDS */
 
-  .menu-interface {
-    // background-color: green;
-    h1 {
-      font-size: 1.25rem;
-      text-align: center;
-    }
+.menu-interface {
+  h1 {
+    font-size: 1.25rem;
+    text-align: center;
   }
+}
 
-    /* NAVIGATION NODES */    
-    span.menu-nav-item-label {
-      display: flex;
-      align-items: center;
-    }
+span.menu-nav-item-label {
+  display: flex;
+  align-items: center;
+}
 
-    .vert-display {
-      span.menu-nav-item-label {
-        flex-direction: column;
-      }
-    }
+.vert-display {
+  span.menu-nav-item-label {
+    flex-direction: column;
+  }
+}
