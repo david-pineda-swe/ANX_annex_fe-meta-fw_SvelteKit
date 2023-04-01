@@ -11,8 +11,8 @@
 
   // TODO - MENU_PLOTTER SUB FEATURES
   // [] navigationType
-  // [] renderActive
 </script>
+
 
 
 <!-- NAV_MENU -->
@@ -27,7 +27,6 @@
     {#each nav.navListItems as navItem}
       <MenuNavigationItem
         navItem={navItem}
-        renderActive={nav.renderActive}
         targetActions={targetActions}>
           <slot slot="A">
             <slot name="A"/>

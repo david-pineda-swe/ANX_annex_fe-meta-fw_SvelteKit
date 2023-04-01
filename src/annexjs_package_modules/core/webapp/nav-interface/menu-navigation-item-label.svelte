@@ -25,9 +25,9 @@
     {#if display === 'label'}
       {label}
     {:else if display === 'icon'}
-      <IconIndex iconName={icon}/>
+      <IconIndex designation={icon}/>
     {:else if display === 'image'}
-      image - tbd
+      image - TBD
     {/if}
   {/each}
 </span>

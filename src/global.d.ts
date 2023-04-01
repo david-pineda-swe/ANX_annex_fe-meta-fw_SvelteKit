@@ -177,7 +177,6 @@ interface NavigationConfig {
   elementId?: string;
   classes?: string;
   mobileOnly?: boolean;
-  renderActive?: boolean;
 }
 
 interface ProjectConfig {

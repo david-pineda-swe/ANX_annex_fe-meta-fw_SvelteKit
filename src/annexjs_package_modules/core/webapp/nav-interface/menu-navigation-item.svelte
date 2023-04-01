@@ -1,12 +1,10 @@
 <script lang="ts">
-  import { page } from '$app/stores'; // FIX <<<
+  import { page } from '$app/stores';
   import type { NavigationNode } from "src/global";
+
   import MenuNavigationItemLabel from './menu-navigation-item-label.svelte';
 
-  // TODO - ACCOUNT FOR SLOT CONTENT REPLACEMENT
-
   export let navItem: NavigationNode;
-  export let renderActive: boolean;
   export let targetActions: {};
 
   const {
@@ -20,8 +18,10 @@
   } = navItem;
 
   const actingId = elementId || nodeId // || or derived imp
-  const useActiveClass = renderActive && $page.url.pathname === slug;
-  const linkIsActive = (useActiveClass) ? ' active' : '';
+
+  // ACTIVE INTERNAL ROUTE
+  $:linkIsActive = ($page.url.pathname === slug);
+  $:linkIsActiveClass = (linkIsActive) ? ' active' : '';
 
   // SLOT INJECTION
   const isSlotInjection: boolean = actionType.includes('SLOT_');
@@ -36,7 +36,7 @@
     targetActions[handleKey](params);
   };
 
-  // TODO 
+  // TODO
   // linkTarget?: string; // DOCS linkTarget - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
   // subNodes?: Array<NavigationNode>
 </script>
@@ -44,7 +44,7 @@
 
 
 <!-- MENU_NAV_ITEM -->
-<li id={`li-${actingId}`} class="nav-menu-list-item{linkIsActive}">
+<li id={`li-${actingId}`} class="nav-menu-list-item{linkIsActiveClass}">
   <!-- switch on actionType -->
   {#if isSlotInjection}
     {#if targetSlot === 'A'}

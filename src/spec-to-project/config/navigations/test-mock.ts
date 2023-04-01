@@ -25,7 +25,6 @@ const sampleMockConfig = {
   elementId: 'primary-nav',
   classes: 'main-navigation', 
   // mobileOnly: false,
-  renderActive: true
 };
 
 const leftTrayActions = [
