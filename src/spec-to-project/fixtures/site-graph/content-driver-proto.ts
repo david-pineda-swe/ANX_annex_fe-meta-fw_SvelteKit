@@ -2,6 +2,7 @@
 
 import { mockNodeMeta } from "./mock-node-meta";
 import { mockPageRoute } from "./mock-page-route";
+import { generateNavigationNode } from "./generate-navigation-node";
 import { mockContentSegment } from "./mock-content-segment";
 
 import fs from 'fs';
@@ -55,12 +56,13 @@ export const ProtoSiteGraph = {
     notes: ''
   }),
 
-  // integrations: { // !
+  // TODO - THIRD PARTY INTEGRATIONS
+  // integrations: {
   //   firstParty: [],
   //   thirdParty: []
   // },
 
-  routeStructure: mockPageRoute({ // REKEY:  => routeStructure
+  routeStructure: [mockPageRoute({ // REKEY:  => serializePageRoute
     // ! PAGE_ROUTE: A-1
     nodeId: 'A-1',
     nodeType: 'PAGE_ROUTE',
@@ -75,6 +77,18 @@ export const ProtoSiteGraph = {
       editedBy: null,
       notes: ''
     }),
+    routeMeta: {
+      // - searchTags
+      // - openGraph
+      navigationNode: generateNavigationNode({
+        nodeId: '*',
+        label: 'Test Route A-1: Alice',
+        actionType: 'INTERNAL_ROUTE'
+      })
+    },
+    tier: 'A',
+    category: 'category',
+    slug: "/test-a",
     // error
     flowControl: {
       A_indexOnly: true,
@@ -84,10 +98,6 @@ export const ProtoSiteGraph = {
       E_renderAsParentRoute: false,
       F_renderAsIndependentRoute: true
     },
-    tier: 'A',
-    category: 'category',
-    slug: "/test-a",
-    // routeMeta: // !
     content: mockContentSegment({ // START - PAGE_CONTENT
       nodeId: 'page-test-a',
       nodeType: 'PAGE_CONTENT',
@@ -269,6 +279,18 @@ export const ProtoSiteGraph = {
           editedBy: null,
           notes: ''
         }),
+        routeMeta: {
+          // - searchTags
+          // - openGraph
+          navigationNode: generateNavigationNode({
+            nodeId: '*',
+            label: 'Test Route B-1: Bob',
+            actionType: 'INTERNAL_ROUTE'
+          })
+        },
+        tier: 'B',
+        category: 'category',
+        slug: "/test-b",
         // error
         flowControl: {
           A_indexOnly: true,
@@ -278,10 +300,6 @@ export const ProtoSiteGraph = {
           E_renderAsParentRoute: true,
           F_renderAsIndependentRoute: false
         },
-        tier: 'B',
-        category: 'category',
-        slug: "/test-b",
-        // routeMeta: // !
         content: mockContentSegment({ // START - PAGE_CONTENT
           nodeId: 'page-test-b',
           nodeType: 'PAGE_CONTENT',
@@ -424,6 +442,18 @@ export const ProtoSiteGraph = {
               editedBy: null,
               notes: ''
             }),
+            routeMeta: {
+              // - searchTags
+              // - openGraph
+              navigationNode: generateNavigationNode({
+                nodeId: '*',
+                label: 'Test Route C-1: Casey',
+                actionType: 'INTERNAL_ROUTE'
+              })
+            },
+            tier: 'C',
+            category: 'category',
+            slug: "/test-c",
             // error
             flowControl: {
               A_indexOnly: true,
@@ -433,10 +463,6 @@ export const ProtoSiteGraph = {
               E_renderAsParentRoute: true,
               F_renderAsIndependentRoute: false
             },
-            tier: 'C',
-            category: 'category',
-            slug: "/test-c",
-            // routeMeta: // !
             content: mockContentSegment({ // START - PAGE_CONTENT
               nodeId: 'page-test-c',
               nodeType: 'PAGE_CONTENT',
@@ -568,5 +594,5 @@ export const ProtoSiteGraph = {
         ]
         })
       ]
-  })
+  })]
 }

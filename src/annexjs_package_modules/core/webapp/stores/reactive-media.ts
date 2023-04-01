@@ -19,5 +19,3 @@ const breakpoints = {
 export const mediaIs = watchMedia(breakpoints);
 
 export const mediaIsMobile = derived(mediaIs, mediaIs => mediaIs.mobile_anon || mediaIs.mobile_iPhoneXIIIproMax);
-
-// export default mediaIs;

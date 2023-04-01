@@ -70,9 +70,9 @@ interface ContentSegment extends SchemaNode {
 
 // ! ---PAGE_ROUTE---
 interface ControlError {
-  severity?: string,
+  severity?: string, // warn, hign, priority
   process?:string,
-  error?: string
+  message?: string
 }
 
 interface FlowControlTraits {
@@ -87,28 +87,45 @@ interface FlowControlTraits {
 }
 
 // - PAGE ROUTE
+interface NavigationNode {
+  nodeId: string;
+  label: string;
+  actionType: string; // [INTERNAL_ROUTE(d), EXTERNAL_LINK, SLOT, PROCESS_[target_handle_key]_[...params]]
+  //
+  displayTypes?: Array<string>; // [label(d), icon, image]
+  slug?: string;
+  url?: string;
+  linkTarget?: string; // DOCS linkTarget - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
+  elementId?: string;
+  classes?: string;
+  icon?: string;
+  image?: string;
+  subNodes?: Array<NavigationNode>
+}
+
+interface RouteMeta {
+  // searchTags? // TBD 
+  // openGraph? // TBD 
+  navigationNode?: NavigationNode
+}
+
 interface PageRoute extends SchemaNode {
   // - EXTENDED FROM SchemaNode
+  // ! META
   // nodeId
   // nodeType
   // nodeMeta
-
-  // - CONTENT
-  content: ContentSegment
-  subRoutes?: Array<pageRoute>,
-
-  // - ROUTE STATE
-  error?: ControlError
-  flowControl: FlowControlTraits,
-
-  // - ROUTE DEFINITION KEYS
-  tier: string,
-  category: string,
-  slug: string,
-
-  // - ROUTE DETAILS
-  // openGraph: string, // ! < TODO
-  // searchTags: Array<string>
+  routeMeta?: RouteMeta;
+  // ! NAVIGATION
+  tier: string;
+  category: string;
+  slug: string;
+  // ! STATE MANAGEMENT
+  error?: ControlError;
+  flowControl?: FlowControlTraits;
+  // ! CONTENT
+  content?: ContentSegment;
+  subRoutes?: Array<pageRoute>;
 }
 
 interface ContentTier {
@@ -125,7 +142,7 @@ interface SiteGraph extends SchemaNode {
   // nodeMeta: NodeMeta
 
   // integrations // ! TODO
-  routeStructure: PageRoute
+  routeStructure: Array<PageRoute>
 }
 
 //! ---ANNEX_CONTENT_DRIVER_RESULTS---
@@ -144,5 +161,27 @@ interface PageModelResult {
 }
 
 interface DynamicRouteData {
-  pageModel: PageModelResult
+  pageModel: PageModelResult;
+  contentNavigation: Array<NavigationNode>
+}
+
+interface NavigationConfig {
+  dataSource: string; // SPEC_CONFIG, CONTENT_NAV, CMS_CALL_[QUERY_KEY]
+  menuLocations: Array<string>; // PRIMARY, TP_TRAY, RT_TRAY, BT_TRAY, LT_TRAY, FOOTER
+  // TODO - Consider "SWAP_PROXY" for dynamic spec component swap
+  navigationType: string; // SHALLOW, NESTED, EXPANDABLE, SWAP_PROXY(replace w/ $pec component)
+  navListItems: Array<NavigationNode>
+  //
+  menuOrder?: number;
+  navListLabel?: string;
+  elementId?: string;
+  classes?: string;
+  mobileOnly?: boolean;
+}
+
+interface ProjectConfig {
+  // siteMeta: ???
+  // indexRouteMeta: RouteMeta
+  // thirdPartyConfigs: any
+  navigations: Array<NavigationConfig>
 }

@@ -1,10 +1,20 @@
 <script lang="ts">
-  import { mediaIsMobile } from "@annexjs/core/webapp/stores/reactive-media";
   import { sineIn, quintOut } from 'svelte/easing';
+  import type { NavigationConfig } from "src/global";
+  import filterTargetNavigations from "./filter-target-navigations";
+  import { mediaIsMobile } from "@annexjs/core/webapp/stores/reactive-media";
+    import MenuPlotter from './menu-plotter.svelte';
 
   export let trayType: string;
   export let toggleMenuTray: any;
   export let currentMenuTray: string;
+
+  // Pull targetNav configs
+  export let navigations: Array<NavigationConfig>;
+  const targetNavigations = filterTargetNavigations({
+    navigations,
+    targetMenuLocation: trayType
+  });
 
   let openTray: boolean;
   $:openTray = currentMenuTray === trayType;
@@ -30,21 +40,21 @@
     };
 
     switch(trayType) {
-      case 'top':
+      case 'TP_TRAY':
         return {
           ...defaultTransition,
           ...{
             css: (t: number) => `transform: translatey(${-110 + 110*t}%);`
           }
         };
-      case 'right':
+      case 'RT_TRAY':
         return {
           ...defaultTransition,
           ...{
             css: (t: number) => `transform: translate(${100 - 100*t}%);`
           }
         };
-      case 'bottom':
+      case 'BT_TRAY':
         // TODO - still quirks with iP 13 pro max chrome
         return {
           ...defaultTransition,
@@ -52,7 +62,7 @@
             css: (t: number) => `transform: translatey(${100 - 100*t}%);`
           }
         };
-      case 'left':
+      case 'LT_TRAY':
         return defaultTransition;
       default:
         // LEFT MENU TRAY
@@ -61,12 +71,22 @@
   };
 </script>
 
+
+
 {#if $mediaIsMobile}
-  <!-- MOBILE -->
+  <!-- MOBILE BROWSER -->
   {#if openTray}
     <div class="menu-tray {trayType}"  in:traySlide={{into:true}} out:traySlide={{into:false}}>
       <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
-      <div class="interface-container">
+      <div class="menu-interface tray-menu mobile interface-container">
+        
+        {#if targetNavigations}
+          <MenuPlotter
+            navigations={targetNavigations}
+            locationClasses='menu-tray {trayType} mobile'
+            targetActions={{}}/>
+        {/if}
+        
         <slot/>
       </div>
     </div>
@@ -76,7 +96,15 @@
   {#if openTray}
     <div class="menu-tray {trayType}"  in:trayFade={{into: true}} out:trayFade={{into: false}}>
       <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
-      <div class="interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
+      <div class="menu-interface tray-menu desktop interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
+        
+        {#if targetNavigations}
+          <MenuPlotter
+            navigations={targetNavigations}
+            locationClasses='menu-tray {trayType} desktop'
+            targetActions={{}}/>
+        {/if}
+        
         <slot/>
       </div>
     </div>
@@ -108,24 +136,24 @@
   .interface-container {
     position: absolute;
     overflow-x: hidden;
-    padding: 10px;
+    padding: 20px;
     background-color: #fff;
   }
 
-  .menu-tray.right .interface-container {
+  .menu-tray.RT_TRAY .interface-container {
     width: 300px;
     height: 100%;
     right: 0px;
   }
 
-  .menu-tray.top .interface-container,
-  .menu-tray.bottom .interface-container {
+  .menu-tray.TP_TRAY .interface-container,
+  .menu-tray.BT_TRAY .interface-container {
     width: 100%;
     height: 100%;
     top: 65px;
   }
 
-  .menu-tray.left .interface-container {
+  .menu-tray.LT_TRAY .interface-container {
     /* left: -300px; */
     width: 300px;
     height: 100%;

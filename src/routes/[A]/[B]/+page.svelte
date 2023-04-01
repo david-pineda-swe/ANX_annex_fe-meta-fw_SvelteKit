@@ -1,7 +1,12 @@
 <script lang="ts">
   import type { DynamicRouteData } from 'src/global';
   import ContentPlotter from '@annexjs/core/content-plotter/render-controller.svelte';
-  export let data: DynamicRouteData;
+  import { contentNavigation } from '@annexjs/core/webapp/stores/navigation-outlines';
+  
+  export let data: DynamicRouteData; // = requestedModels
+  // console.log('>> TEST DYNAMIC_ROUTE_DATA [B]:', data);
+
+  contentNavigation.set(data.contentNavigation); // STORE SET
 </script>
 
 <ContentPlotter pageModel={data.pageModel}/>

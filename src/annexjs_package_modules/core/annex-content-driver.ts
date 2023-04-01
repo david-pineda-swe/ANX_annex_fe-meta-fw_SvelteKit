@@ -1,5 +1,6 @@
+import type { PageModelResult, PageRoute } from "src/global";
+
 // TODO: CONSIDER SURPLUS META REMOVAL IF IN DISPLAY/PERFORMACE MODE
-//x TEMPORARY FIXTURE FOR DEVELOPMENT >>>
 
 // TODO: CONCEPTUALIZE A STATIC CMS CONVENTION 
 // import { contentModel as demoContentModel } from '$pec/fixtures/content-graph/material-icons';
@@ -11,15 +12,6 @@ export const collectDynamicContentFor = async function(pageModel: PageModelResul
   let allContentIsResolved = false;
   
   try {
-    // TODO: LOGGER - VERBOSE INFO >>
-
-    // A.) COLLECT TARGET ROUTE PRIMARY CONTENT
-    // TODO: USE "SHARED" SINGLE ASYNC REQUEST METHOD
-    // via target_x_PageRoute.content.contentId (service.requestForContentModel)
-    // const requestForPrimaryContent = await {
-    //   success: true,
-    //   result: demoContentModel // DEMO: fixture <<< 
-    // };
 
     // TODO: if (!requestForPrimaryContent.success) =>
     // FAIL out
@@ -61,9 +53,9 @@ export const collectDynamicContentFor = async function(pageModel: PageModelResul
           const { routeTier, routeSlug } = pageRoute;
           
           pageRoute.error = {
-            severity:'high', // TODO: USE => warn, hign, priority
+            severity:'high', // warn, hign, priority
             process: `hydratedRoutes - ${routeTier}: ${routeSlug}`,
-            error: requestForSecondaryContent.error
+            message: requestForSecondaryContent.error
           };
         } else {
           // OK
@@ -112,36 +104,48 @@ export const collectDynamicContentFor = async function(pageModel: PageModelResul
 export const stackNestedContentStructure = async function(pageModel: PageModelResult, targetTier: string):Promise<PageModelResult> {
   const { pageRouteSequence } = pageModel;
   let independentRouteMarked = false;
+  let hasRoutingErrors = false;
 
   // C into => B into => A
   const contentStructure = pageRouteSequence.reverse().reduce((lastTierContent, pageRoute: PageRoute ) => {
-    const { tier, content, flowControl: { D_published, E_renderAsParentRoute, F_renderAsIndependentRoute } } = pageRoute;
-    
-    const isIndependentTargetTier = F_renderAsIndependentRoute && tier === targetTier;
-    const noPreviousContent = lastTierContent === null;
-    const shouldProvideParentTierContent = !independentRouteMarked && lastTierContent && E_renderAsParentRoute;
-    const provideContent = (noPreviousContent || shouldProvideParentTierContent) && D_published;
-    
-    const contentTier = {
-      tier,
-      content: (provideContent) ? content : null,
-      subRouteContent: (lastTierContent) ? lastTierContent : null
-    }
-    
-    if (isIndependentTargetTier) {
-      // ! OVERRIDE AND REMOVE SUB ROUTE CONTENT
-      independentRouteMarked = true;
-      contentTier.subRouteContent = null;
-    }
+    const { tier } = pageRoute;
 
-    return contentTier;
+    if (pageRoute.error) {
+      hasRoutingErrors = true;
+      return {
+        tier,
+        content: null
+      };
+    } else {
+      // OK - proceed to nest content
+      const { content, flowControl: { D_published, E_renderAsParentRoute, F_renderAsIndependentRoute } } = pageRoute;
+      
+      const isIndependentTargetTier = F_renderAsIndependentRoute && tier === targetTier;
+      const noPreviousContent = lastTierContent === null;
+      const shouldProvideParentTierContent = !independentRouteMarked && lastTierContent && E_renderAsParentRoute;
+      const provideContent = (noPreviousContent || shouldProvideParentTierContent) && D_published;
+      
+      const contentTier = {
+        tier,
+        content: (provideContent) ? content : null,
+        subRouteContent: (lastTierContent) ? lastTierContent : null
+      }
+      
+      if (isIndependentTargetTier) {
+        // ! OVERRIDE AND REMOVE SUB ROUTE CONTENT
+        independentRouteMarked = true;
+        contentTier.subRouteContent = null;
+      }
+  
+      return contentTier;
+    }
   }, null);
 
   return {
     ...pageModel,
     ...{
       contentStructure,
-      success: true
+      success: !hasRoutingErrors
     }
   };
 };

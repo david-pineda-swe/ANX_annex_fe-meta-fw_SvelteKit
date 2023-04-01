@@ -1,16 +1,29 @@
 <script lang="ts">
+  import type { NavigationConfig } from "src/global";
+
   import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte";
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
-  import HeaderMobile from '$pec/components/interface/header-mobile.svelte';
-  import HeaderDesktop from '$pec/components/interface/header-desktop.svelte';
+  import HeaderDesktop from '@annexjs/core/webapp/nav-interface/header-desktop.svelte';
+  import HeaderMobile from '@annexjs/core/webapp/nav-interface/header-mobile.svelte';
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 
+  // TODO - Collect and merge [siteGraph => contentNavigation, $pec/config navigation] navigations
+  // import { contentNavigation } from "@annexjs/core/webapp/stores/navigation-outlines";
+  // let contentNavigationData;
+  // contentNavigation.subscribe((data) => contentNavigationData = data);
+  // console.log('>> TEST: CONFIRM ACCESS OF PAGE MODEL VIA STORE:', contentNavigationData);
+
+  export let navigations: Array<NavigationConfig>;
+
+  // TODO - PROJECT_CONFIG FOR headerIsFixed setting
+  // TODO - PROJECT_CONFIG FOR headerFixedHeightDefault setting
   let headerIsFixed: boolean = true;
   let currentMenuTray: string;
 
   const toggleMenuTray = (selectedTray: string) :void => {
+    // console.log('>> CHECK SELECTED_TRAY:', selectedTray);
     currentMenuTray = selectedTray;
   }
 </script>
@@ -19,24 +32,40 @@
 
 <div id="annex-nav-interface" class="nav-interface-container" class:fixed-header={headerIsFixed}>
   <div class="menu-dock">
-    {#if $$slots["tray-interface-tp"]}
-      <MenuTray trayType="top" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
-        <slot name="tray-interface-tp"/>
+    {#if $$slots["insert-tray-tp"]}
+      <MenuTray
+        trayType="TP_TRAY"
+        toggleMenuTray={toggleMenuTray}
+        currentMenuTray={currentMenuTray}
+        navigations={navigations}>
+        <slot name="insert-tray-tp"/>
       </MenuTray>
     {/if}
-    {#if $$slots["tray-interface-rt"]}
-      <MenuTray trayType="right" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
-        <slot name="tray-interface-rt"/>
+    {#if $$slots["insert-tray-rt"]}
+      <MenuTray
+        trayType="RT_TRAY"
+        toggleMenuTray={toggleMenuTray}
+        currentMenuTray={currentMenuTray}
+        navigations={navigations}>
+        <slot name="insert-tray-rt"/>
       </MenuTray>
     {/if}
-    {#if $$slots["tray-interface-bt"]}
-      <MenuTray trayType="bottom" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
-        <slot name="tray-interface-bt"/>
+    {#if $$slots["insert-tray-bt"]}
+      <MenuTray
+        trayType="BT_TRAY"
+        toggleMenuTray={toggleMenuTray}
+        currentMenuTray={currentMenuTray}
+        navigations={navigations}>
+        <slot name="insert-tray-bt"/>
       </MenuTray>
     {/if}
-    {#if $$slots["tray-interface-lt"]}
-      <MenuTray trayType="left" toggleMenuTray={toggleMenuTray} currentMenuTray={currentMenuTray}>
-        <slot name="tray-interface-lt"/>
+    {#if $$slots["insert-tray-lt"]}
+      <MenuTray
+        trayType="LT_TRAY"
+        toggleMenuTray={toggleMenuTray}
+        currentMenuTray={currentMenuTray}
+        navigations={navigations}>
+        <slot name="insert-tray-lt"/>
       </MenuTray>
     {/if}
     <!-- TODO - CONSIDER WILDCARD CUSTOM MENU -->
@@ -44,11 +73,26 @@
 
   <div class="nav-interface-outlet">
     <div class="header-dock">
-      <!-- MOBILE_HEADER_SLOT -->
-      <HeaderMobile toggleMenuTray={toggleMenuTray}/>
+      <!-- DESKTOP_HEADER_SLOTS -->
+      <HeaderDesktop
+        toggleMenuTray={toggleMenuTray}
+        navigations={navigations}>
+          <slot slot="insert-header-desktop-aa">
+            <slot name="insert-header-desktop-a"/>
+          </slot>
+          <slot slot="insert-header-desktop-bb">
+            <slot name="insert-header-desktop-b"/>
+          </slot>
+      </HeaderDesktop>
 
-      <!-- DESKTOP_HEADER_SLOT -->
-      <HeaderDesktop toggeleMenuTray={toggleMenuTray}/>
+      <!-- MOBILE_HEADER_SLOT -->
+      <HeaderMobile
+        toggleMenuTray={toggleMenuTray}
+        navigations={navigations}>
+          <slot slot="insert-header-mobile">
+            <slot name="insert-header-mobile"/>
+          </slot>
+      </HeaderMobile>
     </div>
 
     <MediaMonitorHud/>

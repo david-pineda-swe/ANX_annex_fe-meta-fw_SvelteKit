@@ -1,7 +1,10 @@
+import type { DynamicRouteData, NavigationNode, PageModelResult, PageRoute, SiteGraph } from "src/global";
 import { collectDynamicContentFor, stackNestedContentStructure } from "./annex-content-driver";
+import { isEmpty } from "@annexjs/uitils";
 
+// X - siteGraph fixture will be replaced by call to HCMS
 // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
-import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph/content-driver-proto'
+import { ProtoSiteGraph as SiteGraphFixture } from '$pec/fixtures/site-graph/content-driver-proto'
 
 // TBD: Create a dynamic router class that will
 // - that constructs the router
@@ -24,7 +27,6 @@ interface SerializedAnnexRouteSchema { // ! TODO verify and refactor
 interface PathValidationQuery {
   tierPositionKey?: string,
   tierPositionLabel?: string,
-  // routeStructure: PageRoute,
   serializedUrlPath: SerializedAnnexRouteSchema
 }
 
@@ -35,15 +37,16 @@ const TIER_SEQUENCE_INDEX = {
   C: 'COOK'
 };
 
-const validateRouteForTier = async function(pathValidationQuery: PathValidationQuery):Promise<PageModelResult> {
-  const {tierPositionKey, tierPositionLabel, serializedUrlPath} = pathValidationQuery;
-
-  // TODO: POSSIBLE ADAPTER FOR ROUTE_SEQUNECE >>>
+const requestSiteGraphData = async function():Promise<SiteGraph> {
+  // TODO: POSSIBLE NETWORK ADAPTER FOR ROUTE_SEQUNECE >>>
   // X should be coming from Svelte store if previously loaded
-  // TODO: ACCESS TO SITE-GRAPH
-  // console.log('>> SITE_GRAPH FIXTURE:', SiteGraph);
-  const routeStructure = SiteGraph.routeStructure; // X TBD
-  
+  // console.log('>> requestSiteGraphData SITE_GRAPH FIXTURE:', SiteGraphFixture);
+
+  return SiteGraphFixture; // NOTE - <<< CONNECTION TO FIXTURE IMPORT - WILL BE A STORE CHECK THEN NETWORK REQUEST <<<
+};
+
+const validateRouteForTier = async function(pathValidationQuery: PathValidationQuery, routeStructure: Array<PageRoute>):Promise<PageModelResult> {
+  const {tierPositionKey, tierPositionLabel, serializedUrlPath} = pathValidationQuery;  
 
   // TODO: ABSTRACT THE DERIVED TIER PROGRESSION
   let tierPosition: string;
@@ -69,12 +72,13 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
 
   const tempRouteResults = [];
 
-  const pageRouteSequence = await tierProgression.map((currentTier: string, i: number) => {
+  const pageRouteSequence = tierProgression.map((currentTier: string, i: number) => {
     let targetRoute: PageRoute;
     const requestedRouteSlug = serializedUrlPath[currentTier];
 
     if (i === 0) {
-      targetRoute = routeStructure;
+      // FIX - PARTIAL MATCHES WORK te => test-a
+      targetRoute = routeStructure[0].slug.includes(requestedRouteSlug) ? routeStructure[0] : null;
     } else {
       // Find targetTierRoute by routeTier index & routeSlug match from parent
       const parentTierRoute = tempRouteResults[i - 1];
@@ -82,10 +86,22 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
         const { tier, slug } = pageRoute;
         
         return tier === currentTier && slug.includes(requestedRouteSlug); // ! << /example-slug || example-slug
-      })[0];      
+      })[0]; // ! << FIRST RESULT      
     }
 
-    // TODO: ERROR HANDLE FOR NULL RESULT
+    // Add a default error proxy for undefined targetRoute
+    targetRoute = (targetRoute != undefined) ? targetRoute : {
+      nodeType: 'PAGE_ROUTE',
+      nodeId: 'n/a',
+      tier: currentTier,
+      category: 'n/a',
+      slug: requestedRouteSlug,
+      error: {
+        severity: 'warn',
+        process: 'validateRouteForTier > pageRouteSequence filtering',
+        message: 'route not available'
+      }
+    };
 
     tempRouteResults.push(targetRoute);
     return targetRoute;
@@ -93,8 +109,11 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
 
   // ! All tiers must be satisfied w/ a PAGE_ROUTE
   const allTiersAreResolved = pageRouteSequence.every((pageRoute) => {
-    return pageRoute !== undefined; // TODO: or empty() util
+    return pageRoute !== undefined && !pageRoute.error; // TODO: or empty() util
   });
+
+  // console.log('\n>> ALL TIERS RESOLVED:\n', allTiersAreResolved);
+  // console.log('\n>> PAGE_ROUTE_SEQ:\n', pageRouteSequence);
   
   return {
     // state
@@ -106,14 +125,55 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   };
 }
 
-const fulfillPageModelRequestedBy = async function(pathValidationQuery: PathValidationQuery):Promise<PageModelResult> {
-  try {
-    // ! STAGE 1: VALIDATE URL_PATH for PAGE_ROUTE_SEQUENCE
-    const validatedPageModel = await validateRouteForTier(pathValidationQuery);
+const createNavNodeFrom = function(pageRoute:PageRoute, parentSlug: string): NavigationNode {
+  const { slug, subRoutes, routeMeta: { navigationNode: {
+    nodeId,
+    label,
+  } } } = pageRoute;
 
-    if (!validatedPageModel.allTiersAreResolved) {
+  const slugChain = `${parentSlug}${slug}`;
+  // console.log('>> TEST SLUG_CHAIN', slugChain);
+
+  const subNodes = (isEmpty(subRoutes)) ? [] : pageRoute.subRoutes.map((subPageRoute: PageRoute) => {
+    return createNavNodeFrom(subPageRoute, slugChain);
+  });
+
+  return {
+    nodeId,
+    label,
+    actionType: 'INTERNAL_ROUTE',
+    //
+    slug: slugChain,
+    subNodes
+  }
+}
+
+const parseContentNavigationFrom = async function(routeStructure: Array<PageRoute>):Promise<NavigationNode[]> {
+  // TODO - INTEGRATE PROJECT_CONFIG - CONTENT_NAV_RENDER_DEPTH
+  const parseResult = await routeStructure.map((pageRoute:PageRoute) => {
+    return createNavNodeFrom(pageRoute, '');
+  });
+
+  return parseResult;
+}
+
+const renderURLrequestedModels = async function(pathValidationQuery: PathValidationQuery):Promise<DynamicRouteData> {
+  try {
+    // ! STAGE 1: COLLECT SITE_GRAPH
+    const collectedSiteGraph = await requestSiteGraphData();
+    const { routeStructure } = collectedSiteGraph;
+    
+    // ! STAGE 2: PARSE THE CONTENT_NAVIGATION
+    const contentNavigation = await parseContentNavigationFrom(routeStructure);
+    
+    // ! STAGE 3: VALIDATE REQUESTED URL_PATH VIA PAGE_ROUTE_SEQUENCE OF ROUTE_STRUCTURE
+    const workingPageModel = await validateRouteForTier(pathValidationQuery, routeStructure);
+
+    // console.log('>> TEST VALIDATED_PAGE_MODEL:', workingPageModel);
+
+    if (!workingPageModel.allTiersAreResolved) {
       // FAIL: (!) No PageRoute model for requested URL path (!) 
-      const { tierPosition, pageRouteSequence} = validatedPageModel;
+      const { tierPosition, pageRouteSequence } = workingPageModel;
       const firstPageRoute = pageRouteSequence[0] // TODO: TARGET BY THE TIER POSITION THAT APP IS ON
 
       const errorMessage = (pageRouteSequence[0])
@@ -122,10 +182,14 @@ const fulfillPageModelRequestedBy = async function(pathValidationQuery: PathVali
 
       console.error(errorMessage);
       // throw new Error(errorMessage); // FIX <<
-      return validatedPageModel
+      return {
+        pageModel: workingPageModel,
+        // TODO - CREATE PARSE PROCESS OF siteGraph.routeStructure
+        contentNavigation
+      };
     } else {
-      // ! STAGE 2: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
-      const hydratedPageModel = await collectDynamicContentFor(validatedPageModel);
+      // ! STAGE 4: HYDRATE contentModel(s) FOR ALL TIERS on PAGE_ROUTE_SEQUENCE
+      const hydratedPageModel = await collectDynamicContentFor(workingPageModel);
   
       // TODO: LOGGER - VERBOSE INFO >>
       // hydratedPageModel.pageRouteSequence.forEach(routeConfig => console.table(routeConfig));
@@ -135,24 +199,27 @@ const fulfillPageModelRequestedBy = async function(pathValidationQuery: PathVali
           // FAIL: 
           // todo: test missing content fail over
       } else {
-        // ! STAGE 3: COMPILE the contentModel(s) into a CONTENT_STRUCTURE_SCHEMA
-        const targetTier = validatedPageModel.tierPosition;
-        const finishedPageModel = await stackNestedContentStructure(hydratedPageModel, targetTier);
+        // OK >>
+        // ! STAGE 5: COMPILE the contentModel(s) into a CONTENT_STRUCTURE_SCHEMA
+        const targetTier = workingPageModel.tierPosition;
+        const completePageModel = await stackNestedContentStructure(hydratedPageModel, targetTier);
 
-        return finishedPageModel;
+        // console.log('>> TEST COMPLETED_PAGE_MODEL:', completePageModel);
+
+        return {
+          pageModel: completePageModel,
+          contentNavigation
+        };
       }
     }
   } catch(err) {
-    console.log('>> MERP');
+    //TODO - FIND ERROR LOGGING SERVICE PATTERN
+    console.error('>> renderURLrequestedModels has failed (!)', err);
     
-    // todo: test error handling
-    // todo: infra error logging goes here
+    // TODO - test error handling
 
-    // page.success = false;
-    // page.errors = [err];
-
-    // ! return  a dummy error ContentResult for testing;
+    // ! return a dummy error ContentResult for testing;
   }
 }
 
-export default { validateRouteForTier, fulfillPageModelRequestedBy };
+export default { validateRouteForTier, renderURLrequestedModels };

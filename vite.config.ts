@@ -6,6 +6,13 @@ import { restartOnMarkdownEdit } from './vite-dev-support/restarts';
 
 /** @type {import('vite').UserConfig} */
 const config: UserConfig = {
+  build: {
+    terserOptions: {
+      compress: {
+        drop_console: false
+      }
+    }
+  },
   resolve: {
     // NOTE: ABSOLUTE PATH DEFS FOR BUILD & COMPILE TIME - CI/CD PROCESSING
     alias: {

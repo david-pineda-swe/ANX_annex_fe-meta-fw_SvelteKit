@@ -1,34 +1,46 @@
 // const DEFAULT_STRING = 'default_page_route';
 
+import type { PageRoute } from "src/global";
+
 // START HERE BY MOCKING A PAGE_ROUTE FROM THE CONTENT DRIVER PROTO
 
 export function mockPageRoute(props: PageRoute): PageRoute {
   if (props) {
     // DYNAMIC MOCK
     const {
+      // ! META
       nodeId,
       nodeType,
       nodeMeta,
-      //
-      content,
-      subRoutes,
-      //
-      // error,
-      flowControl,
+      routeMeta,
+      // - searchTags
+      // - openGraph
+      // - navigationNode
+      // ! NAVIGATION
       tier,
       category,
       slug,
-      // openGraph
-      // searchTags
+      // ! STATE MANAGEMENT
+      // error,
+      flowControl,
+      // ! CONTENT
+      content,
+      subRoutes,
     } = props;
     return {
-      nodeType: nodeType || 'n/a',
+      // ! META
       nodeId: nodeId,
+      nodeType: nodeType || 'n/a',
       nodeMeta,
-      //
-      content,
-      subRoutes: subRoutes || [],
-      //
+      routeMeta,
+      // - searchTags
+      // - openGraph
+      // - navigationNode
+      // ! NAVIGATION
+      tier: tier || 'ERROR',
+      category: category || 'N/A',
+      slug: slug || 'N/A',
+      // ! STATE MANAGEMENT
       // error
       flowControl: flowControl || {
         A_indexOnly: true,
@@ -36,12 +48,11 @@ export function mockPageRoute(props: PageRoute): PageRoute {
         C_navVisible: true,
         D_published: true,
         E_renderAsParentRoute: true,
+        F_renderAsIndependentRoute: true
       },
-      tier: tier || 'ERROR',
-      category: category || 'N/A',
-      slug: slug || 'N/A'
-      // openGraph // ! << TODO
-      // searchtags // ! << TODO
+      // ! CONTENT
+      content,
+      subRoutes: subRoutes || [],
     };
   } else {
     // ! NO PROPS !
