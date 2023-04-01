@@ -1,0 +1,40 @@
+
+.menu-interface {
+  h1 {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+}
+
+span.menu-nav-item-label {
+  display: flex;
+  align-items: center;
+}
+
+.vert-display {
+  span.menu-nav-item-label {
+    flex-direction: column;
+  }
+}
+
+/* ACTIVE ROUTE LINK - target all li.active on .nav-group */
+.nav-group {
+  li.active {
+    position: relative;
+  }
+  li.active::before {
+    @include fa-icon-defaults;
+    content: "\f054";
+    position: absolute;
+    left: -12px;
+    padding: 4px 0;
+    font-size: 10px;
+  }
+
+  /* bypass primary-menu */
+  .primary-menu & {
+    li.active {
+      border: none;
+    }
+  }
+}

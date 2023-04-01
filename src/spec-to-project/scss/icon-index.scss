@@ -1,0 +1,13 @@
+/* DOCS - FA Pseudo-elements: https://fontawesome.com/docs/web/add-icons/pseudo-elements */
+/* REF - Icon directory: https://fontawesome.com/icons */
+/* REF - Icon directory by category: https://fontawesome.com/icons/categories */
+
+@mixin fa-icon-defaults {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}

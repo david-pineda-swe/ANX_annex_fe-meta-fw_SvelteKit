@@ -35,7 +35,7 @@ const leftTrayActions = [
     "actionType": "PROCESS_handleToggleMenuTray_TP",
     "displayTypes": ["label", "icon"],
     // "displayTypes": ["icon", "label"],
-    "icon": "mdi:chevron-up",
+    "icon": "mdi:chevron-up_ICONIFY", // [icon_designation]_[FA, ICONIFY(d)]
     "classes": "vert-display"
   },
   {
@@ -43,7 +43,7 @@ const leftTrayActions = [
     "label": "Right",
     "actionType": "PROCESS_handleToggleMenuTray_RT",
     "displayTypes": ["label", "icon"],
-    "icon": "mdi:chevron-right",
+    "icon": "mdi:chevron-right_ICONIFY",
     "classes": "vert-display"
   }
 ];
@@ -53,7 +53,7 @@ const rightTrayActions = [
     "label": "Bottom",
     "actionType": "PROCESS_handleToggleMenuTray_BT",
     "displayTypes": ["label", "icon"],
-    "icon": "mdi:chevron-down",
+    "icon": "mdi:chevron-down_ICONIFY",
     "classes": "vert-display"
   },
   {
@@ -61,7 +61,7 @@ const rightTrayActions = [
     "label": "Left",
     "actionType": "PROCESS_handleToggleMenuTray_LT",
     "displayTypes": ["label", "icon"],
-    "icon": "mdi:chevron-left",
+    "icon": "mdi:chevron-left_ICONIFY",
     "classes": "vert-display"
     // TODO
     // "displayTypes": ["image"],
@@ -77,7 +77,7 @@ const customHeaderDeskNavList = [
       "actionType": "PROCESS_handleToggleMenuTray_TP",
       // "displayTypes": ["label", "icon"],
       "displayTypes": ["icon", "label"],
-      "icon": "mdi:chevron-up",
+      "icon": "mdi:chevron-up_ICONIFY",
       "classes": "vert-display"
     },
     {
@@ -85,7 +85,7 @@ const customHeaderDeskNavList = [
       "label": "Right",
       "actionType": "PROCESS_handleToggleMenuTray_RT",
       "displayTypes": ["icon", "label"],
-      "icon": "mdi:chevron-right",
+      "icon": "mdi:chevron-right_ICONIFY",
       "classes": "vert-display"
     }
   ],
@@ -96,7 +96,7 @@ const customHeaderDeskNavList = [
       "label": "Bottom",
       "actionType": "PROCESS_handleToggleMenuTray_BT",
       "displayTypes": ["icon", "label"],
-      "icon": "mdi:chevron-down",
+      "icon": "mdi:chevron-down_ICONIFY",
       "classes": "vert-display"
     },
     {
@@ -104,7 +104,7 @@ const customHeaderDeskNavList = [
       "label": "Left",
       "actionType": "PROCESS_handleToggleMenuTray_LT",
       "displayTypes": ["icon", "label"],
-      "icon": "mdi:chevron-left",
+      "icon": "faSquareCaretLeft_FA", // X - use case needs re work do not use "FA" on a project
       "classes": "vert-display"
       // TODO
       // "displayTypes": ["image"],
