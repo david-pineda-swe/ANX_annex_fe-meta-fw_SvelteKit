@@ -9,7 +9,7 @@
 
   const [locationMark] = locationClasses.split(' ');
 
-  // TODO - MENU_PLOTTER SUB FEATURES
+  // TODO - navigationType
   // [] navigationType
 </script>
 
