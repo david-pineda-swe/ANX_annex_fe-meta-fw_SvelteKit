@@ -13,11 +13,12 @@
     //
     slug,
     url,
+    linkTarget, // [_self(d), _blank]
     elementId,
     classes,
   } = navItem;
 
-  const actingId = elementId || nodeId // || or derived imp
+  const actingId = elementId || nodeId;
 
   // ACTIVE INTERNAL ROUTE
   $:linkIsActive = ($page.url.pathname === slug);
@@ -36,8 +37,7 @@
     targetActions[handleKey](params);
   };
 
-  // TODO
-  // linkTarget?: string; // DOCS linkTarget - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
+  // TODO - SUBNODES
   // subNodes?: Array<NavigationNode>
 </script>
 
@@ -62,6 +62,7 @@
     <a
       id={actingId}
       class={classes}
+      target={linkTarget}
       href={url}>
         <MenuNavigationItemLabel navItem={navItem}/>
     </a>
