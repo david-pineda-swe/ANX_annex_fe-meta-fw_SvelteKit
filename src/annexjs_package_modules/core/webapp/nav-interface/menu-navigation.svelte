@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { NavigationConfig } from "src/global";
+  import MenuNavigationList from "./menu-navigation-list.svelte";
 
-  import MenuNavigationItem from "./menu-navigation-item.svelte";
 
   export let nav: NavigationConfig;
   export let locationClasses: string;
@@ -23,17 +23,15 @@
     </h3>
   {/if}
 
-  <ul id="{nav.elementId}-{locationMark}-list" class="nav-menu-list">
-    {#each nav.navListItems as navItem}
-      <MenuNavigationItem
-        navItem={navItem}
-        targetActions={targetActions}>
-          <slot slot="A">
-            <slot name="A"/>
-          </slot>
-      </MenuNavigationItem>
-    {/each}
-  </ul>
+  <MenuNavigationList
+    elementId={nav.elementId}
+    locationMark={locationMark}
+    navListItems={nav.navListItems}
+    targetActions={targetActions}>
+    <slot slot="A">
+      <slot name="A"/>
+    </slot>
+  </MenuNavigationList>
 </nav>
 
 
