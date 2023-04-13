@@ -17,6 +17,29 @@ span.menu-nav-item-label {
   }
 }
 
+/* NESTED MENUS */
+.sub-list {
+  padding: 5px 0 0 15px;
+}
+
+/* EXPANDABLE */
+.expand {
+  display: none;
+}
+
+/* FIX - TO PSEUDO ELEMENT  >>
+.nav-menu-list-item.has-sub-nav {
+  border-left: 1px solid red;
+}
+*/
+
+.nav-menu-list-item.has-sub-nav:hover {
+  ul.nav-menu-list.sub-list.expand {
+    display: block;
+  }
+}
+
+
 /* ACTIVE ROUTE LINK - target all li.active on .nav-group */
 .nav-group {
   li.active {

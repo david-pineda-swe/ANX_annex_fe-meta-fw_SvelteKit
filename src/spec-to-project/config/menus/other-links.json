@@ -1,0 +1,10 @@
+{
+  "items": [
+    {
+      "nodeId": "to-site-map",
+      "label": "Site Map",
+      "slug": "/sitemap",
+      "actionType": "INTERNAL_ROUTE"
+    },
+  ]
+}

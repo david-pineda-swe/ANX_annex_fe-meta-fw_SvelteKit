@@ -169,14 +169,14 @@ interface NavigationConfig {
   dataSource: string; // SPEC_CONFIG, CONTENT_NAV, CMS_CALL_[QUERY_KEY]
   menuLocations: Array<string>; // PRIMARY, TP_TRAY, RT_TRAY, BT_TRAY, LT_TRAY, FOOTER
   // TODO - Consider "SWAP_PROXY" for dynamic spec component swap
-  navigationType: string; // SHALLOW, NESTED, EXPANDABLE, SWAP_PROXY(replace w/ $pec component)
+  navigationType: string; // = [SHALLOW(d), NESTED, EXPANDABLE, SWAP_PROXY(replace w/ $pec component)]
   navListItems: Array<NavigationNode>
   //
   menuOrder?: number;
   navListLabel?: string;
   elementId?: string;
   classes?: string;
-  mobileOnly?: boolean;
+  mobileOnly?: boolean; // X ?
 }
 
 interface ProjectConfig {
