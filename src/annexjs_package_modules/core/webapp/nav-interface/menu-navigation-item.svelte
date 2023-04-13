@@ -3,8 +3,12 @@
   import type { NavigationNode } from "src/global";
 
   import MenuNavigationItemLabel from './menu-navigation-item-label.svelte';
+  import MenuNavigationList from './menu-navigation-list.svelte';
 
   export let navItem: NavigationNode;
+  export let levelDepth: string;
+  export let navigationType: string;
+  export let locationMark: string;
   export let targetActions: {};
 
   const {
@@ -16,6 +20,7 @@
     linkTarget, // [_self(d), _blank]
     elementId,
     classes,
+    subNodes
   } = navItem;
 
   const actingId = elementId || nodeId;
@@ -37,14 +42,15 @@
     targetActions[handleKey](params);
   };
 
-  // TODO - SUBNODES
-  // subNodes?: Array<NavigationNode>
+  // SUB NODES
+  const renderSubNodes = (subNodes && navigationType !== 'SHALLOW');
+  const hasSubNodesClass = (renderSubNodes) ? ' has-sub-nav' : '';
 </script>
 
 
 
 <!-- MENU_NAV_ITEM -->
-<li id={`li-${actingId}`} class="nav-menu-list-item{linkIsActiveClass}">
+<li id={`li-${actingId}`} class="nav-menu-list-item{linkIsActiveClass}{hasSubNodesClass}">
   <!-- switch on actionType -->
   {#if isSlotInjection}
     {#if targetSlot === 'A'}
@@ -75,6 +81,16 @@
     </button>
   {:else}
     -
+  {/if}
+
+  {#if renderSubNodes}
+    <MenuNavigationList
+      elementId={actingId}
+      locationMark={locationMark}
+      levelDepth={levelDepth}
+      navigationType={navigationType}
+      navListItems={subNodes}
+      targetActions={targetActions}/>
   {/if}
 </li>
 

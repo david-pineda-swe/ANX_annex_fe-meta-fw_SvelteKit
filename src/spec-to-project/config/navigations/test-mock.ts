@@ -19,7 +19,7 @@ const sampleMockConfig = {
     // === $PEC_LCATIONS ===
     // ETC...
   ],
-  navigationType: "EXPANDABLE",
+  navigationType: "NESTED",
   navListItems: primaryMenu.items,
   // navListLabel: 'Ta-dur!',
   elementId: 'primary-nav',
@@ -118,7 +118,8 @@ export const testMockNavigations = [
     ...{
       menuLocations: ['HEADER_DESKTOP'],
       // navListLabel: 'DESKTOP Primary'
-      navListItems: customHeaderDeskNavList
+      navListItems: customHeaderDeskNavList,
+      navigationType: 'EXPANDABLE'
     }
   }),
   // HEADER_MOBILE
@@ -151,7 +152,8 @@ export const testMockNavigations = [
     ...sampleMockConfig,
     ...{
       menuLocations: ['RT_TRAY'],
-      navListLabel: 'RIGHT Tray Mock Primary'
+      navListLabel: 'RIGHT Tray Mock Primary - EXPANDABLE',
+      navigationType: 'EXPANDABLE'
     }
   }),
   // BT_TRAY
@@ -167,7 +169,8 @@ export const testMockNavigations = [
     ...sampleMockConfig,
     ...{
       menuLocations: ['LT_TRAY'],
-      navListLabel: 'LEFT Tray Mock Primary'
+      navListLabel: 'LEFT Tray Mock Primary - SHALLOW',
+      navigationType: 'SHALLOW'
     }
   }),
   // FOOTER_TRAY
@@ -175,7 +178,7 @@ export const testMockNavigations = [
     ...sampleMockConfig,
     ...{
       menuLocations: ['FOOTER_TRAY'],
-      navListLabel: 'FOOTER Tray Mock Primary'
+      navListLabel: 'FOOTER Tray Mock Primary',
     }
   }),
   // SITE_MENU_TRAY
@@ -193,7 +196,7 @@ export const testMockNavigations = [
     ...sampleMockConfig,
     ...{
       menuLocations: ['FOOTER_MENU'],
-      navListLabel: 'SITE MENU Footer Mock Primary'
+      navListLabel: 'SITE MENU Footer Mock Primary - NESTED'
     }
   })
 ];

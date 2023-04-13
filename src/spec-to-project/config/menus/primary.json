@@ -44,19 +44,25 @@
       "nodeId": "to-test-a",
       "label": "TEST A",
       "slug": "/test-a",
-      "actionType": "INTERNAL_ROUTE"
-    },
-    {
-      "nodeId": "to-test-b",
-      "label": "TEST B",
-      "slug": "/test-a/test-b",
-      "actionType": "INTERNAL_ROUTE"
-    },
-    {
-      "nodeId": "to-test-c",
-      "label": "TEST C",
-      "slug": "/test-a/test-b/test-c",
-      "actionType": "INTERNAL_ROUTE"
+      "actionType": "INTERNAL_ROUTE",
+      "subNodes": [
+        {
+          "nodeId": "to-test-b",
+          "label": "TEST B",
+          "slug": "/test-a/test-b",
+          "actionType": "INTERNAL_ROUTE",
+          "subNodes": [
+            {
+              "nodeId": "to-test-c",
+              "label": "TEST C",
+              "slug": "/test-a/test-b/test-c",
+              "actionType": "INTERNAL_ROUTE"
+            }
+          ]
+        }
+      ]
     }
+    
+    
   ]
 }

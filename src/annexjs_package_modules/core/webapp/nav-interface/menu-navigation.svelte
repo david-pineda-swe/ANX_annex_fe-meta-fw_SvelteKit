@@ -8,14 +8,10 @@
   export let targetActions: {};
 
   const [locationMark] = locationClasses.split(' ');
-
-  // TODO - navigationType
-  // [] navigationType
 </script>
 
 
 
-<!-- NAV_MENU -->
 <nav id="{nav.elementId}-{locationMark}" class="nav-menu {nav.classes}">
   {#if nav.navListLabel}
     <h3 class="nav-menu-label">
@@ -26,6 +22,8 @@
   <MenuNavigationList
     elementId={nav.elementId}
     locationMark={locationMark}
+    levelDepth={'0'}
+    navigationType={nav.navigationType}
     navListItems={nav.navListItems}
     targetActions={targetActions}>
     <slot slot="A">
