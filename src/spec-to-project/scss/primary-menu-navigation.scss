@@ -7,6 +7,18 @@
     justify-content: center;
     --background: rgba(255, 255, 255, 0.7);
 
+    /* EXPANDABLE */
+    ul.sub-list {
+      display: none;
+    }
+
+    .nav-menu-list-item.has-sub-nav:hover {
+      ul.nav-menu-list.sub-list.expand {
+        display: flex;
+      }
+    }
+
+    /* DEFAULT */
     ul {
       position: relative;
       padding: 0;
