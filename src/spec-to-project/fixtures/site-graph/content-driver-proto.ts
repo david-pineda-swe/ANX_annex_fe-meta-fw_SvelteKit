@@ -9,6 +9,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+// X - NETLIFY SERVER - NO LIKEY!
 const locateAndParse_md_Insert = (targetInsertContentFile: string) => {
   const targetInsertDirectory = 'src/spec-to-project/fixtures/site-graph/test-content';
 
@@ -162,6 +163,7 @@ export const ProtoSiteGraph = {
                       // domId: 'ta-dur',
                       // classSet: []
                       // attrSet
+                      mdInsert: matter("# This is some test MD content \n ## ha ha")
                       // FIX - THIS INVOKES AN FS READ - SVELTE SIDE CANNOT HANDLE SERVER SIDE FS
                       // mdInsert: locateAndParse_md_Insert('test-splash_A-1.md')
                     }
