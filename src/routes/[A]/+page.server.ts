@@ -11,10 +11,17 @@ import type { DynamicRouteData } from 'src/global';
       serializedUrlPath: request.params
     });
 
+    requestedModels.timeStamp = new Date();
+
     // DEBUG -
+    console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_A:", requestedModels);
     // console.log(">> WHAT IS THE HYDRATED_PAGE_MODEL @ TIER_A:", requestedModels.pageModel);
     // console.log(">> WHAT IS THE COTNENT_NAV_OUTLINE @ TIER_A:", requestedModels.contentNavigation);
 
+    // return {
+    //   pageModel: {},
+    //   contentNavigation: []
+    // };
     return requestedModels;
 
     // TODO - RETEST ERROR HANDLING
