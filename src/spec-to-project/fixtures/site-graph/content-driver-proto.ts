@@ -162,7 +162,8 @@ export const ProtoSiteGraph = {
                       // domId: 'ta-dur',
                       // classSet: []
                       // attrSet
-                      mdInsert: locateAndParse_md_Insert('test-splash_A-1.md')
+                      // FIX - THIS INVOKES AN FS READ - SVELTE SIDE CANNOT HANDLE SERVER SIDE FS
+                      // mdInsert: locateAndParse_md_Insert('test-splash_A-1.md')
                     }
                   }
                 })
