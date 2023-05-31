@@ -5,41 +5,41 @@ import { mockPageRoute } from "./mock-page-route";
 import { generateNavigationNode } from "./generate-navigation-node";
 import { mockContentSegment } from "./mock-content-segment";
 
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+// import fs from 'fs';
+// import path from 'path';
+// import matter from 'gray-matter';
 
 // X - NETLIFY SERVER - NO LIKEY!
-const locateAndParse_md_Insert = (targetInsertContentFile: string) => {
-  const targetInsertDirectory = 'src/spec-to-project/fixtures/site-graph/test-content';
+// const locateAndParse_md_Insert = (targetInsertContentFile: string) => {
+//   const targetInsertDirectory = 'src/spec-to-project/fixtures/site-graph/test-content';
 
-  // available files
-  const files = fs.readdirSync(path.join(targetInsertDirectory));
-  console.log('>> aval insert files:', files);
+//   // available files
+//   const files = fs.readdirSync(path.join(targetInsertDirectory));
+//   console.log('>> aval insert files:', files);
 
-  // matter and content
-  // TODO - TEST THAT EXTENSION OF FILE ENDS IN ".md"
-  //! or account and parse a .js version to satisfy "GrayMatterFile" type interface
-  // TODO - KILL THE matter().buffer output
+//   // matter and content
+//   // TODO - TEST THAT EXTENSION OF FILE ENDS IN ".md"
+//   //! or account and parse a .js version to satisfy "GrayMatterFile" type interface
+//   // TODO - KILL THE matter().buffer output
   
-  if (!files.includes(targetInsertContentFile)) {
-    // FAIL - to find target insert .md file
-    return {
-      content: '',
-      data: null,
-      isEmpty: true,
-      excerpt: ''
-    }
-  } else {
-    // OK
-    const targetFileContent = fs.readFileSync(path.join(targetInsertDirectory, targetInsertContentFile), 'utf-8');
-    const mdInsertParsed = matter(targetFileContent)
+//   if (!files.includes(targetInsertContentFile)) {
+//     // FAIL - to find target insert .md file
+//     return {
+//       content: '',
+//       data: null,
+//       isEmpty: true,
+//       excerpt: ''
+//     }
+//   } else {
+//     // OK
+//     const targetFileContent = fs.readFileSync(path.join(targetInsertDirectory, targetInsertContentFile), 'utf-8');
+//     const mdInsertParsed = matter(targetFileContent)
   
-    console.log(`>> Target: ${targetInsertContentFile} found .md insert: ${mdInsertParsed}`);
+//     console.log(`>> Target: ${targetInsertContentFile} found .md insert: ${mdInsertParsed}`);
 
-    return mdInsertParsed;
-  }
-}
+//     return mdInsertParsed;
+//   }
+// }
 
 export const ProtoSiteGraph = {
   // ! SITE_GRAPH 
@@ -151,21 +151,52 @@ export const ProtoSiteGraph = {
                 }
               },
               subContent: [
+                // mockContentSegment({
+                //   nodeId: 'test-md-render-a',
+                //   nodeType: 'CONTENT_SEGMENT',
+                //   // nodeMeta
+                //   component: {
+                //     componentType: 'INSERT',
+                //     componentTag: 'md-block-insert',
+                //     element: {
+                //       // tag: 'div',
+                //       // domId: 'ta-dur',
+                //       // classSet: []
+                //       // attrSet
+                //       mdInsert: locateAndParse_md_Insert('test-splash_A-1.md')
+                //       // FIX - THIS INVOKES AN FS READ - SVELTE SIDE CANNOT HANDLE SERVER SIDE FS
+                //     }
+                //   }
+                // }),
                 mockContentSegment({
-                  nodeId: 'test-md-render-a',
+                  nodeId: 'test-md-render-b',
                   nodeType: 'CONTENT_SEGMENT',
                   // nodeMeta
                   component: {
                     componentType: 'INSERT',
-                    componentTag: 'md-block',
+                    componentTag: 'md-block-swap',
                     element: {
                       // tag: 'div',
                       // domId: 'ta-dur',
                       // classSet: []
                       // attrSet
-                      mdInsert: matter("# This is some test MD content \n ## ha ha")
-                      // FIX - THIS INVOKES AN FS READ - SVELTE SIDE CANNOT HANDLE SERVER SIDE FS
-                      // mdInsert: locateAndParse_md_Insert('test-splash_A-1.md')
+                      mdInsert: 'sampleA'
+                    }
+                  }
+                }),
+                mockContentSegment({
+                  nodeId: 'test-md-render-c',
+                  nodeType: 'CONTENT_SEGMENT',
+                  // nodeMeta
+                  component: {
+                    componentType: 'INSERT',
+                    componentTag: 'md-block-swap',
+                    element: {
+                      // tag: 'div',
+                      // domId: 'ta-dur',
+                      // classSet: []
+                      // attrSet
+                      mdInsert: 'sampleB'
                     }
                   }
                 })
