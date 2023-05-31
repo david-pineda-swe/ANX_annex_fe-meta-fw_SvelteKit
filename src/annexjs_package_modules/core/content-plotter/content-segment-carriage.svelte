@@ -1,4 +1,5 @@
 <script lang="ts">
+  import type { NodeComponentTraits } from 'src/global';
   import ContentInsert from './content-insert.svelte';
   import ContentSegmentCarriage from './content-segment-carriage.svelte';
   
@@ -30,8 +31,8 @@
     
     // Lv.3 INSERT - SUB SEGMENTS AND FUNC ENTRIES
     if (componentType === 'INSERT') {
-      if (componentTag === 'md-block') {
-        return ['md-blk', INSERT_TYPE_CLASS];
+      if (componentTag === 'md-block-insert') {
+        return ['md-block', INSERT_TYPE_CLASS];
       }
     }
     // TBD - OTHER NODE SCENARIOS...
