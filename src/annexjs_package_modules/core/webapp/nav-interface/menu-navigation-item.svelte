@@ -5,6 +5,7 @@
   import MenuNavigationItemLabel from './menu-navigation-item-label.svelte';
   import MenuNavigationList from './menu-navigation-list.svelte';
 
+  export let toggleMenuTray: any;
   export let navItem: NavigationNode;
   export let levelDepth: string;
   export let navigationType: string;
@@ -42,6 +43,11 @@
     targetActions[handleKey](params);
   };
 
+  // ON CLICK
+  const handleInternalLinkClick = () => {
+    if (toggleMenuTray) toggleMenuTray('');
+  }
+
   // SUB NODES
   const renderSubNodes = (subNodes && navigationType !== 'SHALLOW');
   const hasSubNodesClass = (renderSubNodes) ? ' has-sub-nav' : '';
@@ -61,7 +67,8 @@
       id={actingId}
       class={classes}
       data-sveltekit-preload-data
-      href={slug}>
+      href={slug}
+      on:click={() => handleInternalLinkClick()}>
         <MenuNavigationItemLabel navItem={navItem}/>
     </a>
   {:else if actionType === 'EXTERNAL_LINK'}
@@ -85,6 +92,7 @@
 
   {#if renderSubNodes}
     <MenuNavigationList
+      {toggleMenuTray}
       elementId={actingId}
       locationMark={locationMark}
       levelDepth={levelDepth}

@@ -2,6 +2,7 @@
   import type { NavigationConfig } from "src/global";
   import MenuNavigation from "./menu-navigation.svelte";
 
+  export let toggleMenuTray: any = null;
   export let navigations: Array<NavigationConfig>
   export let locationClasses: string;
   export let targetActions: {};
@@ -16,6 +17,7 @@
 <div class="nav-group {locationClasses}">
   {#each navigations as nav}
     <MenuNavigation
+      {toggleMenuTray}
       nav={nav}
       locationClasses={locationClasses}
       targetActions={targetActions}>
