@@ -1,6 +1,4 @@
-<script lang="ts">
-  console.log('>> TOP_TRAY_MENU INSERT >>');
-</script>
+<script lang="ts"></script>
 
 
 
