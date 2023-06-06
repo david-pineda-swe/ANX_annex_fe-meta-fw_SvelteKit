@@ -9,7 +9,7 @@ import { mockContentSegment } from "./mock-content-segment";
 // import path from 'path';
 // import matter from 'gray-matter';
 
-// X - NETLIFY SERVER - NO LIKEY!
+// X - NETLIFY SERVER - NO LIKEY! - locateAndParse_md_Insert will move to node
 // const locateAndParse_md_Insert = (targetInsertContentFile: string) => {
 //   const targetInsertDirectory = 'src/spec-to-project/fixtures/site-graph/test-content';
 
@@ -151,6 +151,7 @@ export const ProtoSiteGraph = {
                 }
               },
               subContent: [
+                // NOTE - this will be a ref for a resource node handled on API side, does not work for FE file system reads
                 // mockContentSegment({
                 //   nodeId: 'test-md-render-a',
                 //   nodeType: 'CONTENT_SEGMENT',

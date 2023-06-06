@@ -7,3 +7,5 @@ export const testSplash = `
   * two potatoe
   * three potatoe
 `;
+
+// DEPRECATED - FILE WILL BE REPLACED BY STATIC CONTENT INDEX OR API PROVIDED RESOURCE
