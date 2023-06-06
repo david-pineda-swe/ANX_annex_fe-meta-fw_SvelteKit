@@ -2,7 +2,7 @@
   import type { NavigationConfig } from "src/global";
   import MenuNavigationList from "./menu-navigation-list.svelte";
 
-
+  export let toggleMenuTray: any;
   export let nav: NavigationConfig;
   export let locationClasses: string;
   export let targetActions: {};
@@ -20,6 +20,7 @@
   {/if}
 
   <MenuNavigationList
+    {toggleMenuTray}
     elementId={nav.elementId}
     locationMark={locationMark}
     levelDepth={'0'}

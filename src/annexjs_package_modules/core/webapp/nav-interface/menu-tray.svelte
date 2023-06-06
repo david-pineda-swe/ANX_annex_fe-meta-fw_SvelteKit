@@ -82,6 +82,7 @@
         
         {#if targetNavigations}
           <MenuPlotter
+            {toggleMenuTray}
             navigations={targetNavigations}
             locationClasses='menu-tray {trayType} mobile'
             targetActions={{}}/>
@@ -100,6 +101,7 @@
         
         {#if targetNavigations}
           <MenuPlotter
+            {toggleMenuTray}
             navigations={targetNavigations}
             locationClasses='menu-tray {trayType} desktop'
             targetActions={{}}/>

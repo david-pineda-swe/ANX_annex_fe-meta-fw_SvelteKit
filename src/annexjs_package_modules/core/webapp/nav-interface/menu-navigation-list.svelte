@@ -2,6 +2,7 @@
   import type { NavigationNode } from "src/global";
   import MenuNavigationItem from "./menu-navigation-item.svelte";
 
+  export let toggleMenuTray: any;
   export let elementId: string;
   export let locationMark: string;
   export let levelDepth: string;
@@ -35,6 +36,7 @@
   class={`nav-menu-list${(isSubMenu) ? ' sub-list' : ''}${(expandable) ? ' expand' : ''}`}>
   {#each navListItems as navItem}
     <MenuNavigationItem
+      {toggleMenuTray}
       navItem={navItem}
       levelDepth={nextLevelDepth}
       navigationType={navigationType}
