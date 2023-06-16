@@ -138,7 +138,7 @@
   .interface-container {
     position: absolute;
     overflow-x: hidden;
-    padding: 20px;
+    padding: 20px 20px 150px 20px;
     background-color: #fff;
   }
 
