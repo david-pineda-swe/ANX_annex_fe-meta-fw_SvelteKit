@@ -35,13 +35,14 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: 20px;
+		padding: 60px 0 100px;
+		min-height: 400px;
 		border-top: 2px solid red;
 	}
 
-	@media (min-width: 480px) {
+	/* @media (min-width: 480px) {
 		footer {
 			padding: 40px 0;
 		}
-	}
+	} */
 </style>

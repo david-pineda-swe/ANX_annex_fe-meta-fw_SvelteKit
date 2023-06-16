@@ -96,6 +96,7 @@
     </div>
 
     <MediaMonitorHud/>
+    <!-- NOTE - DEVELOPMENT TOOL | MEDIA MONITOR HUD -->
 
     <slot name="page-layout"/>
   </div>
@@ -119,7 +120,7 @@
   }
 
   .nav-interface-container.fixed-header {
-    padding-top: 65px;
+    padding-top: 120px;
   }
 
   .nav-interface-container.fixed-header .nav-interface-outlet .header-dock {

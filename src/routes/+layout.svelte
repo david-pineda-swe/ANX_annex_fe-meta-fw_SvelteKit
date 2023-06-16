@@ -57,5 +57,7 @@
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
+		min-height: 600px;
+		padding: 0 10px 60px;
 	}
 </style>
