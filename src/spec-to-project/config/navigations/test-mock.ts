@@ -34,7 +34,7 @@ const leftTrayActions = [
     "actionType": "PROCESS_handleToggleMenuTray_TP",
     "displayTypes": ["label", "icon"],
     // "displayTypes": ["icon", "label"],
-    "icon": "mdi:chevron-up_ICONIFY", // [icon_designation]_[FA, ICONIFY(d)]
+    "icon": "ICONIFY_mdi:chevron-up", // [icon_designation]_[FA, ICONIFY(d)]
     "classes": "vert-display"
   },
   {
@@ -42,7 +42,7 @@ const leftTrayActions = [
     "label": "Right",
     "actionType": "PROCESS_handleToggleMenuTray_RT",
     "displayTypes": ["label", "icon"],
-    "icon": "mdi:chevron-right_ICONIFY",
+    "icon": "ICONIFY_mdi:chevron-right",
     "classes": "vert-display"
   }
 ];
@@ -52,15 +52,18 @@ const rightTrayActions = [
     "label": "Bottom",
     "actionType": "PROCESS_handleToggleMenuTray_BT",
     "displayTypes": ["label", "icon"],
-    "icon": "mdi:chevron-down_ICONIFY",
+    "icon": "ICONIFY_mdi:chevron-down",
     "classes": "vert-display"
   },
   {
-    "nodeId": "open-left-tray",
-    "label": "Left",
+    "nodeId": "open-left-tray-menu",
+    // "label": "MENU",
+    "label": null,
     "actionType": "PROCESS_handleToggleMenuTray_LT",
     "displayTypes": ["label", "icon"],
-    "icon": "mdi:chevron-left_ICONIFY",
+    // "displayTypes": ["icon"],
+    "icon": "ICONIFY_mdi:menu-open_medium|s2|white",
+    // "icon": "ICONIFY_mdi:chevron-left",
     "classes": "vert-display"
     // TODO
     // "displayTypes": ["image"],
@@ -76,7 +79,7 @@ const customHeaderDeskNavList = [
       "actionType": "PROCESS_handleToggleMenuTray_TP",
       // "displayTypes": ["label", "icon"],
       "displayTypes": ["icon", "label"],
-      "icon": "mdi:chevron-up_ICONIFY",
+      "icon": "ICONIFY_mdi:chevron-up",
       "classes": "vert-display"
     },
     {
@@ -84,7 +87,7 @@ const customHeaderDeskNavList = [
       "label": "Right",
       "actionType": "PROCESS_handleToggleMenuTray_RT",
       "displayTypes": ["icon", "label"],
-      "icon": "mdi:chevron-right_ICONIFY",
+      "icon": "ICONIFY_mdi:chevron-right",
       "classes": "vert-display"
     }
   ],
@@ -95,7 +98,7 @@ const customHeaderDeskNavList = [
       "label": "Bottom",
       "actionType": "PROCESS_handleToggleMenuTray_BT",
       "displayTypes": ["icon", "label"],
-      "icon": "mdi:chevron-down_ICONIFY",
+      "icon": "ICONIFY_mdi:chevron-down",
       "classes": "vert-display"
     },
     {
@@ -103,7 +106,7 @@ const customHeaderDeskNavList = [
       "label": "Left",
       "actionType": "PROCESS_handleToggleMenuTray_LT",
       "displayTypes": ["icon", "label"],
-      "icon": "faSquareCaretLeft_FA", // X - use case needs re work do not use "FA" on a project
+      "icon": "FA_faSquareCaretLeft", // X - use case needs re work do not use "FA" on a project
       "classes": "vert-display"
       // TODO
       // "displayTypes": ["image"],

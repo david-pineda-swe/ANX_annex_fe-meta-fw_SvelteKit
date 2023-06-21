@@ -16,13 +16,14 @@
   } = navItem;
 
   const displayRun = (isEmpty(displayTypes)) ? ['label'] : displayTypes
+  const labelWasProvided = !isEmpty(label);
 </script>
 
 
 
 <span class="menu-nav-item-label">
   {#each displayRun as display}
-    {#if display === 'label'}
+    {#if display === 'label' && labelWasProvided}
       {label}
     {:else if display === 'icon'}
       <IconIndex designation={icon}/>
