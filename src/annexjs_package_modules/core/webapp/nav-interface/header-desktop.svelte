@@ -33,9 +33,10 @@
   {/if}
 
   <div class="menu-interface primary-menu">
-    <svg class="menu-motif left" viewBox="0 0 2 3" aria-hidden="true">
+    <!-- TODO - ADD SUPPORT FOR MOTIF VISUAL ELEMENTS -->
+    <!-- <svg class="menu-motif left" viewBox="0 0 2 3" aria-hidden="true">
       <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-    </svg>
+    </svg> -->
 
     {#if targetNavigations}
       <MenuPlotter
@@ -44,9 +45,10 @@
         targetActions={targetActions}/>
     {/if}
 
-    <svg class="menu-motif right" viewBox="0 0 2 3" aria-hidden="true">
+    <!-- TODO - ADD SUPPORT FOR MOTIF VISUAL ELEMENTS -->
+    <!-- <svg class="menu-motif right" viewBox="0 0 2 3" aria-hidden="true">
       <path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-    </svg>
+    </svg> -->
   </div>
 
   {#if $$slots["insert-header-desktop-bb"]}

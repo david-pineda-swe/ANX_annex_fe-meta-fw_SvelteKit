@@ -6,6 +6,7 @@
 
   import HeaderDesktop from '@annexjs/core/webapp/nav-interface/header-desktop.svelte';
   import HeaderMobile from '@annexjs/core/webapp/nav-interface/header-mobile.svelte';
+  import { selectedPrimaryMenuTray } from "@annexjs/core/webapp/stores/menu-trays";
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 
@@ -22,9 +23,14 @@
   let headerIsFixed: boolean = true;
   let currentMenuTray: string;
 
+  selectedPrimaryMenuTray.subscribe((selected) => {
+    // console.log('>> SELECTED:', selected);
+    currentMenuTray = selected;
+  });
+  
   const toggleMenuTray = (selectedTray: string) :void => {
     // console.log('>> CHECK SELECTED_TRAY:', selectedTray);
-    currentMenuTray = selectedTray;
+    selectedPrimaryMenuTray.set(selectedTray);
   }
 </script>
 
@@ -96,6 +102,7 @@
     </div>
 
     <MediaMonitorHud/>
+    <!-- NOTE - DEVELOPMENT TOOL | MEDIA MONITOR HUD -->
 
     <slot name="page-layout"/>
   </div>
@@ -119,7 +126,7 @@
   }
 
   .nav-interface-container.fixed-header {
-    padding-top: 65px;
+    padding-top: 120px;
   }
 
   .nav-interface-container.fixed-header .nav-interface-outlet .header-dock {

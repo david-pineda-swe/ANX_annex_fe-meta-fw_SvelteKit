@@ -5,6 +5,7 @@
 	import InsertHeaderDesktopA from '$pec/components/interface/menus/insert-header-desktop-a.svelte';
 	import InsertHeaderDesktopB from '$pec/components/interface/menus/insert-header-desktop-b.svelte';
 	import InsertHeaderMobile from "$pec/components/interface/menus/insert-header-mobile.svelte";
+
 	import InsertTrayTop from '$pec/components/interface/menus/insert-tray-top.svelte';
 	import InsertTrayRight from '$pec/components/interface/menus/insert-tray-right.svelte';
 	import InsertTrayBottom from '$pec/components/interface/menus/insert-tray-bottom.svelte';
@@ -57,5 +58,7 @@
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
+		min-height: 600px;
+		padding: 0 10px 60px;
 	}
 </style>

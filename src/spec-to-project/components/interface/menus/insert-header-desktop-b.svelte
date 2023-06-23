@@ -1,16 +1,26 @@
 <script lang="ts">
-  import githubLogo from './images/github-logo.png';
+  import { selectedPrimaryMenuTray } from '@annexjs/core/webapp/stores/menu-trays';
+  import IconIndex from '@annexjs/core/webapp/display/icon-index.svelte';
+
+  const handleTargetTrayClick = () => {
+    selectedPrimaryMenuTray.set('LT_TRAY');
+  };
 </script>
 
 
+
+<button on:click={handleTargetTrayClick}>
+  <IconIndex designation={'ICONIFY_mdi:menu-open_medium|s2|white'}/>
+</button>
+
 <a class="brand-logo-link" target="_blank" href="https://github.com/free4m-io/annex-fe-SvelteKit">
-  <img src={githubLogo} alt="Annex.JS Repo" /> 
+  <img src="github-logo.png" alt="Annex.JS Repo" /> 
 </a>
 
 
 
 <style>
-  a.brand-logo-link {
+  /* a.brand-logo-link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,5 +32,5 @@
     width: 2em;
     height: 2em;
     object-fit: contain;
-  }
+  } */
 </style>
