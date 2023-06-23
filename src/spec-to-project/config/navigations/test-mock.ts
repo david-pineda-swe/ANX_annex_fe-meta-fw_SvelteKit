@@ -62,7 +62,7 @@ const rightTrayActions = [
     "actionType": "PROCESS_handleToggleMenuTray_LT",
     "displayTypes": ["label", "icon"],
     // "displayTypes": ["icon"],
-    "icon": "ICONIFY_mdi:menu-open_medium|s2|white",
+    "icon": "ICONIFY_mdi:menu-open_large|s1|black",
     // "icon": "ICONIFY_mdi:chevron-left",
     "classes": "vert-display"
     // TODO
