@@ -10,7 +10,7 @@
 	<div class="welcome">
 		<picture>
 			<!-- <source srcset="svelte-welcome.webp" type="image/webp" /> -->
-			<img src={logoType} alt="Free4m IO" />
+			<img src={logoType} alt="Free4m IO"/>
 		</picture>
 	</div>
 	<h1>
