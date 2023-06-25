@@ -41,6 +41,5 @@
 <style>
   header.mobile-header {
     justify-content: space-between;
-    background-color: #fff;
   }
 </style>
