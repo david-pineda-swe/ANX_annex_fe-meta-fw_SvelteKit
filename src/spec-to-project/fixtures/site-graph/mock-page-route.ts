@@ -1,3 +1,5 @@
+// TODO - MOVE TO APM/core/webapp/nav-interface/[entity]
+
 // const DEFAULT_STRING = 'default_page_route';
 
 import type { PageRoute } from "src/global";

@@ -1,3 +1,5 @@
+// TODO - MOVE TO APM/core/webapp/nav-interface/[entity]
+
 export function mockProjectUser(props: ProjectUser): ProjectUser {
   if (props) {
     // DYNAMIC MOCK
