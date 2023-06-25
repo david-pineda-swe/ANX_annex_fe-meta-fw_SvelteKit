@@ -1,6 +1,5 @@
 import type { NavigationConfig } from "src/global";
 
-
 export function generateNavigationConfig(props: NavigationConfig): NavigationConfig {
   const {
     dataSource,
