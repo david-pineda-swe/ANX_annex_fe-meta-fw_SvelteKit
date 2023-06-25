@@ -78,6 +78,13 @@
   </div>
 
   <div class="nav-interface-outlet">
+    <!-- NOTE - DEVELOPMENT TOOL | MEDIA MONITOR HUD -->
+    <!-- <MediaMonitorHud/> -->
+
+    {#if headerIsFixed}
+      <slot name="page-layout" />
+    {/if}
+
     <div class="header-dock">
       <!-- DESKTOP_HEADER_SLOTS -->
       <HeaderDesktop
@@ -101,10 +108,9 @@
       </HeaderMobile>
     </div>
 
-    <MediaMonitorHud/>
-    <!-- NOTE - DEVELOPMENT TOOL | MEDIA MONITOR HUD -->
-
-    <slot name="page-layout"/>
+    {#if !headerIsFixed}
+      <slot name="page-layout" />
+    {/if}
   </div>
 </div>
 
