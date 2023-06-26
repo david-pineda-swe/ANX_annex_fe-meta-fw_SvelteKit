@@ -1,30 +1,14 @@
-import { generateNavigationConfig } from "@annexjs/core/webapp/nav-interface/entity/generate-navigation-config";
+import { generateNavigationConfig, sampleNavConfig } from "@annexjs/core/webapp/nav-interface/entity/generate-navigation-config";
 import { openTopTray, openRightTray, openBottomTray, openLeftTray } from "./module/tray-actions";
 
 // MENUS
-import primaryMenu from "./menu/primary.json";
+import testPrimaryMenu from "./menu/test-primary.json";
 
-const sampleMockConfig = {
-  dataSource: 'test-mock.ts',
-  menuLocations: [
-    // NOTE - SUPPORTED LOCATIONS
-    // 'HEADER_MOBILE',
-    // 'HEADER_DESKTOP',
-    // 'TP_TRAY', 
-    // 'RT_TRAY',
-    // 'BT_TRAY',
-    // 'LT_TRAY',
-    // 'FOOTER_TRAY',
-    // 'SITE_MENU_TRAY'
-    // === $PEC_LCATIONS ===
-    // ETC...
-  ],
-  navigationType: "NESTED",
-  navListItems: primaryMenu.items,
-  // navListLabel: 'Ta-dur!',
-  elementId: 'primary-nav',
-  classes: 'main-navigation', 
-  // mobileOnly: false,
+const baseNavConfig = {
+  ...sampleNavConfig,
+  ...{
+    navListItems: testPrimaryMenu.items
+  }
 };
 
 const customHeaderDeskNavList = [
@@ -47,7 +31,7 @@ const customHeaderDeskNavList = [
       "classes": "vert-display"
     }
   ],
-  ...sampleMockConfig.navListItems,
+  ...baseNavConfig.navListItems,
   ...[
     {
       "nodeId": "open-bottom-tray",
@@ -70,10 +54,10 @@ const customHeaderDeskNavList = [
     }
   ],
 ];
-export const testMockNavigations = [
+const testMockNavigations = [
   // HEADER_DESK
   generateNavigationConfig({
-    ...sampleMockConfig,
+    ...baseNavConfig,
     ...{
       menuLocations: ['HEADER_DESKTOP'],
       // navListLabel: 'DESKTOP Primary'
@@ -83,7 +67,7 @@ export const testMockNavigations = [
   }),
   // HEADER_MOBILE
   generateNavigationConfig({
-    ...sampleMockConfig,
+    ...baseNavConfig,
     ...{
       menuLocations: ['HEADER_MOBILE'],
       // navListLabel: 'MOBILE Primary'
@@ -106,7 +90,7 @@ export const testMockNavigations = [
   }),
   // TP_TRAY
   generateNavigationConfig({
-    ...sampleMockConfig,
+    ...baseNavConfig,
     ...{
       menuLocations: ['TP_TRAY'],
       navListLabel: 'TOP Tray Mock Primary'
@@ -114,7 +98,7 @@ export const testMockNavigations = [
   }),
   // RT_TRAY
   generateNavigationConfig({
-    ...sampleMockConfig,
+    ...baseNavConfig,
     ...{
       menuLocations: ['RT_TRAY'],
       navListLabel: 'RIGHT Tray Mock Primary - EXPANDABLE',
@@ -123,7 +107,7 @@ export const testMockNavigations = [
   }),
   // BT_TRAY
   generateNavigationConfig({
-    ...sampleMockConfig,
+    ...baseNavConfig,
     ...{
       menuLocations: ['BT_TRAY'],
       navListLabel: 'BOTTOM Tray Mock Primary'
@@ -131,37 +115,31 @@ export const testMockNavigations = [
   }),
   // LT_TRAY
   generateNavigationConfig({
-    ...sampleMockConfig,
+    ...baseNavConfig,
     ...{
       menuLocations: ['LT_TRAY'],
       navListLabel: 'LEFT Tray Mock Primary - SHALLOW',
       navigationType: 'SHALLOW'
     }
   }),
-  // FOOTER_TRAY
-  generateNavigationConfig({
-    ...sampleMockConfig,
-    ...{
-      menuLocations: ['FOOTER_TRAY'],
-      navListLabel: 'FOOTER Tray Mock Primary',
-    }
-  }),
-  // SITE_MENU_TRAY
-  generateNavigationConfig({
-    ...sampleMockConfig,
-    ...{
-      menuLocations: ['SITE_MENU_TRAY'],
-      navListLabel: 'SITE MENU Tray Mock Primary'
-    }
-  }),
-  // OTHER $PEC
-  // ...
   // FOOTER_MENU
   generateNavigationConfig({
-    ...sampleMockConfig,
+    ...baseNavConfig,
     ...{
       menuLocations: ['FOOTER_MENU'],
       navListLabel: 'SITE MENU Footer Mock Primary - NESTED'
     }
+  }),
+  // SITE_MENU_TRAY
+  generateNavigationConfig({
+    ...baseNavConfig,
+    ...{
+      menuLocations: ['SITE_MENU_TRAY'],
+      navListLabel: 'SITE MENU Tray Mock Primary'
+    }
   })
+  // OTHER $PEC
+  // ...
 ];
+
+export default testMockNavigations;
