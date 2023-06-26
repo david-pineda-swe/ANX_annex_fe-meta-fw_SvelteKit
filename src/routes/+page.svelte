@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Counter from '$pec/components/Counter.svelte';
+	import logoType from '$pec/images/branding/Free4m-IO_logo-type_wht_v11.svg';
 </script>
 
 <svelte:head>
@@ -10,8 +11,8 @@
 	<h1>
 		<div class="welcome">
 			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
+				<!-- <source srcset="svelte-welcome.webp" type="image/webp" /> -->
+				<img src={logoType} alt="Free4m IO" />
 			</picture>
 		</div>
 
