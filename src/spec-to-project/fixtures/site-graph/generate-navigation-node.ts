@@ -1,3 +1,5 @@
+// TODO - MOVE TO APM/core/webapp/nav-interface/[entity]
+
 import type { NavigationNode } from "src/global";
 
 // const DEFAULT_STRING = "default_nav_node";

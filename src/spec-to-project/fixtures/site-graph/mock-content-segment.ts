@@ -1,3 +1,5 @@
+// TODO - MOVE TO APM/core/webapp/nav-interface/[entity]
+
 const DEFAULT_STRING = "default";
 const DEFAULT_COMPONENT = {
   componentType: 'STRUCTURE',
