@@ -2,6 +2,7 @@ import { generateNavigationConfig, sampleNavConfig } from "@annexjs/core/webapp/
 
 import primaryMenu from "./menu/primary.json";
 import footerMenu from "./menu/footer.json";
+import { openLeftTray } from "./module/tray-actions";
 
 const ProjectSpecNavigations = [
   // PRIMARY LT_TRAY
@@ -12,6 +13,25 @@ const ProjectSpecNavigations = [
       navigationType: 'NESTED',
       navListLabel: 'TEST PRIMARY MENU',
       navListItems: primaryMenu.items
+    }
+  }),
+  // HEADER_MOBILE
+  generateNavigationConfig({
+    ...sampleNavConfig,
+    ...{
+      menuLocations: ['HEADER_MOBILE'],
+      navigationType: 'SHALLOW',
+      // navListLabel: 'MOBILE HEADER MENU',
+      navListItems: [
+        ...[
+          {
+            nodeId: 'slot-injected-a',
+            label: 'Logo Branding',
+            actionType: 'SLOT_A'
+          },
+          openLeftTray
+        ]
+      ]
     }
   }),
   // FOOTER
