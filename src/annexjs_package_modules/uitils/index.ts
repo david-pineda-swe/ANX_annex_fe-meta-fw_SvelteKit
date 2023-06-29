@@ -1,3 +1,5 @@
+export { default as smoothScroll } from "./animations/smooth-scroll";
+
 export function isEmpty(obj) {
 	// NOTE: Borrowed from Ember
 	// https://github.com/emberjs/ember.js/blob/v3.22.0/packages/%40ember/-internals/metal/lib/is_empty.ts#L5
