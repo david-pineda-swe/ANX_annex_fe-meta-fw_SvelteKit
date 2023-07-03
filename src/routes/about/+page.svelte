@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { smoothScroll } from "@annexjs/uitils";
+	import Card from "@annexjs/ui/copy/card.svelte";
+	import { smoothScroll } from "@annexjs/uitils";
 </script>
 
 <svelte:head>
@@ -9,7 +10,8 @@
 <div class="content">
 	<h1>About this app</h1>
 
-	<a href="#scroll-to-test-link" on:click={smoothScroll}>MIDDLE</a>
+	<a href="#scroll-to-test-link" on:click={smoothScroll}>MIDDLE</a> <br/>
+	<a href="#test-copy-card" on:click={smoothScroll}>COPY CARD</a>
 	<hr/>
 	<button on:click={(event) => smoothScroll(event, 'BOTTOM')}>BOTTOM</button>
 
@@ -35,13 +37,26 @@
 
 	<p>Serpere anguiculos, nare anaticulas, evolare merulas, cornibus uti videmus boves, nepas aculeis. Potius ergo illa dicantur: turpe esse, viri non esse debilitari dolore, frangi, succumbere. Alterum significari idem, ut si diceretur, officia media omnia aut pleraque servantem vivere. Quo modo autem optimum, si bonum praeterea nullum est? Dicet pro me ipsa virtus nec dubitabit isti vestro beato M. <a href='http://loripsum.net/' target='_blank'>Duo enim genera quae erant, fecit tria.</a> Pisone in eo gymnasio, quod Ptolomaeum vocatur, unaque nobiscum Q. Hoc dixerit potius Ennius: Nimium boni est, cui nihil est mali. </p>
 
-	<h2>Memini vero, inquam;</h2>
 
-	<p>Cum autem in quo sapienter dicimus, id a primo rectissime dicitur. Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Nec tamen ille erat sapiens quis enim hoc aut quando aut ubi aut unde? Obsecro, inquit, Torquate, haec dicit Epicurus? An tu me de L. Quod praeceptum quia maius erat, quam ut ab homine videretur, idcirco assignatum est deo. Utilitatis causa amicitia est quaesita. Qui ita affectus, beatum esse numquam probabis; Simus igitur contenti his. </p>
+	<Card
+		cardConfigType="DEFAULT"
+		cardId="test-copy-card"
+		cardTheme="base"
+		cardClass="test-class">
+		<h2 slot="header">Memini vero, inquam;</h2>
 
-	<h3>-, sed ut hoc iudicaremus, non esse in iis partem maximam positam beate aut secus vivendi.</h3>
+		<slot slot="content">
+			<p>Cum autem in quo sapienter dicimus, id a primo rectissime dicitur. Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Nec tamen ille erat sapiens quis enim hoc aut quando aut ubi aut unde? Obsecro, inquit, Torquate, haec dicit Epicurus? An tu me de L. Quod praeceptum quia maius erat, quam ut ab homine videretur, idcirco assignatum est deo. Utilitatis causa amicitia est quaesita. Qui ita affectus, beatum esse numquam probabis; Simus igitur contenti his. </p>
 
-	<p>Sic enim maiores nostri labores non fugiendos tristissimo tamen verbo aerumnas etiam in deo nominaverunt. <a href='http://loripsum.net/' target='_blank'>Maximus dolor, inquit, brevis est.</a> Istic sum, inquit. Quod autem principium officii quaerunt, melius quam Pyrrho; </p>
+			<h3>-, sed ut hoc iudicaremus, non esse in iis partem maximam positam beate aut secus vivendi.</h3>
+		
+			<p>Sic enim maiores nostri labores non fugiendos tristissimo tamen verbo aerumnas etiam in deo nominaverunt. <a href='http://loripsum.net/' target='_blank'>Maximus dolor, inquit, brevis est.</a> Istic sum, inquit. Quod autem principium officii quaerunt, melius quam Pyrrho; </p>
+		</slot>
+
+		<slot slot="extra">
+			Footer note and extra content
+		</slot>
+	</Card>
 
 	<h4 id="scroll-to-test-link">THIS IS THE TARGET TEST LINK FOR SCROLL ra virtutem habeatur in bonis.</h4>
 
