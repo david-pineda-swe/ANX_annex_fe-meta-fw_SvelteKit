@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { smoothScroll } from "@annexjs/uitils";
+	import Card from "@annexjs/ui/copy/card.svelte";
+	import { smoothScroll } from "@annexjs/uitils";
 </script>
 
 <svelte:head>
@@ -35,6 +36,14 @@
 
 	<p>Serpere anguiculos, nare anaticulas, evolare merulas, cornibus uti videmus boves, nepas aculeis. Potius ergo illa dicantur: turpe esse, viri non esse debilitari dolore, frangi, succumbere. Alterum significari idem, ut si diceretur, officia media omnia aut pleraque servantem vivere. Quo modo autem optimum, si bonum praeterea nullum est? Dicet pro me ipsa virtus nec dubitabit isti vestro beato M. <a href='http://loripsum.net/' target='_blank'>Duo enim genera quae erant, fecit tria.</a> Pisone in eo gymnasio, quod Ptolomaeum vocatur, unaque nobiscum Q. Hoc dixerit potius Ennius: Nimium boni est, cui nihil est mali. </p>
 
+
+	<Card>
+		<!-- main header -->
+
+		<!-- copy block -->
+
+		<!-- extra -->
+	</Card>
 	<h2>Memini vero, inquam;</h2>
 
 	<p>Cum autem in quo sapienter dicimus, id a primo rectissime dicitur. Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Nec tamen ille erat sapiens quis enim hoc aut quando aut ubi aut unde? Obsecro, inquit, Torquate, haec dicit Epicurus? An tu me de L. Quod praeceptum quia maius erat, quam ut ab homine videretur, idcirco assignatum est deo. Utilitatis causa amicitia est quaesita. Qui ita affectus, beatum esse numquam probabis; Simus igitur contenti his. </p>
