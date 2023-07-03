@@ -1,7 +1,7 @@
 <script lang="ts">
   console.log('>> COPY CARD WORKS');
   // OK - INTEGRATE SLOT PROJECTION
-  // TODO - CONDITIONAL RENDERING
+  // OK - CONDITIONAL RENDERING
   // TODO - DEFAULT THEME STYLES
   // TODO - ACCEPT PROJECT CONFIGS
   // TODO - ACCEPT INSTANCE CONFIGS
@@ -10,19 +10,40 @@
 
 
 <div class="copy-card">
-  <div class="card-header">
-    <slot name="header"></slot>
-  </div>
+  {#if $$slots ["header"]}
+    <div class="card-header">
+      <slot name="header"></slot>
+    </div>
+  {/if}
 
-  <div class="card-content">
-    <slot name="content"></slot>
-  </div>
+  {#if $$slots ["content"]}
+    <div class="card-content">
+      <slot name="content"></slot>
+    </div>
+  {/if}
 
-  <div class="card-extra">
-    <slot name="extra"></slot>
-  </div>
+  {#if $$slots ["extra"]}
+    <div class="card-extra">
+      <slot name="extra"></slot>
+    </div>
+  {/if}
 </div>
 
 
 
-<style lang="scss"></style>
+<style lang="scss">
+  .copy-card {
+    border: 1px solid red;
+    .card-header {
+      border: 1px solid green;
+    }
+
+    .card-content {
+      border: 1px solid blue;
+    }
+
+    .card-extra {
+      border: 1px solid fuchsia;
+    }
+  }
+</style>
