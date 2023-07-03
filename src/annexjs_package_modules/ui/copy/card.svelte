@@ -1,9 +1,4 @@
 <script lang="ts">
-  // OK - INTEGRATE SLOT PROJECTION
-  // OK - CONDITIONAL RENDERING
-  // OK - DEFAULT THEME STYLES
-  // OK - ACCEPT INSTANCE CONFIGS
-
   export let cardId:string = null;
   export let cardClass:string = null;
   export let cardConfigType:string = null;
@@ -17,6 +12,7 @@
   }
   
   // TODO - ACCEPT PROJECT CONFIGS
+  // TODO - SUPPORT FOR site-graph dynamic rendering
 </script>
 
 
@@ -47,22 +43,9 @@
   .base.copy-card {
     padding: 10px;
     margin-bottom: 20px;
-    // border: 1px solid red;
 
     & > div {
       margin-bottom: 7px;
     }
-
-    // .card-header {
-    //   border: 1px solid green;
-    // }
-
-    // .card-content {
-    //   border: 1px solid blue;
-    // }
-
-    // .card-extra {
-    //   border: 1px solid fuchsia;
-    // }
   }
 </style>
