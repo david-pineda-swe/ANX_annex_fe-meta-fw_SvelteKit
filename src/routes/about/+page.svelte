@@ -10,7 +10,8 @@
 <div class="content">
 	<h1>About this app</h1>
 
-	<a href="#scroll-to-test-link" on:click={smoothScroll}>MIDDLE</a>
+	<a href="#scroll-to-test-link" on:click={smoothScroll}>MIDDLE</a> <br/>
+	<a href="#test-copy-card" on:click={smoothScroll}>COPY CARD</a>
 	<hr/>
 	<button on:click={(event) => smoothScroll(event, 'BOTTOM')}>BOTTOM</button>
 
@@ -37,7 +38,11 @@
 	<p>Serpere anguiculos, nare anaticulas, evolare merulas, cornibus uti videmus boves, nepas aculeis. Potius ergo illa dicantur: turpe esse, viri non esse debilitari dolore, frangi, succumbere. Alterum significari idem, ut si diceretur, officia media omnia aut pleraque servantem vivere. Quo modo autem optimum, si bonum praeterea nullum est? Dicet pro me ipsa virtus nec dubitabit isti vestro beato M. <a href='http://loripsum.net/' target='_blank'>Duo enim genera quae erant, fecit tria.</a> Pisone in eo gymnasio, quod Ptolomaeum vocatur, unaque nobiscum Q. Hoc dixerit potius Ennius: Nimium boni est, cui nihil est mali. </p>
 
 
-	<Card>
+	<Card
+		cardConfigType="DEFAULT"
+		cardId="test-copy-card"
+		cardTheme="base"
+		cardClass="test-class">
 		<h2 slot="header">Memini vero, inquam;</h2>
 
 		<slot slot="content">

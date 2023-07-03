@@ -1,19 +1,27 @@
 <script lang="ts">
-  console.log('>> COPY CARD WORKS');
   // OK - INTEGRATE SLOT PROJECTION
   // OK - CONDITIONAL RENDERING
   // OK - DEFAULT THEME STYLES
-  // TODO - ACCEPT INSTANCE CONFIGS
-  // cardId
-  // cardClass
-  // cardConfigType
-  // cardTheme
+  // OK - ACCEPT INSTANCE CONFIGS
+
+  export let cardId:string = null;
+  export let cardClass:string = null;
+  export let cardConfigType:string = null;
+  export let cardTheme:string = null;
+
+  const testingUI = false;
+
+  if (testingUI) {
+    console.log('> TEST INST CONFIGS for UI_CopyCard:', cardId);
+    console.table({ cardConfigType, cardId, cardTheme, cardClass });
+  }
+  
   // TODO - ACCEPT PROJECT CONFIGS
 </script>
 
 
 
-<div class="base copy-card">
+<div id={cardId} class="{cardTheme} copy-card {cardClass}">
   {#if $$slots ["header"]}
     <div class="card-header">
       <slot name="header"></slot>
