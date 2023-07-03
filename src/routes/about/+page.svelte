@@ -38,19 +38,20 @@
 
 
 	<Card>
-		<!-- main header -->
+		<h2 slot="header">Memini vero, inquam;</h2>
 
-		<!-- copy block -->
+		<slot slot="content">
+			<p>Cum autem in quo sapienter dicimus, id a primo rectissime dicitur. Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Nec tamen ille erat sapiens quis enim hoc aut quando aut ubi aut unde? Obsecro, inquit, Torquate, haec dicit Epicurus? An tu me de L. Quod praeceptum quia maius erat, quam ut ab homine videretur, idcirco assignatum est deo. Utilitatis causa amicitia est quaesita. Qui ita affectus, beatum esse numquam probabis; Simus igitur contenti his. </p>
 
-		<!-- extra -->
+			<h3>-, sed ut hoc iudicaremus, non esse in iis partem maximam positam beate aut secus vivendi.</h3>
+		
+			<p>Sic enim maiores nostri labores non fugiendos tristissimo tamen verbo aerumnas etiam in deo nominaverunt. <a href='http://loripsum.net/' target='_blank'>Maximus dolor, inquit, brevis est.</a> Istic sum, inquit. Quod autem principium officii quaerunt, melius quam Pyrrho; </p>
+		</slot>
+
+		<slot slot="extra">
+			Footer note and extra content
+		</slot>
 	</Card>
-	<h2>Memini vero, inquam;</h2>
-
-	<p>Cum autem in quo sapienter dicimus, id a primo rectissime dicitur. Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Nec tamen ille erat sapiens quis enim hoc aut quando aut ubi aut unde? Obsecro, inquit, Torquate, haec dicit Epicurus? An tu me de L. Quod praeceptum quia maius erat, quam ut ab homine videretur, idcirco assignatum est deo. Utilitatis causa amicitia est quaesita. Qui ita affectus, beatum esse numquam probabis; Simus igitur contenti his. </p>
-
-	<h3>-, sed ut hoc iudicaremus, non esse in iis partem maximam positam beate aut secus vivendi.</h3>
-
-	<p>Sic enim maiores nostri labores non fugiendos tristissimo tamen verbo aerumnas etiam in deo nominaverunt. <a href='http://loripsum.net/' target='_blank'>Maximus dolor, inquit, brevis est.</a> Istic sum, inquit. Quod autem principium officii quaerunt, melius quam Pyrrho; </p>
 
 	<h4 id="scroll-to-test-link">THIS IS THE TARGET TEST LINK FOR SCROLL ra virtutem habeatur in bonis.</h4>
 
