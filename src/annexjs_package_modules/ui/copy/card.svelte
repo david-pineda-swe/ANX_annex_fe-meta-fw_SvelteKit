@@ -2,14 +2,18 @@
   console.log('>> COPY CARD WORKS');
   // OK - INTEGRATE SLOT PROJECTION
   // OK - CONDITIONAL RENDERING
-  // TODO - DEFAULT THEME STYLES
-  // TODO - ACCEPT PROJECT CONFIGS
+  // OK - DEFAULT THEME STYLES
   // TODO - ACCEPT INSTANCE CONFIGS
+  // cardId
+  // cardClass
+  // cardConfigType
+  // cardTheme
+  // TODO - ACCEPT PROJECT CONFIGS
 </script>
 
 
 
-<div class="copy-card">
+<div class="base copy-card">
   {#if $$slots ["header"]}
     <div class="card-header">
       <slot name="header"></slot>
@@ -32,18 +36,25 @@
 
 
 <style lang="scss">
-  .copy-card {
-    border: 1px solid red;
-    .card-header {
-      border: 1px solid green;
+  .base.copy-card {
+    padding: 10px;
+    margin-bottom: 20px;
+    // border: 1px solid red;
+
+    & > div {
+      margin-bottom: 7px;
     }
 
-    .card-content {
-      border: 1px solid blue;
-    }
+    // .card-header {
+    //   border: 1px solid green;
+    // }
 
-    .card-extra {
-      border: 1px solid fuchsia;
-    }
+    // .card-content {
+    //   border: 1px solid blue;
+    // }
+
+    // .card-extra {
+    //   border: 1px solid fuchsia;
+    // }
   }
 </style>
