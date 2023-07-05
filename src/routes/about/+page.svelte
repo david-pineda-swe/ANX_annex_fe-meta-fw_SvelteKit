@@ -13,7 +13,7 @@
 	<a href="#scroll-to-test-link" on:click={smoothScroll}>MIDDLE</a> <br/>
 	<a href="#test-copy-card" on:click={smoothScroll}>COPY CARD</a>
 	<hr/>
-	<button on:click={(event) => smoothScroll(event, 'BOTTOM')}>BOTTOM</button>
+	<button class="ui-btn" on:click={(event) => smoothScroll(event, 'BOTTOM')}>BOTTOM</button>
 
 	<p>
 		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
@@ -86,7 +86,7 @@
 
 	<p>Pollicetur certe. Et non ex maxima parte de tota iudicabis? Si alia sentit, inquam, alia loquitur, numquam intellegam quid sentiat; Iam in altera philosophiae parte. Et quidem iure fortasse, sed tamen non gravissimum est testimonium multitudinis. Hunc vos beatum; Quonam, inquit, modo? Num igitur eum postea censes anxio animo aut sollicito fuisse? </p>
 
-	<button on:click={(event) => smoothScroll(event, 'TOP')}>TOP</button>
+	<button class="ui-btn" on:click={(event) => smoothScroll(event, 'TOP')}>TOP</button>
 </div>
 
 <style>
