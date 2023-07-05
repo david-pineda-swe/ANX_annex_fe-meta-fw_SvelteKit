@@ -19,6 +19,14 @@
 </script>
 
 
+<svelte:head>
+	<!-- VERIFY - THIS IS THE RIGHT LOCATION FOR PROJECT WIDE IMPORTS AND HEAD CONFIGS -->
+	<!-- TODO - integrate settings from project.theme configurations -->
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&display=swap');
+	</style>
+</svelte:head>
+
 
 <NavInterface navigations={navigations}>
 	<!-- INSERT_HEADER_DESKTOP_A -->
