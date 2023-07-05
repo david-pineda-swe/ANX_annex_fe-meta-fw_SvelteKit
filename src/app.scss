@@ -15,12 +15,12 @@
 	font-family: 'Assistant', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--font-mono: 'Fira Mono', monospace;
 	--pure-white: #4508ae;
-	--primary-color: #2d2e2f;
-	--secondary-color: #711e8d;
-	--tertiary-color: #8f0cee;
 	--accent-color: #c9e4f9;
 	--heading-color: #4a115c;
 	--text-color: #b0aeae;
+	--bg-primary-color: #2d2e2f;
+	--bg-secondary-color: #711e8d;
+	--bg-tertiary-color: #8f1ee0;
 	--background-without-opacity: rgba(255, 255, 255, 0.7);
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
@@ -29,12 +29,12 @@
 body {
 	min-height: 100vh;
 	margin: 0;
-	background-color: var(--primary-color);
+	background-color: var(--bg-primary-color);
 	background: linear-gradient(
 		180deg,
-		var(--primary-color) 0%,
-		var(--secondary-color) 10.45%,
-		var(--tertiary-color) 41.35%
+		var(--bg-primary-color) 0%,
+		var(--bg-secondary-color) 10.45%,
+		var(--bg-tertiary-color) 41.35%
 	);
 }
 
