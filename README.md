@@ -4,10 +4,14 @@ Todo:
 - [x] Copy
 - [x] heading
 - [x] links
-- [ ] cards
-- [ ] footer
-- [ ] tray menu
+- [x] buttons
+- [x] <pre>
+- [x] cards
+- [x] footer
+- [x] tray menu
+- [ ] Update and mod tracker
 - [ ] -
+- [ ] Build project
 - [ ] post / review piece
 - [ ] Build out Document site
 - [ ] Write up quick start guide
