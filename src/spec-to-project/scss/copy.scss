@@ -1,3 +1,20 @@
+p {
+	color: var(--text-color);
+}
+
+p {
+	line-height: 1.5;
+}
+
+a {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 pre {
   @include card-theme;
 	font-size: 16px;
@@ -5,3 +22,19 @@ pre {
   font-weight: bold;
 	overflow-x: auto;
 }
+
+// HEADINGS
+// - COLOR
+h1,
+h2,
+h3{
+	color: var(--heading-color);
+  // font-weight: bold;
+}
+// h4 = black
+
+// - SIZE
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.25rem; }

@@ -12,3 +12,22 @@ header.desktop-header {
     // border: 1px solid red;
   }
 }
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background-color: var(--bg-primary-color);
+	background: linear-gradient(
+		180deg,
+		var(--bg-primary-color) 0%,
+		var(--bg-secondary-color) 10.45%,
+		var(--bg-tertiary-color) 41.35%
+	);
+}
+
+#svelte.app-container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	/* border: 2px solid red; */
+}
