@@ -143,22 +143,21 @@
     display: none;
   }
   
-  .menu-tray.RT_TRAY .interface-container {
-    width: 300px;
-    height: 100%;
-    right: 0px;
-  }
-
+  /* TOP & BOTTOM */
   .menu-tray.TP_TRAY .interface-container,
   .menu-tray.BT_TRAY .interface-container {
     width: 100%;
     height: 100%;
-    top: 65px;
   }
 
+  /* RIGHT */
+  .menu-tray.RT_TRAY .interface-container {
+    height: 100%;
+    right: 0px;
+  }
+
+  /* LEFT */
   .menu-tray.LT_TRAY .interface-container {
-    /* left: -300px; */
-    width: 300px;
     height: 100%;
   }
 </style>

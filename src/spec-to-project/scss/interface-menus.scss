@@ -1,7 +1,24 @@
 // SCROLLING INTERFACE CONTAINERS
 .interface-container {
   padding: 20px 20px 150px 20px;
-  background-color: #fff;
+  background-color: var(--dk-gray-02);
+}
+
+// TOP & BOTTOM
+.menu-tray.TP_TRAY .interface-container,
+.menu-tray.BT_TRAY .interface-container {
+  top: 65px;
+}
+
+// RIGHT
+.menu-tray.RT_TRAY .interface-container {
+  width: 300px;
+}
+
+// LEFT
+.menu-tray.LT_TRAY .interface-container {
+  width: 300px;
+  border-right: 3px solid var(--dk-gray-01);
 }
 
 .menu-interface {
