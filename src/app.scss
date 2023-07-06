@@ -1,12 +1,12 @@
 @import '@fontsource/fira-mono';
 
-/* - PROJECT $PEC STYLES - */
-@import './spec-to-project/scss/_spec-styles.scss';
-
+// TAILWIND DEFAULTS AND 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* - PROJECT $PEC STYLES - */
+@import './spec-to-project/scss/_spec-styles.scss';
 /* - ANNEX.JS BOILERPLATE STANDARDS */
 
 // THEME VARIABLES >>>
