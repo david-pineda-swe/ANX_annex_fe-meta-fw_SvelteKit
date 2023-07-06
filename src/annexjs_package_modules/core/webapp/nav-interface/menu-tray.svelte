@@ -138,10 +138,11 @@
   .interface-container {
     position: absolute;
     overflow-x: hidden;
-    padding: 20px 20px 150px 20px;
-    background-color: #fff;
   }
-
+  .interface-container::-webkit-scrollbar {
+    display: none;
+  }
+  
   .menu-tray.RT_TRAY .interface-container {
     width: 300px;
     height: 100%;
