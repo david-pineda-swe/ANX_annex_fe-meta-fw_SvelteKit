@@ -1,0 +1,7 @@
+pre {
+  @include card-theme;
+	font-size: 16px;
+	font-family: var(--font-mono);
+  font-weight: bold;
+	overflow-x: auto;
+}

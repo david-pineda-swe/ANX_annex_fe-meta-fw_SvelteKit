@@ -20,7 +20,7 @@
   {#if targetNavigations}
     <MenuPlotter
       navigations={targetNavigations}
-      locationClasses='footer-menu'
+      locationClasses='sub-footer-menu'
       targetActions={{}}/>
   {/if}
 
@@ -37,7 +37,6 @@
 		align-items: center;
 		padding: 60px 0 100px;
 		min-height: 400px;
-		border-top: 2px solid red;
 	}
 
 	/* @media (min-width: 480px) {

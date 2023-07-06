@@ -1,0 +1,45 @@
+// RADIAL ON LAYOUT BG
+body::before {
+	content: '';
+	width: 80vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 10vw;
+	z-index: -1;
+	background: radial-gradient(
+		50% 50% at 50% 50%,
+		var(--bg-highlight) 0%,
+		rgba(255, 255, 255, 0) 100%
+	);
+	opacity: 0.75;
+}
+
+
+@mixin drop-shadow {
+  box-shadow: 2px 3px 6px rgba(63, 2, 66, 0.45);
+  padding: 0.25em .5em;
+}
+
+@mixin card-theme {
+  @include drop-shadow;
+  background-color: rgba(255, 255, 255, 0.45);
+  border-radius: 3px;
+  color: var(--bg-primary-color);
+}
+
+// HEADINGS
+// - COLOR
+h1,
+h2,
+h3{
+	color: var(--heading-color);
+  // font-weight: bold;
+}
+// h4 = black
+
+// - SIZE
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.25rem; }
