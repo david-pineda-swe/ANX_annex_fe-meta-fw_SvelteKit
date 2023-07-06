@@ -70,6 +70,14 @@
   }
 }
 
+// BOTH
+.nav-menu {
+  .nav-menu-label {
+    color: var(--copy-white);
+  }
+  // .nav-menu-list {}
+}
+
 .mobile-header {
   .nav-group.header-mobile-menu {
     .nav-menu {

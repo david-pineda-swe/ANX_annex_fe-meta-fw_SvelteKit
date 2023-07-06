@@ -4,6 +4,7 @@
 	--font-mono: 'Fira Mono', monospace;
 	// - COLORS
 	--pure-white: #fff;
+	--copy-white: #fac5fb;
 	--blue-01: #4508ae;
 	--purple-01: #250954;
 	--dk-gray-01: #2d2e2f;
@@ -17,7 +18,7 @@
 	--card-contrast: rgb(23, 13, 171);
 	--accent-color: #11b3f3;
 	--heading-color: #f667f9;
-	--text-color: #fac5fb;
+	--text-color: var(--copy-white);
 	// - SPACINGS
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
