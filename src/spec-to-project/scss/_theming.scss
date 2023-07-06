@@ -6,6 +6,7 @@
 	--pure-white: #fff;
 	--copy-white: #fac5fb;
 	--blue-01: #4508ae;
+	--highlight-blue: #11b3f3;
 	--purple-01: #250954;
 	--dk-gray-01: #2d2e2f;
 	--dk-gray-02: #222223;
@@ -16,7 +17,7 @@
 	--bg-tertiary-color: #8f1ee0;
 	// - to COPY
 	--card-contrast: rgb(23, 13, 171);
-	--accent-color: #11b3f3;
+	--accent-color: var(--highlight-blue);
 	--heading-color: #f667f9;
 	--text-color: var(--copy-white);
 	// - SPACINGS
