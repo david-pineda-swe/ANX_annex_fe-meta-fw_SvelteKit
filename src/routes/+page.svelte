@@ -24,7 +24,23 @@
 			</h1>
 		</div>
 	</div>
+</section>
 
+<section class="services">
+	<ul>
+		<li>
+			<h2>Website Development</h2>
+			<p>asdf</p>
+			<h2>Blockchain Development</h2>
+			<p>asdf</p>
+			<h2>VR & XR Development</h2>
+			<p>asdf</p>
+			<h2>Game Development</h2>
+			<p>asdf</p>
+			<h2>Video & Media Production</h2>
+			<p>asdf</p>
+		</li>
+	</ul>
 </section>
 
 <style lang="scss">
@@ -32,6 +48,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		padding-bottom: var(--section-padding-bottom);
+		margin-bottom: var(--section-margin-bottom);
 	}
 
 	.hero {

@@ -12,11 +12,12 @@
   - HOURS WORKED
 
 #### v.0
-- [ ] Home page
+- [-] Home page
   - [ ] Delete .welcome class on home page
   - [ ] Create workflow for page "section" ing
   - [ ] align-items center > mobile-header > nav-menu-list
-- [ ] Services list
+- [-] Services list
+  - [ ] BACKPORT: --section-margin-bottom spacing support
 - [ ] Process overview
 - [ ] Contact Footer
 - [ ] Privacy Policy
