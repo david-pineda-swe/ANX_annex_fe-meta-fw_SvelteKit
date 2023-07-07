@@ -19,6 +19,14 @@
 </script>
 
 
+<svelte:head>
+	<!-- VERIFY - THIS IS THE RIGHT LOCATION FOR PROJECT WIDE IMPORTS AND HEAD CONFIGS -->
+	<!-- TODO - integrate settings from project.theme configurations -->
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&display=swap');
+	</style>
+</svelte:head>
+
 
 <NavInterface navigations={navigations}>
 	<!-- INSERT_HEADER_DESKTOP_A -->
@@ -40,7 +48,7 @@
 	
 	<!-- PAGE_LAYOUT_SLOT -->
 	<div class="page-layout" slot="page-layout">
-		<main id="page-content" class="container mx-auto">
+		<main id="page-content">
 			<slot />
 		</main>
 		
@@ -59,6 +67,6 @@
 		flex-direction: column;
 		box-sizing: border-box;
 		min-height: 600px;
-		padding: 0 10px 60px;
+		padding: 0 0 100px;
 	}
 </style>

@@ -27,51 +27,35 @@
     // console.log('>> SELECTED:', selected);
     currentMenuTray = selected;
   });
-  
-  const toggleMenuTray = (selectedTray: string) :void => {
+
+  const toggleMenuTray = (selectedTray: string): void => {
     // console.log('>> CHECK SELECTED_TRAY:', selectedTray);
     selectedPrimaryMenuTray.set(selectedTray);
-  }
+  };
 </script>
 
 <!-- TODO >>> MAKE THE .nav-interface-container TOP SPACING REACTIVE TO CUMULATIVE HIGHT OF THE .header-dock -->
 
 <div id="annex-nav-interface" class="nav-interface-container" class:fixed-header={headerIsFixed}>
   <div class="menu-dock">
-    {#if $$slots["insert-tray-tp"]}
-      <MenuTray
-        trayType="TP_TRAY"
-        toggleMenuTray={toggleMenuTray}
-        currentMenuTray={currentMenuTray}
-        navigations={navigations}>
-        <slot name="insert-tray-tp"/>
+    {#if $$slots['insert-tray-tp']}
+      <MenuTray trayType="TP_TRAY" {toggleMenuTray} {currentMenuTray} {navigations}>
+        <slot name="insert-tray-tp" />
       </MenuTray>
     {/if}
-    {#if $$slots["insert-tray-rt"]}
-      <MenuTray
-        trayType="RT_TRAY"
-        toggleMenuTray={toggleMenuTray}
-        currentMenuTray={currentMenuTray}
-        navigations={navigations}>
-        <slot name="insert-tray-rt"/>
+    {#if $$slots['insert-tray-rt']}
+      <MenuTray trayType="RT_TRAY" {toggleMenuTray} {currentMenuTray} {navigations}>
+        <slot name="insert-tray-rt" />
       </MenuTray>
     {/if}
-    {#if $$slots["insert-tray-bt"]}
-      <MenuTray
-        trayType="BT_TRAY"
-        toggleMenuTray={toggleMenuTray}
-        currentMenuTray={currentMenuTray}
-        navigations={navigations}>
-        <slot name="insert-tray-bt"/>
+    {#if $$slots['insert-tray-bt']}
+      <MenuTray trayType="BT_TRAY" {toggleMenuTray} {currentMenuTray} {navigations}>
+        <slot name="insert-tray-bt" />
       </MenuTray>
     {/if}
-    {#if $$slots["insert-tray-lt"]}
-      <MenuTray
-        trayType="LT_TRAY"
-        toggleMenuTray={toggleMenuTray}
-        currentMenuTray={currentMenuTray}
-        navigations={navigations}>
-        <slot name="insert-tray-lt"/>
+    {#if $$slots['insert-tray-lt']}
+      <MenuTray trayType="LT_TRAY" {toggleMenuTray} {currentMenuTray} {navigations}>
+        <slot name="insert-tray-lt" />
       </MenuTray>
     {/if}
     <!-- TODO - CONSIDER WILDCARD CUSTOM MENU -->
@@ -87,24 +71,20 @@
 
     <div class="header-dock">
       <!-- DESKTOP_HEADER_SLOTS -->
-      <HeaderDesktop
-        toggleMenuTray={toggleMenuTray}
-        navigations={navigations}>
-          <slot slot="insert-header-desktop-aa">
-            <slot name="insert-header-desktop-a"/>
-          </slot>
-          <slot slot="insert-header-desktop-bb">
-            <slot name="insert-header-desktop-b"/>
-          </slot>
+      <HeaderDesktop {toggleMenuTray} {navigations}>
+        <slot slot="insert-header-desktop-aa">
+          <slot name="insert-header-desktop-a" />
+        </slot>
+        <slot slot="insert-header-desktop-bb">
+          <slot name="insert-header-desktop-b" />
+        </slot>
       </HeaderDesktop>
 
       <!-- MOBILE_HEADER_SLOT -->
-      <HeaderMobile
-        toggleMenuTray={toggleMenuTray}
-        navigations={navigations}>
-          <slot slot="insert-header-mobile">
-            <slot name="insert-header-mobile"/>
-          </slot>
+      <HeaderMobile {toggleMenuTray} {navigations}>
+        <slot slot="insert-header-mobile">
+          <slot name="insert-header-mobile" />
+        </slot>
       </HeaderMobile>
     </div>
 

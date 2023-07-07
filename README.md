@@ -1,11 +1,24 @@
 # PRAJKT | ANNEX
 
 Todo:
+- [x] Copy
+- [x] heading
+- [x] links
+- [x] buttons
+- [x] <pre>
+- [x] cards
+- [x] footer
+- [x] tray menu
+- [x] Mobile adjustments
+- [ ] Update and mod tracker
+- [ ] -
+- [ ] Build project
+- [ ] post / review piece
 - [ ] Build out Document site
 - [ ] Write up quick start guide
 - [ ] links to core concepts and specs from DOCS sketch
 
----
+--- 
 
 - Made with [Svelte](https://svelte.dev/)
 - Namely [SvelteKit](https://kit.svelte.dev/)

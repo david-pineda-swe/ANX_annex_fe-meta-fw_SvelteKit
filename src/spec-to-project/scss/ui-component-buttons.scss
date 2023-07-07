@@ -1,0 +1,9 @@
+button.ui-btn {
+  @include drop-shadow;
+  margin: 10px 10px 10px 0;
+  border-radius: 4px;
+  border: 2px solid var(--bg-secondary-color);
+  background-color: var(--bg-tertiary-color);
+  color: white;
+  font-weight: bold;
+}

@@ -1,29 +1,22 @@
 <script lang="ts">
-  // NOTE - LOGO AND LOGOTYPE GO HERE
-  // import logo from '$pec/images/branding/Free4m-IO_logo_wht_v14.svg';
-  // import logoType from '$pec/images/branding/Free4m-IO_logo-type_wht_v11.svg';
+  import logo from '$pec/images/branding/Free4m-IO_logo_wht_v14.svg';
+  import logoType from '$pec/images/branding/Free4m-IO_logo-type_wht_v11.svg';
 
   export let location: string;
 </script>
 
-
-
 <div class="{location} branding">
   <a href="/">
-    <img class="brand-logo" src="svelte-logo.svg" alt="SvelteKit" />
-
-    <!-- <img class="brand-logo" src={logo} alt="Free4m Logo"/>
-    <img class="brand-logo-type" src={logoType} alt="Free4m IO"/> -->
+    <img class="brand-logo" src={logo} alt="Free4m Logo" />
+    <img class="brand-logo-type" src={logoType} alt="Free4m IO" />
   </a>
 </div>
-
-
 
 <style lang="scss">
   .desktop.branding {
     margin: 3px 0 0 7px;
   }
-  
+
   .branding {
     width: 300px;
     a {
@@ -39,7 +32,7 @@
     }
   }
 
-   a:hover {
-    color: var(--accent-color);
+  a:hover {
+    color: var(--links);
   }
 </style>

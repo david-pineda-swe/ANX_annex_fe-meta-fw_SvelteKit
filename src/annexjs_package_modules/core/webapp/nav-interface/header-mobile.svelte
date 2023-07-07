@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { NavigationConfig } from 'src/global';
   import filterTargetNavigations from '@annexjs/core/webapp/nav-interface/filter-target-navigations';
-    import MenuPlotter from './menu-plotter.svelte';
+  import MenuPlotter from './menu-plotter.svelte';
 
   export let toggleMenuTray: any;
 
@@ -21,22 +21,19 @@
   };
 </script>
 
-
-
 <header class="mobile-header sm:hidden">
   {#if targetNavigations}
     <MenuPlotter
       navigations={targetNavigations}
-      locationClasses='header-mobile-menu'
-      targetActions={targetActions}>
-        <slot slot="A">
-          <slot name="insert-header-mobile"/>
-        </slot>
+      locationClasses="header-mobile-menu"
+      {targetActions}
+    >
+      <slot slot="A">
+        <slot name="insert-header-mobile" />
+      </slot>
     </MenuPlotter>
   {/if}
 </header>
-
-
 
 <style>
   header.mobile-header {

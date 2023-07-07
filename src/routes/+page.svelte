@@ -1,32 +1,52 @@
 <script lang="ts">
-	import Counter from '$pec/components/Counter.svelte';
+	import logoType from '$pec/images/branding/Free4m-IO_logo-type_wht_v11.svg';
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Free4m IO | Web / XR / Interactive</title>
 </svelte:head>
 
 <section>
+	<div class="welcome">
+		<picture>
+			<!-- <source srcset="svelte-welcome.webp" type="image/webp" /> -->
+			<img src={logoType} alt="Free4m IO"/>
+		</picture>
+	</div>
 	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
+	</h1>
+	<h1>
+		THIS IS CONTENT FOR FREE4M.IO
 	</h1>
 
-	<h2>
-		Addition of the Annex.js "Module Development Workflow"
-	</h2>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
 </section>
 
 <style>
