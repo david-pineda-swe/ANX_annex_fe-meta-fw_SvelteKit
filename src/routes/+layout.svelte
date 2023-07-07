@@ -48,7 +48,7 @@
 	
 	<!-- PAGE_LAYOUT_SLOT -->
 	<div class="page-layout" slot="page-layout">
-		<main id="page-content" class="container mx-auto">
+		<main id="page-content">
 			<slot />
 		</main>
 		
@@ -67,6 +67,6 @@
 		flex-direction: column;
 		box-sizing: border-box;
 		min-height: 600px;
-		padding: 0 10px 60px;
+		padding: 0 0 100px;
 	}
 </style>

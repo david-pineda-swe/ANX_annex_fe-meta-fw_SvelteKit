@@ -7,7 +7,8 @@
 	<title>About</title>
 </svelte:head>
 
-<div class="content">
+<div class="content full-width">
+<!-- <div class="content center-column"> -->
 	<h1>About this app</h1>
 
 	<a href="#scroll-to-test-link" on:click={smoothScroll}>MIDDLE</a> <br/>
@@ -101,9 +102,5 @@
 </div>
 
 <style>
-	.content {
-		width: 100%;
-		max-width: var(--column-width);
-		margin: var(--column-margin-top) auto 0 auto;
-	}
+	/* .content {} */
 </style>

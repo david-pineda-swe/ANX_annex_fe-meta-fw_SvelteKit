@@ -31,3 +31,17 @@ body {
 	flex-direction: column;
 	/* border: 2px solid red; */
 }
+
+.content {
+	width: 100%;
+	padding: 0 15px;
+}
+
+.content.full-width {
+	margin-top: var(--column-margin-top);
+}
+
+.content.center-column {
+	max-width: var(--column-width);
+	margin: var(--column-margin-top) auto 0 auto;
+}
