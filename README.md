@@ -13,6 +13,9 @@
 
 #### v.0
 - [ ] Home page
+  - [ ] Delete .welcome class on home page
+  - [ ] Create workflow for page "section" ing
+  - [ ] align-items center > mobile-header > nav-menu-list
 - [ ] Services list
 - [ ] Process overview
 - [ ] Contact Footer
