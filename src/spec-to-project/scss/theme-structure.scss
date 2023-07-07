@@ -1,3 +1,19 @@
+html {
+	background-color: var(--purple-04);
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background-color: var(--bg-primary-color);
+	background: linear-gradient(
+		180deg,
+		var(--bg-primary-color) 0%,
+		var(--bg-secondary-color) 10.45%,
+		var(--bg-tertiary-color) 41.35%
+	);
+}
+
 header.mobile-header,
 header.desktop-header {
   // background-color: #710975;
@@ -11,18 +27,6 @@ header.desktop-header {
     background: linear-gradient(180deg, rgba(72,21,74,1) 0%, rgba(255,255,255,0) 100%);
     // border: 1px solid red;
   }
-}
-
-body {
-	min-height: 100vh;
-	margin: 0;
-	background-color: var(--bg-primary-color);
-	background: linear-gradient(
-		180deg,
-		var(--bg-primary-color) 0%,
-		var(--bg-secondary-color) 10.45%,
-		var(--bg-tertiary-color) 41.35%
-	);
 }
 
 #svelte.app-container {

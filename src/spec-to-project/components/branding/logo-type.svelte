@@ -33,6 +33,6 @@
   }
 
   a:hover {
-    color: var(--accent-color);
+    color: var(--links);
   }
 </style>

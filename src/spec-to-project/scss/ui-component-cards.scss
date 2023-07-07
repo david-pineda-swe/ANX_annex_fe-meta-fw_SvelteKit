@@ -4,7 +4,7 @@
   h2,
   h3{
     font-weight: bold;
-    color: var(--blue-01);
+    color: var(--card-heading-color);
   }
   h4 {
     color: black;
@@ -15,7 +15,7 @@
   }
 
   a {
-    color: var(--card-contrast);
+    color: var(--card-links);
     font-weight: bold;
   }
 

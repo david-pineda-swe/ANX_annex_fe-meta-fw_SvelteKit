@@ -1,0 +1,35 @@
+@mixin colorScheme {
+  // - COLORS
+	--pure-white: #fff;
+	--copy-white: #fac5fb;
+	//
+	--pink-01: #f667f9;
+	//
+	--blue-01: #11b3f3;
+	--blue-02: rgb(23, 13, 171);
+	//
+	--purple-01: #8f1ee0;
+	--purple-02: #711e8d;
+	--purple-03: #4508ae;
+	--purple-04: #250954;
+	--purple-05: #160632;
+	//
+	--dk-gray-01: #2d2e2f;
+	--dk-gray-02: #222223;
+	--dk-gray-03: #181818;
+
+
+	// - to THEME
+	--bg-highlight: var(--purple-04);
+	--bg-primary-color: var(--dk-gray-01);
+	--bg-secondary-color: var(--purple-02);
+	--bg-tertiary-color: var(--purple-01);
+
+  
+	// - to COPY
+	--heading-color: var(--pink-01);
+	--card-heading-color: var(--purple-03);
+	--card-links: var(--blue-02);
+	--text-color: var(--copy-white);
+	--links: var(--blue-01);
+}

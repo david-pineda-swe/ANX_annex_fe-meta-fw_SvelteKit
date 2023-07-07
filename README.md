@@ -9,6 +9,7 @@ Todo:
 - [x] cards
 - [x] footer
 - [x] tray menu
+- [x] Mobile adjustments
 - [ ] Update and mod tracker
 - [ ] -
 - [ ] Build project
