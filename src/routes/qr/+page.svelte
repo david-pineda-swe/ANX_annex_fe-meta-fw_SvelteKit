@@ -16,7 +16,7 @@
 
 <style>
 	.qr-code-container {
-		width: 50%;
+		width: 80%;
     margin: 0 auto;
 	}
 </style>
