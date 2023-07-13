@@ -66,10 +66,13 @@
 </section>
 
 <style lang="scss">
+	/* TODO - MOVE THIS TO SPEC STYLES */
 	section {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		padding-left: var(--section-padding-side);
+		padding-right: var(--section-padding-side);
 		padding-bottom: var(--section-padding-bottom);
 		margin-bottom: var(--section-margin-bottom);
 	}
