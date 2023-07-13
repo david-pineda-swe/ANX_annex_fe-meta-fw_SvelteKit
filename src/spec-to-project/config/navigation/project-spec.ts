@@ -3,6 +3,7 @@ import { generateNavigationConfig, sampleNavConfig } from "@annexjs/core/webapp/
 
 import primaryMenu from "./menu/primary.json";
 import footerMenu from "./menu/footer.json";
+import contactMenu from "./menu/social-contact.json";
 import { openLeftTray } from "./module/tray-actions";
 
 const ProjectSpecNavigations = [
@@ -30,7 +31,7 @@ const ProjectSpecNavigations = [
             label: 'Logo Branding',
             actionType: 'SLOT_A'
           },
-          openLeftTray
+          // openLeftTray
         ]
       ]
     }
@@ -40,9 +41,9 @@ const ProjectSpecNavigations = [
     ...sampleNavConfig,
     ...{
       menuLocations: ['FOOTER_MENU'],
-      navigationType: 'NESTED',
-      navListLabel: 'TEST FOOTER MENU',
-      navListItems: footerMenu.items
+      navigationType: 'SHALLOW',
+      navListLabel: 'Contact Free4m IO: hello@free4m.io',
+      navListItems: contactMenu.items
     }
   })
 ];

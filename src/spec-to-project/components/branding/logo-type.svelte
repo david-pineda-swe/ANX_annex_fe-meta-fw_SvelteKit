@@ -14,7 +14,7 @@
 
 <style lang="scss">
   .desktop.branding {
-    margin: 3px 0 0 7px;
+    margin: 10px 0 0 15px;
   }
 
   .branding {
