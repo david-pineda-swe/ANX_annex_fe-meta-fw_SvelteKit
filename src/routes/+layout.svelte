@@ -15,6 +15,8 @@
 	import generateProjectConfiguration from "$pec/config/project";
 	import '../app.scss';
 
+	import logo from '$pec/images/branding/Free4m-IO_logo_wht_v14.svg';
+
 	const { navigations } = generateProjectConfiguration();	
 </script>
 
@@ -25,6 +27,9 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&display=swap');
 	</style>
+
+	<!-- TODO - ADD SUPPORT FOR SPEC-PROJECT CONFIGURATION -->
+	<link rel="icon" type="image/x-icon" href={logo}>
 </svelte:head>
 
 

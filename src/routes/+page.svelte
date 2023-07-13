@@ -1,79 +1,98 @@
 <script lang="ts">
-	import logoType from '$pec/images/branding/Free4m-IO_logo-type_wht_v11.svg';
+	import logo from '$pec/images/branding/Free4m-IO_logo_wht_v14.svg';
+	// import logoType from '$pec/images/branding/Free4m-IO_logo-type_wht_v11.svg';
+	import IconIndex from '@annexjs/core/webapp/display/icon-index.svelte';
 </script>
 
 <svelte:head>
-	<title>Free4m IO | Web / XR / Interactive</title>
+	<title>Free4m IO | Web, Interactive, & Media Production</title>
 </svelte:head>
 
-<section>
-	<div class="welcome">
-		<picture>
-			<!-- <source srcset="svelte-welcome.webp" type="image/webp" /> -->
-			<img src={logoType} alt="Free4m IO"/>
-		</picture>
+<section class="hero greeting">
+	<div class="content center-column">
+		<div  class="hero-branding">
+			<!-- <picture>
+				<img src={logo} alt="Free4m IO"/>
+				<!-- <img src={logoType} alt="Free4m IO"/> -->
+			<!-- </picture> -->
+			<h1>
+				<ul class="service-links">
+					<li>- Web</li>
+					<li>- XR</li>
+					<li>- Interactive</li>
+					<li>- Media</li>
+				</ul>
+			</h1>
+		</div>
 	</div>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-	<h1>
-		THIS IS CONTENT FOR FREE4M.IO
-	</h1>
-
 </section>
 
-<style>
+<section class="services">
+	<ul>
+		<li>
+			<IconIndex designation={'ICONIFY_mdi:desktop-classic_large|NA|white'}/>
+			<h2>Website / Software Development</h2>
+			<p>Design</p>
+			<p>Development</p>
+			<p>Platform management of landing and ecommerce sites</p>
+			<!-- <p>SAAS product prototype and development</p> -->
+		</li>
+		<li>
+			<IconIndex designation={'ICONIFY_mdi:link-variant_large|NA|white'}/>
+			<h2>Blockchain Development</h2>
+			<p>Smart contract prototyping & development</p>
+			<p>Audit Management</p>
+			<p>Chain Analytics</p>
+		</li>
+		<li>
+			<IconIndex designation={'ICONIFY_mdi:safety-goggles_large|NA|white'}/>
+			<h2>VR & XR Development</h2>
+			<p>Concept & design</p>
+			<p>Development</p>
+			<p>Asset creation & management</p>
+		</li>
+		<li>
+			<!-- <h2>Game Development</h2>
+				<p>asdf</p> -->
+			</li>
+			<li>
+			<IconIndex designation={'ICONIFY_mdi:video-image_large|NA|white'}/>
+			<h2>Video & Media Production</h2>
+			<p>Post production</p>
+			<p>Content Creation</p>
+			<p>AI Generative Enhancements</p>
+		</li>
+	</ul>
+</section>
+
+<style lang="scss">
+	/* TODO - MOVE THIS TO SPEC STYLES */
 	section {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
-		flex: 1;
+		padding-left: var(--section-padding-side);
+		padding-right: var(--section-padding-side);
+		padding-bottom: var(--section-padding-bottom);
+		margin-bottom: var(--section-margin-bottom);
 	}
 
-	h1 {
-		width: 100%;
-	}
+	.hero {
+		background-color: rgba(36, 5, 54, 0.592);
 
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
+		ul {
+			text-align: left;
+			li {
+				font-weight: bold;
+			}
+		}
 	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.hero-branding {
+		text-align: center;
+		
+		// img {
+		// 	margin: 0 auto;
+		// 	width: 50%;
+		// }
 	}
 </style>

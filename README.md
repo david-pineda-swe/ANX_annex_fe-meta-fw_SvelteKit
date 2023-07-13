@@ -1,16 +1,44 @@
-# PRAJKT | ANNEX
+# FREE4M BRAND SITE | ANNEX fe SvelteKit
 
-Todo:
-- [x] Copy
-- [x] heading
-- [x] links
-- [x] buttons
-- [x] <pre>
-- [x] cards
-- [x] footer
-- [x] tray menu
+## Todo:
+
+### UPDATE / MOD TRACKER - TBD
+- TABLE
+  - CHECK
+  - TASK
+  - TO PROJECT or FW
+  - STARTED
+  - INTEGRATED
+  - HOURS WORKED
+
+#### v.0
+- [-] Home page
+  - [ ] Delete .welcome class on home page
+  - [ ] Create workflow for page "section" ing
+  - [ ] align-items center > mobile-header > nav-menu-list
+- [-] Services list
+  - [ ] BACKPORT: --section-margin-bottom spacing support
+- [ ] Process overview
+- [ ] Contact Footer
+- [ ] Privacy Policy
+- [ ] Contact Form
 - [x] Mobile adjustments
-- [ ] Update and mod tracker
+- [x] tray menu
+- [x] footer
+- [x] cards
+- [x] pre tags
+- [x] buttons
+- [x] links
+- [x] heading
+- [x] Copy
+
+
+#### v.1
+- [ ] Create update / mod tracker
+- [ ] START UI COMPONENT MODULE
+- [ ] MURAL_HERO
+- [ ] CTA CARD COMPONENT
+
 - [ ] -
 - [ ] Build project
 - [ ] post / review piece

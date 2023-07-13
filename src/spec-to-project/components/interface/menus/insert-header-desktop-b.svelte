@@ -8,10 +8,10 @@
 </script>
 
 
-
-<button on:click={handleTargetTrayClick}>
+<!-- NOTE - DEACTIVATED -->
+<!-- <button on:click={handleTargetTrayClick}>
   <IconIndex designation={'ICONIFY_mdi:menu-open_medium|s2|white'}/>
-</button>
+</button> -->
 
 <!-- <a class="brand-logo-link" target="_blank" href="https://github.com/free4m-io/annex-fe-SvelteKit">
   <img src="github-logo.png" alt="Annex.JS Repo" /> 

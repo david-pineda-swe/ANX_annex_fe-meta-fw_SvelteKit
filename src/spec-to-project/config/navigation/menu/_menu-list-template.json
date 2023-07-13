@@ -1,0 +1,31 @@
+{
+  "project": "",
+  "menuLocation": "",
+  "tags": [""],
+  "items": [
+    {
+      "nodeId": "",
+      "label": "",
+      "slug": "/",
+      "actionType": "INTERNAL_ROUTE"
+    },
+    {
+      "nodeId": "",
+      "label": "",
+      "slug": "/",
+      "actionType": "EXTERNAL_LINK"
+    },
+    {
+      "nodeId": "",
+      "label": "",
+      "slug": "/",
+      "actionType": "SLOT_A"
+    },
+    {
+      "nodeId": "",
+      "label": "",
+      "slug": "/",
+      "actionType": "PROCESS_[TARGET_ACTION_KEY]_[ARG...]"
+    },
+  ]
+}
