@@ -46,8 +46,8 @@
       "actionType": "EXTERNAL_LINK"
     },
     {
-      "nodeId": "free4m-contact-e-card",
-      "label": "Contact E-card",
+      "nodeId": "free4m-contact",
+      "label": "Contact",
       "slug": "/contact",
       "actionType": "INTERNAL_ROUTE"
     }
