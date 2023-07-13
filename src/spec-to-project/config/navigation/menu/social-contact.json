@@ -1,0 +1,55 @@
+{
+  "project": "",
+  "menuLocation": "",
+  "tags": [""],
+  "items": [
+    {
+      "nodeId": "free4m-instagram",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/free4m.io/",
+      "linkTarget": "_blank",
+      "actionType": "EXTERNAL_LINK"
+    },
+    {
+      "nodeId": "free4m-twitter",
+      "label": "Twitter",
+      "url": "https://twitter.com/free4m_io",
+      "linkTarget": "_blank",
+      "actionType": "EXTERNAL_LINK"
+    },
+    {
+      "nodeId": "free4m-linkedIn",
+      "label": "Linked In",
+      "url": "https://www.linkedin.com/company/free4m-io",
+      "linkTarget": "_blank",
+      "actionType": "EXTERNAL_LINK"
+    },
+    {
+      "nodeId": "free4m-Facebook",
+      "label": "Facebook",
+      "url": "https://www.facebook.com/Free4mIO",
+      "linkTarget": "_blank",
+      "actionType": "EXTERNAL_LINK"
+    },
+    {
+      "nodeId": "free4m-Medium",
+      "label": "Medium",
+      "url": "https://medium.com/@free4m_io",
+      "linkTarget": "_blank",
+      "actionType": "EXTERNAL_LINK"
+    },
+    {
+      "nodeId": "free4m-youTube",
+      "label": "YouTube",
+      "url": "https://www.youtube.com/channel/UC_2zFm-XAAwoRDD3hJcEUsA",
+      "linkTarget": "_blank",
+      "actionType": "EXTERNAL_LINK"
+    },
+    {
+      "nodeId": "free4m-contact-e-card",
+      "label": "Contact E-card",
+      "slug": "/contact",
+      "actionType": "INTERNAL_ROUTE"
+    }
+  ]
+}
