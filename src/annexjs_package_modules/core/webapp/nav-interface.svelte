@@ -112,7 +112,7 @@
   }
 
   .nav-interface-container.fixed-header {
-    padding-top: 120px;
+    padding-top: var(--page-header-top);
   }
 
   .nav-interface-container.fixed-header .nav-interface-outlet .header-dock {

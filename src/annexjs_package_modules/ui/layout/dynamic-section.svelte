@@ -1,18 +1,16 @@
 <script lang="ts">
-    // TODO - RE-NAME COMPONENT TO /index.svelte
-
-    export let sectionHeight: any = null; // null, sm, lg, full
+    export let supportClasses: any = null; // null, sm, lg, full
 	export let layout: string = "stacked"; // stacked, rev-stacked, ordered, ordered-left, ordered-right
-	export let secConfig: any = null; // TBD
+	export let sectionConfig: any = null; // TBD
     // headline: string = "Headline here..."; headline="Something Great!"
     // subheading: string = "Subheading"; subheading="Ta-dur!"
     console.log(">> DYNAMIC_SECTION HAS CONFIG");
-    console.table(secConfig);   
+    console.table(sectionConfig);
 </script>
 
 
 
-<section class="dynamic {sectionHeight}">
+<section class="dynamic {supportClasses}">
 	{#if $$slots['background']}
 		<div  class="section-bg" >
 			<slot name="background" />
@@ -41,6 +39,14 @@
 				</div>
 			</div>
 		{/if}
+
+		{#if $$slots['default']}
+			<div class="subsection">
+				<div class="anchor">
+					<slot />
+				</div>
+			</div>
+		{/if}
 	</div>
 	<!-- TODO - ACCOUNT FOR DEFAULT SUBSECTION -->
 	<!-- TODO - CONDITIONAL CTA SLOT LOCATION -->
@@ -52,17 +58,24 @@
     // SECTION
 	.dynamic {
 		position: relative;
+        padding-top: var(--section-vertical-padding);
+        margin-bottom: 40px;
         // border: 1px solid red;
         // background-color: red;
 
         &.sm {
-            height: 300px;
+            min-height: 300px;
         }
         &.lg {
-            height: 600px;
+            min-height: 600px;
         }
         &.full {
             height: 100%;
+        }
+
+        &.hero {
+            padding-top: var(--page-header-top);
+            top: var(--negative-page-header-top);
         }
 
 		.section-bg {
@@ -99,14 +112,16 @@
 			display: flex;
 			justify-content: center;
 			height: 100%;
+            padding: calc(var(--section-vertical-padding) * 2.5) 0px;
 			// border: 1px solid red;
 
 			&.stacked {
 				flex-direction: column;
 				// border: 5px solid fuchsia;
-				// .subsection {
-				//     // .anchor {}
-				// }
+				.subsection {
+                    margin-bottom: var(--subsection-bottom-margin);
+				    // .anchor {}
+				}
 			}
 			&.rev-stacked {
 				flex-direction: column-reverse;

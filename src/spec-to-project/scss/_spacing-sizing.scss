@@ -2,10 +2,15 @@
   	// - SPACINGS
 	--column-width: 50rem;
 	--column-margin-top: 4rem;
-	--section-padding-side: 10px;
-	--section-padding-bottom: 20px;
-	--section-margin-bottom: 80px;
 
+	--section-side-padding: 10px;
+	--section-vertical-padding: 20px;
+	--section-bottom-margin: 80px;
+
+    --subsection-bottom-margin: 40px;
+
+    --page-header-top: 100px;
+    --negative-page-header-top: calc(var(--page-header-top) * -1);
 	
     // - SIZES
 	--link-size: 1.5rem;

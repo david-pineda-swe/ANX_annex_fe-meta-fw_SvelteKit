@@ -17,7 +17,6 @@
   - [ ] Create workflow for page "section" ing
   - [ ] align-items center > mobile-header > nav-menu-list
 - [-] Services list
-  - [ ] BACKPORT: --section-margin-bottom spacing support
 - [ ] Process overview
 - [ ] Contact Footer
 - [ ] Privacy Policy
