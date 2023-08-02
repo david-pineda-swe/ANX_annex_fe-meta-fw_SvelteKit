@@ -15,10 +15,23 @@
 		<!-- SECTIONS -->
 		<Hero
 			sectionHeight={"lg"}
-			layout={"stacked"}
+			layout={"ordered"}
 			heroConfig={null}
 		>
-			<h2>Hero here</h2>
+			<div slot="background" />
+			
+			<div class="copy" slot="primary">
+				<h1>Hero <br/> Primary Content</h1>
+				<h2>Goes here</h2>
+			</div>
+			<div class="focus" slot="secondary">
+				<h1>Hero <br/> Secondary Content</h1>
+				<h2>Goes here</h2>
+			</div>
+			<div class="cta" slot="tertiary">
+				<h1>Hero <br/> Tertiary Content</h1>
+				<h2>Goes here</h2>
+			</div>
 		</Hero>
 		<div class="content full-width">
 		<!-- <div class="content center-column"> -->
