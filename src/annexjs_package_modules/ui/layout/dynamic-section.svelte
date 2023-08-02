@@ -1,16 +1,18 @@
 <script lang="ts">
     // TODO - RE-NAME COMPONENT TO /index.svelte
 
-    export let sectionHeight: string = null; // null, sm, lg, full
+    export let sectionHeight: any = null; // null, sm, lg, full
 	export let layout: string = "stacked"; // stacked, rev-stacked, ordered, ordered-left, ordered-right
-	// export let heroConfig: any = null;
+	export let secConfig: any = null; // TBD
     // headline: string = "Headline here..."; headline="Something Great!"
     // subheading: string = "Subheading"; subheading="Ta-dur!"
+    console.log(">> DYNAMIC_SECTION HAS CONFIG");
+    console.table(secConfig);   
 </script>
 
 
 
-<section class="hero-section {sectionHeight}">
+<section class="dynamic {sectionHeight}">
 	{#if $$slots['background']}
 		<div  class="section-bg" >
 			<slot name="background" />
@@ -48,7 +50,7 @@
 
 <style lang="scss">
     // SECTION
-	.hero-section {
+	.dynamic {
 		position: relative;
         // border: 1px solid red;
         // background-color: red;

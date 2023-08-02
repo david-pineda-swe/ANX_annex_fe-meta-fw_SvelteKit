@@ -2,8 +2,8 @@
 	// DEBUG TOOLS
 	import XpSandbox from "@annexjs/debug-tools/xp-sandbox/index.svelte";
     // SECTIONS
-    import FullPageContainer from "@annexjs/ui/section/full-page-container.svelte";
-    import Hero from "@annexjs/ui/section/hero.svelte";
+    import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
+    import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
 </script>
 
 <svelte:head>
@@ -13,10 +13,10 @@
 <XpSandbox>
 	<FullPageContainer>
 		<!-- SECTIONS -->
-		<Hero
+		<DynamicSection
 			sectionHeight={"lg"}
 			layout={"ordered"}
-			heroConfig={null}
+			secConfig={{}}
 		>
 			<div slot="background" />
 			
@@ -32,7 +32,7 @@
 				<h1>Hero <br/> Tertiary Content</h1>
 				<h2>Goes here</h2>
 			</div>
-		</Hero>
+		</DynamicSection>
 		<div class="content full-width">
 		<!-- <div class="content center-column"> -->
 		</div>
