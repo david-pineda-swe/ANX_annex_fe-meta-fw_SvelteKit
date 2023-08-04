@@ -1,4 +1,4 @@
-<!-- NOTE - FOR SUPPORT OF FULL PAGE SPLASH IMAGE -->
+<!-- NOTE - FOR SUPPORT OF FULL PAGE SPLASH IMAGE - TBD -->
 <script lang="ts">
 
 </script>

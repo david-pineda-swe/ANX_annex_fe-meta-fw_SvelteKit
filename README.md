@@ -1,4 +1,5 @@
-# FREE4M BRAND SITE | ANNEX fe SvelteKit
+# [PROJECT_NAME] | ANNEX Front End SvelteKit
+## meta framework
 
 ## Todo:
 
@@ -14,8 +15,6 @@
 #### v.0
 - [-] Home page
   - [ ] Delete .welcome class on home page
-  - [ ] Create workflow for page "section" ing
-  - [ ] align-items center > mobile-header > nav-menu-list
 - [-] Services list
 - [ ] Process overview
 - [ ] Contact Footer
@@ -49,6 +48,12 @@
 
 - Made with [Svelte](https://svelte.dev/)
 - Namely [SvelteKit](https://kit.svelte.dev/)
+
+# Framework Features
+
+- TBD - fw-features list table goes here
+- ui-layout
+  - [DynamicSection](./docs/fw-features/ui/layout/dynamic-section.md)
 
 ## Core Features
 
