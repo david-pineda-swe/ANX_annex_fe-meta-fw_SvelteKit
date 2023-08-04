@@ -71,10 +71,10 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding-left: var(--section-padding-side);
-		padding-right: var(--section-padding-side);
-		padding-bottom: var(--section-padding-bottom);
-		margin-bottom: var(--section-margin-bottom);
+		padding-left: var(--section-side-padding);
+		padding-right: var(--section-side-padding);
+		padding-bottom: var(--section-vertical-padding);
+		margin-bottom: var(--section-bottom-margin);
 	}
 
 	.hero {

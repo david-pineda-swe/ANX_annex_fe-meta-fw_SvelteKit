@@ -71,7 +71,7 @@
 		display: flex;
 		flex-direction: column;
 		box-sizing: border-box;
-		min-height: 600px;
+		min-height: 800px;
 		padding: 0 0 100px;
 	}
 </style>
