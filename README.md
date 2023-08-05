@@ -52,7 +52,9 @@
 # Framework Features
 
 - TBD - fw-features list table goes here
-- ui-layout
+- ui/copy
+  - [IconIndex](./docs/fw-features/ui/copy/icon-index.md)
+- ui/layout
   - [DynamicSection](./docs/fw-features/ui/layout/dynamic-section.md)
 
 ## Core Features
