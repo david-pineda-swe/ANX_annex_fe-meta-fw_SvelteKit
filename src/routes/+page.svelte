@@ -1,7 +1,7 @@
 <script lang="ts">
 	import logo from '$pec/images/branding/Free4m-IO_logo_wht_v14.svg';
 	// import logoType from '$pec/images/branding/Free4m-IO_logo-type_wht_v11.svg';
-	import IconIndex from '@annexjs/core/webapp/display/icon-index.svelte';
+	import IconIndex from '@annexjs/ui/copy/icon-index.svelte';
 </script>
 
 <svelte:head>

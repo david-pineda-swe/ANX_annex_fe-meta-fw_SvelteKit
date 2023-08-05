@@ -1,6 +1,6 @@
 <script lang="ts">
   import { selectedPrimaryMenuTray } from '@annexjs/core/webapp/stores/menu-trays';
-  import IconIndex from '@annexjs/core/webapp/display/icon-index.svelte';
+  import IconIndex from '@annexjs/ui/copy/icon-index.svelte';
 
   const handleTargetTrayClick = () => {
     selectedPrimaryMenuTray.set('LT_TRAY');

@@ -2,7 +2,7 @@
   import { isEmpty } from "@annexjs/uitils";
   import type { NavigationNode } from "src/global";
 
-  import IconIndex from "../display/icon-index.svelte";
+  import IconIndex from "@annexjs/ui/copy/icon-index.svelte";
 
   export let navItem: NavigationNode;
 
