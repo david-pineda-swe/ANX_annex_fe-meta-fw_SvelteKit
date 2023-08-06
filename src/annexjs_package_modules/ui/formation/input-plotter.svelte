@@ -1,12 +1,12 @@
 <script lang="ts">
-    export const node: any = null;
+    import { shouldShow } from "./util/should-show";
 
-    const showInput = !node.hide;
+    export const node: any = null;
 </script>
 
 
 
-{#if showInput}
+{#if shouldShow(node)}
     <!-- TODO - Possible input node types go here -->
 {/if}
 

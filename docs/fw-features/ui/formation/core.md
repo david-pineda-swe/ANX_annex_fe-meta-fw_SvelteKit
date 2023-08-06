@@ -24,6 +24,7 @@ This component allows instant form creation via a content expression object.
   - [x] FieldsetPlotter
     - [x] FieldgroupPlotter
       - [x] InputPlotter
+- [ ] start a default/sample formation interface using a svelte mixin
 - [ ] mock the first content expression outline & integrate the plotter
 - [ ] integrate standard inputs
   - [ ] text
