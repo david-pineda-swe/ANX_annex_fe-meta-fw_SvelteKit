@@ -2,6 +2,7 @@
     // your script goes here
 
     import FieldgroupPlotter from "./fieldgroup-plotter.svelte";
+    import InputPlotter from "./input-plotter.svelte";
 
     const formNodes = []; // controller.outline.layouts.formNodes = []
 </script>
@@ -12,17 +13,17 @@
 
     <!-- TODO - PRE/POST HRs -->
 
-    {#if node.type === 'FIELDSET'}
+    {#if node.type === 'FIELDSET' && !node.hide}
         <fieldset class="form-fieldset {node.classes}">
             <legend>{node.legend}</legend>
 
             {#each node.subNodes as subNode}
-                 {#if subNode.type === 'FIELDGROUP'}
+                 {#if subNode.type === 'FIELDGROUP' && !node.hide}
                       <FieldgroupPlotter node={subNode}/>
                  {/if}
      
-                 {#if subNode.type === 'INPUT'}
-                      <!-- TODO - InputPlotter -->
+                 {#if subNode.type === 'INPUT' && !node.hide}
+                      <InputPlotter node={subNode}/>
                  {/if}
             {:else}
                  <!-- TODO - empty list -->
@@ -30,12 +31,12 @@
         </fieldset>
     {/if}
 
-    {#if node.type === 'FIELDGROUP'}
+    {#if node.type === 'FIELDGROUP' && !node.hide}
          <FieldgroupPlotter {node}/>
     {/if}
 
-    {#if node.type === 'INPUT'}
-        <!-- TODO - InputPlotter -->
+    {#if node.type === 'INPUT' && !node.hide}
+        <InputPlotter node={node}/>
     {/if}
 {/each}
 
