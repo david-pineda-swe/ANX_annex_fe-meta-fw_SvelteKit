@@ -1,25 +1,46 @@
 <script lang="ts">
     // your script goes here
 
+    import FieldgroupPlotter from "./fieldgroup-plotter.svelte";
+
     const formNodes = []; // controller.outline.layouts.formNodes = []
 </script>
 
+
+
 {#each formNodes as node}
-    {#if node === 'FIELD_SET'}
-        <fieldset>
+
+    <!-- TODO - PRE/POST HRs -->
+
+    {#if node.type === 'FIELDSET'}
+        <fieldset class="form-fieldset {node.classes}">
             <legend>{node.legend}</legend>
 
-            <!-- TODO - InputsPlotter goes here -->
+            {#each node.subNodes as subNode}
+                 {#if subNode.type === 'FIELDGROUP'}
+                      <FieldgroupPlotter node={subNode}/>
+                 {/if}
+     
+                 {#if subNode.type === 'INPUT'}
+                      <!-- TODO - InputPlotter -->
+                 {/if}
+            {:else}
+                 <!-- TODO - empty list -->
+            {/each}
         </fieldset>
     {/if}
 
-    <!-- TODO - FieldGroup -->
-    <!-- TODO - input -->
+    {#if node.type === 'FIELDGROUP'}
+         <FieldgroupPlotter {node}/>
+    {/if}
 
+    {#if node.type === 'INPUT'}
+        <!-- TODO - InputPlotter -->
+    {/if}
 {/each}
+
+
 
 <style lang="scss">
     /* your styles go here */
 </style>
-
-<!-- markup (zero or more items) goes here -->
