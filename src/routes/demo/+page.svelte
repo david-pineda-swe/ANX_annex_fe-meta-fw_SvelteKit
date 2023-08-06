@@ -40,7 +40,12 @@
 		layout={"stacked"}
 		sectionConfig={{}}
 	>
-		<FormaContainer></FormaContainer>
+		<FormaContainer
+            formId={"demo-test-formation"}
+            supportClasses={"test support-classes"}
+        >
+            <h2>Test form content slot</h2>
+        </FormaContainer>
 	</DynamicSection>
 	<DynamicSection
 		supportClasses={null}

@@ -19,7 +19,7 @@ This component allows instant form creation via a content expression object.
 - FormaInputs
 
 ## Development Game Plan
-- [ ] Start the container
+- [x] Start the container
 - [ ] start generator
 - [ ] start the controller
 - [ ] mock the first content expression outline
