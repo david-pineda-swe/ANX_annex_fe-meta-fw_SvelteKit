@@ -17,3 +17,19 @@ This component allows instant form creation via a content expression object.
 - FormaGenerator
 - FormaPlotter
 - FormaInputs
+
+## Development Game Plan
+- [ ] Start the container
+- [ ] start generator
+- [ ] start the controller
+- [ ] mock the first content expression outline
+- [ ] integrate the plotter
+- [ ] integrate standard inputs
+  - [ ] text
+  - [ ] Button
+  - [ ] radio
+  - [ ] checkbox
+  - [ ] textarea
+  - [ ] email
+  - [ ] password
+- [ ] integrate data validation
