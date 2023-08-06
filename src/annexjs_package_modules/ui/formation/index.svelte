@@ -3,8 +3,10 @@
     export const supportClasses: string = "";
 
     const handleSubmit = (e) => {
+        // TODO - If controller submit action was provided or default
+
+
         e.preventDefault();
-        // TODO - If controller submit action was provided
         // TODO - Consider tracking and conversion analytics
         // 
         console.log("This is a test submit!", e);

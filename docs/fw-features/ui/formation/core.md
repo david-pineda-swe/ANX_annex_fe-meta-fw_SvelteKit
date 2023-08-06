@@ -20,7 +20,10 @@ This component allows instant form creation via a content expression object.
 
 ## Development Game Plan
 - [x] Start the container
-- [ ] start generative plotter
+- [ ] start generative plotters
+  - [ ] FieldsetPlotter
+    - [ ] FieldGroupPlotter
+      - [ ] InputPlotter
 - [ ] start the controller
 - [ ] mock the first content expression outline & integrate the plotter
 - [ ] integrate standard inputs
