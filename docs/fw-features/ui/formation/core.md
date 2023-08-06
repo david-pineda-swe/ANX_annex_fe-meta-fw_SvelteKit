@@ -13,7 +13,7 @@ This component allows instant form creation via a content expression object.
 - app proc service
 ---
 - FormaController
-- FormaContainer
+- FormContainer
 - FormaGenerator
 - FormaPlotter
 - FormaInputs
