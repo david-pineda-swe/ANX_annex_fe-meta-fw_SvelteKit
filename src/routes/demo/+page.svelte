@@ -3,6 +3,7 @@
 	// import XpSandbox from "@annexjs/debug-tools/xp-sandbox/index.svelte";
     // SECTIONS
     // import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
+    import FormaContainer from "@annexjs/ui/formation/forma-container.svelte";
     import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
 </script>
 
@@ -35,12 +36,11 @@
 	</DynamicSection>
 
 	<DynamicSection
-		supportClasses={null}
+		supportClasses={"demo formation"}
 		layout={"stacked"}
 		sectionConfig={{}}
 	>
-		<h1>Some Default content</h1>
-		<h2>This would be some basic content</h2>
+		<FormaContainer></FormaContainer>
 	</DynamicSection>
 	<DynamicSection
 		supportClasses={null}
