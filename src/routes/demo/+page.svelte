@@ -3,7 +3,7 @@
 	// import XpSandbox from "@annexjs/debug-tools/xp-sandbox/index.svelte";
     // SECTIONS
     // import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
-    import FormContainer from "@annexjs/ui/formation/form-container.svelte";
+    import Formation from "@annexjs/ui/formation/index.svelte";
     import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
 </script>
 
@@ -40,12 +40,13 @@
 		layout={"stacked"}
 		sectionConfig={{}}
 	>
-		<FormContainer
+		<Formation
             formId={"demo-test-formation"}
             supportClasses={"test support-classes"}
         >
+            <!-- TODO - Plan for multiple slot injection -->
             <h2>Test form content slot</h2>
-        </FormContainer>
+        </Formation>
 	</DynamicSection>
 	<DynamicSection
 		supportClasses={null}
