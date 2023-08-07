@@ -26,19 +26,21 @@
                  {#if subNode.type === 'INPUT' && shouldShow(node)}
                       <InputPlotter node={subNode}/>
                  {/if}
+                 <!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->
             {:else}
                  <!-- TODO - empty list -->
             {/each}
         </fieldset>
-    {/if}
-
-    {#if node.type === 'FIELDGROUP' && shouldShow(node)}
+    {:else if node.type === 'FIELDGROUP' && shouldShow(node)}
          <FieldgroupPlotter {node}/>
-    {/if}
-
-    {#if node.type === 'INPUT' && shouldShow(node)}
+    {:else if node.type === 'INPUT' && shouldShow(node)}
         <InputPlotter node={node}/>
+    {:else}
+        <!-- TODO - GRACEFUL FAIL -->
+        <h3>There was Nothing to render! sorry</h3>
     {/if}
+{:else}
+    <h3>There was Nothing to iterate over and render! sorry</h3>
 {/each}
 
 

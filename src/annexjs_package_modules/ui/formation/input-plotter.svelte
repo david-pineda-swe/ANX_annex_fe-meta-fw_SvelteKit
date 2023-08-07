@@ -8,6 +8,7 @@
 
 {#if shouldShow(node)}
     <!-- TODO - Possible input node types go here -->
+    <!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->
 {/if}
 
 
