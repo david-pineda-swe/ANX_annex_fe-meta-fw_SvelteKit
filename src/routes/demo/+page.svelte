@@ -17,7 +17,6 @@
 	<DynamicSection
 		supportClasses={"lg hero"}
 		layout={"ordered"}
-		sectionConfig={{}}
 	>
 		<div slot="background" />
 		
@@ -38,7 +37,6 @@
 	<DynamicSection
 		supportClasses={"demo formation"}
 		layout={"stacked"}
-		sectionConfig={{}}
 	>
 		<Formation
             formId={"demo-test-formation"}
@@ -51,7 +49,6 @@
 	<DynamicSection
 		supportClasses={null}
 		layout={"stacked"}
-		sectionConfig={{}}
 	>
 		<h1>Some Default content</h1>
 		<h2>This would be some basic content</h2>
@@ -59,7 +56,6 @@
 	<DynamicSection
 		supportClasses={null}
 		layout={"stacked"}
-		sectionConfig={{}}
 	>
 		<h1>Some Default content</h1>
 		<h2>This would be some basic content</h2>

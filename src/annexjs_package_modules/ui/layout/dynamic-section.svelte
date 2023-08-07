@@ -1,11 +1,12 @@
 <script lang="ts">
     export let supportClasses: any = null; // null, sm, lg, full
 	export let layout: string = "stacked"; // stacked, rev-stacked, ordered, ordered-left, ordered-right
-	export let sectionConfig: any = null; // TBD
+	// export let sectionConfig: any = null; // TBD
     // headline: string = "Headline here..."; headline="Something Great!"
     // subheading: string = "Subheading"; subheading="Ta-dur!"
-    console.log(">> DYNAMIC_SECTION HAS CONFIG");
-    console.table(sectionConfig);
+    // TODO
+    // console.log(">> DYNAMIC_SECTION HAS CONFIG");
+    // console.table(sectionConfig);
 </script>
 
 
