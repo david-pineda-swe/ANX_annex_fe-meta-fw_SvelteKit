@@ -1,6 +1,8 @@
 <script lang="ts">
-    export const formId: string = "";
-    export const supportClasses: string = "";
+    import FieldsetPlotter from "./fieldset-plotter.svelte";
+
+    export let formId: string = "";
+    export let supportClasses: string = "";
 
     const handleSubmit = (e) => {
         // TODO - If controller submit action was provided or default
@@ -20,6 +22,8 @@
     on:submit={e => handleSubmit(e)}
 >
   <slot />
+
+  <FieldsetPlotter/>
 
   <!-- TODO - CONDITIONAL DEFAULT SUBMIT BUTTON - if no submit expresion is provided in the outline -->
   <button class="form default submit-btn" type="submit">Submit</button>
