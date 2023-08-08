@@ -25,9 +25,9 @@ This component allows instant form creation via a content expression object.
     - [x] TierB_Fieldgroup
       - [x] InputPlotter
 - [x] start a default/sample formation interface using js class
-- [ ] mock the first form expression outline & integrate with the form plotter
-- [ ] integrate standard inputs
-  - [ ] text
+- [x] mock the first form expression outline & integrate with the form plotter
+- [>] integrate standard inputs
+  - [>] text
   - [ ] Button
   - [ ] radio
   - [ ] checkbox

@@ -4,8 +4,12 @@
     import TierB_Fieldgroup from "./tier-B-fieldgroup.svelte";
     import TierC_Input from "./tier-C-input.svelte";
 
+    export let fi: any = null;
+
+    const formNodes = (fi._nodes) ? fi._nodes : [];
+
     // X SAMPLE
-    const formNodes = []; // controller.outline.layouts.formNodes = []
+    // const formNodes = []; // controller.outline.layouts.formNodes = []
 </script>
 
 
@@ -19,11 +23,11 @@
             <legend>{node.legend}</legend>
 
             {#each node.subNodes as subNode}
-                 {#if subNode.type === 'FIELDGROUP' && shouldShow(node)}
+                 {#if subNode.type === 'FIELDGROUP' && shouldShow(subNode)}
                       <TierB_Fieldgroup node={subNode}/>
                  {/if}
      
-                 {#if subNode.type === 'INPUT' && shouldShow(node)}
+                 {#if subNode.type === 'INPUT' && shouldShow(subNode)}
                       <TierC_Input node={subNode}/>
                  {/if}
                  <!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->

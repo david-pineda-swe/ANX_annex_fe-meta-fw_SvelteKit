@@ -1,7 +1,7 @@
 <script lang="ts">
     import TierC_Input from "./tier-C-input.svelte";
 
-    export const node: any = null;
+    export let node: any = null;
 </script>
 
 <div class="form-fieldgroup {node.classes}">
