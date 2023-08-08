@@ -8,6 +8,7 @@
 class FormationInterface {
   _formInstance: string;
 
+  // TODO - CREATE AN INTERFACE
   constructor(params: any) {
     const { formInstance } = params;
     this._formInstance = formInstance;
