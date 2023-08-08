@@ -1,5 +1,5 @@
 <script lang="ts">
-    import FieldsetPlotter from "./fieldset-plotter.svelte";
+    import TierA_Fieldset from "./tier-A-fieldset.svelte";
 
     export let formId: string = "";
     export let supportClasses: string = "";
@@ -23,7 +23,7 @@
 >
   <slot />
 
-  <FieldsetPlotter/>
+  <TierA_Fieldset/>
 
   <!-- TODO - CONDITIONAL DEFAULT SUBMIT BUTTON - if no submit expresion is provided in the outline -->
   <button class="form default submit-btn" type="submit">Submit</button>

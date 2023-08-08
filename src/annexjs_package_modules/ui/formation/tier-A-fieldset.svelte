@@ -1,8 +1,8 @@
 <script lang="ts">
     import { shouldShow } from "./util/should-show";
 
-    import FieldgroupPlotter from "./fieldgroup-plotter.svelte";
-    import InputPlotter from "./input-plotter.svelte";
+    import TierB_Fieldgroup from "./tier-B-fieldgroup.svelte";
+    import TierC_Input from "./tier-C-input.svelte";
 
     // X SAMPLE
     const formNodes = []; // controller.outline.layouts.formNodes = []
@@ -20,11 +20,11 @@
 
             {#each node.subNodes as subNode}
                  {#if subNode.type === 'FIELDGROUP' && shouldShow(node)}
-                      <FieldgroupPlotter node={subNode}/>
+                      <TierB_Fieldgroup node={subNode}/>
                  {/if}
      
                  {#if subNode.type === 'INPUT' && shouldShow(node)}
-                      <InputPlotter node={subNode}/>
+                      <TierC_Input node={subNode}/>
                  {/if}
                  <!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->
             {:else}
@@ -32,9 +32,9 @@
             {/each}
         </fieldset>
     {:else if node.type === 'FIELDGROUP' && shouldShow(node)}
-         <FieldgroupPlotter {node}/>
+         <TierB_Fieldgroup {node}/>
     {:else if node.type === 'INPUT' && shouldShow(node)}
-        <InputPlotter node={node}/>
+        <TierC_Input node={node}/>
     {:else}
         <!-- TODO - GRACEFUL FAIL -->
         <h3>There was Nothing to render! sorry</h3>

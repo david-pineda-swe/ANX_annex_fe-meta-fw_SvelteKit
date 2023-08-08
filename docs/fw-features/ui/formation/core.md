@@ -21,8 +21,8 @@ This component allows instant form creation via a content expression object.
 ## Development Game Plan
 - [x] Start the container
 - [x] generative plotter system
-  - [x] FieldsetPlotter
-    - [x] FieldgroupPlotter
+  - [x] TierAFieldset
+    - [x] TierB_Fieldgroup
       - [x] InputPlotter
 - [x] start a default/sample formation interface using js class
 - [ ] mock the first form expression outline & integrate with the form plotter

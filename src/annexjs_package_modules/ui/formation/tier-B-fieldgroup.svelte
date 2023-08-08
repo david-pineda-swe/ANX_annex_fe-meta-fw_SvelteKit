@@ -1,12 +1,12 @@
 <script lang="ts">
-    import InputPlotter from "./input-plotter.svelte";
+    import TierC_Input from "./tier-C-input.svelte";
 
     export const node: any = null;
 </script>
 
 <div class="form-fieldgroup {node.classes}">
     {#each node.subNodes as subNode}
-        <InputPlotter node={subNode}/>
+        <TierC_Input node={subNode}/>
     {:else}
             <!-- TODO - empty list -->
     {/each}
