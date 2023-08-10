@@ -10,7 +10,7 @@
 </script>
 
 {#each formNodes as node}
-  <!-- TODO - PRE/POST HRs -->
+  <!-- TODO - PRE/POST HRs at each tier -->
 
   {#if node.type === 'FIELDSET' && shouldShow(node)}
     <fieldset class="form-fieldset {node.classes}">

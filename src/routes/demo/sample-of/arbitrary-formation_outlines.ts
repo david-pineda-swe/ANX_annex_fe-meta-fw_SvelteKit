@@ -21,6 +21,9 @@ export const formA_outline = {
             {
               type: 'INPUT',
               inputType: 'TEXT',
+              label: 'Test text input label',
+              //
+              id: 'test-text-input',
               classes: 'test input-1 tier-c',
               hide: false
             }

@@ -26,12 +26,13 @@ This component allows instant form creation via a content expression object.
       - [x] InputPlotter
 - [x] start a default/sample formation interface using js class
 - [x] mock the first form expression outline & integrate with the form plotter
+- [x] Add input base layout
 - [>] integrate standard inputs
-  - [>] text
+  - [x] text
+  - [ ] email
+  - [ ] password
+  - [ ] textarea
   - [ ] Button
   - [ ] radio
   - [ ] checkbox
-  - [ ] textarea
-  - [ ] email
-  - [ ] password
 - [ ] integrate data validation

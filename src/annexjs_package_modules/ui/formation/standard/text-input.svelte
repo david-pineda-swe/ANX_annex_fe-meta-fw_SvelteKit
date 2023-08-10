@@ -7,14 +7,14 @@
   // disabled
   // on focusOut
   // on change
+  // name={node.dataKey} // for validation matching
+  // value={targetValue}
+  // placeholder={node.placeholder}
 </script>
 
 <input
   type="text"
-  id=""
-  class=""
-  name=""
-  value=""
-  placeholder=""
+  id={node.id}
+  class={node.classes}
 />
 

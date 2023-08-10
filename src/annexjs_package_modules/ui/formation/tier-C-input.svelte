@@ -2,18 +2,17 @@
   import type { InputRequirements } from 'src/global';
   import { splitRequirements } from './util/split-requirements';
   import { shouldShow } from './util/should-show';
+
   import StandardInputIndex from './standard/_input-index.svelte';
+  import InputBaseLayout from './input-base-layout.svelte';
 
   export let inputReqs: InputRequirements = null;
   const { fi, node } = splitRequirements(inputReqs);
 </script>
 
 {#if shouldShow(node)}
-  <!-- TODO - PASS OUTLINE TO THIS TIER FOR "inputSetType" -->
-  <!-- TODO - BASE LAYOUT GOES HERE -->
-  <StandardInputIndex {inputReqs} />
+  <InputBaseLayout {node}>
+    <!-- TODO - PASS OUTLINE TO THIS TIER FOR "inputSetType" -->
+    <StandardInputIndex {inputReqs} />
+  </InputBaseLayout>
 {/if}
-
-<!-- <style lang="scss">
-    /* your styles go here */
-</style> -->
