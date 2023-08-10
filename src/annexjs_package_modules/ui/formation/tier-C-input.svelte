@@ -7,8 +7,9 @@
 
 
 {#if shouldShow(node)}
-    <h3>Placeholder - form input here </h3>
-    <!-- TODO - Possible input node types go here -->
+    {#if node.inputType === "TEXT"}  
+      <h3>Text input here</h3>
+    {/if}
     <!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->
 {/if}
 

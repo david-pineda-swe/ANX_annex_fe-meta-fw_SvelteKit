@@ -20,6 +20,7 @@ export const formA_outline = {
           subNodes: [
             {
               type: 'INPUT',
+              inputType: 'TEXT',
               classes: 'test input-1 tier-c',
               hide: false
             }
