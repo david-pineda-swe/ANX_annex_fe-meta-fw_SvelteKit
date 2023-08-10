@@ -1,17 +1,16 @@
 <script lang="ts">
-    import TierC_Input from "./tier-C-input.svelte";
+  import type { InputRequirements } from "src/global";
+  import { splitRequirements } from "./util/split-requirements";
+  import TierC_Input from "./tier-C-input.svelte";
 
-    export let node: any = null;
+  export let inputReqs: InputRequirements = null;
+  const { fi, node } = splitRequirements(inputReqs);
 </script>
 
 <div class="form-fieldgroup {node.classes}">
     {#each node.subNodes as subNode}
-        <TierC_Input node={subNode}/>
+        <TierC_Input inputReqs={{fi, node: subNode}}/>
     {:else}
             <!-- TODO - empty list -->
     {/each}
 </div>
-
-<!-- <style lang="scss">
-    /* your styles go here */
-</style> -->

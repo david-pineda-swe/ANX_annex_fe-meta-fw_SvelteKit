@@ -185,3 +185,9 @@ interface ProjectConfig {
   // thirdPartyConfigs: any
   navigations: Array<NavigationConfig>
 }
+
+// FORMATION FORMS / INPUTS
+interface InputRequirements {
+  fi: any; // FormInterface
+  node: any; // FormOutlineNode
+}

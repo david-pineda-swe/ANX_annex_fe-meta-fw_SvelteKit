@@ -7,9 +7,6 @@
     export let fi: any = null;
 
     const formNodes = (fi._nodes) ? fi._nodes : [];
-
-    // X SAMPLE
-    // const formNodes = []; // controller.outline.layouts.formNodes = []
 </script>
 
 
@@ -24,11 +21,11 @@
 
             {#each node.subNodes as subNode}
                  {#if subNode.type === 'FIELDGROUP' && shouldShow(subNode)}
-                      <TierB_Fieldgroup node={subNode}/>
+                      <TierB_Fieldgroup inputReqs={{fi, node: subNode}}/>
                  {/if}
      
                  {#if subNode.type === 'INPUT' && shouldShow(subNode)}
-                      <TierC_Input node={subNode}/>
+                      <TierC_Input inputReqs={{fi, node: subNode}}/>
                  {/if}
                  <!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->
             {:else}
@@ -36,9 +33,9 @@
             {/each}
         </fieldset>
     {:else if node.type === 'FIELDGROUP' && shouldShow(node)}
-         <TierB_Fieldgroup {node}/>
+         <TierB_Fieldgroup inputReqs={{fi, node}}/>
     {:else if node.type === 'INPUT' && shouldShow(node)}
-        <TierC_Input node={node}/>
+        <TierC_Input inputReqs={{fi, node}}/>
     {:else}
         <!-- TODO - GRACEFUL FAIL -->
         <h3>There was Nothing to render! sorry</h3>
