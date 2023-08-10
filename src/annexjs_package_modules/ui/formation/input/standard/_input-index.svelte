@@ -1,11 +1,12 @@
 <script lang="ts">
-  // your script goes here
+  import TextInput from "./text-input.svelte";
 
   export let node: any = null;
 </script>
 
 {#if node.inputType === "TEXT"}  
-  <h3>Text input here</h3>
+  <TextInput/>
+{:else}
+  <!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->
+  <h3>Input not supported!</h3>
 {/if}
-
-<!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->

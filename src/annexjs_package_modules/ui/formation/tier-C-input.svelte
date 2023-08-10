@@ -7,7 +7,8 @@
 
 
 {#if shouldShow(node)}
-    <!-- TODO: PASS OUTLINE TO THIS TIER FOR "inputSetType" -->
+    <!-- TODO - PASS OUTLINE TO THIS TIER FOR "inputSetType" -->
+    <!-- TODO - BASE LAYOUT GOES HERE -->
     <StandardInputIndex {node}/>
 {/if}
 
