@@ -21,10 +21,19 @@ export const formA_outline = {
             {
               type: 'INPUT',
               inputType: 'TEXT',
-              label: 'Test text input label',
+              label: 'Test text label',
               //
               id: 'test-text-input',
               classes: 'test input-1 tier-c',
+              hide: false
+            },
+            {
+              type: 'INPUT',
+              inputType: 'EMAIL',
+              label: 'Test email label',
+              //
+              id: 'test-email-input',
+              classes: 'test input-2 tier-c',
               hide: false
             }
           ]
