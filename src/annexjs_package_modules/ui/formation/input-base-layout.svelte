@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { is_empty } from "svelte/internal";
+
   export let node:any = null;
 
   const derivedClasses = `form-field`; // + fieldContainerClasses, fieldHasErrors
 
-  const fieldHasErrors = false; // TODO -
+  const fieldHasErrors = !is_empty(node.errors);
   const fieldHasHintText = false; // TODO -
 
   console.log(`>> TEST LABEL:`, node);
@@ -19,12 +21,15 @@
 
   <slot/>
 
+  <!-- TODO - Consider support for multi lib toast indicators -->
   {#if fieldHasErrors}
     <ul class="input-error-list">
-      <li class="error-message">
-        <h3>TODO: SUPPORT INPUT VALIDATION ERROR HANDLING</h3>
-      </li>
-    </ul>
+        {#each node.errors as error}
+          <li class="error-message">
+            {error}
+          </li>
+        {/each}
+      </ul>
   {/if}
 
   {#if fieldHasHintText}

@@ -25,6 +25,9 @@ export const formA_outline = {
               //
               id: 'test-text-input',
               classes: 'test input-1 tier-c',
+              name: 'test-text-name',
+              // errors: [],
+              errors: ['Something is not right with this input'],
               hide: false
             },
             {
@@ -34,6 +37,9 @@ export const formA_outline = {
               //
               id: 'test-email-input',
               classes: 'test input-2 tier-c',
+              name: 'test-email-name',
+              // errors: [],
+              errors: ['Uh-oh!'],
               hide: false
             }
           ]
