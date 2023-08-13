@@ -8,7 +8,7 @@
   const fieldHasErrors = !is_empty(node.errors);
   const fieldHasHintText = false; // TODO -
 
-  console.log(`>> TEST LABEL:`, node);
+  // console.log(`>> TEST LABEL:`, node);
   
 </script>
 

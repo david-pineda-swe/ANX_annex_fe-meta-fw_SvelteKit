@@ -27,12 +27,15 @@ This component allows instant form creation via a content expression object.
 - [x] start a default/sample formation interface using js class
 - [x] mock the first form expression outline & integrate with the form plotter
 - [x] Add input base layout
+  - [x] with [Zod](https://zod.dev/)
+  - [x] with [Zod Form Data](https://www.npmjs.com/package/zod-form-data)
+  - [>] Standard form styles
 - [>] integrate standard inputs
   - [x] text
-  - [ ] email
+  - [x] email
+  - [>] Button
   - [ ] password
   - [ ] textarea
-  - [ ] Button
   - [ ] radio
   - [ ] checkbox
 - [ ] integrate data validation

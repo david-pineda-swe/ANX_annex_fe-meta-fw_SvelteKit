@@ -4,9 +4,6 @@
     export let formInterface: any;
     export const fi = formInterface;
 
-    console.log(`>> what fi:`, fi);
-    
-
     const handleSubmit = (e) => {
         // TODO - If interface submit action was provided or default
 
@@ -20,7 +17,7 @@
 
 <form
     id={fi._formId}
-    class={`formation ${fi._classes}`}
+    class={`formation ${fi._formClasses}`}
     on:submit={e => handleSubmit(e)}
 >
 

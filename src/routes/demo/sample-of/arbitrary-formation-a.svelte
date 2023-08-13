@@ -11,8 +11,8 @@
     const Form_A = new FormationInterface({
         formOutline: formA_outline
     });
-    console.log(">> FORMATION_A SAMPLE WORKS!!");
 
+    // console.log(">> FORMATION_A SAMPLE WORKS!!");
     Form_A.verifyInstance();
 </script>
 

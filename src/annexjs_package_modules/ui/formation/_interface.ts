@@ -1,25 +1,69 @@
+import { isEmpty } from '@annexjs/uitils';
+
 class FormationInterface {
   _formOutline: any;
   //
   _meta: any;
   _formId: string;
-  _classes: string;
+  _formClasses: string;
   _nodes: Array<any>;
+  //
+  _schema: any;
+  //
 
-  // TODO - CREATE AN INTERFACE
+  _initializeSchema = () => {
+    const _defineDataPointFrom = (node: any) => {
+      const dataPointKey = node.dataPointKey;
+      const validator = node.dataValidator;
+      return { [dataPointKey]: validator };
+    };
+
+    const _collectDataPointsFrom = (nodes: Array<any>): any => {
+      const flatDataPointList = nodes.reduce((result: Array<any>, currentNode: any) => {
+        const { subNodes } = currentNode;
+        const currentHasSubNodes = !isEmpty(subNodes);
+        if (currentHasSubNodes) {
+          const subDataPoints = _collectDataPointsFrom(subNodes);
+          return [...result, ...subDataPoints];
+        } else if (currentNode.type === 'INPUT') {
+          const dataPoint = _defineDataPointFrom(currentNode);
+          return [...result, ...[dataPoint]];
+        } else {
+          return result;
+        }
+      }, []);
+
+      return flatDataPointList;
+    };
+
+    const SchemaDef = _collectDataPointsFrom(this._nodes).reduce(
+      (schema: any, currentDataPoint: any) => {
+        return {
+          ...schema,
+          ...currentDataPoint
+        };
+      },
+      {}
+    );
+
+    // console.log('>> RESULT of dataPoint collection:', SchemaDef);
+    return SchemaDef;
+  };
+
   constructor(params: any) {
     const { formOutline } = params;
     this._formOutline = formOutline;
 
-    const { meta, formId, classes, nodes } = formOutline;
+    const { meta, formId, formClasses, nodes } = formOutline;
     this._meta = meta;
     this._formId = formId;
-    this._classes = classes;
+    this._formClasses = formClasses;
     this._nodes = nodes;
 
-    console.log('>> FORMATION INTERFACE INITIALIZED!');
+    this._schema = this._initializeSchema();
   }
 
+  // TODO - CREATE INTERFACE METHODS >
   verifyInstance = () => {
     console.log(`>> Working with Formation ${this._formId}:`, this);
   };
