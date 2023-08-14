@@ -6,7 +6,7 @@
   const derivedClasses = `form-field`; // + fieldContainerClasses, fieldHasErrors
 
   const fieldHasErrors = !is_empty(node.errors);
-  const fieldHasHintText = false; // TODO -
+  const fieldHasHints = !is_empty(node.hints);
 
   // console.log(`>> TEST LABEL:`, node);
   
@@ -26,19 +26,23 @@
   <!-- TODO - Consider support for multi lib toast indicators -->
   <!-- TODO - consider support for class combo "note-list [errors, hints]" -->
   {#if fieldHasErrors}
-    <ul class="input-error-list">
-        {#each node.errors as error}
-          <li class="error-message">
-            {error}
-          </li>
-        {/each}
-      </ul>
+    <ul class="input-list errors">
+      {#each node.errors as error}
+        <li class="error-message">
+          {error}
+        </li>
+      {/each}
+    </ul>
   {/if}
 
-  {#if fieldHasHintText}
-    <div class="hint-text">
-      {node.hintText}
-    </div>
+  {#if fieldHasHints}
+    <ul class="input-list hints">
+      {#each node.hints as hint}
+        <li class="hint-message">
+          {hint}
+        </li>
+      {/each}
+    </ul>
   {/if}
 </div>
 
@@ -58,7 +62,8 @@
       // border: 1px solid blue;
     }
 
-    .input-error-list {
+    .input-list {
+      width: 100%;
       list-style: disc;
       // border: 1px solid fuchsia;
     }

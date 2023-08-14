@@ -33,10 +33,16 @@ label {
   }
 }
 
-.input-error-list {
-  width: 100%;
+
+.input-list {
   padding-left: $left-col-width;
-  color: rgb(255, 122, 122);
+  
+  &.errors {
+    color: rgb(255, 122, 122);
+  }
+  &.hints {
+    color: rgb(248, 166, 71);
+  }
 }
 
 // STACKED FORMATION //
@@ -44,9 +50,9 @@ label {
   .form-field {
     flex-direction: column;
 
-    & > {
-      border: 1px solid fuchsia;
-    }
+    // & > * {
+    //   border: 1px solid fuchsia;
+    // }
     label {
       width: 100%;
       text-align: left;
@@ -55,7 +61,7 @@ label {
     .input-container {
       width: 100%;
     }
-    .input-error-list {
+    .input-list {
       padding: 0 0 0 20px;
     }
   }
