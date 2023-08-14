@@ -1,17 +1,22 @@
 @mixin spacingSizing {
-  	// - SPACINGS
+  // - SPACINGS
 	--column-width: 50rem;
 	--column-margin-top: 4rem;
 
 	--section-side-padding: 10px;
 	--section-vertical-padding: 20px;
 	--section-bottom-margin: 80px;
-
     --subsection-bottom-margin: 40px;
 
-    --page-header-top: 100px;
-    --negative-page-header-top: calc(var(--page-header-top) * -1);
+  --block-bottom-margin: 30px;
+  --item-bottom-margin:10px;
+  --item-top-padding: 10px;
+
+  --page-header-top: 100px;
+  --negative-page-header-top: calc(var(--page-header-top) * -1);
 	
-    // - SIZES
+  // - SIZES
 	--link-size: 1.5rem;
+  --form-label-size: 1rem;
+  --form-copy-size: 1.25rem;
 }

@@ -1,0 +1,41 @@
+// STANDARD //
+$left-col-width: 30%;
+$right-col-width: 70%;
+
+.form-fieldset {
+  border-top: 1px solid var(--lt-gray-00);
+
+  legend {
+    color: var(--form-label-color);
+    font-size: var(--form-copy-size);
+  }
+}
+
+label {
+  width: $left-col-width;
+  text-align: right;
+  padding-top: var(--item-top-padding);
+  padding-right: 20px;
+  color: var(--form-label-color);
+  font-size: var(--form-label-size);
+}
+
+.input-container {
+  width: $right-col-width;
+  
+  input {
+    width: 100%;
+    background: none;
+    border: 1px solid var(--lt-gray-00);
+    color: var(--form-copy-color);
+    padding: 5px 10px;
+    font-size: var(--form-copy-size);
+    border-radius: 7px;
+  }
+}
+
+.input-error-list {
+  width: 100%;
+  padding-left: $left-col-width;
+  color: rgb(255, 122, 122);
+}

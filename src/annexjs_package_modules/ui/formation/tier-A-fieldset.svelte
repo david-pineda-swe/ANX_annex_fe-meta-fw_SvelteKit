@@ -42,5 +42,12 @@
 {/each}
 
 <style lang="scss">
-  /* your styles go here */
+  .form-fieldset {
+    padding: 15px 0 5px;
+    border-top: 1px solid var(--lt-gray-00);
+    legend {
+      font-weight: bold;
+      padding: 0 5px;
+    }
+  }
 </style>

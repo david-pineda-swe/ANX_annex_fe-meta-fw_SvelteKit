@@ -15,14 +15,17 @@
 </script>
 
 
+
+<div class="form-content pre-block">
+  <!-- TODO - consider state/scenario slots - toasts and validation messaging -->
+  <slot />
+</div>
+
 <form
     id={fi._formId}
     class={`formation ${fi._formClasses}`}
     on:submit={e => handleSubmit(e)}
 >
-
-  <!-- TODO - consider state/scenario slots - toasts and validation messaging -->
-  <slot />
 
   <TierA_Fieldset {fi}/>
 
@@ -30,8 +33,18 @@
   <button class="form default submit-btn" type="submit">Submit</button>
 </form>
 
+<div class="form-content post-block">
+  <!-- TODO - consider state/scenario slots - toasts and validation messaging -->
+  <!-- <slot /> -->
+</div>
+
 
 
 <style lang="scss">
-    /* your styles go here */
+  .form-content {
+    margin-bottom: var(--block-bottom-margin);
+  }
+  .formation {
+    margin-bottom: var(--block-bottom-margin);
+  }
 </style>

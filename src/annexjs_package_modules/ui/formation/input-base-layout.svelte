@@ -19,7 +19,9 @@
     {node.label}
   </label>
 
-  <slot/>
+  <div class="input-container">
+    <slot/>
+  </div>
 
   <!-- TODO - Consider support for multi lib toast indicators -->
   {#if fieldHasErrors}
@@ -38,3 +40,30 @@
     </div>
   {/if}
 </div>
+
+<style lang="scss">
+  .form-field {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: calc(var(--block-bottom-margin));
+    // border: 1px solid red;
+
+    // label {
+    //   border: 1px solid green;
+    // }
+
+    .input-container {
+      margin-bottom: var(--item-bottom-margin);
+      // border: 1px solid blue;
+    }
+
+    .input-error-list {
+      list-style: disc;
+      // border: 1px solid fuchsia;
+    }
+
+    .hint-text {
+      border: 1px solid orange;
+    }
+  }
+</style>

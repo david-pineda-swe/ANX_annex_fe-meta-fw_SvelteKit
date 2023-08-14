@@ -11,7 +11,7 @@ export const formA_outline = {
     {
       type: 'INPUT',
       inputType: 'TEXT',
-      label: 'Test text label_a',
+      label: 'Type',
       //
       id: 'test-text-input',
       classes: 'test input-a tier-a',
@@ -31,7 +31,7 @@ export const formA_outline = {
         {
           type: 'INPUT',
           inputType: 'TEXT',
-          label: 'Test text label_b',
+          label: 'First Name',
           //
           id: 'test-text-input',
           classes: 'test input-1 tier-b',
@@ -50,7 +50,7 @@ export const formA_outline = {
             {
               type: 'INPUT',
               inputType: 'TEXT',
-              label: 'Test text label_c',
+              label: 'Last Name',
               //
               id: 'test-text-input',
               classes: 'test input-1 tier-c',
@@ -63,7 +63,7 @@ export const formA_outline = {
             {
               type: 'INPUT',
               inputType: 'EMAIL',
-              label: 'Test email label_c',
+              label: 'Email',
               //
               id: 'test-email-input',
               classes: 'test input-2 tier-c',
