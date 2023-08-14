@@ -121,7 +121,9 @@
 				// border: 5px solid fuchsia;
 				.subsection {
                     margin-bottom: var(--subsection-bottom-margin);
-				    // .anchor {}
+				    .anchor {
+              width: var(--column-width);
+            }
 				}
 			}
 			&.rev-stacked {

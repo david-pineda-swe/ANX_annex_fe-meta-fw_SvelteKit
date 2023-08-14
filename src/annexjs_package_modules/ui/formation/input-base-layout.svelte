@@ -24,6 +24,7 @@
   </div>
 
   <!-- TODO - Consider support for multi lib toast indicators -->
+  <!-- TODO - consider support for class combo "note-list [errors, hints]" -->
   {#if fieldHasErrors}
     <ul class="input-error-list">
         {#each node.errors as error}

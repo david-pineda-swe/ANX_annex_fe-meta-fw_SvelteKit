@@ -5,7 +5,8 @@ import { z } from 'zod';
 export const formA_outline = {
   meta: {},
   formId: 'ARB_TEST_FORM_A',
-  formClasses: 'test form-a full-tier-set',
+  // formClasses: 'test form-a full-tier-set',
+  formClasses: 'stacked test form-a full-tier-set',
   // TIER A - FIELDSET(s) + & B || C
   nodes: [
     {
@@ -17,6 +18,7 @@ export const formA_outline = {
       classes: 'test input-a tier-a',
       dataPointKey: 'testTextKey_a',
       dataValidator: zfd.text(z.string().min(10)),
+      // TODO - hints: [],
       errors: [],
       // errors: ['Something is not right with this input'],
       hide: false
