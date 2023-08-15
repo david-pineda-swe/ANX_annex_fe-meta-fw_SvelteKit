@@ -13,18 +13,21 @@ export const formA_outline = {
     {
       type: 'INPUT',
       inputType: 'TEXT',
-      label: 'Type',
       //
       id: 'test-text-type',
       classes: 'test input-a tier-a',
       dataPointKey: 'testTextKey_a',
       dataValidator: zfd.text(z.string().min(10)),
-      // TODO - hints: [],
+      label: 'Type',
+      placeholder: 'Disabled input sample',
+      //
+      hide: false,
+      disabled: true,
+      //
       errors: [],
       // errors: ['Something is not right with this input'],
-      // hints: [],
-      hints: ['Derp!'],
-      hide: false
+      hints: []
+      // hints: ['Derp!']
     },
     {
       type: 'FIELDSET',
@@ -36,16 +39,21 @@ export const formA_outline = {
         {
           type: 'INPUT',
           inputType: 'TEXT',
-          label: 'First Name',
           //
           id: 'test-text-first-name',
           classes: 'test input-1 tier-b',
           dataPointKey: 'testTextKey_b',
           dataValidator: zfd.text(z.string({ required_error: 'Label B is required' }).trim()),
+          label: 'First Name',
+          placeholder: 'FN',
+          //
+          hide: false,
+          disabled: false,
+          //
           errors: [],
           // errors: ['Something is not right with this input'],
-          hints: ['Arrrghhhh!'],
-          hide: false
+          // hints: []
+          hints: ['Arrrghhhh!']
         },
         {
           type: 'FIELDGROUP',
@@ -56,22 +64,24 @@ export const formA_outline = {
             {
               type: 'INPUT',
               inputType: 'TEXT',
-              label: 'Last Name',
               //
               id: 'test-text-last-name',
               classes: 'test input-1 tier-c',
               dataPointKey: 'testTextKey',
               dataValidator: zfd.text(z.string({ required_error: 'Label C is required' }).trim()),
-              // errors: [],
-              errors: ['Something is not right with this input'],
-              // hints: [],
-              hints: ['Do something special!'],
-              hide: false
+              label: 'Last Name',
+              placeholder: 'LN',
+              //
+              hide: false,
+              disabled: false,
+              errors: [],
+              // errors: ['Something is not right with this input'],
+              // hints: []
+              hints: ['Do something special!']
             },
             {
               type: 'INPUT',
               inputType: 'EMAIL',
-              label: 'Email',
               //
               id: 'test-email',
               classes: 'test input-2 tier-c',
@@ -79,10 +89,15 @@ export const formA_outline = {
               dataValidator: zfd.text(
                 z.string().min(1).max(64).email({ message: 'must be a valid email address' })
               ),
+              label: 'Email',
+              placeholder: 'Email please',
+              //
+              hide: false,
+              disabled: false,
               // errors: [],
               errors: ['Uh-oh!'],
-              hints: ['Whhhooo!'],
-              hide: false
+              // hints: []
+              hints: ['Whhhooo!']
             }
           ]
         }
