@@ -2,19 +2,23 @@
   import type { InputRequirements } from "src/global";
   import { splitRequirements } from "../util/split-requirements";
 
-  export let inputReqs: InputRequirements = null;
+  export let inputReqs: InputRequirements = {
+    fi: undefined,
+    node: undefined
+  };
   const { fi, node } = splitRequirements(inputReqs);
-  // disabled
   // on focusOut
   // on change
-  // name={node.dataKey} // for validation matching
+  // x
   // value={targetValue}
-  // placeholder={node.placeholder}
 </script>
 
 <input
   type="email"
   id={node.id}
   class={node.classes}
+  name={node.dataPointKey}
+  placeholder={node.placeholder}
+  disabled={node.disabled}
 />
 

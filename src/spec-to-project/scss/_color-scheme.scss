@@ -4,6 +4,7 @@
 	--copy-white: #fac5fb;
 	//
 	--pink-01: #f667f9;
+  --red-01: rgb(255, 122, 122);
 	//
 	--blue-01: #11b3f3;
 	--blue-02: rgb(23, 13, 171);
@@ -34,6 +35,7 @@
 	--card-links: var(--blue-02);
 	--text-color: var(--copy-white);
 	--links: var(--blue-01);
+  --error-highlight: var(--red-01);
 
   // - to FORMS
   --form-label-color: var(--lt-gray-00);

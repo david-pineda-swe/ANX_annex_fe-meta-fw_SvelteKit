@@ -6,7 +6,10 @@
   import StandardInputIndex from './standard/_input-index.svelte';
   import InputBaseLayout from './input-base-layout.svelte';
 
-  export let inputReqs: InputRequirements = null;
+  export let inputReqs: InputRequirements = {
+    fi: undefined,
+    node: undefined
+  };
   const { fi, node } = splitRequirements(inputReqs);
 </script>
 

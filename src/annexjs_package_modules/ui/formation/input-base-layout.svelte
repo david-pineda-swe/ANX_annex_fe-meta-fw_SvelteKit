@@ -3,18 +3,20 @@
 
   export let node:any = null;
 
-  const derivedClasses = `form-field`; // + fieldContainerClasses, fieldHasErrors
-
-  const fieldHasErrors = !is_empty(node.errors);
-  const fieldHasHints = !is_empty(node.hints);
-
-  // console.log(`>> TEST LABEL:`, node);
+  const isDisabled = node.disabled;
+  const checkDisabled = isDisabled ? ' disabled' : '';
   
+  const fieldHasErrors = !is_empty(node.errors);
+  const checkHasErrors = fieldHasErrors ? ' has-errors' : '';
+
+  const fieldHasHints = !is_empty(node.hints);
+  
+  const derivedClasses = `${checkDisabled}${checkHasErrors}`;
 </script>
 
 
 
-<div class={derivedClasses}>
+<div class={`form-field${derivedClasses}`}>
   <label for={node.id}>
     {node.label}
   </label>
@@ -66,10 +68,6 @@
       width: 100%;
       list-style: disc;
       // border: 1px solid fuchsia;
-    }
-
-    .hint-text {
-      border: 1px solid orange;
     }
   }
 </style>
