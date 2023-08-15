@@ -22,7 +22,7 @@ export const formA_outline = {
       placeholder: 'Disabled input sample',
       //
       hide: false,
-      disabled: true,
+      disabled: false,
       //
       errors: [],
       // errors: ['Something is not right with this input'],
@@ -52,8 +52,8 @@ export const formA_outline = {
           //
           errors: [],
           // errors: ['Something is not right with this input'],
-          // hints: []
-          hints: ['Arrrghhhh!']
+          hints: []
+          // hints: ['Arrrghhhh!']
         },
         {
           type: 'FIELDGROUP',
@@ -76,8 +76,8 @@ export const formA_outline = {
               disabled: false,
               errors: [],
               // errors: ['Something is not right with this input'],
-              // hints: []
-              hints: ['Do something special!']
+              hints: []
+              // hints: ['Do something special!']
             },
             {
               type: 'INPUT',
@@ -94,10 +94,10 @@ export const formA_outline = {
               //
               hide: false,
               disabled: false,
-              // errors: [],
-              errors: ['Uh-oh!'],
-              // hints: []
-              hints: ['Whhhooo!']
+              errors: [],
+              // errors: ['Uh-oh!'],
+              hints: []
+              // hints: ['Whhhooo!']
             }
           ]
         }
