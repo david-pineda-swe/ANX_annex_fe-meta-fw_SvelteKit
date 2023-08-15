@@ -5,7 +5,10 @@
   import EmailInput from "./email-input.svelte";
   import TextInput from "./text-input.svelte";
 
-  export let inputReqs: InputRequirements = null;
+  export let inputReqs: InputRequirements = {
+    fi: undefined,
+    node: undefined
+  };
   const { fi, node } = splitRequirements(inputReqs);
 </script>
 
