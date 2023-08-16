@@ -4,21 +4,20 @@
   export let node:any = null;
   const { status: input } = node;
 
-  const isDisabled = node.disabled; // FIX
-  const checkDisabled = isDisabled ? ' disabled' : '';
+  $: isDisabled = $input.disabled;
+  $: checkDisabled = isDisabled ? ' disabled' : '';
   
-  $:fieldHasErrors = !is_empty($input.errors);
-  $:checkHasErrors = (fieldHasErrors) ? ' has-errors' : '';
+  $: fieldHasErrors = !is_empty($input.errors);
+  $: checkHasErrors = (fieldHasErrors) ? ' has-errors' : '';
 
-  // const fieldHasHints = !is_empty(node.hints); // FIX
+  $: fieldHasHints = !is_empty($input.hints);
   
-  $:plusDerivedClasses = `${checkDisabled}${checkHasErrors}`;
+  $: plusDerivedClasses = `${checkDisabled}${checkHasErrors}`;
 </script>
 
 
 
 <div class={`form-field${plusDerivedClasses}`}>
-<!-- <div class="form-field"> -->
   <label for={node.id}>
     {node.label}
   </label>
@@ -39,15 +38,15 @@
     </ul>
   {/if}
 
-  <!-- FIX {#if fieldHasHints}
+  {#if fieldHasHints}
     <ul class="input-list hints">
-      {#each node.hints as hint}
+      {#each $input.hints as hint}
         <li class="hint-message">
           {hint}
         </li>
       {/each}
     </ul>
-  {/if}  -->
+  {/if} 
 </div>
 
 <style lang="scss">

@@ -23,7 +23,7 @@ export const formA_outline = {
       // STATE
       status: {
         hidden: false,
-        disabled: true,
+        disabled: false,
         required: false,
         //
         errors: [],
