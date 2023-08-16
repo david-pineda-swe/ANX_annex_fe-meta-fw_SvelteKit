@@ -4,18 +4,20 @@ class FormationInputHandler {
   _formInterface: any;
   _inputNode: any;
 
+  _updateNodeState = (update: any) => {
+    this._inputNode.status.update((status: any) => {
+      return {
+        ...status,
+        ...update
+      };
+    });
+  };
+
   _setErrorsTo = (provided: Array<any>) => {
     const errors = Array.isArray(provided)
       ? provided
       : JSON.parse(provided).map((e: any) => e.message);
-    this._inputNode.status.update((status: any) => {
-      return {
-        ...status,
-        ...{
-          errors
-        }
-      };
-    });
+    this._updateNodeState({ errors });
   };
 
   constructor(inputReqs: InputRequirements) {
