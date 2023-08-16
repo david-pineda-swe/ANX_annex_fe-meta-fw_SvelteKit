@@ -16,24 +16,28 @@ export const formA_outline = {
       //
       id: 'test-text-type',
       classes: 'test input-a tier-a',
-      dataPointKey: 'testTextKey_a',
+      dataPointKey: 'testTextKey_a_woot',
       dataValidator: zfd.text(z.string().min(10)),
       label: 'Type',
       placeholder: 'Disabled input sample',
-      //
-      hide: false,
-      disabled: false,
-      //
-      errors: [],
-      // errors: ['Something is not right with this input'],
-      hints: []
-      // hints: ['Derp!']
+      // STATE
+      status: {
+        hidden: false,
+        disabled: true,
+        required: false,
+        //
+        errors: [],
+        hints: []
+        // hints: ['Derp!']
+      }
     },
     {
       type: 'FIELDSET',
       classes: 'test fieldset-1 tier-a',
       legend: 'Tier A Legend',
-      hide: false,
+      status: {
+        hidden: false
+      },
       // TIER B - - FIELDGROUP(s)
       subNodes: [
         {
@@ -46,19 +50,23 @@ export const formA_outline = {
           dataValidator: zfd.text(z.string({ required_error: 'Label B is required' }).trim()),
           label: 'First Name',
           placeholder: 'FN',
-          //
-          hide: false,
-          disabled: false,
-          //
-          errors: [],
-          // errors: ['Something is not right with this input'],
-          hints: []
-          // hints: ['Arrrghhhh!']
+          // STATE
+          status: {
+            hidden: false,
+            disabled: false,
+            required: false,
+            //
+            errors: [],
+            hints: []
+            // hints: ['Arrrghhhh!']
+          }
         },
         {
           type: 'FIELDGROUP',
           classes: 'test fieldgroup-1 tier-b',
-          hide: false,
+          status: {
+            hidden: false
+          },
           // TIER C - - - INPUT(s)
           subNodes: [
             {
@@ -71,13 +79,15 @@ export const formA_outline = {
               dataValidator: zfd.text(z.string({ required_error: 'Label C is required' }).trim()),
               label: 'Last Name',
               placeholder: 'LN',
-              //
-              hide: false,
-              disabled: false,
-              errors: [],
-              // errors: ['Something is not right with this input'],
-              hints: []
-              // hints: ['Do something special!']
+              // STATE
+              status: {
+                hidden: false,
+                disabled: false,
+                required: false,
+                errors: [],
+                hints: []
+                // hints: ['Do something special!']
+              }
             },
             {
               type: 'INPUT',
@@ -91,13 +101,15 @@ export const formA_outline = {
               ),
               label: 'Email',
               placeholder: 'Email please',
-              //
-              hide: false,
-              disabled: false,
-              errors: [],
-              // errors: ['Uh-oh!'],
-              hints: []
-              // hints: ['Whhhooo!']
+              // STATE
+              status: {
+                hidden: false,
+                disabled: false,
+                required: false,
+                errors: [],
+                hints: []
+                // hints: ['Whhhooo!']
+              }
             }
           ]
         }

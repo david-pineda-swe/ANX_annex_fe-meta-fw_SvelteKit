@@ -9,8 +9,10 @@
 
         e.preventDefault();
         // TODO - Consider tracking and conversion analytics
-        // 
+        // TEST - DEFAULT FORM FUNC
         console.log("This is a test submit!", e);
+        const data = new FormData(e.target);
+        console.log('>> DATA FOR PRE-FLIGHT SUBMISSION:',[...data.entries()]);
     };
 </script>
 

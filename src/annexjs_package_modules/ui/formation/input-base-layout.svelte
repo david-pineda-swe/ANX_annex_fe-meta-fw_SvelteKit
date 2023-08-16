@@ -2,21 +2,23 @@
   import { is_empty } from "svelte/internal";
 
   export let node:any = null;
+  const { status: input } = node;
 
-  const isDisabled = node.disabled;
+  const isDisabled = node.disabled; // FIX
   const checkDisabled = isDisabled ? ' disabled' : '';
   
-  const fieldHasErrors = !is_empty(node.errors);
-  const checkHasErrors = fieldHasErrors ? ' has-errors' : '';
+  $:fieldHasErrors = !is_empty($input.errors);
+  $:checkHasErrors = (fieldHasErrors) ? ' has-errors' : '';
 
-  const fieldHasHints = !is_empty(node.hints);
+  // const fieldHasHints = !is_empty(node.hints); // FIX
   
-  const derivedClasses = `${checkDisabled}${checkHasErrors}`;
+  $:plusDerivedClasses = `${checkDisabled}${checkHasErrors}`;
 </script>
 
 
 
-<div class={`form-field${derivedClasses}`}>
+<div class={`form-field${plusDerivedClasses}`}>
+<!-- <div class="form-field"> -->
   <label for={node.id}>
     {node.label}
   </label>
@@ -29,7 +31,7 @@
   <!-- TODO - consider support for class combo "note-list [errors, hints]" -->
   {#if fieldHasErrors}
     <ul class="input-list errors">
-      {#each node.errors as error}
+      {#each $input.errors as error}
         <li class="error-message">
           {error}
         </li>
@@ -37,7 +39,7 @@
     </ul>
   {/if}
 
-  {#if fieldHasHints}
+  <!-- FIX {#if fieldHasHints}
     <ul class="input-list hints">
       {#each node.hints as hint}
         <li class="hint-message">
@@ -45,7 +47,7 @@
         </li>
       {/each}
     </ul>
-  {/if}
+  {/if}  -->
 </div>
 
 <style lang="scss">

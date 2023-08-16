@@ -1,4 +1,5 @@
 import { isEmpty } from '@annexjs/uitils';
+import { writable } from 'svelte/store';
 
 class FormationInterface {
   _formOutline: any;
@@ -10,6 +11,30 @@ class FormationInterface {
   //
   _schema: any;
   //
+
+  _augmentInputNodes = (nodes: Array<any>): Array<any> => {
+    return nodes.map((node: any) => {
+      const { status, subNodes } = node;
+      const hasSubNodes = !isEmpty(subNodes);
+
+      if (hasSubNodes) {
+        return {
+          ...node,
+          ...{
+            status: writable(status),
+            subNodes: this._augmentInputNodes(subNodes)
+          }
+        };
+      } else {
+        return {
+          ...node,
+          ...{
+            status: writable(status)
+          }
+        };
+      }
+    });
+  };
 
   _initializeSchema = () => {
     const _defineDataPointFrom = (node: any) => {
@@ -58,7 +83,7 @@ class FormationInterface {
     this._meta = meta;
     this._formId = formId;
     this._formClasses = formClasses;
-    this._nodes = nodes;
+    this._nodes = this._augmentInputNodes(nodes);
 
     this._schema = this._initializeSchema();
   }

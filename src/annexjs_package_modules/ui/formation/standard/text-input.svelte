@@ -7,16 +7,13 @@
     fi: undefined,
     node: undefined
   };
-  const { fi, node } = splitRequirements(inputReqs);
+  const { node } = splitRequirements(inputReqs);
+  const inputHandler = new FormationInputHandler(inputReqs);
 
-  const inputHandler = new FormationInputHandler(fi);
-
-  // on focusOut
-  // on change
+  // fix - disabled
   // autocomplete
   // required
-  // x
-  // value={targetValue}
+  // value={targetValue} // TODO - consider prepop
 </script>
 
 <input
@@ -25,6 +22,7 @@
   class={node.classes}
   name={node.dataPointKey}
   placeholder={node.placeholder}
-  disabled={node.disabled}
+  disabled={node.status.disabled}
+  on:focusout={(e) => inputHandler.validateLastEntry(e)}
 />
 
