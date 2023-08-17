@@ -29,7 +29,7 @@ This component allows instant form creation via a content expression object.
 - [x] Add input base layout
   - [x] with [Zod](https://zod.dev/)
   - [x] with [Zod Form Data](https://www.npmjs.com/package/zod-form-data)
-  - [>] Standard form styles
+  - [x] Standard form styles
 - [>] integrate standard inputs
   - [x] text
   - [x] email

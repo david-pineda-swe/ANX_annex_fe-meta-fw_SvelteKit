@@ -4,19 +4,30 @@
   
   import EmailInput from "./email-input.svelte";
   import TextInput from "./text-input.svelte";
+  import { isEmpty } from "@annexjs/uitils";
 
   export let inputReqs: InputRequirements = {
     fi: undefined,
     node: undefined
   };
-  const { fi, node } = splitRequirements(inputReqs);
+  const { node } = splitRequirements(inputReqs);
+  const { inputType } = node;
+
+  const inputIndex: any = {
+    EMAIL: EmailInput,
+    TEXT: TextInput
+  };
+
+  const targetComponent = inputIndex[inputType];  
+  const hasComponent = !isEmpty(targetComponent);
+
+  if (!hasComponent) {
+    console.warn(`>> PROVIDED INPUT_TYPE: "${inputType}" IS NOT SUPPORTED!`);
+  }
 </script>
 
-{#if node.inputType === "EMAIL"}  
-  <EmailInput {inputReqs}/>
-{:else if node.inputType === "TEXT"}  
-  <TextInput {inputReqs}/>
+{#if hasComponent}
+  <svelte:component this={targetComponent} {inputReqs} />
 {:else}
-  <!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->
   <h3>Input not supported!</h3>
 {/if}
