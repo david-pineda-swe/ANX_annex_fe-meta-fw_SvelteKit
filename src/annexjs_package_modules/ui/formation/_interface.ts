@@ -10,6 +10,7 @@ class FormationInterface {
   _nodes: Array<any>;
   //
   _schema: any;
+  _hasTargetSubmitButton = false;
   //
 
   _augmentInputNodes = (nodes: Array<any>): Array<any> => {
@@ -45,8 +46,14 @@ class FormationInterface {
 
     const _collectDataPointsFrom = (nodes: Array<any>): any => {
       const flatDataPointList = nodes.reduce((result: Array<any>, currentNode: any) => {
-        const { subNodes } = currentNode;
+        const { inputType, subNodes } = currentNode;
+        const currentNodeIsSubmitBtn = inputType === 'SUBMIT';
         const currentHasSubNodes = !isEmpty(subNodes);
+
+        if (currentNodeIsSubmitBtn) {
+          this._hasTargetSubmitButton = true;
+        }
+
         if (currentHasSubNodes) {
           const subDataPoints = _collectDataPointsFrom(subNodes);
           return [...result, ...subDataPoints];
@@ -87,6 +94,10 @@ class FormationInterface {
 
     this._schema = this._initializeSchema();
   }
+
+  hasTargetSubmitButton = () => {
+    return this._hasTargetSubmitButton;
+  };
 
   // TODO - CREATE INTERFACE METHODS >
   verifyInstance = () => {

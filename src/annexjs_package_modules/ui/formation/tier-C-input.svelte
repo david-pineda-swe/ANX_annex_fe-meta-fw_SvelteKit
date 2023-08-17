@@ -10,7 +10,7 @@
     fi: undefined,
     node: undefined
   };
-  const { fi, node } = splitRequirements(inputReqs);
+  const { node } = splitRequirements(inputReqs);
 </script>
 
 {#if shouldShow(node)}

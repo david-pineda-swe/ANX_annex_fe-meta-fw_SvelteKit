@@ -2,7 +2,9 @@
   import { is_empty } from "svelte/internal";
 
   export let node:any = null;
-  const { status: input } = node;
+  const { inputType, status: input } = node;
+  
+  const useLabel = !['SUBMIT', 'BUTTON'].includes(inputType);
 
   $: isDisabled = $input.disabled;
   $: checkDisabled = isDisabled ? ' disabled' : '';
@@ -18,9 +20,11 @@
 
 
 <div class={`form-field${plusDerivedClasses}`}>
-  <label for={node.id}>
-    {node.label}
-  </label>
+  {#if useLabel}
+    <label for={node.id}>
+      {node.label}
+    </label>
+  {/if}
 
   <div class="input-container">
     <slot/>

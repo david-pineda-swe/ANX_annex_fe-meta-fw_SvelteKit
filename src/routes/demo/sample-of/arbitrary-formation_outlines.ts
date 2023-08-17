@@ -114,6 +114,23 @@ export const formA_outline = {
           ]
         }
       ]
+    },
+    {
+      type: 'INPUT',
+      inputType: 'SUBMIT',
+      //
+      id: 'test-form-submit',
+      classes: 'test input-btn-submit tier-a',
+      label: 'Submit this form',
+      // STATE
+      status: {
+        hidden: false,
+        disabled: true,
+        //
+        errors: [],
+        hints: []
+        // hints: ['Derp!']
+      }
     }
   ]
 };

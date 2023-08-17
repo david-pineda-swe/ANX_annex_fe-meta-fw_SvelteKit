@@ -1,19 +1,21 @@
 <script lang="ts">
-    import TierA_Fieldset from "./tier-A-fieldset.svelte";
+  import TierA_Fieldset from "./tier-A-fieldset.svelte";
 
-    export let formInterface: any;
-    export const fi = formInterface;
+  export let formInterface: any;
+  export const fi = formInterface;
 
-    const handleSubmit = (e) => {
-        // TODO - If interface submit action was provided or default
+  const useDefaultSubmit = !fi.hasTargetSubmitButton();
 
-        e.preventDefault();
-        // TODO - Consider tracking and conversion analytics
-        // TEST - DEFAULT FORM FUNC
-        console.log("This is a test submit!", e);
-        const data = new FormData(e.target);
-        console.log('>> DATA FOR PRE-FLIGHT SUBMISSION:',[...data.entries()]);
-    };
+  const handleSubmit = (e) => {
+    // TODO - If interface submit action was provided or default
+
+    e.preventDefault();
+    // TODO - Consider tracking and conversion analytics
+    // TEST - DEFAULT FORM FUNC
+    console.log("This is a test submit!", e);
+    const data = new FormData(e.target);
+    console.log('>> DATA FOR PRE-FLIGHT SUBMISSION:',[...data.entries()]);
+  };
 </script>
 
 
@@ -24,15 +26,20 @@
 </div>
 
 <form
-    id={fi._formId}
-    class={`formation ${fi._formClasses}`}
-    on:submit={e => handleSubmit(e)}
+  id={fi._formId}
+  class={`formation ${fi._formClasses}`}
+  on:submit={e => handleSubmit(e)}
 >
 
   <TierA_Fieldset {fi}/>
 
-  <!-- TODO - CONDITIONAL DEFAULT SUBMIT BUTTON - if no submit expresion is provided in the outline -->
-  <button class="form default submit-btn" type="submit">Submit</button>
+  {#if useDefaultSubmit}
+    <button
+      type="submit"
+      class="form default submit-btn"
+      disabled
+    >Submit</button>
+  {/if}
 </form>
 
 <div class="form-content post-block">

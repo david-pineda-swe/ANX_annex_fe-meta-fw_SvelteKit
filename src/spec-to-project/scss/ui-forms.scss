@@ -1,6 +1,31 @@
 // STANDARD //
 $left-col-width: 30%;
 $right-col-width: 70%;
+$disabled-opacity: .5;
+
+@mixin inputTheme {
+  width: 100%;
+  background: none;
+  border: 1px solid var(--lt-gray-00);
+  color: var(--form-copy-color);
+  padding: 5px 10px;
+  font-size: var(--form-copy-size);
+  border-radius: 7px;
+}
+
+@mixin buttonTheme {
+  @include inputTheme();
+  background-color: rgba(255, 255, 255, 0.858);
+  color: var(--text-color-negative);
+}
+
+button, [type='button'], [type='reset'], [type='submit'] {
+  @include buttonTheme();
+
+  &[disabled] {
+    opacity: $disabled-opacity;
+  }
+}
 
 .form-fieldset {
   border-top: 1px solid var(--lt-gray-00);
@@ -13,7 +38,7 @@ $right-col-width: 70%;
 
 .form-field {
   &.disabled {
-    opacity: .45;
+    opacity: $disabled-opacity;
   }
   &.has-errors {
     label {
@@ -39,17 +64,19 @@ $right-col-width: 70%;
     width: $right-col-width;
     
     input {
-      width: 100%;
-      background: none;
-      border: 1px solid var(--lt-gray-00);
-      color: var(--form-copy-color);
-      padding: 5px 10px;
-      font-size: var(--form-copy-size);
-      border-radius: 7px;
+      @include inputTheme();
+    }
+
+    button {
+      @include buttonTheme();
     }
     input::placeholder {
       opacity: .5;
     }
+
+    // button {
+    //   border: 1px solid red;
+    // }
   }
  
   .input-list {

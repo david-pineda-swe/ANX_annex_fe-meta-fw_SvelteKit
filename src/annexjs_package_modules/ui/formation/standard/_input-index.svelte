@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { isEmpty } from "@annexjs/uitils";
   import type { InputRequirements } from "src/global";
   import { splitRequirements } from "../util/split-requirements";
   
   import EmailInput from "./email-input.svelte";
+  import SubmitButton from "./submit-button.svelte";
   import TextInput from "./text-input.svelte";
-  import { isEmpty } from "@annexjs/uitils";
 
   export let inputReqs: InputRequirements = {
     fi: undefined,
@@ -15,7 +16,8 @@
 
   const inputIndex: any = {
     EMAIL: EmailInput,
-    TEXT: TextInput
+    SUBMIT: SubmitButton,
+    TEXT: TextInput,
   };
 
   const targetComponent = inputIndex[inputType];  
