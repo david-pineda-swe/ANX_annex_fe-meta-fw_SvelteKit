@@ -3,6 +3,7 @@
   import type { InputRequirements } from "src/global";
   import { splitRequirements } from "../util/split-requirements";
   
+  import CustomButton from "./custom-button.svelte";
   import EmailInput from "./email-input.svelte";
   import SubmitButton from "./submit-button.svelte";
   import TextInput from "./text-input.svelte";
@@ -15,8 +16,9 @@
   const { inputType } = node;
 
   const inputIndex: any = {
+    CUSTOM_BTN: CustomButton,
     EMAIL: EmailInput,
-    SUBMIT: SubmitButton,
+    SUBMIT_BTN: SubmitButton,
     TEXT: TextInput,
   };
 

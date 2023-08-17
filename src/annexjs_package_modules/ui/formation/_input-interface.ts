@@ -20,6 +20,13 @@ class FormationInputHandler {
     this._updateNodeState({ errors });
   };
 
+  _getInputReqs = () => {
+    return {
+      fi: this._formInterface,
+      node: this._inputNode
+    };
+  };
+
   constructor(inputReqs: InputRequirements) {
     const { fi, node } = inputReqs;
     this._formInterface = fi;
@@ -36,6 +43,20 @@ class FormationInputHandler {
       // TODO - COLLECT AND ASIGN FORM ENTRY FOR PRE-FLIGHT VALIDATION?
     } catch (errors: any) {
       this._setErrorsTo(errors);
+    }
+  };
+
+  useTargetAction = (event: any) => {
+    // console.log('>> USE TARGET ACTION:');
+    // console.log('>> EVENT:', event);
+    // console.log('>> FI:', this._formInterface);
+
+    const { targetActionKey } = this._inputNode;
+    const targetAction = this._formInterface.getTargetAction(targetActionKey);
+
+    if (targetAction) {
+      const { fi, node } = this._getInputReqs();
+      targetAction({ event, node, fi });
     }
   };
 

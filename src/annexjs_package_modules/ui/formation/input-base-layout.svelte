@@ -4,7 +4,7 @@
   export let node:any = null;
   const { inputType, status: input } = node;
   
-  const useLabel = !['SUBMIT', 'BUTTON'].includes(inputType);
+  const useLabel = !['SUBMIT_BTN', 'CUSTOM_BTN'].includes(inputType);
 
   $: isDisabled = $input.disabled;
   $: checkDisabled = isDisabled ? ' disabled' : '';

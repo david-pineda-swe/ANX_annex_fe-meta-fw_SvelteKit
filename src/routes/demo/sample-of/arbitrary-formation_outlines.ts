@@ -117,7 +117,31 @@ export const formA_outline = {
     },
     {
       type: 'INPUT',
-      inputType: 'SUBMIT',
+      inputType: 'CUSTOM_BTN',
+      //
+      id: 'test-form-custom-btn',
+      classes: 'test input-btn-custom tier-a',
+      label: 'Do action A',
+      targetActionKey: 'handleTestAction_A',
+      // targetActionKey: 'nonExistentAction',
+      targetActionParams: {
+        someString: '',
+        someObject: {},
+        someArray: []
+      },
+      // STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        //
+        errors: [],
+        hints: []
+        // hints: ['Derp!']
+      }
+    },
+    {
+      type: 'INPUT',
+      inputType: 'SUBMIT_BTN',
       //
       id: 'test-form-submit',
       classes: 'test input-btn-submit tier-a',

@@ -9,7 +9,13 @@
 
     // TODO - PROVIDE AND API/STORE CLIENT FOR NETWORK REQUEST HANDLING
     const Form_A = new FormationInterface({
-        formOutline: formA_outline
+        formOutline: formA_outline,
+        targetActions: {
+          handleTestAction_A: (params: any) => {
+            console.log(`>> THIS IS CUSTOM ACTION A!`);
+            console.log(`>> USING PARAMS:`, params);
+          }
+        }
     });
 
     // TODO - FINISH BASIC FORM INPUTS

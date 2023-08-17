@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 
 class FormationInterface {
   _formOutline: any;
+  _targetActions: any;
   //
   _meta: any;
   _formId: string;
@@ -83,8 +84,9 @@ class FormationInterface {
   };
 
   constructor(params: any) {
-    const { formOutline } = params;
+    const { formOutline, targetActions } = params;
     this._formOutline = formOutline;
+    this._targetActions = targetActions;
 
     const { meta, formId, formClasses, nodes } = formOutline;
     this._meta = meta;
@@ -97,6 +99,18 @@ class FormationInterface {
 
   hasTargetSubmitButton = () => {
     return this._hasTargetSubmitButton;
+  };
+
+  getTargetAction = (actionKey: string) => {
+    const target = this._targetActions[actionKey];
+    if (!target) {
+      console.error(
+        `>> TARGET ACTION: ${actionKey} was not included! Please reconfigure custom action button.`
+      );
+      return null;
+    } else {
+      return target;
+    }
   };
 
   // TODO - CREATE INTERFACE METHODS >
