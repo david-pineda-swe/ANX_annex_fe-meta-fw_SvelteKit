@@ -40,25 +40,27 @@ class FormationInterface {
 
   _initializeSchema = () => {
     const _defineDataPointFrom = (node: any) => {
-      const dataPointKey = node.dataPointKey;
-      const validator = node.dataValidator;
+      const { dataPointKey, dataValidator: validator } = node;
       return { [dataPointKey]: validator };
     };
 
-    const _collectDataPointsFrom = (nodes: Array<any>): any => {
+    const _traceAndCollectDataPointsFrom = (nodes: Array<any>): any => {
       const flatDataPointList = nodes.reduce((result: Array<any>, currentNode: any) => {
-        const { inputType, subNodes } = currentNode;
-        const currentNodeIsSubmitBtn = inputType === 'SUBMIT';
+        const { inputType, dataPointKey, dataValidator, subNodes } = currentNode;
+
+        const currentNodeIsSubmitBtn = inputType === 'SUBMIT_BTN';
         const currentHasSubNodes = !isEmpty(subNodes);
+        const nodeHasDataSpecs = !isEmpty(dataPointKey) && !isEmpty(dataValidator);
+        const nodeIsValidDataPoint = currentNode.type === 'INPUT' && nodeHasDataSpecs;
 
         if (currentNodeIsSubmitBtn) {
           this._hasTargetSubmitButton = true;
         }
 
         if (currentHasSubNodes) {
-          const subDataPoints = _collectDataPointsFrom(subNodes);
+          const subDataPoints = _traceAndCollectDataPointsFrom(subNodes);
           return [...result, ...subDataPoints];
-        } else if (currentNode.type === 'INPUT') {
+        } else if (nodeIsValidDataPoint) {
           const dataPoint = _defineDataPointFrom(currentNode);
           return [...result, ...[dataPoint]];
         } else {
@@ -69,7 +71,7 @@ class FormationInterface {
       return flatDataPointList;
     };
 
-    const SchemaDef = _collectDataPointsFrom(this._nodes).reduce(
+    const SchemaDef = _traceAndCollectDataPointsFrom(this._nodes).reduce(
       (schema: any, currentDataPoint: any) => {
         return {
           ...schema,
