@@ -19,6 +19,7 @@
             console.log('>> USER SELECTED:', params.event.target.value);
           }
         }
+        // TODO - CONSIDER FORM LEVEL PRE-LOAD & TRACKING STATE
     });
 
     // TODO - FINISH BASIC FORM INPUTS
@@ -30,6 +31,13 @@
     // TODO - LOOK FOR AN API TO TEST AGAINST
     // TODO - REQUEST ERROR HANDLING GEN / SPEC
     // TODO - REQUEST SUCCESS HANDLING AND RESET / PROCESSION
+
+    // TODO - FORM LEVEL ERRORS
+    // TODO - DEFAULT ERRORS AND HINTS ON AUGMENTATION
+    // TODO - FORM INITIALIZATION schema PRE-LOAD 
+    // TODO - FORM STATE TRACKING 
+    // TODO - EXTEND CUSTOM_BTN to allow template interpolation from form level state to button.node.label
+    // TODO - TARGET FORM LEVEL SCHEMA STATE FOR ALL INPUTS
 
     // console.log(">> FORMATION_A SAMPLE WORKS!!");
     // Form_A.verifyInstance();
