@@ -14,6 +14,9 @@
           handleTestAction_A: (params: any) => {
             console.log(`>> THIS IS CUSTOM ACTION A!`);
             console.log(`>> USING PARAMS:`, params);
+          },
+          handleTestAction_B: (params: any) => {
+            console.log('>> USER SELECTED:', params.event.target.value);
           }
         }
     });

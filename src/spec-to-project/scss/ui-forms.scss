@@ -3,6 +3,13 @@ $left-col-width: 30%;
 $right-col-width: 70%;
 $disabled-opacity: .5;
 
+@mixin labelTheme {
+  text-align: right;
+  padding: var(--item-top-padding) 20px 0 0;
+  color: var(--form-label-color);
+  font-size: var(--form-label-size);
+}
+
 form.formation {
   .form-fieldset {
     border-top: 1px solid var(--lt-gray-00);
@@ -31,15 +38,13 @@ form.formation {
   
     label {
       width: $left-col-width;
-      text-align: right;
-      padding: var(--item-top-padding) 20px 0 0;
-      color: var(--form-label-color);
-      font-size: var(--form-label-size);
+      @include labelTheme;
     }
     
     .input-container {
       position: relative;
       width: $right-col-width;
+      // border: 1px solid red;
       
       input {
         @include inputTheme();
@@ -51,6 +56,54 @@ form.formation {
       // }
       input::placeholder {
         opacity: .5;
+      }
+
+      // RADIO
+      .radio-btn-list {
+        // border: 2px solid green;
+
+        .radio-btn-container {
+          margin-right: var(--item-side-margin);
+          // border: 2px solid lightblue;
+
+          label {
+            @include labelTheme;
+            font-size: var(--form-copy-size);
+            // border: 3px solid red;
+
+            $circle: 20px;
+            $circleOffset: 7px;
+            $circleRadius: 10px;
+            &::before {
+              content: '';
+              position: absolute;
+              right: $circleOffset;
+              top: $circleOffset + 8;
+              width: $circle;
+              height: $circle;
+              border-radius: $circleRadius;
+              border: 1px solid var(--lt-gray-00);
+            }
+          }
+
+          &.checked {
+            label {
+              $circle: 12px;
+              $circleOffset: 11px;
+              $circleRadius: 5px;
+              &::after {
+                content: '';
+                position: absolute;
+                right: $circleOffset;
+                top: $circleOffset + 8;
+                width: $circle;
+                height: $circle;
+                border-radius: $circleRadius;
+                background-color: white;
+              }
+            }
+          }
+        }
       }
     }
   

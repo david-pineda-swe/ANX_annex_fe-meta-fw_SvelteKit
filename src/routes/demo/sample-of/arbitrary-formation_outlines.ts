@@ -137,6 +137,36 @@ export const formA_outline = {
     },
     {
       type: 'INPUT',
+      inputType: 'RADIO_BTN',
+      //
+      id: 'test-form-radio-btn',
+      classes: 'test input-btn-radio tier-a',
+      dataPointKey: 'testRadioFoods',
+      dataValidator: null,
+      //
+      label: 'Radio Sample foods',
+      targetActionKey: 'handleTestAction_B',
+      targetActionParams: {
+        someString: '',
+        someObject: {},
+        valueOptions: [
+          { label: 'Apple', value: 'A', id: 'apple-opt' },
+          { label: 'Banana', value: 'B', id: 'banana-opt' },
+          { label: 'Carrot', value: 'C', id: 'carrot-opt' }
+        ]
+      },
+      // STATE
+      status: {
+        selected: null,
+        hidden: false,
+        disabled: false,
+        //
+        errors: [],
+        hints: []
+      }
+    },
+    {
+      type: 'INPUT',
       inputType: 'CUSTOM_BTN',
       //
       id: 'test-form-custom-btn',

@@ -46,6 +46,13 @@ class FormationInputHandler {
     }
   };
 
+  updateSelected = (event: any) => {
+    // TODO - TARGET FORM LEVEL SCHEMA STATE
+    this._updateNodeState({
+      selected: event.target.value
+    });
+  };
+
   useTargetAction = (event: any) => {
     // console.log('>> USE TARGET ACTION:');
     // console.log('>> EVENT:', event);
