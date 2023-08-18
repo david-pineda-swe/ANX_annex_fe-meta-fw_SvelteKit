@@ -16,7 +16,7 @@
 <button
   type="button"
   {id}
-  class={`form-btn ${classes}`}
+  class={`form-btn primary ${classes}`}
   disabled={$status.disabled}
   on:click={(e) => inputHandler.useTargetAction(e)}
 >

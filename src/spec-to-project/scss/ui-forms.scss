@@ -3,91 +3,70 @@ $left-col-width: 30%;
 $right-col-width: 70%;
 $disabled-opacity: .5;
 
-@mixin inputTheme {
-  width: 100%;
-  background: none;
-  border: 1px solid var(--lt-gray-00);
-  color: var(--form-copy-color);
-  padding: 5px 10px;
-  font-size: var(--form-copy-size);
-  border-radius: 7px;
-}
+form.formation {
+  .form-fieldset {
+    border-top: 1px solid var(--lt-gray-00);
 
-@mixin buttonTheme {
-  @include inputTheme();
-  background-color: rgba(255, 255, 255, 0.858);
-  color: var(--text-color-negative);
-}
-
-button, [type='button'], [type='reset'], [type='submit'] {
-  @include buttonTheme();
-
-  &[disabled] {
-    opacity: $disabled-opacity;
-  }
-}
-
-.form-fieldset {
-  border-top: 1px solid var(--lt-gray-00);
-
-  legend {
-    color: var(--form-label-color);
-    font-size: var(--form-copy-size);
-  }
-}
-
-.form-field {
-  &.disabled {
-    opacity: $disabled-opacity;
-  }
-  &.has-errors {
-    label {
-      color: var(--error-highlight);
+    legend {
+      color: var(--form-label-color);
+      font-size: var(--form-copy-size);
     }
-    .input-container {
-      input, input::placeholder {
+  }
+
+  .form-field {
+    &.disabled {
+      opacity: $disabled-opacity;
+    }
+    &.has-errors {
+      label {
         color: var(--error-highlight);
-        border-color: var(--error-highlight);
+      }
+      .input-container {
+        input, input::placeholder {
+          color: var(--error-highlight);
+          border-color: var(--error-highlight);
+        }
+      }
+    }
+  
+    label {
+      width: $left-col-width;
+      text-align: right;
+      padding: var(--item-top-padding) 20px 0 0;
+      color: var(--form-label-color);
+      font-size: var(--form-label-size);
+    }
+    
+    .input-container {
+      width: $right-col-width;
+      
+      input {
+        @include inputTheme();
+        width: 100%;
+      }
+      
+      button {
+        width: 100%;
+      }
+      input::placeholder {
+        opacity: .5;
+      }
+    }
+  
+    .input-list {
+      padding-left: $left-col-width;
+      
+      &.errors {
+        color: var(--error-highlight);
+      }
+      &.hints {
+        color: rgb(248, 166, 71);
       }
     }
   }
- 
-  label {
-    width: $left-col-width;
-    text-align: right;
-    padding: var(--item-top-padding) 20px 0 0;
-    color: var(--form-label-color);
-    font-size: var(--form-label-size);
-  }
-  
-  .input-container {
-    width: $right-col-width;
-    
-    input {
-      @include inputTheme();
-    }
 
-    button {
-      @include buttonTheme();
-    }
-    input::placeholder {
-      opacity: .5;
-    }
-
-    // button {
-    //   border: 1px solid red;
-    // }
-  }
- 
-  .input-list {
-    padding-left: $left-col-width;
-    
-    &.errors {
-      color: var(--error-highlight);
-    }
-    &.hints {
-      color: rgb(248, 166, 71);
-    }
+  button {
+    width: 100%;
   }
 }
 
@@ -104,6 +83,9 @@ button, [type='button'], [type='reset'], [type='submit'] {
       width: 100%;
       text-align: left;
       padding: 0 0 10px 0;
+    }
+    input {
+      width: 100%;
     }
     .input-container {
       width: 100%;

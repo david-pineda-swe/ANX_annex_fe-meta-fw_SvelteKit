@@ -6,7 +6,7 @@
 	--section-side-padding: 10px;
 	--section-vertical-padding: 20px;
 	--section-bottom-margin: 80px;
-    --subsection-bottom-margin: 40px;
+  --subsection-bottom-margin: 40px;
 
   --block-bottom-margin: 30px;
   --item-bottom-margin:10px;
@@ -15,6 +15,9 @@
   --page-header-top: 100px;
   --negative-page-header-top: calc(var(--page-header-top) * -1);
 	
+  // - BLOCKING
+  --block-single-height: 50px;
+
   // - SIZES
 	--link-size: 1.5rem;
   --form-label-size: 1rem;
