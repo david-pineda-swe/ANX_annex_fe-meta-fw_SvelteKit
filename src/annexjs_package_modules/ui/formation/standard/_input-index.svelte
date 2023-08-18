@@ -5,6 +5,7 @@
   
   import CustomButton from "./custom-button.svelte";
   import EmailInput from "./email-input.svelte";
+  import PasswordInput from "./password-input.svelte";
   import SubmitButton from "./submit-button.svelte";
   import TextInput from "./text-input.svelte";
 
@@ -18,6 +19,7 @@
   const inputIndex: any = {
     CUSTOM_BTN: CustomButton,
     EMAIL: EmailInput,
+    PASSWORD: PasswordInput,
     SUBMIT_BTN: SubmitButton,
     TEXT: TextInput,
   };

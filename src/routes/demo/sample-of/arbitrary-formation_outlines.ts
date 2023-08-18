@@ -117,6 +117,26 @@ export const formA_outline = {
     },
     {
       type: 'INPUT',
+      inputType: 'PASSWORD',
+      //
+      id: 'test-password',
+      classes: 'test password tier-a',
+      dataPointKey: 'password',
+      dataValidator: zfd.text(z.string({ required_error: 'Label C is required' }).trim()),
+      label: 'Password',
+      placeholder: '---',
+      // STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        required: true,
+        errors: [],
+        hints: []
+        // hints: ['Do something special!']
+      }
+    },
+    {
+      type: 'INPUT',
       inputType: 'CUSTOM_BTN',
       //
       id: 'test-form-custom-btn',

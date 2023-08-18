@@ -11,4 +11,9 @@ button.icon-action-btn {
   width: var(--block-single-height);
   height:  var(--block-single-height);
   // border: 1px solid red;
+
+  &.at-right {
+    position: absolute;
+    right: 0px;
+  }
 }

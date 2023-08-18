@@ -33,8 +33,8 @@ This component allows instant form creation via a content expression object.
 - [>] integrate standard inputs
   - [x] text
   - [x] email
-  - [>] Button
-  - [ ] password
+  - [x] Custom Action Button
+  - [x] password
   - [ ] textarea
   - [ ] radio
   - [ ] checkbox
