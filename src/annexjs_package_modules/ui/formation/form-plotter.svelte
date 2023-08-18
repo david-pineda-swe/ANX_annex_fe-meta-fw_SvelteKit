@@ -36,7 +36,7 @@
   {#if useDefaultSubmit}
     <button
       type="submit"
-      class="form-submit-btn default primary"
+      class="form-submit-btn default primary w-full"
       disabled
     >Submit</button>
   {/if}

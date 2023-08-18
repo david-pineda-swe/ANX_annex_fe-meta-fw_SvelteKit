@@ -21,6 +21,7 @@
 // - INPUTS
 
 @mixin inputTheme {
+  height: var(--block-single-height);
   background: none;
   border: 1px solid var(--lt-gray-00);
   color: var(--form-copy-color);

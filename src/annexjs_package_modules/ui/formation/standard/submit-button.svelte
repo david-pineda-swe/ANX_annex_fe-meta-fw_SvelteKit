@@ -14,7 +14,7 @@
 <button
   type="submit"
   {id}
-  class={`form-submit-btn primary ${classes}`}
+  class={`form-submit-btn primary w-full ${classes}`}
   disabled={$status.disabled}
 >
   {label}

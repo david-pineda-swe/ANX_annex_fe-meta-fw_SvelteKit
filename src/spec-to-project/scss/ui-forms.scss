@@ -38,6 +38,7 @@ form.formation {
     }
     
     .input-container {
+      position: relative;
       width: $right-col-width;
       
       input {
@@ -45,9 +46,9 @@ form.formation {
         width: 100%;
       }
       
-      button {
-        width: 100%;
-      }
+      // button {
+      //   // border: 1px solid orange;
+      // }
       input::placeholder {
         opacity: .5;
       }
@@ -65,9 +66,9 @@ form.formation {
     }
   }
 
-  button {
-    width: 100%;
-  }
+  // button {
+  //   // border: 1px solid orange;
+  // }
 }
 
 // STACKED FORMATION //
