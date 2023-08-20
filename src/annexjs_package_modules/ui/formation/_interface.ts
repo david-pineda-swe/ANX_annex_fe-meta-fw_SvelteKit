@@ -2,15 +2,19 @@ import { isEmpty } from '@annexjs/uitils';
 import { writable } from 'svelte/store';
 
 class FormationInterface {
+  // PROPS FROM CONFIG
   _formOutline: any;
-  _targetActions: any;
-  //
   _meta: any;
   _formId: string;
   _formClasses: string;
   _nodes: Array<any>;
-  //
+
+  // MODEL
+  _targetActions: any;
   _schema: any;
+  _formData: any;
+
+  // STATE
   _hasTargetSubmitButton = false;
   //
 
@@ -85,6 +89,13 @@ class FormationInterface {
     return SchemaDef;
   };
 
+  _initializeFormData = (schemaDef: any) => {
+    const schemaShell = Object.keys(schemaDef).reduce((shell: any, currentEntry: any) => {
+      return { ...shell, ...{ [currentEntry]: null } };
+    }, {});
+    return writable(schemaShell);
+  };
+
   constructor(params: any) {
     const { formOutline, targetActions } = params;
     this._formOutline = formOutline;
@@ -96,7 +107,13 @@ class FormationInterface {
     this._formClasses = formClasses;
     this._nodes = this._augmentInputNodes(nodes);
 
+    // INITIALIZATION
+    const schemaDef = this._initializeSchema();
+    const formData = this._initializeFormData(schemaDef);
+
     this._schema = this._initializeSchema();
+    this._formData = formData; // NOTE - PREPROP INVOCATION GOES HERE <<<
+
     // TODO - Initialize FORM DATA FOR INPUTS TO READ FROM
     // TODO - TRY WITH SVELTE .BIND()
   }
@@ -119,6 +136,9 @@ class FormationInterface {
 
   verifyInstance = () => {
     console.log(`>> Working with Formation ${this._formId}:`, this);
+    this._formData.subscribe((data: any) => {
+      console.log(`>> Current formData:`, data);
+    });
   };
 }
 
