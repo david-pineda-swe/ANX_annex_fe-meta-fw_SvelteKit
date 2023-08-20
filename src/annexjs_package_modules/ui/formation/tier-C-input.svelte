@@ -15,7 +15,7 @@
 
 {#if shouldShow(node)}
   <InputBaseLayout {node}>
-    <!-- TODO - PASS OUTLINE TO THIS TIER FOR "inputSetType" -->
+    <!-- TODO - PASS OUTLINE TO THIS TIER FOR "inputSetType" [STANDARD, EXTENDED, DYNAMIC, BETA] -->
     <StandardInputIndex {inputReqs} />
   </InputBaseLayout>
 {/if}

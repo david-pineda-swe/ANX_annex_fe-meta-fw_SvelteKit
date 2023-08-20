@@ -117,7 +117,6 @@ class FormationInterface {
     }
   };
 
-  // TODO - CREATE INTERFACE METHODS >
   verifyInstance = () => {
     console.log(`>> Working with Formation ${this._formId}:`, this);
   };

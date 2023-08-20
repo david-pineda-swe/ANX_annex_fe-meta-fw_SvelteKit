@@ -23,32 +23,11 @@
             // console.log(params);
           }
         }
-        // TODO - CONSIDER FORM LEVEL PRE-LOAD & TRACKING STATE
     });
-
-    // TODO - FINISH BASIC FORM INPUTS
-    // TODO - VALIDATION GATE
-    // TODO - HANDLE FORM SUBMITION
-    // TODO - INTEGRATE ZFD FORM SUBMISSION
-    // TODO - STANDARD NETWORK CLIENT
-    // TODO - LOOK AT SVELTE COMPONENT PROP SIMPLIFICATION OF INPUT INDEX
-    // TODO - LOOK FOR AN API TO TEST AGAINST
-    // TODO - REQUEST ERROR HANDLING GEN / SPEC
-    // TODO - REQUEST SUCCESS HANDLING AND RESET / PROCESSION
-
-    // TODO - FORM LEVEL ERRORS
-    // TODO - DEFAULT ERRORS AND HINTS ON AUGMENTATION
-    // TODO - FORM INITIALIZATION schema PRE-LOAD 
-    // TODO - FORM STATE TRACKING 
-    // TODO - EXTEND CUSTOM_BTN to allow template interpolation from form level state to button.node.label
-    // TODO - TARGET FORM LEVEL SCHEMA STATE FOR ALL INPUTS
-    // TODO - reset form fi.method()
 
     // console.log(">> FORMATION_A SAMPLE WORKS!!");
     // Form_A.verifyInstance();
 </script>
-
-
 
 <FormPlotter
     formInterface={Form_A}

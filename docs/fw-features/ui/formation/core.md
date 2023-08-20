@@ -38,4 +38,24 @@ This component allows instant form creation via a content expression object.
   - [x] radio
   - [x] checkbox
   - [x] textarea
+- [>] formData STATE TRACKING
+  - [ ] TARGET FORM LEVEL SCHEMA STATE FOR ALL INPUTS TYPES
+  - [ ] FORM INITIALIZATION schema PRE-LOAD & TRACKING STATE
 - [ ] integrate data validation
+  - [ ] LOOK AT SVELTE COMPONENT PROP SIMPLIFICATION OF INPUT INDEX
+  - [ ] Validation Gate
+  - [ ] Plan standard network client
+  - [ ] LOOK FOR AN API TO TEST AGAINST
+  - [ ] Integrate ZFD FORM submission
+  - [ ] Handle form submition errors and success
+    - [ ] REQUEST ERROR HANDLING GEN / SPEC
+    - [ ] DEFAULT ERRORS AND HINTS ON AUGMENTATION
+    - [ ] FORM LEVEL ERRORS
+  - [ ] Form submit success
+    - [ ] - consider state/scenario slots - toasts and validation messaging
+- [ ] reset form fi.method()
+- [ ] Programatic input disabled - FIGURE OUT $status.disabled
+- [ ] EXTEND CUSTOM_BTN to allow template interpolation from form level state / formData to button.node.label
+- [ ] - Consider tracking and conversion analytics
+- [ ] - PASS OUTLINE TO THIS TIER FOR "inputSetType" [STANDARD, EXTENDED, DYNAMIC, BETA]
+- [ ] - LOW PRIORIY - ADD CLICK DRAG RESIZING FOR MOBILE
