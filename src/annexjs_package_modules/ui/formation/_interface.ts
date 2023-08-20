@@ -97,6 +97,8 @@ class FormationInterface {
     this._nodes = this._augmentInputNodes(nodes);
 
     this._schema = this._initializeSchema();
+    // TODO - Initialize FORM DATA FOR INPUTS TO READ FROM
+    // TODO - TRY WITH SVELTE .BIND()
   }
 
   hasTargetSubmitButton = () => {

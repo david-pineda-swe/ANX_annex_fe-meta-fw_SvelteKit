@@ -9,12 +9,15 @@
   };
 
   const { node } = splitRequirements(inputReqs);
-  const { id, classes, label, status } = node;
   const inputHandler = new FormationInputHandler(inputReqs);
+
+  const { id, classes } = node; // TODO - FIGURE OUT $status.disabled
+  const derivedListClasses = (classes) ? ` ${classes}` : '';
 
   //
   const { dataPointKey, targetActionParams: { valueOptions } } = node;
   let radioOptions = [...valueOptions];
+
   node.status.subscribe((data: any) => {
     radioOptions = radioOptions.map((ro) => {
       return {
@@ -32,10 +35,10 @@
     inputHandler.useTargetAction(event);
   }
 
-  // TODO - FIGURE OUT disabled
+  // TODO - FIGURE OUT $status.disabled
 </script>
 
-<div class="radio-btn-list">
+<div class={`radio-btn-list${derivedListClasses}`}>
   {#each radioOptions as rbo}
     <div class="radio-btn-container {(rbo.selected) ? 'checked' : ''}">
       <label for={rbo.id}>
@@ -43,7 +46,7 @@
       </label>
       <input
         type="radio"
-        id={rbo.id}
+        id={`${id}-${rbo.id}`}
         class={`form-radio-btn radio-input`}
         name={dataPointKey}
         value={rbo.value}
