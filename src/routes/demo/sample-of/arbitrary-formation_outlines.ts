@@ -142,7 +142,7 @@ export const formA_outline = {
       id: 'test-form-radio-btn',
       classes: 'test input-btn-radio tier-a',
       dataPointKey: 'testRadioFoods',
-      dataValidator: null,
+      dataValidator: {},
       //
       label: 'Radio Sample foods',
       targetActionKey: 'handleTestAction_B',
@@ -162,7 +162,33 @@ export const formA_outline = {
         disabled: false,
         //
         errors: [],
+        // errors: ['Test error - this must be confirmed'],
         hints: []
+      }
+    },
+    {
+      type: 'INPUT',
+      inputType: 'CHECKBOX_BTN',
+      //
+      id: 'test-checkbox',
+      classes: 'test checkbox tier-c',
+      dataPointKey: 'testCheckboxKey',
+      dataValidator: {},
+      label: 'Use Checkbox Sample',
+      description:
+        'This is a much longer description of what is actually happening to the formData as a user selects this checkbox today at this present time.',
+      useDescription: true,
+      targetActionKey: 'handleTestAction_C',
+      // STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        required: false,
+        checked: false,
+        errors: [],
+        // errors: ['Test error - this must be confirmed'],
+        hints: []
+        // hints: ['Do something with this checkbox']
       }
     },
     {

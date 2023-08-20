@@ -4,8 +4,7 @@ $right-col-width: 70%;
 $disabled-opacity: .5;
 
 @mixin labelTheme {
-  text-align: right;
-  padding: var(--item-top-padding) 20px 0 0;
+  padding: 0 0 5px 0;
   color: var(--form-label-color);
   font-size: var(--form-label-size);
 }
@@ -52,63 +51,120 @@ form.formation {
       }
       
       // button {
-      //   // border: 1px solid orange;
+      //   border: 1px solid orange;
       // }
       input::placeholder {
         opacity: .5;
       }
 
+      // RADIO / CHECKBOX
+      $toggleBtnSpace: 40px;
+      $toggleBtnWidth: 20px;
+      $toggleBtnRadius: 10px;
+      $toggleBtnTopOffset: 17px;
+      // label {
+      //   border: 1px solid fuchsia;
+      // }
+      .radio-btn-container,
+      .checkbox-btn-container {
+        display: flex;
+        position: relative;
+      }
+
       // RADIO
       .radio-btn-list {
+        margin-bottom: var(--block-bottom-margin);
         // border: 2px solid green;
-
         .radio-btn-container {
           margin-right: var(--item-side-margin);
           // border: 2px solid lightblue;
-
+          input[type="radio"].form-radio-btn {
+            opacity: 0;
+            width: $toggleBtnSpace;
+          }
           label {
             @include labelTheme;
+            padding-top: var(--item-top-padding);
             font-size: var(--form-copy-size);
-            // border: 3px solid red;
+            min-width: 50px;
+            max-width: 200px;
+            // border: 3px solid blue;
 
-            $circle: 20px;
-            $circleOffset: 7px;
-            $circleRadius: 10px;
+            
             &::before {
               content: '';
               position: absolute;
-              right: $circleOffset;
-              top: $circleOffset + 8;
-              width: $circle;
-              height: $circle;
-              border-radius: $circleRadius;
+              top: $toggleBtnTopOffset;
+              left: 0px;
+              width: $toggleBtnWidth;
+              height: $toggleBtnWidth;
+              border-radius: $toggleBtnRadius;
               border: 1px solid var(--lt-gray-00);
             }
           }
 
           &.checked {
             label {
-              $circle: 12px;
-              $circleOffset: 11px;
-              $circleRadius: 5px;
               &::after {
                 content: '';
                 position: absolute;
-                right: $circleOffset;
-                top: $circleOffset + 8;
-                width: $circle;
-                height: $circle;
-                border-radius: $circleRadius;
+                top: $toggleBtnTopOffset;
+                left: 0px;
+                width: $toggleBtnWidth;
+                height: $toggleBtnWidth;
+                border-radius: $toggleBtnRadius;
                 background-color: white;
               }
             }
           }
         }
       }
+
+      // CHECKBOX
+      .checkbox-btn-container {
+        margin-bottom: var(--block-bottom-margin);
+        input[type="checkbox"].form-checkbox-btn {
+          opacity: 0;
+          width: $toggleBtnSpace;
+        }
+        
+        label {
+          @include labelTheme;
+          padding-top: var(--item-top-padding);
+          font-size: var(--form-copy-size);
+          // border: 3px solid red;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            top: $toggleBtnTopOffset;
+            left: 0px;
+            width: $toggleBtnWidth;
+            height: $toggleBtnWidth;
+            border: 1px solid var(--lt-gray-00);
+          }
+        }
+
+        // NOTE - THIS is an alternative style for the standard checkbox input - current is using an icon for visual confirmation 
+        // &.checked {
+        //   label {
+        //     &::after {
+        //       content: '';
+        //       position: absolute;
+        //       top: $toggleBtnTopOffset;
+        //       left: 0px;
+        //       width: $toggleBtnWidth;
+        //       height: $toggleBtnWidth;
+        //       background-color: white;
+        //     }
+        //   }
+        // }
+      }
     }
   
     .input-list {
       padding-left: $left-col-width;
+      margin-bottom: var(--item-bottom-margin);
       
       &.errors {
         color: var(--error-highlight);
@@ -136,7 +192,6 @@ form.formation {
     label {
       width: 100%;
       text-align: left;
-      padding: 0 0 10px 0;
     }
     input {
       width: 100%;

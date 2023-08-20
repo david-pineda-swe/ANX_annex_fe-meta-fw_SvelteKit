@@ -17,6 +17,10 @@
           },
           handleTestAction_B: (params: any) => {
             console.log('>> USER SELECTED:', params.event.target.value);
+          },
+          handleTestAction_C: (params: any) => {
+            console.log('>> USER CHECKED:', params.node.label, params.event.target.checked);
+            // console.log(params);
           }
         }
         // TODO - CONSIDER FORM LEVEL PRE-LOAD & TRACKING STATE
@@ -38,6 +42,7 @@
     // TODO - FORM STATE TRACKING 
     // TODO - EXTEND CUSTOM_BTN to allow template interpolation from form level state to button.node.label
     // TODO - TARGET FORM LEVEL SCHEMA STATE FOR ALL INPUTS
+    // TODO - reset form fi.method()
 
     // console.log(">> FORMATION_A SAMPLE WORKS!!");
     // Form_A.verifyInstance();

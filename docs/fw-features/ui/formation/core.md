@@ -35,7 +35,7 @@ This component allows instant form creation via a content expression object.
   - [x] email
   - [x] Custom Action Button
   - [x] password
-  - [>] radio
-  - [>] checkbox
-  - [ ] textarea
+  - [x] radio
+  - [x] checkbox
+  - [>] textarea
 - [ ] integrate data validation

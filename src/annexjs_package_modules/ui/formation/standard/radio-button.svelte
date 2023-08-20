@@ -31,27 +31,27 @@
 
   //
   const handleSelection = (event: any) => {
-    inputHandler.updateSelected(event);
+    inputHandler.updateRadioSelection(event);
     inputHandler.useTargetAction(event);
   }
 
   // TODO - FIGURE OUT $status.disabled
 </script>
 
-<div class={`radio-btn-list${derivedListClasses}`}>
+<div {id} class={`radio-btn-list${derivedListClasses}`}>
   {#each radioOptions as rbo}
-    <div class="radio-btn-container {(rbo.selected) ? 'checked' : ''}">
-      <label for={rbo.id}>
-        {rbo.label}
-      </label>
+    <div class="radio-btn-container{(rbo.selected) ? ' checked' : ''}">
       <input
         type="radio"
-        id={`${id}-${rbo.id}`}
+        id={rbo.id}
         class={`form-radio-btn radio-input`}
         name={dataPointKey}
         value={rbo.value}
         on:click={(e) => handleSelection(e)}
       />
+      <label for={rbo.id}>
+        {rbo.label}
+      </label>
     </div>
   {/each}
 </div>
@@ -59,12 +59,6 @@
 <style lang="scss">
   .radio-btn-list {
     display: flex;
-    .radio-btn-container {
-      position: relative;
-      display: flex;
-      input[type="radio"].form-radio-btn {
-        opacity: 0;
-      }
-    }
+    flex-wrap: wrap;
   }
 </style>

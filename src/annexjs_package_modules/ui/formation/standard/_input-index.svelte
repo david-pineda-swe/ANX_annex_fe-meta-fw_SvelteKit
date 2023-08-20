@@ -3,6 +3,7 @@
   import type { InputRequirements } from "src/global";
   import { splitRequirements } from "../util/split-requirements";
   
+  import CheckboxButton from "./checkbox-button.svelte";
   import CustomButton from "./custom-button.svelte";
   import EmailInput from "./email-input.svelte";
   import PasswordInput from "./password-input.svelte";
@@ -18,6 +19,7 @@
   const { inputType } = node;
 
   const inputIndex: any = {
+    CHECKBOX_BTN: CheckboxButton,
     CUSTOM_BTN: CustomButton,
     EMAIL: EmailInput,
     PASSWORD: PasswordInput,

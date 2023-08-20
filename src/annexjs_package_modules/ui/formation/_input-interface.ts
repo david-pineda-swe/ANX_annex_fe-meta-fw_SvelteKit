@@ -46,10 +46,17 @@ class FormationInputHandler {
     }
   };
 
-  updateSelected = (event: any) => {
+  updateRadioSelection = (event: any) => {
     // TODO - TARGET FORM LEVEL SCHEMA STATE
     this._updateNodeState({
       selected: event.target.value
+    });
+  };
+
+  updateCheckbox = (event: any) => {
+    // TODO - TARGET FORM LEVEL SCHEMA STATE
+    this._updateNodeState({
+      checked: event.target.checked
     });
   };
 

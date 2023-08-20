@@ -2,9 +2,9 @@
   import { is_empty } from "svelte/internal";
 
   export let node:any = null;
-  const { inputType, status: input } = node;
+  const { id, label, inputType, status: input } = node;
   
-  const useLabel = !['SUBMIT_BTN', 'CUSTOM_BTN'].includes(inputType);
+  const notExcluded = !['SUBMIT_BTN', 'CUSTOM_BTN'].includes(inputType);
 
   $: isDisabled = $input.disabled;
   $: checkDisabled = isDisabled ? ' disabled' : '';
@@ -20,18 +20,12 @@
 
 
 <div class={`form-field${plusDerivedClasses}`}>
-  {#if useLabel}
-    <label for={node.id}>
-      {node.label}
+  {#if notExcluded && label}
+    <label for={id}>
+      {label}
     </label>
   {/if}
 
-  <div class="input-container">
-    <slot/>
-  </div>
-
-  <!-- TODO - Consider support for multi lib toast indicators -->
-  <!-- TODO - consider support for class combo "note-list [errors, hints]" -->
   {#if fieldHasErrors}
     <ul class="input-list errors">
       {#each $input.errors as error}
@@ -42,7 +36,11 @@
     </ul>
   {/if}
 
-  {#if fieldHasHints}
+  <div class="input-container">
+    <slot/>
+  </div>
+
+  {#if fieldHasHints && !isDisabled}
     <ul class="input-list hints">
       {#each $input.hints as hint}
         <li class="hint-message">
