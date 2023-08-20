@@ -10,6 +10,7 @@
   import RadioButton from "./radio-button.svelte";
   import SubmitButton from "./submit-button.svelte";
   import TextInput from "./text-input.svelte";
+  import TextareaInput from "./textarea-input.svelte";
 
   export let inputReqs: InputRequirements = {
     fi: undefined,
@@ -26,6 +27,7 @@
     RADIO_BTN: RadioButton,
     SUBMIT_BTN: SubmitButton,
     TEXT: TextInput,
+    TEXTAREA: TextareaInput
   };
 
   const targetComponent = inputIndex[inputType];  

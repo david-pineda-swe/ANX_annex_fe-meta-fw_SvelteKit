@@ -23,11 +23,11 @@
 @mixin inputTheme {
   height: var(--block-single-height);
   background: none;
-  border: 1px solid var(--lt-gray-00);
+  border: 1px solid var(--form-input-border-muted);
   color: var(--form-copy-color);
   padding: 0.25em .75em;
   font-size: var(--form-copy-size);
-  border-radius: 7px;
+  border-radius: var(--input-radius);
 }
 
 // - BUTTONS

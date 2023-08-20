@@ -91,6 +91,26 @@ export const formA_outline = {
             },
             {
               type: 'INPUT',
+              inputType: 'TEXTAREA',
+              //
+              id: 'test-textarea-jargon',
+              classes: 'test input-4 tier-c',
+              dataPointKey: 'testTextareaKey',
+              dataValidator: zfd.text(z.string({ required_error: 'are required' }).trim()),
+              label: 'Jargon Questions',
+              placeholder: '???',
+              // STATE
+              status: {
+                hidden: false,
+                disabled: false,
+                required: false,
+                errors: [],
+                hints: []
+                // hints: ['Do something special!']
+              }
+            },
+            {
+              type: 'INPUT',
               inputType: 'EMAIL',
               //
               id: 'test-email',

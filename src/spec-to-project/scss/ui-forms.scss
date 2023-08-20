@@ -28,7 +28,7 @@ form.formation {
         color: var(--error-highlight);
       }
       .input-container {
-        input, input::placeholder {
+        input, input::placeholder, textarea, textarea::placeholder {
           color: var(--error-highlight);
           border-color: var(--error-highlight);
         }
@@ -159,6 +159,20 @@ form.formation {
         //     }
         //   }
         // }
+      }
+
+      // TEXTAREA
+      $r: var(--input-radius);
+      $bm: var(--form-input-border-muted);
+      $bh: var(--form-input-border-highlighted);
+      textarea {
+        @include inputTheme;
+        width: 100%;
+        resize: vertical;
+        // border-color: $bm $bh $bh $bm;
+        border-color: $bm;
+        border-radius: $r $r 0px $r;
+        height: calc(var(--block-single-height) * 4);
       }
     }
   

@@ -30,12 +30,12 @@ This component allows instant form creation via a content expression object.
   - [x] with [Zod](https://zod.dev/)
   - [x] with [Zod Form Data](https://www.npmjs.com/package/zod-form-data)
   - [x] Standard form styles
-- [>] integrate standard inputs
+- [x] integrate standard inputs
   - [x] text
   - [x] email
   - [x] Custom Action Button
   - [x] password
   - [x] radio
   - [x] checkbox
-  - [>] textarea
+  - [x] textarea
 - [ ] integrate data validation
