@@ -7,10 +7,10 @@
   export let fi: any = null;
 
   const formNodes = fi._nodes ? fi._nodes : [];
+  // TODO - flag on PROD vs. DEV to show dev error messages
 </script>
 
 {#each formNodes as node}
-  // ! flag on PROD vs. DEV
   <!-- TODO - PRE/POST HRs at each tier -->
 
   {#if node.type === 'FIELDSET' && shouldShow(node)}

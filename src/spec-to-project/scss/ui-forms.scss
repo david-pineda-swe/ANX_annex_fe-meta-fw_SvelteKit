@@ -32,6 +32,16 @@ form.formation {
           color: var(--error-highlight);
           border-color: var(--error-highlight);
         }
+        .radio-btn-list {
+          .radio-btn-container {
+            label {
+              color: var(--error-highlight);
+            }
+            label::before {
+              border-color: var(--error-highlight);
+            }
+          }
+        }
       }
     }
   
@@ -71,7 +81,7 @@ form.formation {
         position: relative;
       }
 
-      // RADIO
+      // RADIO BUTTONS
       .radio-btn-list {
         margin-bottom: var(--block-bottom-margin);
         // border: 2px solid green;
@@ -99,7 +109,7 @@ form.formation {
               width: $toggleBtnWidth;
               height: $toggleBtnWidth;
               border-radius: $toggleBtnRadius;
-              border: 1px solid var(--lt-gray-00);
+              border: 1px solid white;
             }
           }
 
@@ -141,7 +151,7 @@ form.formation {
             left: 0px;
             width: $toggleBtnWidth;
             height: $toggleBtnWidth;
-            border: 1px solid var(--lt-gray-00);
+            border: 1px solid white;
           }
         }
 

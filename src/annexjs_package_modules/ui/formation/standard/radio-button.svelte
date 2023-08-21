@@ -8,37 +8,32 @@
     node: undefined
   };
 
-  const { node } = splitRequirements(inputReqs);
   const inputHandler = new FormationInputHandler(inputReqs);
-
-  const { id, classes } = node; // TODO - FIGURE OUT $status.disabled
-  const derivedListClasses = (classes) ? ` ${classes}` : '';
+  const { fi, node } = splitRequirements(inputReqs);
+  const { _formData } = fi;
+  const { id, classes, dataPointKey, setupConfig: { valueOptions } } = node;
 
   //
-  const { dataPointKey, targetActionParams: { valueOptions } } = node;
   let radioOptions = [...valueOptions];
-
-  node.status.subscribe((data: any) => {
+  const configuredClasses = (classes) ? ` ${classes}` : '';
+  
+  _formData.subscribe((data: any) => {
+    // TODO - optimize by validating change if dataKey mathces current
+    const targetDataPoint = data[dataPointKey];
     radioOptions = radioOptions.map((ro) => {
       return {
         ...ro,
         ...{
-          selected: data.selected === ro.value
+          selected: targetDataPoint === ro.value
         }
       }
     });
   });
-
-  //
-  const handleSelection = (event: any) => {
-    inputHandler.updateRadioSelection(event);
-    inputHandler.useTargetAction(event);
-  }
-
+  
   // TODO - FIGURE OUT $status.disabled
 </script>
 
-<div {id} class={`radio-btn-list${derivedListClasses}`}>
+<div {id} class={`radio-btn-list${configuredClasses}`}>
   {#each radioOptions as rbo}
     <div class="radio-btn-container{(rbo.selected) ? ' checked' : ''}">
       <input
@@ -47,7 +42,7 @@
         class={`form-radio-btn radio-input`}
         name={dataPointKey}
         value={rbo.value}
-        on:click={(e) => handleSelection(e)}
+        on:click={(e) => inputHandler.updateRadioSelection(e)}
       />
       <label for={rbo.id}>
         {rbo.label}

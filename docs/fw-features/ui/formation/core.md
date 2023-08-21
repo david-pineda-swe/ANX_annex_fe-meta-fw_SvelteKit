@@ -41,6 +41,7 @@ This component allows instant form creation via a content expression object.
 - [>] formData STATE TRACKING
   - [ ] TARGET FORM LEVEL SCHEMA STATE FOR ALL INPUTS TYPES
   - [ ] FORM INITIALIZATION schema PRE-LOAD & TRACKING STATE
+- [ ] REQUIRED indication
 - [ ] integrate data validation
   - [ ] LOOK AT SVELTE COMPONENT PROP SIMPLIFICATION OF INPUT INDEX
   - [ ] Validation Gate
@@ -59,3 +60,6 @@ This component allows instant form creation via a content expression object.
 - [ ] - Consider tracking and conversion analytics
 - [ ] - PASS OUTLINE TO THIS TIER FOR "inputSetType" [STANDARD, EXTENDED, DYNAMIC, BETA]
 - [ ] - LOW PRIORIY - ADD CLICK DRAG RESIZING FOR MOBILE
+- [ ] - re-initialize form or swap to another form on invalidation event
+- [ ] - set & clear hints
+- [ ] - flag on PROD vs. DEV to show dev error messages

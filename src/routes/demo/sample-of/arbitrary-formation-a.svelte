@@ -9,24 +9,24 @@
 
     // TODO - PROVIDE AND API/STORE CLIENT FOR NETWORK REQUEST HANDLING
     const Form_A = new FormationInterface({
-        formOutline: formA_outline,
-        targetActions: {
-          handleTestAction_A: (params: any) => {
-            console.log(`>> THIS IS CUSTOM ACTION A!`);
-            console.log(`>> USING PARAMS:`, params);
-          },
-          handleTestAction_B: (params: any) => {
-            console.log('>> USER SELECTED:', params.event.target.value);
-          },
-          handleTestAction_C: (params: any) => {
-            console.log('>> USER CHECKED:', params.node.label, params.event.target.checked);
-            // console.log(params);
-          }
+      formOutline: formA_outline,
+      targetActions: {
+        handleTestAction_A: (params: any) => {
+          console.log(`>> THIS IS CUSTOM ACTION A!`);
+          console.log(`>> USING PARAMS:`, params);
+        },
+        handleTestAction_B: (params: any) => {
+          console.log('>> USER SELECTED:', params.event.target.value);
+        },
+        handleTestAction_C: (params: any) => {
+          console.log('>> USER CHECKED:', params.node.label, params.event.target.checked);
+          // console.log(params);
         }
+      }
     });
 
-    // console.log(">> FORMATION_A SAMPLE WORKS!!");
-    // Form_A.verifyInstance();
+    // X - TESTING
+    Form_A.verifyInstance();
 </script>
 
 <FormPlotter
@@ -35,9 +35,3 @@
     <!-- TODO - Plan for multiple slot injection -->
     <h2>Test form content slot</h2>
 </FormPlotter>
-
-
-
-<!-- <style lang="scss">
-    /* your styles go here */
-</style> -->

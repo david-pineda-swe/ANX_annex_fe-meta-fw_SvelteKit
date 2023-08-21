@@ -31,7 +31,7 @@
   {placeholder}
   disabled={$status.disabled}
   required={$status.required}
-  on:focusout={(e) => inputHandler.validateLastEntry(e)}
+  on:focusout={(e) => inputHandler.updateTextEntry(e)}
 />
 <button
   type="button"

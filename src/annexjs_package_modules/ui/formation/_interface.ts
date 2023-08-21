@@ -10,9 +10,12 @@ class FormationInterface {
   _nodes: Array<any>;
 
   // MODEL
+  // _submitAction: any; // TODO <<<
+  // _logErrorAction: any; // TODO <<<
   _targetActions: any;
   _schema: any;
   _formData: any;
+  _nodeIndex: any;
 
   // STATE
   _hasTargetSubmitButton = false;
@@ -43,7 +46,17 @@ class FormationInterface {
   };
 
   _initializeSchema = () => {
+    const _updateNodeIndex = (node: any) => {
+      this._nodeIndex = {
+        ...this._nodeIndex,
+        ...{
+          [node.dataPointKey]: node
+        }
+      };
+    };
+
     const _defineDataPointFrom = (node: any) => {
+      _updateNodeIndex(node);
       const { dataPointKey, dataValidator: validator } = node;
       return { [dataPointKey]: validator };
     };
@@ -75,7 +88,7 @@ class FormationInterface {
       return flatDataPointList;
     };
 
-    const SchemaDef = _traceAndCollectDataPointsFrom(this._nodes).reduce(
+    const schema = _traceAndCollectDataPointsFrom(this._nodes).reduce(
       (schema: any, currentDataPoint: any) => {
         return {
           ...schema,
@@ -85,13 +98,20 @@ class FormationInterface {
       {}
     );
 
-    // console.log('>> RESULT of dataPoint collection:', SchemaDef);
-    return SchemaDef;
+    return schema;
   };
 
-  _initializeFormData = (schemaDef: any) => {
-    const schemaShell = Object.keys(schemaDef).reduce((shell: any, currentEntry: any) => {
-      return { ...shell, ...{ [currentEntry]: null } };
+  _initializeFormDataFrom = (schema: any) => {
+    const schemaShell = Object.keys(schema).reduce((shell: any, currentEntry: any) => {
+      // A.) PREPROP ||
+      // TODO - A.) PREPROP INVOCATION GOES HERE <<<
+      const prePopulateValue = null;
+      // B.) inputNode.startValue ||
+      const startValue = this._nodeIndex[currentEntry].startValue;
+      // C.) default = null
+
+      const value = prePopulateValue || startValue || null;
+      return { ...shell, ...{ [currentEntry]: value } };
     }, {});
     return writable(schemaShell);
   };
@@ -108,14 +128,11 @@ class FormationInterface {
     this._nodes = this._augmentInputNodes(nodes);
 
     // INITIALIZATION
-    const schemaDef = this._initializeSchema();
-    const formData = this._initializeFormData(schemaDef);
+    const schema = this._initializeSchema();
+    const formData = this._initializeFormDataFrom(schema);
 
-    this._schema = this._initializeSchema();
-    this._formData = formData; // NOTE - PREPROP INVOCATION GOES HERE <<<
-
-    // TODO - Initialize FORM DATA FOR INPUTS TO READ FROM
-    // TODO - TRY WITH SVELTE .BIND()
+    this._schema = schema;
+    this._formData = formData;
   }
 
   hasTargetSubmitButton = () => {
@@ -124,20 +141,34 @@ class FormationInterface {
 
   getTargetAction = (actionKey: string) => {
     const target = this._targetActions[actionKey];
-    if (!target) {
-      console.error(
-        `>> TARGET ACTION: ${actionKey} was not included! Please reconfigure custom action button.`
-      );
-      return null;
-    } else {
+    if (target) {
       return target;
+    } else {
+      return null;
     }
   };
 
+  updateFormData = (update: any) => {
+    this._formData.update((data: any) => {
+      return {
+        ...data,
+        ...update
+      };
+    });
+  };
+
+  // TODO - handleSubmitRequest()
+  // ! - must pass validator
+  // ! - must pass schema group validation
+  // ! - must satisfy required
+  // ! - no extra dataPoints
+
+  // X - TESTING
   verifyInstance = () => {
     console.log(`>> Working with Formation ${this._formId}:`, this);
     this._formData.subscribe((data: any) => {
-      console.log(`>> Current formData:`, data);
+      console.log(`>> Current formData:`);
+      console.table(data);
     });
   };
 }

@@ -1,6 +1,7 @@
 import type { InputRequirements } from 'src/global';
 
 class FormationInputHandler {
+  // CONFIG
   _formInterface: any;
   _inputNode: any;
 
@@ -33,38 +34,26 @@ class FormationInputHandler {
     this._inputNode = node;
   }
 
-  validateLastEntry = (event: any) => {
-    const { value } = event.target;
-    const { dataValidator: validator } = this._inputNode;
+  validateLastEntry = (enteredValue: any) => {
+    const { dataPointKey, dataValidator: validator } = this._inputNode;
 
+    this._formInterface.updateFormData({ [dataPointKey]: enteredValue });
+
+    // SUBMIT PRE-FLIGHT VALIDATION HERE
     try {
-      const validation = validator.parse(value);
+      // NOTE - throws Error if invalid entry || returns the value if good to go
+      // const validation =
+      validator.parse(enteredValue);
       this._setErrorsTo([]);
-      // TODO - COLLECT AND ASIGN FORM ENTRY FOR PRE-FLIGHT VALIDATION?
     } catch (errors: any) {
       this._setErrorsTo(errors);
     }
   };
 
-  updateRadioSelection = (event: any) => {
-    // TODO - TARGET FORM LEVEL SCHEMA STATE
-    this._updateNodeState({
-      selected: event.target.value
-    });
-  };
-
-  updateCheckbox = (event: any) => {
-    // TODO - TARGET FORM LEVEL SCHEMA STATE
-    this._updateNodeState({
-      checked: event.target.checked
-    });
-  };
-
+  // TODO - FOR ALL HELPER METHODS
+  // this.useTargetAction(event);
+  // - make private
   useTargetAction = (event: any) => {
-    // console.log('>> USE TARGET ACTION:');
-    // console.log('>> EVENT:', event);
-    // console.log('>> FI:', this._formInterface);
-
     const { targetActionKey } = this._inputNode;
     const targetAction = this._formInterface.getTargetAction(targetActionKey);
 
@@ -74,6 +63,21 @@ class FormationInputHandler {
     }
   };
 
+  updateTextEntry = (event: any) => {
+    this.validateLastEntry(event.target.value);
+  };
+
+  updateRadioSelection = (event: any) => {
+    this.validateLastEntry(event.target.value);
+  };
+
+  updateCheckbox = (event: any) => {
+    // NOTE - per zfd.checkbox() documentation
+    const checked = event.target.checked ? 'true' : undefined;
+    this.validateLastEntry(checked);
+  };
+
+  // X - TESTING
   testEventHandle = (event: any, data: unknown = null) => {
     console.log(`>> TEST_EVENT_HANDLE:`, event.target.id);
     console.log(`>> event:`, event);

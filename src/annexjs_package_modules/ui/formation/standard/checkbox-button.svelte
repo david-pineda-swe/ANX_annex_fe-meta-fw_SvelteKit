@@ -10,34 +10,42 @@
   };
 
   const inputHandler = new FormationInputHandler(inputReqs);
-  const { node } = splitRequirements(inputReqs);
-  const {id, description, classes, dataPointKey, status } = node;
+  const { fi, node } = splitRequirements(inputReqs);
+  const { _formData } =fi;
+  const {id, classes, label, dataPointKey, setupConfig, status } = node;
+  const { description  } = setupConfig;
+
+  $: checked = $_formData[dataPointKey] === 'true';
 
   const handleCheckboxSelection = (event: any) => {
     inputHandler.updateCheckbox(event);
     inputHandler.useTargetAction(event);
   }
-  // value={targetValue} // TODO - consider prepop
 </script>
 
-<div class="checkbox-btn-container{($status.checked) ? ' checked' : ''}">
+<div class="checkbox-btn-container{(checked) ? ' checked' : ''}">
+  <span class="check-helper">
+    <IconIndex designation={`ICONIFY_mdi:check-bold_medium|s2|white`} on:click={(e) => handleCheckboxSelection(e)}/>
+  </span>
+
   <input
     type="checkbox"
     {id}
     class={`form-checkbox-btn ${classes}`}
     name={dataPointKey}
-    checked={$status.checked}
+    {checked}
     disabled={$status.disabled}
     on:click={(e) => handleCheckboxSelection(e)}
   />
 
   <label for={node.id}>
-    {description}
+    {#if description}
+      {description}
+    {:else}
+      {label}
+    {/if}
   </label>
 
-  <span class="check-helper">
-    <IconIndex designation={`ICONIFY_mdi:check-bold_medium|s2|white`}/>
-  </span>
 
 </div>
 
@@ -56,5 +64,4 @@
       }
     }
   }
-
 </style>

@@ -9,7 +9,8 @@
   };
 
   const inputHandler = new FormationInputHandler(inputReqs);
-  const { node } = splitRequirements(inputReqs);
+  const { fi, node } = splitRequirements(inputReqs);
+  const { _formData } = fi;
   const {id, classes, dataPointKey, placeholder, status } = node;
 
   // autocomplete
@@ -20,9 +21,10 @@
   type="text"
   {id}
   class={classes}
-  name={dataPointKey}
   {placeholder}
-  disabled={$status.disabled}
+  name={dataPointKey}
+  value={$_formData[dataPointKey]}
   required={$status.required}
-  on:focusout={(e) => inputHandler.validateLastEntry(e)}
+  disabled={$status.disabled}
+  on:focusout={(e) => inputHandler.updateTextEntry(e)}
 />

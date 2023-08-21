@@ -2,9 +2,10 @@
   import { is_empty } from "svelte/internal";
 
   export let node:any = null;
-  const { id, label, inputType, status: input } = node;
+  const { id, label, inputType, setupConfig, status: input } = node;
   
   const notExcluded = !['SUBMIT_BTN', 'CUSTOM_BTN'].includes(inputType);
+  const useLabel = notExcluded && label && !setupConfig?.hideLabel;
 
   $: isDisabled = $input.disabled;
   $: checkDisabled = isDisabled ? ' disabled' : '';
@@ -20,7 +21,7 @@
 
 
 <div class={`form-field${plusDerivedClasses}`}>
-  {#if notExcluded && label}
+  {#if useLabel}
     <label for={id}>
       {label}
     </label>
