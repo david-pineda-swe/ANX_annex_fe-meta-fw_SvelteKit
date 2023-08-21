@@ -39,11 +39,10 @@ This component allows instant form creation via a content expression object.
   - [x] checkbox
   - [x] textarea
 - [>] formData STATE TRACKING
-  - [ ] TARGET FORM LEVEL SCHEMA STATE FOR ALL INPUTS TYPES
-  - [ ] FORM INITIALIZATION schema PRE-LOAD & TRACKING STATE
-- [ ] REQUIRED indication
+  - [x] TARGET FORM LEVEL SCHEMA STATE FOR ALL INPUTS TYPES to track
+  - [>] FORM INITIALIZATION schema PRE-LOAD
+- [x] REQUIRED indication
 - [ ] integrate data validation
-  - [ ] LOOK AT SVELTE COMPONENT PROP SIMPLIFICATION OF INPUT INDEX
   - [ ] Validation Gate
   - [ ] Plan standard network client
   - [ ] LOOK FOR AN API TO TEST AGAINST

@@ -3,6 +3,8 @@
 
   export let formInterface: any;
   export const fi = formInterface;
+  
+  const { _hasRequiredFields } = fi;
 
   const useDefaultSubmit = !fi.hasTargetSubmitButton();
 
@@ -23,6 +25,12 @@
 <div class="form-content pre-block">
   <!-- TODO - consider state/scenario slots - toasts and validation messaging -->
   <slot />
+</div>
+
+<div class="form-status-hud">
+  {#if _hasRequiredFields}
+    <div>* indicates required field</div>
+  {/if}
 </div>
 
 <form
@@ -50,6 +58,11 @@
 
 
 <style lang="scss">
+  .form-status-hud {
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+  }
   .form-content {
     margin-bottom: var(--block-bottom-margin);
   }

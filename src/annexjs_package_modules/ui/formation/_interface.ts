@@ -19,6 +19,7 @@ class FormationInterface {
 
   // STATE
   _hasTargetSubmitButton = false;
+  _hasRequiredFields = false;
   //
 
   _augmentInputNodes = (nodes: Array<any>): Array<any> => {
@@ -63,13 +64,17 @@ class FormationInterface {
 
     const _traceAndCollectDataPointsFrom = (nodes: Array<any>): any => {
       const flatDataPointList = nodes.reduce((result: Array<any>, currentNode: any) => {
-        const { inputType, dataPointKey, dataValidator, subNodes } = currentNode;
+        const { inputType, dataPointKey, dataValidator, required, subNodes } = currentNode;
 
+        const shouldSetHasRequiredFields = !this._hasRequiredFields && required;
         const currentNodeIsSubmitBtn = inputType === 'SUBMIT_BTN';
         const currentHasSubNodes = !isEmpty(subNodes);
         const nodeHasDataSpecs = !isEmpty(dataPointKey) && !isEmpty(dataValidator);
         const nodeIsValidDataPoint = currentNode.type === 'INPUT' && nodeHasDataSpecs;
 
+        if (shouldSetHasRequiredFields) {
+          this._hasRequiredFields = true;
+        }
         if (currentNodeIsSubmitBtn) {
           this._hasTargetSubmitButton = true;
         }

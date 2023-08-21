@@ -18,7 +18,7 @@ export const formA_outline = {
       dataPointKey: 'ticketCode',
       dataValidator: zfd.text(z.string({ required_error: 'is required' }).min(5)),
       // startValue: 'asdf', // ! optional
-      required: false,
+      required: true,
       // targetActionKey: '',
       // setupConfig: {},
       // ! INPUT
@@ -51,7 +51,7 @@ export const formA_outline = {
           dataPointKey: 'firstName',
           dataValidator: zfd.text(z.string({ required_error: 'is required' }).trim()),
           // startValue: '',
-          required: false,
+          required: true,
           // targetActionKey: '',
           // SC - N/A
           // ===
@@ -83,7 +83,7 @@ export const formA_outline = {
               dataPointKey: 'lastName',
               dataValidator: zfd.text(z.string({ required_error: 'is required' }).trim()),
               // startValue: '',
-              required: false,
+              required: true,
               // targetActionKey: '',
               // SC - N/A
               // ===
@@ -105,7 +105,9 @@ export const formA_outline = {
               inputType: 'TEXTAREA',
               // ===
               dataPointKey: 'questions',
-              dataValidator: zfd.text(z.string({ required_error: 'are required' }).trim()),
+              dataValidator: zfd.text(
+                z.string({ required_error: 'are required' }).trim().optional()
+              ),
               // startValue: '',
               required: false,
               // targetActionKey: '',
@@ -138,7 +140,7 @@ export const formA_outline = {
                   .email({ message: 'must be a valid email address' })
               ),
               // startValue: '',
-              required: false,
+              required: true,
               // targetActionKey: '',
               // SC - N/A
               // ===
@@ -225,7 +227,7 @@ export const formA_outline = {
       //   invalid_type_error: 'Terms must be accepted'
       // }),
       // startValue: '',
-      required: false,
+      required: true,
       targetActionKey: 'handleTestAction_C',
       setupConfig: {
         description:
