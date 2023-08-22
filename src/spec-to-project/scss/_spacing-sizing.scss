@@ -9,9 +9,12 @@
 
     --subsection-bottom-margin: 40px;
 
-    --page-header-top: 100px;
+    --page-header-top: 80px;
     --negative-page-header-top: calc(var(--page-header-top) * -1);
 	
     // - SIZES
 	--link-size: 1.5rem;
+  --font-size: 1.5rem;
+
+  --heading-margin-bottom: 20px;
 }
