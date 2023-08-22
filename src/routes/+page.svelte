@@ -117,7 +117,7 @@
     display: inline-block;
     width: 100%;
     height: 100%;
-    background-image: url(./images/theming/hero_general_02.jpg);
+    background-image: url("/images/theming/hero_general_02.jpg");
     background-size: cover;
   }
 
