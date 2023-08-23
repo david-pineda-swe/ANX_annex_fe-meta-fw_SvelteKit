@@ -1,4 +1,5 @@
-button.ui-btn {
+button.ui-btn,
+a.ui-btn {
   @include drop-shadow;
   margin: 10px 10px 10px 0;
   border-radius: 4px;
@@ -6,4 +7,9 @@ button.ui-btn {
   background-color: var(--bg-tertiary-color);
   color: white;
   font-weight: bold;
+
+  &.lg {
+    font-size: 2rem;
+    border-radius: 10px;
+  }
 }
