@@ -42,14 +42,23 @@ header.desktop-header {
 }
 
 .content.full-width {
-	margin-top: var(--column-margin-top);
+	margin-top: var(--column-top-margin);
 }
 
 .content.center-column {
 	max-width: var(--column-width);
-	margin: var(--column-margin-top) auto 0 auto;
+	margin: var(--column-top-margin) auto 0 auto;
 }
 
 section.dynamic {
     background-color: #00000043;
+    
+    // TODO - TRY TO WORK OUT THEMING IMAGES INSIDE OF SPEC DIRECTORY
+    // .section-bg {
+    //   background-image: url(./images/theming/hero_general_01.jpg);
+    //   //   border: 2px solid red;
+    //   // img {
+    //   //   border: 2px solid red;
+    //   // }
+    // }
 }

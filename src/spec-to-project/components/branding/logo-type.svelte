@@ -14,11 +14,11 @@
 
 <style lang="scss">
   .desktop.branding {
-    margin: 10px 0 0 15px;
+    margin: 20px 0 0 20px;
   }
 
   .branding {
-    width: 300px;
+    width: 330px;
     a {
       display: flex;
       .brand-logo {

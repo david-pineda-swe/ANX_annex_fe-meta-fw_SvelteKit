@@ -1,16 +1,18 @@
+// TODO - RE LABEL TO FOLLOW CSS PROP CONVENTIONS
+
 @mixin spacingSizing {
   // - PAGE
-  --page-header-top: 100px;
+  --page-header-top: 120px;
   --negative-page-header-top: calc(var(--page-header-top) * -1);
 
   // - COLUMN
-	--column-width: 50rem;
-	--column-margin-top: 4rem;
+  --column-width: 50rem;
+  --column-top-margin: 4rem;
 
   // - SECTION
-	--section-side-padding: 10px;
-	--section-vertical-padding: 20px;
-	--section-bottom-margin: 80px;
+  --section-side-padding: 10px;
+  --section-vertical-padding: 20px;
+  --section-bottom-margin: 80px;
   --subsection-bottom-margin: 40px;
 
   // - BLOCK
@@ -18,12 +20,14 @@
   --block-single-height: 50px;
 
   // - ITEM
-  --item-bottom-margin:5px;
-  --item-side-margin:20px;
+  --item-bottom-margin: 5px;
+  --item-side-margin: 20px;
   --item-top-padding: 10px;
-  
+  --heading-bottom-margin: 20px;
+
   // - SIZES
-	--link-size: 1.5rem;
+  --font-size: 1.5rem;
+  --link-size: 1.5rem;
   --form-label-size: 1rem;
   --form-copy-size: 1.25rem;
   --input-radius: 5px;

@@ -1,15 +1,22 @@
-button.ui-btn-primary, button.primary {
+button.ui-btn-primary,
+button.primary {
   @include buttonPrimary;
 }
 
-button.ui-btn, button.secondary {
+button.ui-btn,
+button.secondary,
+a.ui-btn {
   @include buttonSecondary;
-}
 
+  &.lg {
+    font-size: 2rem;
+    border-radius: 10px;
+  }
+}
 
 button.icon-action-btn {
   width: var(--block-single-height);
-  height:  var(--block-single-height);
+  height: var(--block-single-height);
   // border: 1px solid red;
 
   &.at-right {
