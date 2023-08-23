@@ -4,8 +4,8 @@
 	export let sectionConfig: any = null; // TBD
     // headline: string = "Headline here..."; headline="Something Great!"
     // subheading: string = "Subheading"; subheading="Ta-dur!"
-    console.log(">> DYNAMIC_SECTION HAS CONFIG");
-    console.table(sectionConfig);
+    // console.log(">> DYNAMIC_SECTION HAS CONFIG");
+    // console.table(sectionConfig);
 </script>
 
 

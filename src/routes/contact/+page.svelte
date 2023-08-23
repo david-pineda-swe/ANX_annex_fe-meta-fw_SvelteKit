@@ -13,20 +13,11 @@
 	<p class="contact-link">
 		<a href="https://www.linkedin.com/company/free4m-io" target="_blank">on LinkedIn</a>
 	</p>
-
-	<div class="qr-code-container">
-		<p>
-			This is QR code place holder.
-		</p>
-	</div>
 </div>
 
 <style>
 	/* .content {} */
 	.contact-link {
 		font-size: 1.5rem;
-	}
-	.qr-code-container {
-		border: 1px solid red;
 	}
 </style>

@@ -3,5 +3,3 @@
 </script>
 
 <LogoType location={'mobile'} />
-
-<style lang="scss"></style>
