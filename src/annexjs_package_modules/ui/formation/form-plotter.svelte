@@ -4,9 +4,10 @@
   export let formInterface: any;
   export const fi = formInterface;
   
-  const { _hasRequiredFields } = fi;
+  const { _hasRequiredFields, _defaultSubmitActivated } = fi;
 
   const useDefaultSubmit = !fi.hasTargetSubmitButton();
+  $: disabled = !$_defaultSubmitActivated;
 
   const handleSubmit = (e) => {
     // TODO - If interface submit action was provided or default
@@ -42,11 +43,14 @@
   <TierA_Fieldset {fi}/>
 
   {#if useDefaultSubmit}
-    <button
-      type="submit"
-      class="form-submit-btn default primary w-full"
-      disabled
-    >Submit</button>
+    <div class={`form-field${(disabled) ? ' disabled': ''}`}>
+      <!-- TODO - form errors list HERE -->
+      <button
+        type="submit"
+        class="form-submit-btn default primary w-full"
+        {disabled}
+      >Submit</button>
+    </div>
   {/if}
 </form>
 

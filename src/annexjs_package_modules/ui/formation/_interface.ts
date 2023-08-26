@@ -14,12 +14,13 @@ class FormationInterface {
   // _logErrorAction: any; // TODO <<<
   _targetActions: any;
   _schema: any;
-  _formData: any;
   _nodeIndex: any;
 
   // STATE
+  _formData: any;
   _hasTargetSubmitButton = false;
   _hasRequiredFields = false;
+  _defaultSubmitActivated = writable(false);
   //
 
   _augmentInputNodes = (nodes: Array<any>): Array<any> => {
@@ -121,6 +122,28 @@ class FormationInterface {
     return writable(schemaShell);
   };
 
+  _verifyFormIsReady = (data: any): boolean => {
+    const { _nodeIndex } = this;
+    const possible = Object.keys(data);
+
+    return isEmpty(
+      // A.) if field is required
+      // B.) if values are not null values
+      possible.filter((key: any) => {
+        const targetNode = _nodeIndex[key];
+        const fieldIsRequired = targetNode ? targetNode.required : false;
+
+        if (!fieldIsRequired) {
+          // bypass the check
+          return false;
+        } else {
+          // check if value is null
+          return data[key] === null || data[key] === undefined;
+        }
+      })
+    );
+  };
+
   constructor(params: any) {
     const { formOutline, targetActions } = params;
     this._formOutline = formOutline;
@@ -138,6 +161,26 @@ class FormationInterface {
 
     this._schema = schema;
     this._formData = formData;
+
+    // WATCH
+    this._formData.subscribe((data: any) => {
+      // X
+      console.log(`>> Current formData:`);
+      console.table(data);
+
+      const formIsReady = this._verifyFormIsReady(data);
+
+      if (formIsReady) {
+        if (this._hasTargetSubmitButton) {
+          const target = this._nodes.filter((node: any) => node.inputType === 'SUBMIT_BTN')[0];
+          target.status.update((data: any) => {
+            return { ...data, ...{ disabled: false } };
+          });
+        } else {
+          this._defaultSubmitActivated.set(true);
+        }
+      }
+    });
   }
 
   hasTargetSubmitButton = () => {
@@ -171,10 +214,6 @@ class FormationInterface {
   // X - TESTING
   verifyInstance = () => {
     console.log(`>> Working with Formation ${this._formId}:`, this);
-    this._formData.subscribe((data: any) => {
-      console.log(`>> Current formData:`);
-      console.table(data);
-    });
   };
 }
 

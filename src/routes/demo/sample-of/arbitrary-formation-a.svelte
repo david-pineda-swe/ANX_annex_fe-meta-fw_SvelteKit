@@ -20,7 +20,7 @@
         },
         handleTestAction_C: (params: any) => {
           console.log('>> USER CHECKED:', params.node.label, params.event.target.checked);
-          // console.log(params);
+          // console.log(params.fi);
         }
       }
     });

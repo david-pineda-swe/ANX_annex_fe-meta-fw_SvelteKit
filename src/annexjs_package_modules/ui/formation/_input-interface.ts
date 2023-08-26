@@ -37,9 +37,6 @@ class FormationInputHandler {
   validateLastEntry = (enteredValue: any) => {
     const { dataPointKey, dataValidator: validator } = this._inputNode;
 
-    this._formInterface.updateFormData({ [dataPointKey]: enteredValue });
-
-    // SUBMIT PRE-FLIGHT VALIDATION HERE
     try {
       // NOTE - throws Error if invalid entry || returns the value if good to go
       // const validation =
@@ -48,9 +45,11 @@ class FormationInputHandler {
     } catch (errors: any) {
       this._setErrorsTo(errors);
     }
+
+    this._formInterface.updateFormData({ [dataPointKey]: enteredValue });
   };
 
-  // TODO - FOR ALL HELPER METHODS
+  // TODO - HELPER METHODS for all input types
   // this.useTargetAction(event);
   // - make private
   useTargetAction = (event: any) => {

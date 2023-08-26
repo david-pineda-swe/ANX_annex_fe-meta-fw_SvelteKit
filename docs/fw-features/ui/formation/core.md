@@ -38,15 +38,15 @@ This component allows instant form creation via a content expression object.
   - [x] radio
   - [x] checkbox
   - [x] textarea
-- [>] formData STATE TRACKING
+- [x] formData STATE TRACKING
   - [x] TARGET FORM LEVEL SCHEMA STATE FOR ALL INPUTS TYPES to track
-  - [>] FORM INITIALIZATION schema PRE-LOAD
+  - [x] FORM INITIALIZATION schema PRE-LOAD
 - [x] REQUIRED indication
-- [ ] integrate data validation
-  - [ ] Validation Gate
+- [>] integrate data validation
+  - [?] Integrate ZFD FORM submission
+  - [>] Validation Gate
   - [ ] Plan standard network client
   - [ ] LOOK FOR AN API TO TEST AGAINST
-  - [ ] Integrate ZFD FORM submission
   - [ ] Handle form submition errors and success
     - [ ] REQUEST ERROR HANDLING GEN / SPEC
     - [ ] DEFAULT ERRORS AND HINTS ON AUGMENTATION

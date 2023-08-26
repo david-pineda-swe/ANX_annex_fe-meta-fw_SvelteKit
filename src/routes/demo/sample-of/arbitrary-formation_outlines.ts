@@ -247,26 +247,26 @@ export const formA_outline = {
         hints: []
       }
     },
-    {
-      // ! ========================== CUSTOM BUTTON
-      type: 'INPUT',
-      inputType: 'CUSTOM_BTN',
-      // === NO DATA
-      targetActionKey: 'handleTestAction_A',
-      // setupConfig: {},
-      // ===
-      id: 'test-form-custom-btn',
-      classes: 'test input-btn-custom tier-a',
-      label: 'Do action A',
-      // PH - N/A
-      // ===
-      status: {
-        hidden: false,
-        disabled: false,
-        errors: [],
-        hints: []
-      }
-    },
+    // {
+    //   // ! ========================== CUSTOM BUTTON
+    //   type: 'INPUT',
+    //   inputType: 'CUSTOM_BTN',
+    //   // === NO DATA
+    //   targetActionKey: 'handleTestAction_A',
+    //   // setupConfig: {},
+    //   // ===
+    //   id: 'test-form-custom-btn',
+    //   classes: 'test input-btn-custom tier-a',
+    //   label: 'Do action A',
+    //   // PH - N/A
+    //   // ===
+    //   status: {
+    //     hidden: false,
+    //     disabled: false,
+    //     errors: [],
+    //     hints: []
+    //   }
+    // },
     {
       // ! ========================== SUBMIT
       type: 'INPUT',
