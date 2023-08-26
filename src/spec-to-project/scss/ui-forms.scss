@@ -127,6 +127,12 @@ form.formation {
               }
             }
           }
+
+          input[type="radio"].form-radio-btn:focus {
+            + label {
+              border-bottom: 2px solid var(--form-input-border-highlighted);
+            }
+          }
         }
       }
 
@@ -152,6 +158,19 @@ form.formation {
             width: $toggleBtnWidth;
             height: $toggleBtnWidth;
             border: 1px solid white;
+          }
+        }
+        input[type="checkbox"].form-checkbox-btn:focus {
+          + label {
+            &::after {
+              content: '';
+              position: absolute;
+              top: $toggleBtnTopOffset - 4;
+              left: -4px;
+              width: $toggleBtnWidth + 8;
+              height: $toggleBtnWidth + 8;
+              border: 1px solid white;
+            }
           }
         }
 
