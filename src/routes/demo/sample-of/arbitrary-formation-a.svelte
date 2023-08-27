@@ -23,8 +23,9 @@
           // console.log(params.fi);
         }
       },
-      formSubmitAction: (data: any) => {
-        console.log('>> THIS IS WHAT i SHOULD DO WITH THE DATA:', data); 
+      formSubmitAction: (validated: any, providedEntries: any) => {
+        console.log('>> VALIDATED:', validated); 
+        console.log('>> FORM PROVIDED ENTRIES', providedEntries); 
       }
     });
 

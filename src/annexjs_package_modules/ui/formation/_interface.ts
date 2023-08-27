@@ -1,5 +1,6 @@
 import { isEmpty } from '@annexjs/uitils';
 import { writable } from 'svelte/store';
+import { zfd } from 'zod-form-data';
 
 class FormationInterface {
   // PROPS FROM CONFIG
@@ -160,7 +161,7 @@ class FormationInterface {
     const schema = this._initializeSchema();
     const formData = this._initializeFormDataFrom(schema);
 
-    this._schema = schema;
+    this._schema = zfd.formData(schema);
     this._formData = formData;
 
     // WATCH
@@ -206,18 +207,24 @@ class FormationInterface {
     });
   };
 
-  handleFormSubmissionFor = (event: any) => {
-    const { _formSubmitAction } = this;
+  handleFormSubmission = (event: any) => {
+    // console.log('>> FORM SUBMIT EVENT OBJ:', event);
+    const { _schema, _formSubmitAction } = this;
 
-    if (_formSubmitAction) {
-      // ! - must pass validator
-      // ! - must pass schema group validation
-      // ! - must satisfy required
-      // ! - no extra dataPoints
-      // TODO - FULL FORM DATA VALIDATION GOES HERE
-      _formSubmitAction(event);
-    } else {
-      console.error('(!) FORM SUBMIT ACTION WAS NOT PROVIDED - (!)');
+    const formData = new FormData(event.target);
+    const providedEntries = Object.fromEntries(formData);
+
+    try {
+      const validated = _schema.parse(providedEntries); // ! <<< VALIDATION !!!
+
+      if (_formSubmitAction) {
+        _formSubmitAction(validated, providedEntries);
+      } else {
+        console.error('(!) FORM SUBMIT ACTION WAS NOT PROVIDED - (!)');
+      }
+    } catch (errors) {
+      // TODO - Apply form level errors to the UI
+      console.error(' HANDLE VALIDATION ERRORS:', errors);
     }
   };
 

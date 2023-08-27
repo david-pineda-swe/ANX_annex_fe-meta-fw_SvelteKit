@@ -34,19 +34,21 @@ class FormationInputHandler {
     this._inputNode = node;
   }
 
-  validateLastEntry = (enteredValue: any) => {
+  validateLastEntry = ({ value: enteredValue, bypass }: any) => {
     const { dataPointKey, dataValidator: validator } = this._inputNode;
 
-    try {
-      // NOTE - throws Error if invalid entry || returns the value if good to go
-      // const validation =
-      validator.parse(enteredValue);
-      this._setErrorsTo([]);
-    } catch (errors: any) {
-      this._setErrorsTo(errors);
-    }
-
     this._formInterface.updateFormData({ [dataPointKey]: enteredValue });
+
+    if (!bypass) {
+      try {
+        // NOTE - throws Error if invalid entry || returns the value if good to go
+        // const validation =
+        validator.parse(enteredValue);
+        this._setErrorsTo([]);
+      } catch (errors: any) {
+        this._setErrorsTo(errors);
+      }
+    }
   };
 
   // TODO - HELPER METHODS for all input types
@@ -63,11 +65,13 @@ class FormationInputHandler {
   };
 
   updateTextEntry = (event: any) => {
-    this.validateLastEntry(event.target.value);
+    const value = event.target.value;
+    this.validateLastEntry({ value });
   };
 
   updateRadioSelection = (event: any) => {
-    this.validateLastEntry(event.target.value);
+    const value = event.target.value;
+    this.validateLastEntry({ value });
   };
 
   updateCheckbox = (event: any) => {

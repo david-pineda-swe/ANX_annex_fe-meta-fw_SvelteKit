@@ -5,6 +5,9 @@
 
 This component allows instant form creation via a content expression object.
 
+https://zod.dev/
+https://www.npmjs.com/package/zod-form-data
+
 [SAMPLE_TBD]
 
 ## System Dependencies & Sub components
@@ -56,9 +59,14 @@ This component allows instant form creation via a content expression object.
 - [ ] reset form fi.method()
 - [ ] Programatic input disabled - FIGURE OUT $status.disabled
 - [ ] EXTEND CUSTOM_BTN to allow template interpolation from form level state / formData to button.node.label
+
+
+### Low priority
 - [ ] - Consider tracking and conversion analytics
 - [ ] - PASS OUTLINE TO THIS TIER FOR "inputSetType" [STANDARD, EXTENDED, DYNAMIC, BETA]
 - [ ] - LOW PRIORIY - ADD CLICK DRAG RESIZING FOR MOBILE
 - [ ] - re-initialize form or swap to another form on invalidation event
 - [ ] - set & clear hints
 - [ ] - flag on PROD vs. DEV to show dev error messages
+- [ ] - repeatable (checkboxes)
+- [ ] - repeatableOfType

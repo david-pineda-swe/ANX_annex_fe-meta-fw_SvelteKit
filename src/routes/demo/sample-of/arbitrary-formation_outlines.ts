@@ -220,16 +220,17 @@ export const formA_outline = {
       type: 'INPUT',
       inputType: 'CHECKBOX_BTN',
       // ===
-      dataPointKey: 'testCheckboxKey',
-      dataValidator: zfd.checkbox({ trueValue: 'true' }),
+      dataPointKey: 'termsAccepted',
+      dataValidator: zfd.checkbox({ trueValue: 'terms_accepted' }),
       // dataValidator: z.boolean({
       //   required_error: 'Terms must be accepted',
       //   invalid_type_error: 'Terms must be accepted'
       // }),
-      // startValue: '',
+      // startValue: '', // N/A - reserved for preprop
       required: true,
       targetActionKey: 'handleTestAction_C',
       setupConfig: {
+        onValue: 'terms_accepted',
         description:
           'This is a much longer description of what is actually happening to the formData as a user selects this checkbox today at this present time.'
         // hideLabel: true
