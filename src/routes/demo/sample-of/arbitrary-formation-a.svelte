@@ -22,6 +22,9 @@
           console.log('>> USER CHECKED:', params.node.label, params.event.target.checked);
           // console.log(params.fi);
         }
+      },
+      formSubmitAction: (data: any) => {
+        console.log('>> THIS IS WHAT i SHOULD DO WITH THE DATA:', data); 
       }
     });
 

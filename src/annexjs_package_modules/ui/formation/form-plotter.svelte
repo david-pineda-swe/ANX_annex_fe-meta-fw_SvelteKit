@@ -4,20 +4,14 @@
   export let formInterface: any;
   export const fi = formInterface;
   
-  const { _hasRequiredFields, _defaultSubmitActivated } = fi;
+  const { _hasRequiredFields, _defaultSubmitActivated, handleFormSubmissionFor } = fi;
 
   const useDefaultSubmit = !fi.hasTargetSubmitButton();
   $: disabled = !$_defaultSubmitActivated;
 
-  const handleSubmit = (e) => {
-    // TODO - If interface submit action was provided or default
-
-    e.preventDefault();
-    // TODO - Consider tracking and conversion analytics
-    // TEST - DEFAULT FORM FUNC
-    console.log("This is a test submit!", e);
-    const data = new FormData(e.target);
-    console.log('>> DATA FOR PRE-FLIGHT SUBMISSION:',[...data.entries()]);
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    handleFormSubmissionFor(event);
   };
 </script>
 

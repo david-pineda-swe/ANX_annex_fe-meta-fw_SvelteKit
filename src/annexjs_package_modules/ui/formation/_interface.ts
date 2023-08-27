@@ -10,7 +10,7 @@ class FormationInterface {
   _nodes: Array<any>;
 
   // MODEL
-  // _submitAction: any; // TODO <<<
+  _formSubmitAction: any;
   // _logErrorAction: any; // TODO <<<
   _targetActions: any;
   _schema: any;
@@ -145,7 +145,8 @@ class FormationInterface {
   };
 
   constructor(params: any) {
-    const { formOutline, targetActions } = params;
+    const { formOutline, targetActions, formSubmitAction } = params;
+    this._formSubmitAction = formSubmitAction;
     this._formOutline = formOutline;
     this._targetActions = targetActions;
 
@@ -205,11 +206,20 @@ class FormationInterface {
     });
   };
 
-  // TODO - handleSubmitRequest()
-  // ! - must pass validator
-  // ! - must pass schema group validation
-  // ! - must satisfy required
-  // ! - no extra dataPoints
+  handleFormSubmissionFor = (event: any) => {
+    const { _formSubmitAction } = this;
+
+    if (_formSubmitAction) {
+      // ! - must pass validator
+      // ! - must pass schema group validation
+      // ! - must satisfy required
+      // ! - no extra dataPoints
+      // TODO - FULL FORM DATA VALIDATION GOES HERE
+      _formSubmitAction(event);
+    } else {
+      console.error('(!) FORM SUBMIT ACTION WAS NOT PROVIDED - (!)');
+    }
+  };
 
   // X - TESTING
   verifyInstance = () => {
