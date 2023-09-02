@@ -75,9 +75,13 @@ class FormationInputHandler {
   };
 
   updateCheckbox = (event: any) => {
-    // NOTE - per zfd.checkbox() documentation
-    const checked = event.target.checked ? 'true' : undefined;
-    this.validateLastEntry(checked);
+    const checked = event.target.checked;
+    const value = checked ? event.target.value : undefined;
+    this._updateNodeState({ checked });
+    this.validateLastEntry({
+      value,
+      bypass: true // will be pre-defined by form outline - not a user provided value
+    });
   };
 
   // X - TESTING

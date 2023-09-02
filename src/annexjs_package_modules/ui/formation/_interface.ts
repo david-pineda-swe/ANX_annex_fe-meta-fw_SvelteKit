@@ -108,17 +108,45 @@ class FormationInterface {
     return schema;
   };
 
+  _deriveValueTargetLocation = (params: any) => {
+    const { node, shell, currentEntry, value } = params;
+    const { inputType, setupConfig } = node;
+
+    if (inputType === 'CHECKBOX_BTN') {
+      // Update the node
+      node.status.update((data: any) => {
+        return { ...data, ...{ checked: value } };
+      });
+      // leave formData blank for user interaction
+      return { ...shell, ...{ [currentEntry]: value ? setupConfig.onValue : null } };
+    } else {
+      // DEFAULT - assign to formData shell schema
+      return { ...shell, ...{ [currentEntry]: value } };
+    }
+  };
+
   _initializeFormDataFrom = (schema: any) => {
     const schemaShell = Object.keys(schema).reduce((shell: any, currentEntry: any) => {
+      const node = this._nodeIndex[currentEntry];
+      const { startValue } = node;
+
       // A.) PREPROP ||
       // TODO - A.) PREPROP INVOCATION GOES HERE <<<
+      // - URL params ?
+      // - network request ?
+      // - cookies ?
       const prePopulateValue = null;
       // B.) inputNode.startValue ||
-      const startValue = this._nodeIndex[currentEntry].startValue;
       // C.) default = null
 
-      const value = prePopulateValue || startValue || null;
-      return { ...shell, ...{ [currentEntry]: value } };
+      const valuePrecedence = prePopulateValue || startValue || null;
+
+      return this._deriveValueTargetLocation({
+        node,
+        shell,
+        currentEntry,
+        value: valuePrecedence
+      });
     }, {});
     return writable(schemaShell);
   };

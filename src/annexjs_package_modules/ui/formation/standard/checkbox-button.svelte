@@ -10,12 +10,11 @@
   };
 
   const inputHandler = new FormationInputHandler(inputReqs);
-  const { fi, node } = splitRequirements(inputReqs);
-  const { _formData } =fi;
+  const { node } = splitRequirements(inputReqs);
   const {id, classes, label, dataPointKey, setupConfig, status } = node;
-  const { description  } = setupConfig;
+  const { onValue, description } = setupConfig;
 
-  $: checked = $_formData[dataPointKey] === 'true';
+  $: checked = $status.checked;
 
   const handleCheckboxSelection = (event: any) => {
     inputHandler.updateCheckbox(event);
@@ -33,6 +32,7 @@
     {id}
     class={`form-checkbox-btn ${classes}`}
     name={dataPointKey}
+    value={onValue}
     {checked}
     disabled={$status.disabled}
     on:click={(e) => handleCheckboxSelection(e)}

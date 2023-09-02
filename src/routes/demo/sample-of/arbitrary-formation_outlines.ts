@@ -226,7 +226,7 @@ export const formA_outline = {
       //   required_error: 'Terms must be accepted',
       //   invalid_type_error: 'Terms must be accepted'
       // }),
-      // startValue: '', // N/A - reserved for preprop
+      startValue: false, // N/A - reserved for preprop
       required: true,
       targetActionKey: 'handleTestAction_C',
       setupConfig: {
@@ -242,6 +242,7 @@ export const formA_outline = {
       // PH - N/A
       // ===
       status: {
+        checked: false,
         hidden: false,
         disabled: false,
         errors: [],
