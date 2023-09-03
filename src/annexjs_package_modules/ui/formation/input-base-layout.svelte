@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { is_empty } from "svelte/internal";
+  import { isEmpty } from "@annexjs/uitils";
 
   export let node:any = null;
   const { id, label, inputType, required, setupConfig, status: input } = node;
@@ -11,10 +11,10 @@
   $: isDisabled = $input.disabled;
   $: checkDisabled = isDisabled ? ' disabled' : '';
   
-  $: fieldHasErrors = !is_empty($input.errors);
+  $: fieldHasErrors = !isEmpty($input.errors);
   $: checkHasErrors = (fieldHasErrors) ? ' has-errors' : '';
 
-  $: fieldHasHints = !is_empty($input.hints);
+  $: fieldHasHints = !isEmpty($input.hints);
   
   $: plusDerivedClasses = `${checkDisabled}${checkHasErrors}`;
 </script>
@@ -29,7 +29,7 @@
   {/if}
 
   {#if fieldHasErrors}
-    <ul class="input-list errors">
+    <ul class="show-list input errors">
       {#each $input.errors as error}
         <li class="error-message">
           {error}
@@ -43,7 +43,7 @@
   </div>
 
   {#if fieldHasHints && !isDisabled}
-    <ul class="input-list hints">
+    <ul class="show-list input hints">
       {#each $input.hints as hint}
         <li class="hint-message">
           {hint}
@@ -67,12 +67,6 @@
     .input-container {
       margin-bottom: var(--item-bottom-margin);
       // border: 1px solid blue;
-    }
-
-    .input-list {
-      width: 100%;
-      list-style: disc;
-      // border: 1px solid fuchsia;
     }
   }
 </style>

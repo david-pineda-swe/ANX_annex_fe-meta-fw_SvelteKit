@@ -1,4 +1,5 @@
 import type { InputRequirements } from 'src/global';
+import { parseZFDerrors } from './util/parse-errors';
 
 class FormationInputHandler {
   // CONFIG
@@ -14,10 +15,8 @@ class FormationInputHandler {
     });
   };
 
-  _setErrorsTo = (provided: Array<any>) => {
-    const errors = Array.isArray(provided)
-      ? provided
-      : JSON.parse(provided).map((e: any) => e.message);
+  _setInputErrorsTo = (provided: Array<any>) => {
+    const errors = parseZFDerrors(provided);
     this._updateNodeState({ errors });
   };
 
@@ -28,25 +27,36 @@ class FormationInputHandler {
     };
   };
 
+  _validateInputNode = (validator: any, enteredValue: any) => {
+    try {
+      this._setInputErrorsTo([]);
+      // NOTE - throws Error if invalid entry || returns the value if good to go
+      // const validation =
+      validator.parse(enteredValue);
+    } catch (errors: any) {
+      this._setInputErrorsTo(errors);
+    }
+  };
+
   constructor(inputReqs: InputRequirements) {
     const { fi, node } = inputReqs;
     this._formInterface = fi;
     this._inputNode = node;
   }
 
-  validateLastEntry = ({ value: enteredValue, bypass }: any) => {
+  validateLastEntry = ({ value: enteredValue, bypassValidation }: any) => {
     const { dataPointKey, dataValidator: validator } = this._inputNode;
+    const { hasFormLevelErrors, updateFormData, validateFormData } = this._formInterface;
 
-    this._formInterface.updateFormData({ [dataPointKey]: enteredValue });
-
-    if (!bypass) {
-      try {
-        // NOTE - throws Error if invalid entry || returns the value if good to go
-        // const validation =
-        validator.parse(enteredValue);
-        this._setErrorsTo([]);
-      } catch (errors: any) {
-        this._setErrorsTo(errors);
+    updateFormData({ [dataPointKey]: enteredValue });
+    if (hasFormLevelErrors()) {
+      // should validate inputNode + entire form for error check-off
+      this._validateInputNode(validator, enteredValue);
+      validateFormData();
+    } else {
+      // clean form - first pass validation
+      if (!bypassValidation) {
+        this._validateInputNode(validator, enteredValue);
       }
     }
   };
@@ -80,7 +90,7 @@ class FormationInputHandler {
     this._updateNodeState({ checked });
     this.validateLastEntry({
       value,
-      bypass: true // will be pre-defined by form outline - not a user provided value
+      bypassValidation: true // will be pre-defined by form outline - not a user provided value
     });
   };
 

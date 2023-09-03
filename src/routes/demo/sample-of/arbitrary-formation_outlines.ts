@@ -221,7 +221,9 @@ export const formA_outline = {
       inputType: 'CHECKBOX_BTN',
       // ===
       dataPointKey: 'termsAccepted',
-      dataValidator: zfd.checkbox({ trueValue: 'terms_accepted' }),
+      dataValidator: zfd
+        .checkbox({ trueValue: 'terms_accepted' })
+        .refine((val) => val, 'must be accepted'),
       // dataValidator: z.boolean({
       //   required_error: 'Terms must be accepted',
       //   invalid_type_error: 'Terms must be accepted'

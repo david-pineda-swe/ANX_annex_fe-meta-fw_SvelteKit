@@ -1,13 +1,20 @@
 <script lang="ts">
+  // FIX - SPELLING uitils => utils
+  import { isEmpty } from "@annexjs/uitils";
   import TierA_Fieldset from "./tier-A-fieldset.svelte";
 
   export let formInterface: any;
   export const fi = formInterface;
   
-  const { _hasRequiredFields, _defaultSubmitActivated, handleFormSubmission } = fi;
+  const { _formId, _hasRequiredFields, _defaultSubmitActivated, _formLevelErrors, handleFormSubmission } = fi;
 
   const useDefaultSubmit = !fi.hasTargetSubmitButton();
   $: disabled = !$_defaultSubmitActivated;
+
+  $: formHasErrors = !isEmpty($_formLevelErrors);
+  $: checkFormHasErrors = (formHasErrors) ? ' has-errors' : '';
+
+  $: plusDerivedClasses = `${checkFormHasErrors}`;
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -30,7 +37,7 @@
 
 <form
   id={fi._formId}
-  class={`formation ${fi._formClasses}`}
+  class={`formation ${fi._formClasses}${plusDerivedClasses}`}
   on:submit={e => handleSubmit(e)}
 >
 
@@ -41,10 +48,27 @@
       <!-- TODO - form errors list HERE -->
       <button
         type="submit"
+        id={`formation-submit-default${_formId ? `-${_formId}` : ''}`}
         class="form-submit-btn default primary w-full"
         {disabled}
-      >Submit</button>
+      >
+      {#if formHasErrors}
+        Invalid Form
+      {:else}
+        Submit
+      {/if}
+    </button>
     </div>
+  {/if}
+
+  {#if formHasErrors}
+    <ul class="show-list form errors">
+      {#each $_formLevelErrors as error}
+        <li class="error-message">
+          {error.label}: {error.message}
+        </li>
+      {/each}
+    </ul>
   {/if}
 </form>
 

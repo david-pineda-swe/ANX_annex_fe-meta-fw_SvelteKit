@@ -1,6 +1,7 @@
 import { isEmpty } from '@annexjs/uitils';
-import { writable } from 'svelte/store';
+import { writable, get } from 'svelte/store';
 import { zfd } from 'zod-form-data';
+import { parseEnhancedZFDerrors } from './util/parse-errors';
 
 class FormationInterface {
   // PROPS FROM CONFIG
@@ -22,6 +23,7 @@ class FormationInterface {
   _hasTargetSubmitButton = false;
   _hasRequiredFields = false;
   _defaultSubmitActivated = writable(false);
+  _formLevelErrors = writable([]);
   //
 
   _augmentInputNodes = (nodes: Array<any>): Array<any> => {
@@ -173,6 +175,12 @@ class FormationInterface {
     );
   };
 
+  _setFormErrorsTo = (provided: Array<any>) => {
+    const { _nodeIndex } = this;
+    const errors = parseEnhancedZFDerrors(provided, _nodeIndex);
+    this._formLevelErrors.set(errors);
+  };
+
   constructor(params: any) {
     const { formOutline, targetActions, formSubmitAction } = params;
     this._formSubmitAction = formSubmitAction;
@@ -217,6 +225,10 @@ class FormationInterface {
     return this._hasTargetSubmitButton;
   };
 
+  hasFormLevelErrors = () => {
+    return !isEmpty(get(this._formLevelErrors));
+  };
+
   getTargetAction = (actionKey: string) => {
     const target = this._targetActions[actionKey];
     if (target) {
@@ -235,24 +247,41 @@ class FormationInterface {
     });
   };
 
+  validateFormData = (formData: any) => {
+    if (formData) {
+      // IS FOR SUBMISSION
+      return this._schema.parse(formData); // ! <<< VALIDATION !!!
+    } else {
+      // PRE FLIGHT RE-VALIDATION CHECK-OFF
+      try {
+        const enteredFormData = get(this._formData);
+        this._schema.parse(enteredFormData); // ! <<< VALIDATION !!!
+        this._setFormErrorsTo([]);
+      } catch (errors: any) {
+        this._setFormErrorsTo(errors);
+      }
+    }
+  };
+
   handleFormSubmission = (event: any) => {
     // console.log('>> FORM SUBMIT EVENT OBJ:', event);
-    const { _schema, _formSubmitAction } = this;
+    const { _formSubmitAction } = this;
 
     const formData = new FormData(event.target);
     const providedEntries = Object.fromEntries(formData);
 
     try {
-      const validated = _schema.parse(providedEntries); // ! <<< VALIDATION !!!
-
       if (_formSubmitAction) {
+        this._setFormErrorsTo([]);
+        const validated = this.validateFormData(providedEntries);
+
         _formSubmitAction(validated, providedEntries);
       } else {
+        // TODO - THROW ERROR AND HANDLE DEV MISTAKE
         console.error('(!) FORM SUBMIT ACTION WAS NOT PROVIDED - (!)');
       }
-    } catch (errors) {
-      // TODO - Apply form level errors to the UI
-      console.error(' HANDLE VALIDATION ERRORS:', errors);
+    } catch (errors: any) {
+      this._setFormErrorsTo(errors);
     }
   };
 
