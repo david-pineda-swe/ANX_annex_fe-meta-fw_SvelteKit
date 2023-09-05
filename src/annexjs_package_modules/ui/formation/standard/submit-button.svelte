@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { InputRequirements } from "src/global";
   import { splitRequirements } from "../util/split-requirements";
-  import { isEmpty } from "@annexjs/uitils";
+  import { isEmpty } from "@annexjs/utils";
 
   export let inputReqs: InputRequirements = {
     fi: undefined,

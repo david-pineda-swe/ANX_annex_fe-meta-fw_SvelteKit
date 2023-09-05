@@ -15,7 +15,7 @@
   import Icon from '@iconify/svelte';
   import Fa from 'svelte-fa'; // X
   import { faSquareCaretLeft } from '@fortawesome/free-solid-svg-icons'; // X
-  import { isEmpty } from '@annexjs/uitils';
+  import { isEmpty } from '@annexjs/utils';
 
   export let designation: string;
 
