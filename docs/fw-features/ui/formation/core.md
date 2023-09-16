@@ -47,10 +47,10 @@ https://www.npmjs.com/package/zod-form-data
 - [x] REQUIRED indication
 - [>] integrate data validation
   - [?] Integrate ZFD FORM submission
-  - [>] Validation Gate
+  - [x] Validation Gate
   - [ ] Plan standard network client
   - [ ] LOOK FOR AN API TO TEST AGAINST
-  - [ ] Handle form submition errors and success
+  - [>] Handle form submission errors and success
     - [ ] REQUEST ERROR HANDLING GEN / SPEC
     - [ ] DEFAULT ERRORS AND HINTS ON AUGMENTATION
     - [ ] FORM LEVEL ERRORS

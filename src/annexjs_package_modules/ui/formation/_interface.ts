@@ -24,6 +24,7 @@ class FormationInterface {
   _hasRequiredFields = false;
   _defaultSubmitActivated = writable(false);
   _formLevelErrors = writable([]);
+  _formIsProcessing = writable(false);
   //
 
   _augmentInputNodes = (nodes: Array<any>): Array<any> => {
@@ -265,7 +266,9 @@ class FormationInterface {
 
   handleFormSubmission = (event: any) => {
     // console.log('>> FORM SUBMIT EVENT OBJ:', event);
-    const { _formSubmitAction } = this;
+    const { _formSubmitAction, _formIsProcessing } = this;
+
+    _formIsProcessing.set(true);
 
     const formData = new FormData(event.target);
     const providedEntries = Object.fromEntries(formData);

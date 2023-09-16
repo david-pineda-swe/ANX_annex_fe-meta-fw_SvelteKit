@@ -1,11 +1,12 @@
 <script lang="ts">
   import { isEmpty } from "@annexjs/utils";
   import TierA_Fieldset from "./tier-A-fieldset.svelte";
+  import ProcessingScreen from "./processing-screen.svelte";
 
   export let formInterface: any;
   export const fi = formInterface;
   
-  const { _formId, _hasRequiredFields, _defaultSubmitActivated, _formLevelErrors, handleFormSubmission } = fi;
+  const { _formId, _hasRequiredFields, _defaultSubmitActivated, _formLevelErrors, _formIsProcessing, handleFormSubmission } = fi;
 
   const useDefaultSubmit = !fi.hasTargetSubmitButton();
   $: disabled = !$_defaultSubmitActivated;
@@ -20,8 +21,6 @@
     handleFormSubmission(event);
   };
 </script>
-
-
 
 <div class="form-content pre-block">
   <!-- TODO - consider state/scenario slots - toasts and validation messaging -->
@@ -76,6 +75,10 @@
   <!-- <slot /> -->
 </div>
 
+
+{#if $_formIsProcessing}
+  <ProcessingScreen/>
+{/if}
 
 
 <style lang="scss">
