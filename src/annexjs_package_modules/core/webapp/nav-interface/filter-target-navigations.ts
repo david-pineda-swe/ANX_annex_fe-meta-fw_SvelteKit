@@ -1,5 +1,5 @@
-import { isEmpty } from "@annexjs/uitils";
-import type { NavigationConfig } from "src/global";
+import { isEmpty } from '@annexjs/utils';
+import type { NavigationConfig } from 'src/global';
 
 // - many locations for a Menu
 // - one of menu per location
@@ -21,7 +21,7 @@ const filterTargetNavigations = (args: FilterTargetNavArgs) => {
   //   console.log(configurations);
   // }
 
-  return (!isEmpty(configurations)) ? configurations : null;
-}
+  return !isEmpty(configurations) ? configurations : null;
+};
 
 export default filterTargetNavigations;

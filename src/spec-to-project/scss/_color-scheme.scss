@@ -4,6 +4,7 @@
 	--copy-white: #fac5fb;
 	//
 	--pink-01: #f667f9;
+  --red-01: rgb(255, 122, 122);
 	//
 	--blue-01: #11b3f3;
 	--blue-02: rgb(23, 13, 171);
@@ -14,6 +15,8 @@
 	--purple-04: #250954;
 	--purple-05: #160632;
 	//
+  --lt-gray-00: #999;
+  --lt-gray-01: #ccc;
 	--dk-gray-01: #2d2e2f;
 	--dk-gray-02: #222223;
 	--dk-gray-03: #181818;
@@ -31,5 +34,13 @@
 	--card-heading-color: var(--purple-03);
 	--card-links: var(--blue-02);
 	--text-color: var(--copy-white);
+	--text-color-negative: var(--purple-04); 
 	--links: var(--blue-01);
+  --error-highlight: var(--red-01);
+
+  // - to FORMS
+  --form-label-color: var(--lt-gray-00);
+  --form-copy-color: var(--lt-gray-01);
+  --form-input-border-muted: var(--lt-gray-00);
+  --form-input-border-highlighted: var(--lt-gray-01);
 }

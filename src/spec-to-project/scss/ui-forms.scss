@@ -1,0 +1,259 @@
+// STANDARD //
+$left-col-width: 30%;
+$right-col-width: 70%;
+$disabled-opacity: .5;
+
+@mixin labelTheme {
+  padding: 0 0 5px 0;
+  color: var(--form-label-color);
+  font-size: var(--form-label-size);
+}
+
+form.formation {
+  .form-fieldset {
+    border-top: 1px solid var(--lt-gray-00);
+
+    legend {
+      color: var(--form-label-color);
+      font-size: var(--form-copy-size);
+    }
+  }
+
+  .form-field {
+    &.disabled {
+      opacity: $disabled-opacity;
+    }
+    &.has-errors {
+      label {
+        color: var(--error-highlight);
+      }
+      .input-container {
+        input, input::placeholder, textarea, textarea::placeholder {
+          color: var(--error-highlight);
+          border-color: var(--error-highlight);
+        }
+        .radio-btn-list {
+          .radio-btn-container {
+            label {
+              color: var(--error-highlight);
+            }
+            label::before {
+              border-color: var(--error-highlight);
+            }
+          }
+        }
+      }
+    }
+  
+    label {
+      width: $left-col-width;
+      @include labelTheme;
+    }
+    
+    .input-container {
+      position: relative;
+      width: $right-col-width;
+      // border: 1px solid red;
+      
+      input {
+        @include inputTheme();
+        width: 100%;
+      }
+      
+      // button {
+      //   border: 1px solid orange;
+      // }
+      input::placeholder {
+        opacity: .5;
+      }
+
+      // RADIO / CHECKBOX
+      $toggleBtnSpace: 40px;
+      $toggleBtnWidth: 20px;
+      $toggleBtnRadius: 10px;
+      $toggleBtnTopOffset: 17px;
+      // label {
+      //   border: 1px solid fuchsia;
+      // }
+      .radio-btn-container,
+      .checkbox-btn-container {
+        display: flex;
+        position: relative;
+      }
+
+      // RADIO BUTTONS
+      .radio-btn-list {
+        margin-bottom: var(--block-bottom-margin);
+        // border: 2px solid green;
+        .radio-btn-container {
+          margin-right: var(--item-side-margin);
+          // border: 2px solid lightblue;
+          input[type="radio"].form-radio-btn {
+            opacity: 0;
+            width: $toggleBtnSpace;
+          }
+          label {
+            @include labelTheme;
+            padding-top: var(--item-top-padding);
+            font-size: var(--form-copy-size);
+            min-width: 50px;
+            max-width: 200px;
+            // border: 3px solid blue;
+
+            
+            &::before {
+              content: '';
+              position: absolute;
+              top: $toggleBtnTopOffset;
+              left: 0px;
+              width: $toggleBtnWidth;
+              height: $toggleBtnWidth;
+              border-radius: $toggleBtnRadius;
+              border: 1px solid white;
+            }
+          }
+
+          &.checked {
+            label {
+              &::after {
+                content: '';
+                position: absolute;
+                top: $toggleBtnTopOffset;
+                left: 0px;
+                width: $toggleBtnWidth;
+                height: $toggleBtnWidth;
+                border-radius: $toggleBtnRadius;
+                background-color: white;
+              }
+            }
+          }
+
+          input[type="radio"].form-radio-btn:focus {
+            + label {
+              border-bottom: 2px solid var(--form-input-border-highlighted);
+            }
+          }
+        }
+      }
+
+      // CHECKBOX
+      .checkbox-btn-container {
+        margin-bottom: var(--block-bottom-margin);
+        input[type="checkbox"].form-checkbox-btn {
+          opacity: 0;
+          width: $toggleBtnSpace;
+        }
+        
+        label {
+          @include labelTheme;
+          padding-top: var(--item-top-padding);
+          font-size: var(--form-copy-size);
+          // border: 3px solid red;
+          
+          &::before {
+            content: '';
+            position: absolute;
+            top: $toggleBtnTopOffset;
+            left: 0px;
+            width: $toggleBtnWidth;
+            height: $toggleBtnWidth;
+            border: 1px solid white;
+          }
+        }
+        input[type="checkbox"].form-checkbox-btn:focus {
+          + label {
+            &::after {
+              content: '';
+              position: absolute;
+              top: $toggleBtnTopOffset - 4;
+              left: -4px;
+              width: $toggleBtnWidth + 8;
+              height: $toggleBtnWidth + 8;
+              border: 1px solid white;
+            }
+          }
+        }
+
+        // NOTE - THIS is an alternative style for the standard checkbox input - current is using an icon for visual confirmation 
+        // &.checked {
+        //   label {
+        //     &::after {
+        //       content: '';
+        //       position: absolute;
+        //       top: $toggleBtnTopOffset;
+        //       left: 0px;
+        //       width: $toggleBtnWidth;
+        //       height: $toggleBtnWidth;
+        //       background-color: white;
+        //     }
+        //   }
+        // }
+      }
+
+      // TEXTAREA
+      $r: var(--input-radius);
+      $bm: var(--form-input-border-muted);
+      $bh: var(--form-input-border-highlighted);
+      textarea {
+        @include inputTheme;
+        width: 100%;
+        resize: vertical;
+        // border-color: $bm $bh $bh $bm;
+        border-color: $bm;
+        border-radius: $r $r 0px $r;
+        height: calc(var(--block-single-height) * 4);
+      }
+    }
+  
+  }
+
+  .show-list {
+    width: 100%;
+    list-style: disc;
+    margin-bottom: var(--item-bottom-margin);
+    
+    &.errors {
+      color: var(--error-highlight);
+    }
+    &.hints {
+      color: rgb(248, 166, 71);
+    }
+  }
+
+  &.has-errors {
+    button[type="submit"] {
+      color: var(--pure-white);
+      background-color: red;
+      // background-color: var(--error-highlight);
+    }
+  }
+
+  // button {
+  //   // border: 1px solid orange;
+  // }
+}
+
+// STACKED FORMATION //
+.formation.stacked {
+  .form-field {
+    flex-direction: column;
+
+    // & > * {
+    //   border: 1px solid fuchsia;
+    // }
+
+    label {
+      width: 100%;
+      text-align: left;
+    }
+    input {
+      width: 100%;
+    }
+    .input-container {
+      width: 100%;
+    }
+  }
+  .show-list {
+    padding: 0 0 0 20px;
+  }
+}

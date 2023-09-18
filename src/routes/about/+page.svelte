@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Card from "@annexjs/ui/copy/card.svelte";
-	import { smoothScroll } from "@annexjs/uitils";
+	import { smoothScroll } from "@annexjs/utils";
 </script>
 
 <svelte:head>

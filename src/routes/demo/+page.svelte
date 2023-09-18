@@ -4,6 +4,7 @@
     // SECTIONS
     // import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
     import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
+    import ArbitraryFormationA from "./sample-of/arbitrary-formation-a.svelte";
 </script>
 
 <svelte:head>
@@ -16,7 +17,6 @@
 	<DynamicSection
 		supportClasses={"lg hero"}
 		layout={"ordered"}
-		sectionConfig={{}}
 	>
 		<div slot="background" />
 		
@@ -35,9 +35,15 @@
 	</DynamicSection>
 
 	<DynamicSection
+		supportClasses={"demo formation"}
+		layout={"stacked"}
+	>
+        <ArbitraryFormationA />
+		
+	</DynamicSection>
+	<DynamicSection
 		supportClasses={null}
 		layout={"stacked"}
-		sectionConfig={{}}
 	>
 		<h1>Some Default content</h1>
 		<h2>This would be some basic content</h2>
@@ -45,15 +51,6 @@
 	<DynamicSection
 		supportClasses={null}
 		layout={"stacked"}
-		sectionConfig={{}}
-	>
-		<h1>Some Default content</h1>
-		<h2>This would be some basic content</h2>
-	</DynamicSection>
-	<DynamicSection
-		supportClasses={null}
-		layout={"stacked"}
-		sectionConfig={{}}
 	>
 		<h1>Some Default content</h1>
 		<h2>This would be some basic content</h2>

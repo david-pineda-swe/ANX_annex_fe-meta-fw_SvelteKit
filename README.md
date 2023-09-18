@@ -52,10 +52,15 @@
 # Framework Features
 
 - TBD - fw-features list table goes here
-- ui/copy
-  - [IconIndex](./docs/fw-features/ui/copy/icon-index.md)
-- ui/layout
-  - [DynamicSection](./docs/fw-features/ui/layout/dynamic-section.md)
+- ui
+  - copy/
+    - [Card-!!!](./docs/fw-features/ui/copy/card.md)
+    - [IconIndex](./docs/fw-features/ui/copy/icon-index.md)
+  - formation/
+    - [core-!!!](./docs/fw-features/ui/formation/core.md)
+  - layout/
+    - [DynamicSection](./docs/fw-features/ui/layout/dynamic-section.md)
+    - [FullPageContainer-!!!](./docs/fw-features/ui/layout/dynamic-section.md)
 
 ## Core Features
 

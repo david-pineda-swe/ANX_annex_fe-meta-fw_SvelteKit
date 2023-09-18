@@ -7,14 +7,46 @@
 }
 
 // - STYLE GROUPS
-@mixin drop-shadow {
+@mixin dropShadow {
   box-shadow: 2px 3px 6px rgba(63, 2, 66, 0.45);
-  padding: 0.25em .5em;
 }
 
-@mixin card-theme {
-  @include drop-shadow;
+@mixin cardTheme {
+  @include dropShadow;
   background-color: rgba(255, 255, 255, 0.45);
   border-radius: 3px;
   color: var(--bg-primary-color);
+}
+
+// - INPUTS
+
+@mixin inputTheme {
+  height: var(--block-single-height);
+  background: none;
+  border: 1px solid var(--form-input-border-muted);
+  color: var(--form-copy-color);
+  padding: 0.25em .75em;
+  font-size: var(--form-copy-size);
+  border-radius: var(--input-radius);
+}
+
+// - BUTTONS
+
+@mixin buttonTheme {
+  @include inputTheme;
+  margin: 10px 10px 10px 0;
+  @include dropShadow;
+  // font-weight: bold;
+}
+
+@mixin buttonPrimary {
+  @include buttonTheme;
+  color: var(--text-color-negative);
+  background-color: rgba(255, 255, 255, 0.858);
+}
+
+@mixin buttonSecondary {
+  @include buttonTheme;
+  border: 2px solid var(--bg-secondary-color);
+  background-color: var(--bg-tertiary-color);
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isEmpty } from "@annexjs/uitils";
+  import { isEmpty } from "@annexjs/utils";
   import type { NavigationNode } from "src/global";
 
   import IconIndex from "@annexjs/ui/copy/icon-index.svelte";

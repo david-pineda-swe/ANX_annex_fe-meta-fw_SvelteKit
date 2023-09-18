@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "strict": true,
     "moduleResolution": "node",
     "module": "es2020",
-    "lib": ["es2020", "DOM"],
+    "lib": ["es2020", "DOM", "dom", "dom.iterable"],
     "target": "es2020",
     /**
       svelte-preprocess cannot figure out whether you have a value or a type, so tell TypeScript
@@ -31,7 +32,7 @@
 
       // Project based modules go here
       "@nnex/*": ["src/annexjs-extended/*"], // < Package module extended & support development
-      "$pec/*": ["src/spec-to-project/*"], // < Project specififc development modules
+      "$pec/*": ["src/spec-to-project/*"] // < Project specififc development modules
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],

@@ -15,7 +15,7 @@ a:hover {
 }
 
 pre {
-  @include card-theme;
+  @include cardTheme;
 	font-size: 16px;
 	font-family: var(--font-mono);
   font-weight: bold;
@@ -28,7 +28,7 @@ h1,
 h2,
 h3{
 	color: var(--heading-color);
-  margin-bottom: var(--heading-margin-bottom);
+  margin-bottom: var(--heading-bottom-margin);
   // font-weight: bold;
 }
 // h4 = black
@@ -42,7 +42,7 @@ h4 { font-size: 1.25rem; }
 // LISTS
 ul {
   color: var(--text-color);
-  margin-bottom: calc(var(--heading-margin-bottom) + 20px);
+  margin-bottom: calc(var(--heading-bottom-margin) + 20px);
 
   li {
     margin-bottom: 15px;
