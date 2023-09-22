@@ -1,10 +1,11 @@
 <script lang="ts">
 	// DEBUG TOOLS
 	// import XpSandbox from "@annexjs/debug-tools/xp-sandbox/index.svelte";
-    // SECTIONS
-    // import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
-    import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
-    import ArbitraryFormationA from "./sample-of/arbitrary-formation-a.svelte";
+	// SECTIONS
+	// import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
+	import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
+	import FluidThumbnailGallery from "@annexjs/ui/layout/fluid-thumbnail-gallery.svelte";
+	import ArbitraryFormationA from "./sample-of/arbitrary-formation-a.svelte";
 </script>
 
 <svelte:head>
@@ -18,7 +19,9 @@
 		supportClasses={"lg hero"}
 		layout={"ordered"}
 	>
-		<div slot="background" />
+		<div slot="background">
+			<FluidThumbnailGallery />
+		</div>
 		
 		<div class="copy" slot="primary">
 			<h1>Hero <br/> Primary Content</h1>
@@ -38,9 +41,9 @@
 		supportClasses={"demo formation"}
 		layout={"stacked"}
 	>
-        <ArbitraryFormationA />
-		
+		<ArbitraryFormationA />
 	</DynamicSection>
+
 	<DynamicSection
 		supportClasses={null}
 		layout={"stacked"}
