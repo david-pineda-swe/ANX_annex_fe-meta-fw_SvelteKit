@@ -5,7 +5,7 @@
 	let galleryConfig: any = {
 		backgroundColor: "red",
 		columnCount: 1, // [1, 2, 3, false] false for infinite
-		tileSize: '', // [sm, md, lg] default = sm
+		tileSize: 'lg', // [sm, md, lg] default = sm
 		//
 		tileBorder: "",
 		tiles: [
@@ -27,12 +27,18 @@
 				title: '3',
 				message: '3-tile'
 			},
+			{
+				image: '',
+				backgroundColor: 'fuchsia',
+				title: '3',
+				message: '3-tile'
+			},
 		],
 		// infiniteTiles: false,
 		// maxWidth: "300px",
 		// maxheight: "500px"
 	};
-	const { backgroundColor, columnCount } = galleryConfig;
+	const { backgroundColor, columnCount, tileSize } = galleryConfig;
 
 	let galleryStyle: string = '';
 
@@ -41,29 +47,31 @@
 	}
 
 	// CLASSES
-	let columnClass: string;
+	let columnClasses: string;
 	switch(columnCount) {
 		case 1:
-			columnClass = 'single';
+			columnClasses = 'single';
 			break;
 		case 2:
-			columnClass = 'double';
+			columnClasses = 'double';
 			break;
 		case 3:
-			columnClass = 'tri';
+			columnClasses = 'tri';
 			break;
 		default:
-			columnClass = 'marquee'
+			columnClasses = 'marquee'
 	}
 
-	let classes: string = `ftn-gallery ${columnClass}`;
+	columnClasses = `${columnClasses}${(tileSize) ? ` ${tileSize}` : ''}`;
+
+	let classes: string = `ftn-gallery ${columnClasses}`;
 
 </script>
 
 <div class={classes} style={galleryStyle}>
 	{#if galleryConfig.tiles}
 		{#each galleryConfig.tiles as tile }
-			<FluidThumbnailItem {tile} {columnClass} />
+			<FluidThumbnailItem {tile} {columnClasses} />
 		{/each}
 	{/if}
 </div>

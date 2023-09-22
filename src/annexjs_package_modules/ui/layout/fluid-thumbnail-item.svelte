@@ -1,6 +1,6 @@
 <script lang="ts">
   export let tile: any = {};
-  export let columnClass: string = 'single';
+  export let columnClasses: string = 'single';
   console.log('>> WORKING TILE:', tile);
   const { backgroundColor } = tile;
 
@@ -10,7 +10,7 @@
     style = `${style} background-color: ${backgroundColor};`
   }
 
-  let classes: string = `ftn-gallery-tile ${columnClass}`;
+  let classes: string = `ftn-gallery-tile ${columnClasses}`;
   
 </script>
 
@@ -24,6 +24,15 @@
 
     &.single {
       margin: 0 auto;
+    }
+
+    &.md {
+      width: 150px;
+      flex: 0 0 150px; // flex-grow, flex-shrink, flex-basis
+    }
+    &.lg {
+      width: 300px;
+      flex: 0 0 300px;
     }
   }
 </style>
