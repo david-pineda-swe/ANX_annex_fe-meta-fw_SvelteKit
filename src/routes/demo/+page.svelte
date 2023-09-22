@@ -19,9 +19,8 @@
 		supportClasses={"lg hero"}
 		layout={"ordered"}
 	>
-		<div slot="background">
-			<FluidThumbnailGallery />
-		</div>
+
+		<FluidThumbnailGallery slot="background"/>
 		
 		<div class="copy" slot="primary">
 			<h1>Hero <br/> Primary Content</h1>
