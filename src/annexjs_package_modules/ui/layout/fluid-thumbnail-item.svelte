@@ -1,7 +1,7 @@
 <script lang="ts">
   export let tile: any = {};
-  export let columnClasses: string = 'single';
-  console.log('>> WORKING TILE:', tile);
+  export let columnClasses: string = '';
+  // console.log('>> WORKING TILE:', tile);
   const { backgroundColor } = tile;
 
   let style: string = '';
@@ -18,20 +18,25 @@
 
 <style lang='scss'>
   .ftn-gallery-tile {
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 75px;
+    min-height: 75px;
     border: 1px solid white;
 
-    &.single {
-      margin: 0 auto;
-    }
+    // d: 75, sm: 150, md: 225, lg: 300
 
-    &.md {
+    &.sm {
       width: 150px;
-      flex: 0 0 150px; // flex-grow, flex-shrink, flex-basis
+      height: 150px;
+    }
+    
+    &.md {
+      width: 225px;
+      height: 225px;
+      flex: 0 0 225px; // flex-grow, flex-shrink, flex-basis
     }
     &.lg {
       width: 300px;
+      height: 300px;
       flex: 0 0 300px;
     }
   }
