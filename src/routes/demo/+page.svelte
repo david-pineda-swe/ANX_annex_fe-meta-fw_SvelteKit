@@ -18,6 +18,7 @@
 	<DynamicSection
 		supportClasses={"lg hero"}
 		layout={"ordered"}
+		specHeight={"750px"}
 	>
 
 		<FluidThumbnailGallery slot="background"/>

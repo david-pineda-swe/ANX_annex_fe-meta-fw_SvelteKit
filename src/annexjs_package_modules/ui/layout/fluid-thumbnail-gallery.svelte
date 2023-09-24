@@ -4,11 +4,15 @@
 
 	// Default gallery Config
 	let galleryConfig: any = {
-		backgroundColor: "red",
-		columnCount: false, // [1, 2, 3, false] false for infinite
+		backgroundColor: "rgba(77, 132, 189, 0.33)",
+		// backgroundColor: "red",
+		columnCount: 3, // [1, 2, 3, false] false for infinite
 		// columnCount: 4,
 		tileSize: 'md', // [sm, md, lg] default = sm
 		centerList: true,
+		//
+		vertRowSpacing: '20px',
+		opacity: '1',
 		// TODO - vertical row spacing 
 		//
 		tileBorder: "",
@@ -33,7 +37,7 @@
 			},
 			{
 				image: '',
-				backgroundColor: 'fuchsia',
+				backgroundColor: 'purple',
 				title: '4',
 				message: '4-tile'
 			},
@@ -49,6 +53,24 @@
 				title: '6',
 				message: '6-tile'
 			},
+			{
+				image: '',
+				backgroundColor: 'teal',
+				title: '7',
+				message: '7-tile'
+			},
+			{
+				image: '',
+				backgroundColor: 'gray',
+				title: '8',
+				message: '8-tile'
+			},
+			{
+				image: '',
+				backgroundColor: 'yellow',
+				title: '9',
+				message: '9-tile'
+			},
 		],
 		// infiniteTiles: false,
 		// maxWidth: "300px",
@@ -58,7 +80,6 @@
 		backgroundColor,
 		columnCount,
 		tileSize,
-		centerList,
 		tiles
 	} = galleryConfig;
 
@@ -91,7 +112,11 @@
 <div class={classes} style={galleryStyle}>
 	{#if galleryConfig.tiles}
 		{#each groupedTiles as tileGroup}
-			<FluidThumbnailGroup {tileGroup} {centerList} {columnClasses}/>
+			<FluidThumbnailGroup
+				{tileGroup}
+				{galleryConfig}
+				{columnClasses}
+			/>
 		{/each}
 	{/if}
 </div>
@@ -102,4 +127,8 @@
 		display: flex;
 		flex-direction: column;
 	}
+
+	// .asdf {
+	// 	background-color: rgba(77, 132, 189, 0.33);
+	// }
 </style>

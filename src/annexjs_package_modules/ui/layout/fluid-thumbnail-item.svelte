@@ -1,7 +1,6 @@
 <script lang="ts">
   export let tile: any = {};
   export let columnClasses: string = '';
-  // console.log('>> WORKING TILE:', tile);
   const { backgroundColor } = tile;
 
   let style: string = '';

@@ -1,21 +1,36 @@
 <script lang="ts">
+  import { mediaIs } from "@annexjs/core/webapp/stores/reactive-media";
+  import { isEmpty } from "@annexjs/utils";
+
   export let supportClasses: any = null; // null, sm, lg, full
   export let layout: string = 'stacked'; // stacked, rev-stacked, ordered, ordered-left, ordered-right
+  export let specHeight: string = '';
   // export let sectionConfig: any = null; // TBD
   // headline: string = "Headline here..."; headline="Something Great!"
   // subheading: string = "Subheading"; subheading="Ta-dur!"
   // console.log(">> DYNAMIC_SECTION HAS CONFIG");
   // console.table(sectionConfig);
+  let style: string;
+  if (!isEmpty(specHeight)) {
+    style = `height: ${specHeight};`
+  }
+
+  let MQ_flag: string;
+  if ($mediaIs.sm) {
+    MQ_flag = 'sm-media';
+  }
+
+  $:classes = `dynamic ${supportClasses} ${MQ_flag}` 
 </script>
 
-<section class="dynamic {supportClasses}">
+<section class={classes}>
   {#if $$slots['background']}
     <div class="section-bg">
       <slot name="background" />
     </div>
   {/if}
 
-  <div class="section-layout {layout}">
+  <div class="section-layout {layout}" {style}>
     {#if $$slots['primary']}
       <div class="subsection primary">
         <div class="anchor">
@@ -54,10 +69,7 @@
   // SECTION
   .dynamic {
     position: relative;
-    padding-top: var(--section-vertical-padding);
     margin-bottom: 40px;
-    // border: 1px solid red;
-    // background-color: red;
 
     &.sm {
       min-height: 300px;
@@ -69,10 +81,9 @@
       height: 100%;
     }
 
-    &.hero {
-      padding-top: var(--page-header-top);
-      top: var(--negative-page-header-top);
-    }
+    // &.hero {
+    //   border-top: 2px solid green;
+    // }
 
     .section-bg {
       position: absolute;

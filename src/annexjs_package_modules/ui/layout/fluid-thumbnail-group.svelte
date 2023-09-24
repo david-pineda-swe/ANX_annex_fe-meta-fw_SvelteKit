@@ -2,19 +2,22 @@
 	import FluidThumbnailItem from "./fluid-thumbnail-item.svelte";
 
   export let tileGroup: unknown = [];
-	export let centerList: boolean = false;
+	export let galleryConfig: any;
   export let columnClasses: string = '';
+
+	const { centerList, vertRowSpacing, opacity } = galleryConfig;
 
 	//@ts-ignore
 	const tiles: Array<unknown> = tileGroup;
 
 	const isCentered = (centerList) ? ' centered' : '';
 	const isMarquee = (columnClasses.includes('marquee')) ? ' marquee' : '';
-	let classes: string = `tile-group${isCentered}${isMarquee}`;
+	const classes: string = `tile-group${isCentered}${isMarquee}`;
+	const style: string = `margin-top: ${vertRowSpacing}; opacity: ${opacity}`;
 </script>
 
-<div class={classes}>
-	{#each tiles as tile }
+<div class={classes} {style}>
+	{#each tiles as tile}
 		<FluidThumbnailItem {tile} {columnClasses} />
 	{/each}
 </div>
