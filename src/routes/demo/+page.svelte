@@ -5,7 +5,9 @@
 	// import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
 	import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
 	import FluidThumbnailGallery from "@annexjs/ui/layout/fluid-thumbnail-gallery.svelte";
+	
 	import ArbitraryFormationA from "./sample-of/arbitrary-formation-a.svelte";
+	import { galleryConfig_A } from "./sample-of/test-gallery_configs";
 </script>
 
 <svelte:head>
@@ -21,7 +23,7 @@
 		specHeight={"750px"}
 	>
 
-		<FluidThumbnailGallery slot="background"/>
+		<FluidThumbnailGallery galleryConfig={galleryConfig_A} slot="background"/>
 		
 		<div class="copy" slot="primary">
 			<h1>Hero <br/> Primary Content</h1>
@@ -48,7 +50,7 @@
     supportClasses={"demo-interactive-gallery"}
     layout={"stacked"}
     >
-    <FluidThumbnailGallery slot="full-cover" />
+    <FluidThumbnailGallery galleryConfig={galleryConfig_A} slot="full-cover" />
 		<!-- specHeight={"760px"} -->
     <!-- <FluidThumbnailGallery slot="background"/> -->
   </DynamicSection>
