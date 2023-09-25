@@ -4,8 +4,9 @@
 
 	// Default gallery Config
 	let galleryConfig: any = {
-		backgroundColor: "rgba(77, 132, 189, 0.33)",
-		// backgroundColor: "red",
+		backgroundStyles: "url('./images/sample/sample_geo_texture.jpg')",
+		// backgroundStyles: "rgba(77, 132, 189, 0.33)",
+		// backgroundStyles: "red",
 		columnCount: 3, // [1, 2, 3, false] false for infinite
 		// columnCount: 4,
 		tileSize: 'md', // [sm, md, lg] default = sm
@@ -19,55 +20,57 @@
 		tiles: [
 			{
 				image: '',
-				backgroundColor: 'green',
+				// backgroundStyles: 'green',
+				backgroundStyles: "url('./images/sample/sample_leather_texture.jpg')",
 				title: '1',
 				message: '1-tile'
 			},
 			{
 				image: '',
-				backgroundColor: 'blue',
+				backgroundStyles: 'blue',
 				title: '2',
 				message: '2-tile'
 			},
 			{
 				image: '',
-				backgroundColor: 'fuchsia',
+				backgroundStyles: 'fuchsia',
 				title: '3',
 				message: '3-tile'
 			},
 			{
 				image: '',
-				backgroundColor: 'purple',
+				backgroundStyles: 'purple',
 				title: '4',
 				message: '4-tile'
 			},
 			{
 				image: '',
-				backgroundColor: 'red',
+				backgroundStyles: 'red',
 				title: '5',
 				message: '5-tile'
 			},
 			{
 				image: '',
-				backgroundColor: 'orange',
+				backgroundStyles: 'orange',
 				title: '6',
 				message: '6-tile'
 			},
 			{
 				image: '',
-				backgroundColor: 'teal',
+				// backgroundStyles: 'teal',
+				backgroundStyles: "url('./images/sample/sample_canvas_texture.jpg')",
 				title: '7',
 				message: '7-tile'
 			},
 			{
 				image: '',
-				backgroundColor: 'gray',
+				backgroundStyles: 'gray',
 				title: '8',
 				message: '8-tile'
 			},
 			{
 				image: '',
-				backgroundColor: 'yellow',
+				backgroundStyles: 'yellow',
 				title: '9',
 				message: '9-tile'
 			},
@@ -77,17 +80,23 @@
 		// maxheight: "500px"
 	};
 	const {
-		backgroundColor,
+		backgroundStyles,
 		columnCount,
 		tileSize,
+		vertRowSpacing,
 		tiles
 	} = galleryConfig;
 
 	let galleryStyle: string = '';
 
-	if (backgroundColor) {
-		galleryStyle = `${galleryStyle} background-color: ${backgroundColor}`;
+	if (backgroundStyles) {
+		galleryStyle = `${galleryStyle} background: ${backgroundStyles};`;
 	}
+
+  // TODO - ADD A STYLE AMMENDMENT UTIL
+  if (vertRowSpacing) {
+    galleryStyle = `${galleryStyle} padding-bottom: ${vertRowSpacing};`;
+  }
 
 	// CLASSES
 	let columnClasses: string;

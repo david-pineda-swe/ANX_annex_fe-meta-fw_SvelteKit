@@ -1,12 +1,12 @@
 <script lang="ts">
   export let tile: any = {};
   export let columnClasses: string = '';
-  const { backgroundColor } = tile;
+  const { backgroundStyles } = tile;
 
   let style: string = '';
 
-  if (backgroundColor) {
-    style = `${style} background-color: ${backgroundColor};`
+  if (backgroundStyles) {
+    style = `${style} background: ${backgroundStyles};`
   }
 
   let classes: string = `ftn-gallery-tile ${columnClasses}`;
