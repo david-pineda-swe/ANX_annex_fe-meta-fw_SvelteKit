@@ -3,7 +3,7 @@
 
   export let tileGroup: unknown = [];
 	export let galleryConfig: any;
-  export let columnClasses: string = '';
+  export let groupingClasses: string = '';
 
 	const { centerList, vertRowSpacing, opacity } = galleryConfig;
 
@@ -11,14 +11,14 @@
 	const tiles: Array<unknown> = tileGroup;
 
 	const isCentered = (centerList) ? ' centered' : '';
-	const isMarquee = (columnClasses.includes('marquee')) ? ' marquee' : '';
+	const isMarquee = (groupingClasses.includes('marquee')) ? ' marquee' : '';
 	const classes: string = `tile-group${isCentered}${isMarquee}`;
 	const style: string = `margin-top: ${vertRowSpacing}; opacity: ${opacity}`;
 </script>
 
 <div class={classes} {style}>
 	{#each tiles as tile}
-		<FluidThumbnailItem {tile} {columnClasses} />
+		<FluidThumbnailItem {tile} {groupingClasses} {galleryConfig}/>
 	{/each}
 </div>
 
@@ -27,7 +27,7 @@
 		display: flex;
 		
 		&.centered {
-			justify-content: space-evenly;
+			justify-content: space-around;
 
 		}
 

@@ -1,15 +1,23 @@
 <script lang="ts">
   export let tile: any = {};
-  export let columnClasses: string = '';
-  const { backgroundStyles } = tile;
+  export let groupingClasses: string = '';
+  export let galleryConfig: any = {};
+  const { backgroundStyles, boxStyles } = tile;
+  const { allBoxStyles } = galleryConfig;
 
   let style: string = '';
 
+  if (allBoxStyles) {
+    style = `${style} ${allBoxStyles}`
+  }
   if (backgroundStyles) {
     style = `${style} background: ${backgroundStyles};`
   }
+  if (boxStyles) {
+    style = `${style} ${boxStyles}`
+  }
 
-  let classes: string = `ftn-gallery-tile ${columnClasses}`;
+  let classes: string = `ftn-gallery-tile ${groupingClasses}`;
   
 </script>
 
@@ -19,7 +27,6 @@
   .ftn-gallery-tile {
     min-width: 75px;
     min-height: 75px;
-    border: 1px solid white;
 
     // d: 75, sm: 150, md: 225, lg: 300
 

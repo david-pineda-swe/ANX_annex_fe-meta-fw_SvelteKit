@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { sortByCount } from "@annexjs/utils";
+  import { sortByCount, sortEvenly } from "@annexjs/utils";
   import FluidThumbnailGroup from "./fluid-thumbnail-group.svelte";
 
 	// Default gallery Config
@@ -7,8 +7,8 @@
 		backgroundStyles: "url('./images/sample/sample_geo_texture.jpg')",
 		// backgroundStyles: "rgba(77, 132, 189, 0.33)",
 		// backgroundStyles: "red",
-		columnCount: 3, // [1, 2, 3, false] false for infinite
-		// columnCount: 4,
+		sortMethod: 'COLUMNS-3', // ['COLUMNS', 'ROWS']
+		// sortMethod: 'ROWS-3',
 		tileSize: 'md', // [sm, md, lg] default = sm
 		centerList: true,
 		//
@@ -16,12 +16,13 @@
 		opacity: '1',
 		// TODO - vertical row spacing 
 		//
-		tileBorder: "",
+		// allBoxStyles: "border: 3px solid white;",
 		tiles: [
 			{
 				image: '',
 				// backgroundStyles: 'green',
 				backgroundStyles: "url('./images/sample/sample_leather_texture.jpg')",
+				// boxStyles: 'border: 5px solid fuchsia;',
 				title: '1',
 				message: '1-tile'
 			},
@@ -71,8 +72,15 @@
 			{
 				image: '',
 				backgroundStyles: 'yellow',
+				boxStyles: 'border: 5px solid green;',
 				title: '9',
 				message: '9-tile'
+			},
+			{
+				image: '',
+				backgroundStyles: 'brown',
+				title: '10',
+				message: '10-tile'
 			},
 		],
 		// infiniteTiles: false,
@@ -81,12 +89,29 @@
 	};
 	const {
 		backgroundStyles,
-		columnCount,
+		sortMethod,
 		tileSize,
 		vertRowSpacing,
 		tiles
 	} = galleryConfig;
 
+  let groupedTiles: Array<unknown>;
+  let factorCount = null;
+  const [sortBy, count] = (sortMethod) ? sortMethod.split('-') : '';
+  factorCount = parseInt(count);
+  const makeColumns = sortBy === 'COLUMNS' && factorCount;
+  const makeRows = sortBy === 'ROWS' && factorCount;
+
+   // GROUPING METHOD
+  if (makeColumns) {
+    groupedTiles = sortByCount(tiles, factorCount);
+  } else if (makeRows) {
+    groupedTiles = sortEvenly(tiles, factorCount);
+  } else {
+    groupedTiles = [tiles];
+  }
+
+  // STYLES
 	let galleryStyle: string = '';
 
 	if (backgroundStyles) {
@@ -98,23 +123,18 @@
   }
 
 	// CLASSES
-	let columnClasses: string;
-	if (Number.isInteger(columnCount)) {
-		columnClasses = `column-count-${columnCount}`;
+	let groupingClasses: string;
+	if (makeColumns) {
+		groupingClasses = `columns`;
+  } else if (makeRows) {
+    groupingClasses = `rows`;
 	} else {
-		columnClasses = 'marquee'
+		groupingClasses = 'marquee'
 	}
 
-	columnClasses = `${columnClasses}${(tileSize) ? ` ${tileSize}` : ''}`;
+	groupingClasses = `${groupingClasses}${(tileSize) ? ` ${tileSize}` : ''}`;
 
-	let classes: string = `ftn-gallery ${columnClasses}`;
-
-	let groupedTiles: Array<unknown>;
-	if (columnCount) {
-		groupedTiles = sortByCount(tiles, columnCount);
-	} else {
-		groupedTiles = [tiles];
-	}
+	let classes: string = `ftn-gallery ${groupingClasses}`;
 </script>
 
 <div class={classes} style={galleryStyle}>
@@ -123,7 +143,7 @@
 			<FluidThumbnailGroup
 				{tileGroup}
 				{galleryConfig}
-				{columnClasses}
+				{groupingClasses}
 			/>
 		{/each}
 	{/if}

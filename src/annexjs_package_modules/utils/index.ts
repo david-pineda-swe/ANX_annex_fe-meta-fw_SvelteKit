@@ -1,5 +1,7 @@
 export { default as smoothScroll } from "./animations/smooth-scroll";
+//
 export { groupItemsByCount as sortByCount } from './sort/group-items';
+export { groupItemsEvenly as sortEvenly } from './sort/group-items';
 
 export function isEmpty(obj) {
 	// NOTE: Borrowed from Ember
