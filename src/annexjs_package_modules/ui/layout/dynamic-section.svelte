@@ -30,37 +30,44 @@
     </div>
   {/if}
 
-  <div class="section-layout {layout}" {style}>
-    {#if $$slots['primary']}
-      <div class="subsection primary">
-        <div class="anchor">
-          <slot name="primary" />
+  {#if $$slots['full-cover']}
+    <div class="section-layout-full-coverage {layout}" {style}>
+      <slot name="full-cover" />
+    </div>
+  {:else}
+    <div class="section-layout {layout}" {style}>
+      {#if $$slots['primary']}
+        <div class="subsection primary">
+          <div class="anchor">
+            <slot name="primary" />
+          </div>
         </div>
-      </div>
-    {/if}
-    {#if $$slots['secondary']}
-      <div class="subsection secondary">
-        <div class="anchor">
-          <slot name="secondary" />
+      {/if}
+      {#if $$slots['secondary']}
+        <div class="subsection secondary">
+          <div class="anchor">
+            <slot name="secondary" />
+          </div>
         </div>
-      </div>
-    {/if}
-    {#if $$slots['tertiary']}
-      <div class="subsection tertiary">
-        <div class="anchor">
-          <slot name="tertiary" />
+      {/if}
+      {#if $$slots['tertiary']}
+        <div class="subsection tertiary">
+          <div class="anchor">
+            <slot name="tertiary" />
+          </div>
         </div>
-      </div>
-    {/if}
+      {/if}
 
-    {#if $$slots['default']}
-      <div class="subsection">
-        <div class="anchor">
-          <slot />
+      {#if $$slots['default']}
+        <div class="subsection">
+          <div class="anchor">
+            <slot />
+          </div>
         </div>
-      </div>
-    {/if}
-  </div>
+      {/if}
+    </div>
+  {/if}
+
   <!-- TODO - ACCOUNT FOR DEFAULT SUBSECTION -->
   <!-- TODO - CONDITIONAL CTA SLOT LOCATION -->
 </section>
@@ -128,7 +135,7 @@
         flex-direction: column;
         // border: 5px solid fuchsia;
         .subsection {
-          margin-bottom: var(--subsection-bottom-margin);
+          // margin-bottom: var(--subsection-bottom-margin); // verify - removal
           .anchor {
             width: var(--column-width);
           }

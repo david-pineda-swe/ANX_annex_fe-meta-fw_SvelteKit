@@ -44,6 +44,15 @@
 		<ArbitraryFormationA />
 	</DynamicSection>
 
+  <DynamicSection
+    supportClasses={"demo-interactive-gallery"}
+    layout={"stacked"}
+    >
+    <FluidThumbnailGallery slot="full-cover" />
+		<!-- specHeight={"760px"} -->
+    <!-- <FluidThumbnailGallery slot="background"/> -->
+  </DynamicSection>
+
 	<DynamicSection
 		supportClasses={null}
 		layout={"stacked"}
