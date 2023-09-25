@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { groupItemsByCount } from "@annexjs/utils/sort/group-items";
+  import { sortByCount } from "@annexjs/utils";
   import FluidThumbnailGroup from "./fluid-thumbnail-group.svelte";
 
 	// Default gallery Config
@@ -93,7 +93,6 @@
 		galleryStyle = `${galleryStyle} background: ${backgroundStyles};`;
 	}
 
-  // TODO - ADD A STYLE AMMENDMENT UTIL
   if (vertRowSpacing) {
     galleryStyle = `${galleryStyle} padding-bottom: ${vertRowSpacing};`;
   }
@@ -112,7 +111,7 @@
 
 	let groupedTiles: Array<unknown>;
 	if (columnCount) {
-		groupedTiles = groupItemsByCount(tiles, columnCount);
+		groupedTiles = sortByCount(tiles, columnCount);
 	} else {
 		groupedTiles = [tiles];
 	}
