@@ -96,7 +96,7 @@ export const galleryConfig_B = {
   opacity: '1',
   useDescriptions: true,
   allDescriptLocations: 8,
-  // allDescriptClasses: 'dark-text',
+  allDescriptClasses: 'bold', // dark-text
   // TODO - vertical row spacing
   //
   // allBoxStyles: "border: 3px solid white;",
@@ -143,7 +143,7 @@ export const galleryConfig_B = {
       backgroundStyles: 'orange',
       title: '6',
       descriptLocation: 6,
-      descriptClasses: 'dark-text',
+      descriptClasses: 'dark-text bold',
       message: '6-tile'
     },
     {
@@ -168,7 +168,7 @@ export const galleryConfig_B = {
       textStyles: 'color: black;',
       title: '9',
       descriptLocation: 9,
-      descriptClasses: 'dark-text',
+      descriptClasses: 'dark-text', // bold-title, bold-message
       message: '9-tile'
     },
     {

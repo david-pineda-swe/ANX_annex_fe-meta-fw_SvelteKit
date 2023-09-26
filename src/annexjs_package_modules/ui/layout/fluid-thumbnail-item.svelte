@@ -105,11 +105,24 @@
       .title {
         margin-bottom: 10px;
       }
+      &.bold-title {
+        h2.title {
+          font-weight: bold;
+        }
+      }
+      &.bold-message {
+        h3.message {
+          font-weight: bold;
+        }
+      }
 
       &.dark-text {
         h2, h3 {
           color: var(--text-color-negative);
         }
+      }
+      &.bold {
+        font-weight: bold;
       }
       // &.tp-l {
         // DEFAULT
