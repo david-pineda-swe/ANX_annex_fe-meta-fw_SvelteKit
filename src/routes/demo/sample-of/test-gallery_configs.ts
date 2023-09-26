@@ -94,6 +94,9 @@ export const galleryConfig_B = {
   //
   vertRowSpacing: '20px',
   opacity: '1',
+  useDescriptions: true,
+  allDescriptLocations: 8,
+  // allDescriptClasses: 'dark-text',
   // TODO - vertical row spacing
   //
   // allBoxStyles: "border: 3px solid white;",
@@ -104,36 +107,43 @@ export const galleryConfig_B = {
       backgroundStyles: "url('./images/sample/sample_leather_texture.jpg')",
       // boxStyles: 'border: 5px solid fuchsia;',
       title: '1',
+      descriptLocation: 1,
       message: '1-tile'
     },
     {
       image: '',
       backgroundStyles: 'blue',
       title: '2',
+      descriptLocation: 2,
       message: '2-tile'
     },
     {
       image: '',
       backgroundStyles: 'fuchsia',
       title: '3',
+      descriptLocation: 3,
       message: '3-tile'
     },
     {
       image: '',
       backgroundStyles: 'purple',
       title: '4',
+      descriptLocation: 4,
       message: '4-tile'
     },
     {
       image: '',
       backgroundStyles: 'green',
       title: '5',
+      descriptLocation: 5,
       message: '5-tile'
     },
     {
       image: '',
       backgroundStyles: 'orange',
       title: '6',
+      descriptLocation: 6,
+      descriptClasses: 'dark-text',
       message: '6-tile'
     },
     {
@@ -141,19 +151,24 @@ export const galleryConfig_B = {
       // backgroundStyles: 'teal',
       backgroundStyles: "url('./images/sample/sample_canvas_texture.jpg')",
       title: '7',
+      descriptLocation: 7,
       message: '7-tile'
     },
     {
       image: '',
       backgroundStyles: 'gray',
       title: '8',
+      descriptLocation: 8,
       message: '8-tile'
     },
     {
       image: '',
       backgroundStyles: 'yellow',
       boxStyles: 'border: 5px solid green;',
+      textStyles: 'color: black;',
       title: '9',
+      descriptLocation: 9,
+      descriptClasses: 'dark-text',
       message: '9-tile'
     },
     {
