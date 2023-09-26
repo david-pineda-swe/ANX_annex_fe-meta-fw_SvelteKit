@@ -7,7 +7,7 @@
 	import FluidThumbnailGallery from "@annexjs/ui/layout/fluid-thumbnail-gallery.svelte";
 	
 	import ArbitraryFormationA from "./sample-of/arbitrary-formation-a.svelte";
-	import { galleryConfig_A } from "./sample-of/test-gallery_configs";
+	import { galleryConfig_A, galleryConfig_B } from "./sample-of/test-gallery_configs";
 </script>
 
 <svelte:head>
@@ -50,7 +50,7 @@
     supportClasses={"demo-interactive-gallery"}
     layout={"stacked"}
     >
-    <FluidThumbnailGallery galleryConfig={galleryConfig_A} slot="full-cover" />
+    <FluidThumbnailGallery galleryConfig={galleryConfig_B} slot="full-cover" />
 		<!-- specHeight={"760px"} -->
     <!-- <FluidThumbnailGallery slot="background"/> -->
   </DynamicSection>
