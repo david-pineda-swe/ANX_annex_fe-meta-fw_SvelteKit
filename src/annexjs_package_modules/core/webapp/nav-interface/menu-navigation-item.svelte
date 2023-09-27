@@ -4,6 +4,7 @@
 
   import MenuNavigationItemLabel from './menu-navigation-item-label.svelte';
   import MenuNavigationList from './menu-navigation-list.svelte';
+  import WrapLink from '@annexjs/ui/interact/wrap-link.svelte';
 
   export let toggleMenuTray: any;
   export let navItem: NavigationNode;
@@ -17,8 +18,6 @@
     actionType, // [INTERNAL_ROUTE(d), EXTERNAL_LINK, SLOT_[target_slot], PROCESS_[target_handle_key]_[...params]]
     //
     slug,
-    url,
-    linkTarget, // [_self(d), _blank]
     elementId,
     classes,
     subNodes
@@ -28,23 +27,26 @@
 
   // ACTIVE INTERNAL ROUTE
   $:linkIsActive = ($page.url.pathname === slug);
-  $:linkIsActiveClass = (linkIsActive) ? ' active' : '';
+  $:linkIsActiveClass = (linkIsActive) ? ' active' : ''; // X - for class shorthand exp
+
+		// PROCESS ACTION
+	const isProcessAction: boolean = actionType.includes('PROCESS_');
+	const processTargetAction = () => {
+	const params = actionType.split('_');
+	const _ATswitch = params.shift();
+	const handleKey = params.shift();
+		targetActions[handleKey](params);
+  };
 
   // SLOT INJECTION
   const isSlotInjection: boolean = actionType.includes('SLOT_');
   const [_ATswitch, targetSlot] = actionType.split('_');
 
-  // PROCESS ACTION
-  const isProcessAction: boolean = actionType.includes('PROCESS_');
-  const processTargetAction = () => {
-    const params = actionType.split('_');
-    const _ATswitch = params.shift();
-    const handleKey = params.shift();
-    targetActions[handleKey](params);
-  };
+	// LINKAGE
+	const isAppLink = actionType === 'INTERNAL_ROUTE' || actionType === 'EXTERNAL_LINK';
 
-  // ON CLICK
-  const handleInternalLinkClick = () => {
+	// ON CLICK
+  const handleMenuSelection = () => {
     if (toggleMenuTray) toggleMenuTray('');
   }
 
@@ -62,30 +64,23 @@
     {#if targetSlot === 'A'}
       <slot name='A'/>
     {/if}
-  {:else if actionType === 'INTERNAL_ROUTE'}
-    <a
-      id={actingId}
-      class={classes}
-      data-sveltekit-preload-data
-      href={slug}
-      on:click={() => handleInternalLinkClick()}>
-        <MenuNavigationItemLabel navItem={navItem}/>
-    </a>
-  {:else if actionType === 'EXTERNAL_LINK'}
-    <a
-      id={actingId}
-      class={classes}
-      target={linkTarget}
-      href={url}>
-        <MenuNavigationItemLabel navItem={navItem}/>
-    </a>
-  {:else if isProcessAction}
+	{:else if isProcessAction}
+		<!-- TODO - ABSTRACT WRAP BUTTON -->
     <button
       id={actingId}
       class={classes}
       on:click={() => processTargetAction()}>
+				<slot />
         <MenuNavigationItemLabel navItem={navItem}/>
     </button>
+		{:else if isAppLink}
+		<WrapLink
+			{actingId}
+			{navItem}
+			handle={handleMenuSelection}
+		>
+			<MenuNavigationItemLabel navItem={navItem}/>
+		</WrapLink>
   {:else}
     -
   {/if}
@@ -101,7 +96,3 @@
       targetActions={targetActions}/>
   {/if}
 </li>
-
-
-
-<style></style>
