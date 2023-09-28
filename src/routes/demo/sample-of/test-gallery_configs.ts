@@ -108,7 +108,14 @@ export const galleryConfig_B = {
       // boxStyles: 'border: 5px solid fuchsia;',
       title: '1',
       descriptLocation: 1,
-      message: '1-tile'
+      message: '1-tile',
+      navItem: {
+        // is "NavigationNode" type
+        actionType: 'INTERNAL_ROUTE',
+        nodeId: 'to-home-gallery',
+        label: 'Home',
+        slug: '/'
+      }
     },
     {
       image: '',
@@ -136,7 +143,14 @@ export const galleryConfig_B = {
       backgroundStyles: 'green',
       title: '5',
       descriptLocation: 5,
-      message: '5-tile'
+      message: '5-tile',
+      navItem: {
+        actionType: 'INTERNAL_ROUTE',
+        // <== NavigationNode
+        nodeId: 'to-privacy-policy',
+        label: 'Privacy Policy',
+        slug: '/privacy-policy'
+      }
     },
     {
       image: '',

@@ -2,7 +2,7 @@
   import { mediaIs } from "@annexjs/core/webapp/stores/reactive-media";
   import type { NavigationConfig } from "src/global";
 
-  import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte";
+  import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte"; // NOTE - FOR RESPONSIVE TESTING 
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
   import HeaderDesktop from '@annexjs/core/webapp/nav-interface/header-desktop.svelte';

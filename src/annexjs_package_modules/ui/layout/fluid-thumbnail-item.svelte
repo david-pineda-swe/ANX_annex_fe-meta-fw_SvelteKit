@@ -1,12 +1,13 @@
 <script lang="ts">
-  import FluidThumbnailItemDescription from "./fluid-thumbnail-item-description.svelte";
+	import WrapAction from "../interact/wrap-action.svelte";
+	import FluidThumbnailItemDescription from "./fluid-thumbnail-item-description.svelte";
 
 	export let tile: any = {};
 	export let groupingClasses: string = '';
 	export let galleryConfig: any = {};
 	
 	const { allBoxStyles, useDescriptions, allDescriptLocations, allDescriptClasses } = galleryConfig;
-	const { backgroundStyles, boxStyles, title, message, descriptLocation, descriptClasses, actionNode } = tile;
+	const { backgroundStyles, boxStyles, title, message, descriptLocation, descriptClasses, navItem } = tile;
 
 	let style: string = '';
 
@@ -63,16 +64,29 @@
 	}
 </script>
 
-{#if actionNode}
-	<h1>nerp</h1>
+{#if navItem}
+	<WrapAction
+		actingId={"test"}
+		{navItem}
+	>
+		<div class={classes} {style}>
+			{#if useDescriptions}
+				<FluidThumbnailItemDescription
+					{descriptClass}
+					{title}
+					{message}
+				/>
+			{/if}
+		</div>
+	</WrapAction>
 {:else}
 	<div class={classes} {style}>
 		{#if useDescriptions}
-			<FluidThumbnailItemDescription
-				{descriptClass}
-				{title}
-				{message}
-			/>
+				<FluidThumbnailItemDescription
+					{descriptClass}
+					{title}
+					{message}
+				/>
 		{/if}
 	</div>
 {/if}
@@ -103,5 +117,3 @@
 		}
 	}
 </style>
-
-<!-- markup (zero or more items) goes here -->

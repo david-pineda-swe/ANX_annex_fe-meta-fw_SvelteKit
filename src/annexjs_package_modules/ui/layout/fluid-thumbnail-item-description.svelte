@@ -5,13 +5,13 @@
 </script>
 
 <div class="item-description {descriptClass}">
-		<h2 class="title">
-			{title}
-		</h2>
-		<h3 class="message">
-			{message}
-		</h3>
-	</div>
+	<h2 class="title">
+		{title}
+	</h2>
+	<h3 class="message">
+		{message}
+	</h3>
+</div>
 
 <style lang="scss">
 	.item-description {
