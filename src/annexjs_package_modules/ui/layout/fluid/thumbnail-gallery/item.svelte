@@ -1,13 +1,15 @@
-<script lang="ts">
-	import WrapAction from "../interact/wrap-action.svelte";
-	import FluidThumbnailItemDescription from "./fluid-thumbnail-item-description.svelte";
+<!-- TODO - Extend with hover effects -->
 
-	export let tile: any = {};
+<script lang="ts">
+	import WrapAction from "@annexjs/ui/interact/wrap-action.svelte";
+	import ItemDescription from "./item-description.svelte";
+
+	export let item: any = {};
 	export let groupingClasses: string = '';
 	export let galleryConfig: any = {};
 	
 	const { allBoxStyles, useDescriptions, allDescriptLocations, allDescriptClasses } = galleryConfig;
-	const { backgroundStyles, boxStyles, title, message, descriptLocation, descriptClasses, navItem } = tile;
+	const { backgroundStyles, boxStyles, title, message, descriptLocation, descriptClasses, navItem } = item;
 
 	let style: string = '';
 
@@ -71,7 +73,7 @@
 	>
 		<div class={classes} {style}>
 			{#if useDescriptions}
-				<FluidThumbnailItemDescription
+				<ItemDescription
 					{descriptClass}
 					{title}
 					{message}
@@ -82,7 +84,7 @@
 {:else}
 	<div class={classes} {style}>
 		{#if useDescriptions}
-				<FluidThumbnailItemDescription
+				<ItemDescription
 					{descriptClass}
 					{title}
 					{message}

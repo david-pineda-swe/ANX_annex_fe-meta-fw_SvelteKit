@@ -1,29 +1,29 @@
 <script lang="ts">
-	import FluidThumbnailItem from "./fluid-thumbnail-item.svelte";
+	import GalleryItem from "./item.svelte";
 
-  export let tileGroup: unknown = [];
+  export let itemGroup: unknown = [];
 	export let galleryConfig: any;
   export let groupingClasses: string = '';
 
 	const { centerList, vertRowSpacing, opacity } = galleryConfig;
 
 	//@ts-ignore
-	const tiles: Array<unknown> = tileGroup;
+	const items: Array<unknown> = itemGroup;
 
 	const isCentered = (centerList) ? ' centered' : '';
 	const isMarquee = (groupingClasses.includes('marquee')) ? ' marquee' : '';
-	const classes: string = `tile-group${isCentered}${isMarquee}`;
+	const classes: string = `item-group${isCentered}${isMarquee}`;
 	const style: string = `margin-top: ${vertRowSpacing}; opacity: ${opacity}`;
 </script>
 
 <div class={classes} {style}>
-	{#each tiles as tile}
-		<FluidThumbnailItem {tile} {groupingClasses} {galleryConfig}/>
+	{#each items as item}
+		<GalleryItem {item} {groupingClasses} {galleryConfig}/>
 	{/each}
 </div>
 
 <style lang="scss">
-  .tile-group {
+  .item-group {
 		display: flex;
 		
 		&.centered {

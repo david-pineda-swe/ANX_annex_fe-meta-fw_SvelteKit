@@ -1,6 +1,6 @@
 <script lang="ts">
   import { sortByCount, sortEvenly } from "@annexjs/utils";
-  import FluidThumbnailGroup from "./fluid-thumbnail-group.svelte";
+  import ItemGroup from "@annexjs/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
 
 	// Default gallery Config
 	export let galleryConfig: any = {};
@@ -57,9 +57,9 @@
 
 <div class={classes} style={galleryStyle}>
 	{#if galleryConfig.tiles}
-		{#each groupedTiles as tileGroup}
-			<FluidThumbnailGroup
-				{tileGroup}
+		{#each groupedTiles as itemGroup}
+			<ItemGroup
+				{itemGroup}
 				{galleryConfig}
 				{groupingClasses}
 			/>
