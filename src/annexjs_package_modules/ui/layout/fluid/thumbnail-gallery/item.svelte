@@ -8,20 +8,8 @@
 	export let groupingClasses: string = '';
 	export let galleryConfig: any = {};
 	
-	const { allBoxStyles, useDescriptions, allDescriptLocations, allDescriptClasses } = galleryConfig;
+	const { tileSize, allBoxStyles, useDescriptions, allDescriptLocations, allDescriptClasses, vertRowSpacing } = galleryConfig;
 	const { backgroundStyles, boxStyles, title, message, descriptLocation, descriptClasses, navItem } = item;
-
-	let style: string = '';
-
-	if (allBoxStyles) {
-		style = `${style} ${allBoxStyles}`;
-	}
-	if (backgroundStyles) {
-		style = `${style} background: ${backgroundStyles};`;
-	}
-	if (boxStyles) {
-		style = `${style} ${boxStyles}`;
-	}
 
 	// CLASSES
 	let classes: string = `ftn-gallery-item ${groupingClasses}`;
@@ -64,41 +52,59 @@
 		const use = (descriptClasses) ? descriptClasses : allDescriptClasses;
 		descriptClass = `${descriptClass} ${use}`;
 	}
+
+	// STYLES
+	let style: string = '';
+
+	if (allBoxStyles) {
+		style = `${style} ${allBoxStyles}`;
+	}
+	if (backgroundStyles) {
+		style = `${style} background: ${backgroundStyles};`;
+	}
+	if (boxStyles) {
+		style = `${style} ${boxStyles}`;
+	}
+	if (vertRowSpacing) {
+		style = `${style} margin-top: ${vertRowSpacing};`;
+	}
+
+	// DISPLAY
+	const tileSizeSupportsDisplay = tileSize !== undefined;
+	const displayDescription = useDescriptions && tileSizeSupportsDisplay;
 </script>
 
-{#if navItem}
-	<WrapAction
-		actingId={"test"}
-		{navItem}
-	>
-		<div class={classes} {style}>
-			{#if useDescriptions}
+<div class={classes} {style}>
+	{#if navItem}
+		<WrapAction
+			containedAction={true}
+			{navItem}
+		>
+			{#if displayDescription}
 				<ItemDescription
 					{descriptClass}
 					{title}
 					{message}
 				/>
 			{/if}
-		</div>
-	</WrapAction>
-{:else}
-	<div class={classes} {style}>
-		{#if useDescriptions}
-				<ItemDescription
-					{descriptClass}
-					{title}
-					{message}
-				/>
+		</WrapAction>
+	{:else}
+		{#if displayDescription}
+			<ItemDescription
+				{descriptClass}
+				{title}
+				{message}
+			/>
 		{/if}
-	</div>
-{/if}
+	{/if}
+</div>
 
 <style lang='scss'>
 	.ftn-gallery-item {
 		position: relative;
-		min-width: 75px;
-		min-height: 75px;
-		padding: 10px;
+		width: 75px;
+		height: 75px;
+		margin: 0 auto;
 
 		// d: 75, sm: 150, md: 225, lg: 300
 

@@ -1,22 +1,27 @@
 <script lang="ts">
+	import { mediaIs } from "@annexjs/core/webapp/stores/reactive-media";
 	import GalleryItem from "./item.svelte";
 
-  export let itemGroup: unknown = [];
+	export let itemGroup: unknown = [];
 	export let galleryConfig: any;
-  export let groupingClasses: string = '';
+	export let groupingClasses: string = '';
 
-	const { centerList, vertRowSpacing, opacity } = galleryConfig;
+	const { centerList, opacity } = galleryConfig;
 
 	//@ts-ignore
 	const items: Array<unknown> = itemGroup;
 
-	const isCentered = (centerList) ? ' centered' : '';
-	const isMarquee = (groupingClasses.includes('marquee')) ? ' marquee' : '';
-	const classes: string = `item-group${isCentered}${isMarquee}`;
-	const style: string = `margin-top: ${vertRowSpacing}; opacity: ${opacity}`;
+	const isMarquee = groupingClasses.includes('marquee');
+	const style: string = `opacity: ${opacity}`;
 </script>
 
-<div class={classes} {style}>
+<div
+	class="item-group"
+	class:centered={centerList}
+	class:marquee={isMarquee}
+	class:small={$mediaIs.sm}
+	{style}
+>
 	{#each items as item}
 		<GalleryItem {item} {groupingClasses} {galleryConfig}/>
 	{/each}
@@ -25,6 +30,7 @@
 <style lang="scss">
   .item-group {
 		display: flex;
+		flex-direction: column;
 		
 		&.centered {
 			justify-content: space-around;
@@ -34,6 +40,9 @@
 		&.marquee {
 			flex-wrap: wrap;
 		}
-	}
 
+		&.small {
+			flex-direction: row;
+		}
+	}
 </style>

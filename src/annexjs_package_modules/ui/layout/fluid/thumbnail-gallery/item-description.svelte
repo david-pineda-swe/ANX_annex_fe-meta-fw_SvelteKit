@@ -15,10 +15,13 @@
 
 <style lang="scss">
 	.item-description {
+			height: 100%;
 			display: flex;
 			flex-direction: column;
-			.title {
-				margin-bottom: 10px;
+			padding: 10px;
+			// border: 1px solid white;
+			.title, .message {
+				margin-bottom: 0;
 			}
 			&.bold-title {
 				h2.title {
@@ -39,6 +42,9 @@
 			&.bold {
 				font-weight: bold;
 			}
+
+			//
+
 			// &.tp-l {
 				// DEFAULT
 			// }
@@ -49,26 +55,26 @@
 				text-align: right;
 			}
 			&.md-l {
-				margin: 33% auto;
+				justify-content: center;
 			}
 			&.md-m {
-				margin: 33% auto;
+				justify-content: center;
 				text-align: center;
 			}
 			&.md-r {
-				margin: 33% auto;
+				justify-content: center;
 				text-align: right;
 			}
 			&.bt-l {
-				margin: 66% auto;
+				justify-content: flex-end;
 			}
 			&.bt-m {
-				margin: 66% auto;
 				text-align: center;
+				justify-content: flex-end;
 			}
 			&.bt-r {
-				margin: 66% auto;
-				text-align: right;        
+				text-align: right;
+				justify-content: flex-end;
 			}
 		}
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { sortByCount, sortEvenly } from "@annexjs/utils";
-  import ItemGroup from "@annexjs/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
+	import { sortByCount, sortEvenly } from "@annexjs/utils";
+	import ItemGroup from "@annexjs/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
 
 	// Default gallery Config
 	export let galleryConfig: any = {};
@@ -10,42 +10,43 @@
 		sortMethod,
 		tileSize,
 		vertRowSpacing,
-		tiles
+		items
 	} = galleryConfig;
 
-  let groupedTiles: Array<unknown>;
-  let factorCount = null;
-  const [sortBy, count] = (sortMethod) ? sortMethod.split('-') : '';
-  factorCount = parseInt(count);
-  const makeColumns = sortBy === 'COLUMNS' && factorCount;
-  const makeRows = sortBy === 'ROWS' && factorCount;
+	let groupedItems: Array<unknown>;
+	let factorCount = null;
+	const [sortBy, count] = (sortMethod) ? sortMethod.split('-') : '';
+	factorCount = parseInt(count);
+	const makeColumns = sortBy === 'COLUMNS' && factorCount;
+	const makeRows = sortBy === 'ROWS' && factorCount;
 
-   // GROUPING METHOD
-  if (makeColumns) {
-    groupedTiles = sortByCount(tiles, factorCount);
-  } else if (makeRows) {
-    groupedTiles = sortEvenly(tiles, factorCount);
-  } else {
-    groupedTiles = [tiles];
-  }
+	// GROUPING METHOD
+	if (makeColumns) {
+		groupedItems = sortByCount(items, factorCount);
+	} else if (makeRows) {
+		groupedItems = sortEvenly(items, factorCount);
+	} else {
+		// MARQUEE
+		groupedItems = [items];
+	}
 
-  // STYLES
+	// STYLES
 	let galleryStyle: string = '';
 
 	if (backgroundStyles) {
 		galleryStyle = `${galleryStyle} background: ${backgroundStyles};`;
 	}
 
-  if (vertRowSpacing) {
-    galleryStyle = `${galleryStyle} padding-bottom: ${vertRowSpacing};`;
-  }
+	if (vertRowSpacing) {
+		galleryStyle = `${galleryStyle} padding-bottom: ${vertRowSpacing};`;
+	}
 
 	// CLASSES
 	let groupingClasses: string;
 	if (makeColumns) {
 		groupingClasses = `columns`;
-  } else if (makeRows) {
-    groupingClasses = `rows`;
+	} else if (makeRows) {
+		groupingClasses = `rows`;
 	} else {
 		groupingClasses = 'marquee'
 	}
@@ -56,8 +57,8 @@
 </script>
 
 <div class={classes} style={galleryStyle}>
-	{#if galleryConfig.tiles}
-		{#each groupedTiles as itemGroup}
+	{#if galleryConfig.items}
+		{#each groupedItems as itemGroup}
 			<ItemGroup
 				{itemGroup}
 				{galleryConfig}

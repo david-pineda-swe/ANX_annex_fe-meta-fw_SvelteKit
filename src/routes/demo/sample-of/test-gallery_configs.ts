@@ -12,7 +12,7 @@ export const galleryConfig_A = {
   // TODO - vertical row spacing
   //
   // allBoxStyles: "border: 3px solid white;",
-  tiles: [
+  items: [
     {
       image: '',
       // backgroundStyles: 'green',
@@ -87,20 +87,25 @@ export const galleryConfig_B = {
   backgroundStyles: "url('./images/sample/sample_geo_texture.jpg')",
   // backgroundStyles: "rgba(77, 132, 189, 0.33)",
   // backgroundStyles: "red",
+  //
   sortMethod: 'COLUMNS-3', // ['COLUMNS', 'ROWS']
   // sortMethod: 'ROWS-3',
-  tileSize: 'md', // [sm, md, lg] default = sm
-  centerList: true,
   //
+  // tileSize: 'sm', // [sm, md, lg] default = xsm
+  // tileSize: 'md',
+  tileSize: 'lg',
+  //
+  centerList: true,
   vertRowSpacing: '20px',
   opacity: '1',
+  //
   useDescriptions: true,
   allDescriptLocations: 8,
   allDescriptClasses: 'bold', // dark-text
   // TODO - vertical row spacing
   //
   // allBoxStyles: "border: 3px solid white;",
-  tiles: [
+  items: [
     {
       image: '',
       // backgroundStyles: 'green',
@@ -111,8 +116,8 @@ export const galleryConfig_B = {
       message: '1-tile',
       navItem: {
         // is "NavigationNode" type
+        nodeId: 'to-home-from-gallery',
         actionType: 'INTERNAL_ROUTE',
-        nodeId: 'to-home-gallery',
         label: 'Home',
         slug: '/'
       }
@@ -145,9 +150,9 @@ export const galleryConfig_B = {
       descriptLocation: 5,
       message: '5-tile',
       navItem: {
-        actionType: 'INTERNAL_ROUTE',
         // <== NavigationNode
-        nodeId: 'to-privacy-policy',
+        nodeId: 'to-privacy-policy-from-gallery',
+        actionType: 'INTERNAL_ROUTE',
         label: 'Privacy Policy',
         slug: '/privacy-policy'
       }
