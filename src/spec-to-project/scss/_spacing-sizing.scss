@@ -3,7 +3,7 @@
 @mixin spacingSizing {
   // - PAGE
   --page-header-top: 125px;
-  --page-header-top-sm-media: 105px;
+  --page-header-top-sm-media: 85px;
   
   // ! EXAMPLE - NEGATIVE VALUE CALC
   // --negative-page-header-top: calc(var(--page-header-top) * -1);

@@ -1,6 +1,6 @@
 import type { ProjectConfig } from "src/global";
 
-// import TestMockNavigations from './navigation/test-mock';
+// import TestMockNavigations from "./navigation/test-mock";
 import ProjectSpecNavigations from "./navigation/project-spec";
 
 const generateProjectConfiguration = (): ProjectConfig => {
