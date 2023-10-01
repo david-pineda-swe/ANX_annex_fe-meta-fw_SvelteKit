@@ -4,8 +4,8 @@
 	export let actingId: string = '';
 	export let navItem: NavigationNode;
 	export let containedAction: boolean = false;
-	export let handle: any = null; // () => {} | FUNCTION for ui reaction to selection
 	export let targetActions: any = null; // {} | OBJECT with keyed list of SPEC functions for processing selection
+	export let handle: any = null; // () => {} | FUNCTION for ui reaction to selection
 
 	const {
 		nodeId,
@@ -38,8 +38,11 @@
 	};
 
 	const _handleAndProcessSelection = () => {
+    // For parent scope reaction
+    isProcessAction && processTargetAction(navItem);
+    // TODO - Consider fail case & result scenario handling
+    // For component scope reaction
 		handle && handle(navItem);
-		isProcessAction && processTargetAction(navItem);
 	};
 </script>
 

@@ -7,6 +7,8 @@
 	export let item: any = {};
 	export let groupingClasses: string = '';
 	export let galleryConfig: any = {};
+	export let targetActions: any = {};
+	export let handle: any = {};
 	
 	const { tileSize, allBoxStyles, useDescriptions, allDescriptLocations, allDescriptClasses, vertRowSpacing } = galleryConfig;
 	const { backgroundStyles, boxStyles, title, message, descriptLocation, descriptClasses, navItem } = item;
@@ -79,6 +81,8 @@
 		<WrapAction
 			containedAction={true}
 			{navItem}
+			{targetActions}
+			{handle}
 		>
 			{#if displayDescription}
 				<ItemDescription

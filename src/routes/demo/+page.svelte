@@ -8,6 +8,12 @@
 	
 	import ArbitraryFormationA from "./sample-of/arbitrary-formation-a.svelte";
 	import { galleryConfig_A, galleryConfig_B } from "./sample-of/test-gallery_configs";
+
+	const FluidTNGalleryTargetActions = {
+		doTest: (navItem: any, resData: any) => {
+			console.log('>> [TARGET_ACTIONS] - PARENT WILL RUN "doTest":', navItem, resData);
+		}
+	};
 </script>
 
 <svelte:head>
@@ -46,14 +52,16 @@
 		<ArbitraryFormationA />
 	</DynamicSection>
 
-  <DynamicSection
-    supportClasses={"demo-interactive-gallery"}
-    layout={"stacked"}
-    >
-    <FluidThumbnailGallery galleryConfig={galleryConfig_B} slot="full-cover" />
-		<!-- specHeight={"760px"} -->
-    <!-- <FluidThumbnailGallery slot="background"/> -->
-  </DynamicSection>
+	<DynamicSection
+		supportClasses={"demo-interactive-gallery"}
+		layout={"stacked"}
+		>
+		<FluidThumbnailGallery
+			slot="full-cover"
+			galleryConfig={galleryConfig_B}
+			targetActions={FluidTNGalleryTargetActions}
+		/>
+	</DynamicSection>
 
 	<DynamicSection
 		supportClasses={null}
@@ -70,9 +78,9 @@
 		<h2>This would be some basic content</h2>
 	</DynamicSection>
 
-	<!-- X - MOVE INTO DynamicSection support -->
-	<!-- <div class="content full-width"> -->
-	<!-- <div class="content center-column"> -->
-	<!-- </div> -->
-	<!-- </FullPageContainer>
+<!-- X - MOVE INTO DynamicSection support -->
+<!-- <div class="content full-width"> -->
+<!-- <div class="content center-column"> -->
+<!-- </div> -->
+<!-- </FullPageContainer>
 </XpSandbox> -->

@@ -5,6 +5,8 @@
 	export let itemGroup: unknown = [];
 	export let galleryConfig: any;
 	export let groupingClasses: string = '';
+	export let targetActions: any = null;
+	export let handle: any = null;
 
 	const { centerList, opacity } = galleryConfig;
 
@@ -23,12 +25,18 @@
 	{style}
 >
 	{#each items as item}
-		<GalleryItem {item} {groupingClasses} {galleryConfig}/>
+		<GalleryItem
+			{item}
+			{groupingClasses}
+			{galleryConfig}
+			{targetActions}
+			{handle}
+		/>
 	{/each}
 </div>
 
 <style lang="scss">
-  .item-group {
+	.item-group {
 		display: flex;
 		flex-direction: column;
 		

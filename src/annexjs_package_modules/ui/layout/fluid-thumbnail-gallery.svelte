@@ -4,6 +4,8 @@
 
 	// Default gallery Config
 	export let galleryConfig: any = {};
+	//
+	export let targetActions: any = null;
 
 	const {
 		backgroundStyles,
@@ -54,6 +56,11 @@
 	groupingClasses = `${groupingClasses}${(tileSize) ? ` ${tileSize}` : ''}`;
 
 	let classes: string = `ftn-gallery ${groupingClasses}`;
+
+	// FTN button selection handle
+	const handleGalleryItemSelection = (item: any, resData:any) => {
+	  console.log('>> [COMP_HANDLE] - GALLERY WILL HANDLE UI SELECTION with:', item, resData);
+	}
 </script>
 
 <div class={classes} style={galleryStyle}>
@@ -63,6 +70,8 @@
 				{itemGroup}
 				{galleryConfig}
 				{groupingClasses}
+				{targetActions}
+				handle={handleGalleryItemSelection}
 			/>
 		{/each}
 	{/if}

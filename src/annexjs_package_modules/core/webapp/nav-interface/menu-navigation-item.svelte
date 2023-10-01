@@ -19,7 +19,6 @@
     //
     slug,
     elementId,
-    classes,
     subNodes
   } = navItem;
 

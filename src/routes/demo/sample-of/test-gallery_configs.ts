@@ -134,7 +134,12 @@ export const galleryConfig_B = {
       backgroundStyles: 'fuchsia',
       title: '3',
       descriptLocation: 3,
-      message: '3-tile'
+      message: '3-tile test PROCESS',
+      navItem: {
+        // is "NavigationNode" type
+        nodeId: 'test-process-action',
+        actionType: 'PROCESS_doTest_apple'
+      }
     },
     {
       image: '',
