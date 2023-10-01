@@ -39,7 +39,7 @@
 
 <div
   id="annex-nav-interface"
-  class="nav-interface-container sm-media"
+  class="nav-interface-container"
   class:fixed-header={headerIsFixed}
   class:sm-media={$mediaIs.sm}
 >

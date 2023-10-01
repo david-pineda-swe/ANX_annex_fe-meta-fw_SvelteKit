@@ -1,6 +1,6 @@
 import type { ProjectConfig } from "src/global";
 
-import TestMockNavigations from './navigation/test-mock';
+// import TestMockNavigations from './navigation/test-mock';
 import ProjectSpecNavigations from "./navigation/project-spec";
 
 const generateProjectConfiguration = (): ProjectConfig => {
@@ -8,8 +8,8 @@ const generateProjectConfiguration = (): ProjectConfig => {
     // siteMeta: {} // deffers to site Graph
     // indexRouteMeta
     // thirdPartyConfigs: {}
-    navigations: TestMockNavigations // NOTE - FOR PLATFORM DEV
-    // navigations: ProjectSpecNavigations // OK - FOR CURRENT PROJECT SPEC
+    // navigations: TestMockNavigations // NOTE - FOR PLATFORM DEV
+    navigations: ProjectSpecNavigations // OK - FOR CURRENT PROJECT SPEC
   };
 }
 

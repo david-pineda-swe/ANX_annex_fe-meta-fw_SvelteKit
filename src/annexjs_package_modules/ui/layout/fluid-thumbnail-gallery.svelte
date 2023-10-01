@@ -83,8 +83,4 @@
 		display: flex;
 		flex-direction: column;
 	}
-
-	// .asdf {
-	// 	background-color: rgba(77, 132, 189, 0.33);
-	// }
 </style>
