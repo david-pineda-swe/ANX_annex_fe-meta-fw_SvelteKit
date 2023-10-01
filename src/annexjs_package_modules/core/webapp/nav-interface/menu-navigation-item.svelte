@@ -4,6 +4,7 @@
 
   import MenuNavigationItemLabel from './menu-navigation-item-label.svelte';
   import MenuNavigationList from './menu-navigation-list.svelte';
+  import WrapAction from '@annexjs/ui/interact/wrap-action.svelte';
 
   export let toggleMenuTray: any;
   export let navItem: NavigationNode;
@@ -17,80 +18,52 @@
     actionType, // [INTERNAL_ROUTE(d), EXTERNAL_LINK, SLOT_[target_slot], PROCESS_[target_handle_key]_[...params]]
     //
     slug,
-    url,
-    linkTarget, // [_self(d), _blank]
     elementId,
-    classes,
     subNodes
   } = navItem;
 
   const actingId = elementId || nodeId;
 
-  // ACTIVE INTERNAL ROUTE
-  $:linkIsActive = ($page.url.pathname === slug);
-  $:linkIsActiveClass = (linkIsActive) ? ' active' : '';
-
   // SLOT INJECTION
   const isSlotInjection: boolean = actionType.includes('SLOT_');
   const [_ATswitch, targetSlot] = actionType.split('_');
 
-  // PROCESS ACTION
-  const isProcessAction: boolean = actionType.includes('PROCESS_');
-  const processTargetAction = () => {
-    const params = actionType.split('_');
-    const _ATswitch = params.shift();
-    const handleKey = params.shift();
-    targetActions[handleKey](params);
-  };
-
-  // ON CLICK
-  const handleInternalLinkClick = () => {
+	// UI SELECTION HANDLE
+  const handleMenuSelection = () => {
+		// close any open menu
     if (toggleMenuTray) toggleMenuTray('');
   }
 
   // SUB NODES
-  const renderSubNodes = (subNodes && navigationType !== 'SHALLOW');
-  const hasSubNodesClass = (renderSubNodes) ? ' has-sub-nav' : '';
+  const navNodeHasChildren = (subNodes && navigationType !== 'SHALLOW');
 </script>
 
 
-
-<!-- MENU_NAV_ITEM -->
-<li id={`li-${actingId}`} class="nav-menu-list-item{linkIsActiveClass}{hasSubNodesClass}">
+<li
+	id={`li-${actingId}`}
+	class="nav-menu-list-item"
+	class:active={$page.url.pathname === slug}
+	class:has-sub-nav={navNodeHasChildren}
+>
   <!-- switch on actionType -->
   {#if isSlotInjection}
     {#if targetSlot === 'A'}
       <slot name='A'/>
     {/if}
-  {:else if actionType === 'INTERNAL_ROUTE'}
-    <a
-      id={actingId}
-      class={classes}
-      data-sveltekit-preload-data
-      href={slug}
-      on:click={() => handleInternalLinkClick()}>
-        <MenuNavigationItemLabel navItem={navItem}/>
-    </a>
-  {:else if actionType === 'EXTERNAL_LINK'}
-    <a
-      id={actingId}
-      class={classes}
-      target={linkTarget}
-      href={url}>
-        <MenuNavigationItemLabel navItem={navItem}/>
-    </a>
-  {:else if isProcessAction}
-    <button
-      id={actingId}
-      class={classes}
-      on:click={() => processTargetAction()}>
-        <MenuNavigationItemLabel navItem={navItem}/>
-    </button>
-  {:else}
-    -
+	{:else}
+		<WrapAction
+			{actingId}
+			{navItem}
+			{targetActions}
+			handle={handleMenuSelection}
+		>
+			<slot />
+			<MenuNavigationItemLabel navItem={navItem}/>
+		</WrapAction>
   {/if}
 
-  {#if renderSubNodes}
+	<!-- render sub nav items -->
+  {#if navNodeHasChildren}
     <MenuNavigationList
       {toggleMenuTray}
       elementId={actingId}
@@ -101,7 +74,3 @@
       targetActions={targetActions}/>
   {/if}
 </li>
-
-
-
-<style></style>

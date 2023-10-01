@@ -1,10 +1,19 @@
 <script lang="ts">
 	// DEBUG TOOLS
 	// import XpSandbox from "@annexjs/debug-tools/xp-sandbox/index.svelte";
-    // SECTIONS
-    // import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
-    import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
-    import ArbitraryFormationA from "./sample-of/arbitrary-formation-a.svelte";
+	// SECTIONS
+	// import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
+	import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
+	import FluidThumbnailGallery from "@annexjs/ui/layout/fluid-thumbnail-gallery.svelte";
+	
+	import ArbitraryFormationA from "./sample-of/arbitrary-formation-a.svelte";
+	import { galleryConfig_A, galleryConfig_B } from "./sample-of/test-gallery_configs";
+
+	const FluidTNGalleryTargetActions = {
+		doTest: (navItem: any, resData: any) => {
+			console.log('>> [TARGET_ACTIONS] - PARENT WILL RUN "doTest":', navItem, resData);
+		}
+	};
 </script>
 
 <svelte:head>
@@ -17,8 +26,10 @@
 	<DynamicSection
 		supportClasses={"lg hero"}
 		layout={"ordered"}
+		specHeight={"750px"}
 	>
-		<div slot="background" />
+
+		<FluidThumbnailGallery galleryConfig={galleryConfig_A} slot="background"/>
 		
 		<div class="copy" slot="primary">
 			<h1>Hero <br/> Primary Content</h1>
@@ -38,9 +49,20 @@
 		supportClasses={"demo formation"}
 		layout={"stacked"}
 	>
-        <ArbitraryFormationA />
-		
+		<ArbitraryFormationA />
 	</DynamicSection>
+
+	<DynamicSection
+		supportClasses={"demo-interactive-gallery"}
+		layout={"stacked"}
+		>
+		<FluidThumbnailGallery
+			slot="full-cover"
+			galleryConfig={galleryConfig_B}
+			targetActions={FluidTNGalleryTargetActions}
+		/>
+	</DynamicSection>
+
 	<DynamicSection
 		supportClasses={null}
 		layout={"stacked"}
@@ -56,9 +78,9 @@
 		<h2>This would be some basic content</h2>
 	</DynamicSection>
 
-	<!-- X - MOVE INTO DynamicSection support -->
-	<!-- <div class="content full-width"> -->
-	<!-- <div class="content center-column"> -->
-	<!-- </div> -->
-	<!-- </FullPageContainer>
+<!-- X - MOVE INTO DynamicSection support -->
+<!-- <div class="content full-width"> -->
+<!-- <div class="content center-column"> -->
+<!-- </div> -->
+<!-- </FullPageContainer>
 </XpSandbox> -->

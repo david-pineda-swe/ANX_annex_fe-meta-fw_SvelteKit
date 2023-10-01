@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { mediaIs } from "@annexjs/core/webapp/stores/reactive-media";
   import type { NavigationConfig } from "src/global";
 
-  import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte";
+  import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte"; // NOTE - FOR RESPONSIVE TESTING 
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
   import HeaderDesktop from '@annexjs/core/webapp/nav-interface/header-desktop.svelte';
@@ -36,7 +37,12 @@
 
 <!-- TODO >>> MAKE THE .nav-interface-container TOP SPACING REACTIVE TO CUMULATIVE HIGHT OF THE .header-dock -->
 
-<div id="annex-nav-interface" class="nav-interface-container" class:fixed-header={headerIsFixed}>
+<div
+  id="annex-nav-interface"
+  class="nav-interface-container"
+  class:fixed-header={headerIsFixed}
+  class:sm-media={$mediaIs.sm}
+>
   <div class="menu-dock">
     {#if $$slots['insert-tray-tp']}
       <MenuTray trayType="TP_TRAY" {toggleMenuTray} {currentMenuTray} {navigations}>
@@ -94,7 +100,7 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .nav-interface-container {
     position: relative;
     min-height: 100%;
@@ -113,6 +119,10 @@
 
   .nav-interface-container.fixed-header {
     padding-top: var(--page-header-top);
+
+    &.sm-media {
+      padding-top: var(--page-header-top-sm-media);
+    }
   }
 
   .nav-interface-container.fixed-header .nav-interface-outlet .header-dock {

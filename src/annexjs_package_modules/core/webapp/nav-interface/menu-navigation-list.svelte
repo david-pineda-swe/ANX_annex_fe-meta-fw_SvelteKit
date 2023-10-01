@@ -16,6 +16,7 @@
   const isSubMenu = checkDepth >= 1;
   const nextLevelDepth = (parseInt(levelDepth) + 1).toString();
 
+	// TODO - Refactor class designations with svelte class: shorthand 
   // fix - if no locationMark
   const dynamicListId = `${elementId}-${
     (locationMark)

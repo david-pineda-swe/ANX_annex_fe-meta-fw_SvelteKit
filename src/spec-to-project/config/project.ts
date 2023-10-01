@@ -8,8 +8,8 @@ const generateProjectConfiguration = (): ProjectConfig => {
     // siteMeta: {} // deffers to site Graph
     // indexRouteMeta
     // thirdPartyConfigs: {}
-    // navigations: TestMockNavigations // NOTE - FOR PLATFORM DEV 
-    navigations: ProjectSpecNavigations // OK - FOR CURRENT PROJECT SPEC 
+    // navigations: TestMockNavigations // NOTE - FOR PLATFORM DEV
+    navigations: ProjectSpecNavigations // OK - FOR CURRENT PROJECT SPEC
   };
 }
 

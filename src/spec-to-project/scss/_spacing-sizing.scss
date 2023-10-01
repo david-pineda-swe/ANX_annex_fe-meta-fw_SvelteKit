@@ -2,8 +2,11 @@
 
 @mixin spacingSizing {
   // - PAGE
-  --page-header-top: 120px;
-  --negative-page-header-top: calc(var(--page-header-top) * -1);
+  --page-header-top: 125px;
+  --page-header-top-sm-media: 85px;
+  
+  // ! EXAMPLE - NEGATIVE VALUE CALC
+  // --negative-page-header-top: calc(var(--page-header-top) * -1);
 
   // - COLUMN
   --column-width: 50rem;

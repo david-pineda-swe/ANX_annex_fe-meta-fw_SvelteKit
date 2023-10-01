@@ -60,6 +60,7 @@
     - [core-!!!](./docs/fw-features/ui/formation/core.md)
   - layout/
     - [DynamicSection](./docs/fw-features/ui/layout/dynamic-section.md)
+    - [FluidTnGallery](./docs/fw-features/ui/layout/fluid-tn-gallery.md)
     - [FullPageContainer-!!!](./docs/fw-features/ui/layout/dynamic-section.md)
 
 ## Core Features
