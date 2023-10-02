@@ -44,6 +44,7 @@
     "@fontsource/fira-mono": "^4.5.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@lukeed/uuid": "^2.0.0",
+    "axios": "^1.5.1",
     "cookie": "^0.4.1",
     "svelte-media": "^0.1.5",
     "sveltestrap": "^5.11.2",
