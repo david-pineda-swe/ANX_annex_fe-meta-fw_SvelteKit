@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "sveltestrap";
+	import FluidModal from "./fluid-modal.svelte";
 	import { sortByCount, sortEvenly } from "@annexjs/utils";
 	import ItemGroup from "@annexjs/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
 
@@ -102,21 +102,12 @@
 <slot/>
 
 {#if modal}
-  <Modal
-    isOpen={whenFTNGprompted}
-    toggle={toggleModal}
-    {size}
-    {fullscreen}
-  >
-    <!-- <ModalHeader toggle={toggleModal}>Modal title</ModalHeader> -->
-    <ModalBody>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
-    </ModalBody>
-    <!-- <ModalFooter>
-      <Button color="secondary" on:click={toggleModal}>Cancel</Button>
-    </ModalFooter> -->
-  </Modal>
+  <FluidModal
+		modalIsOpen={whenFTNGprompted}
+		modalSize={size}
+		modalFullscreen={fullscreen}
+		{toggleModal}
+	/>
 {/if}
 
 <style lang="scss">
