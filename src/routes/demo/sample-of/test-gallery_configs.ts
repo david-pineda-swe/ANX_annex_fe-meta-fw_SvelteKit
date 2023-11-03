@@ -102,6 +102,10 @@ export const galleryConfig_B = {
   useDescriptions: true,
   allDescriptLocations: 8,
   allDescriptClasses: 'bold', // dark-text
+  modal: {
+    size: 'xl', // ['sm', 'lg', 'xl']
+    fullscreen: true
+  },
   // TODO - vertical row spacing
   //
   // allBoxStyles: "border: 3px solid white;",
@@ -127,7 +131,12 @@ export const galleryConfig_B = {
       backgroundStyles: 'blue',
       title: '2',
       descriptLocation: 2,
-      message: '2-tile'
+      message: '2-tile_OPEN-MODAL',
+      navItem: {
+        // is "NavigationNode" type
+        nodeId: 'something-arb',
+        actionType: 'PROCESS_modal-select'
+      }
     },
     {
       image: '',
