@@ -107,7 +107,9 @@
 		modalSize={size}
 		modalFullscreen={fullscreen}
 		{toggleModal}
-	/>
+	>
+		Sample text for FLUID_MODAL projection
+	</FluidModal>
 {/if}
 
 <style lang="scss">

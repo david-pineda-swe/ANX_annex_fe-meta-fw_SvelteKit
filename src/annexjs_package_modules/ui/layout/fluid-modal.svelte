@@ -1,5 +1,7 @@
 	<script lang="ts">
 		import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "sveltestrap";
+		// TODO - Add named slots for modal header and footer
+
 
 		export let modalIsOpen: boolean;
 		export let modalSize: string;
@@ -13,11 +15,7 @@
 		fullscreen={modalFullscreen}
 		toggle={toggleModal}
 	>
-		<!-- <ModalHeader toggle={toggleModal}>Modal title</ModalHeader> -->
 		<ModalBody>
-			Sample text for FLUID_MODAL
+			<slot/>
 		</ModalBody>
-		<!-- <ModalFooter>
-			<Button color="secondary" on:click={toggleModal}>Cancel</Button>
-		</ModalFooter> -->
 	</Modal>
