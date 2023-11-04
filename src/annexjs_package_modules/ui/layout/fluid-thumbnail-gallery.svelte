@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Button } from "sveltestrap";
 	import FluidModal from "./fluid-modal.svelte";
 	import { sortByCount, sortEvenly } from "@annexjs/utils";
 	import ItemGroup from "@annexjs/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
@@ -26,15 +27,15 @@
 	const makeColumns = sortBy === 'COLUMNS' && factorCount;
 	const makeRows = sortBy === 'ROWS' && factorCount;
 
-  // MODAL STATE
-  let size: any;
-  let fullscreen: boolean;
-  let whenFTNGprompted = false;
-  let selectedNavItem: any;
-  if (modal) {
-    size = modal.size;
-    fullscreen = modal.fullscreen;
-  }
+	// MODAL STATE
+	let size: any;
+	let fullscreen: boolean;
+	let whenFTNGprompted = false;
+	let selectedNavItem: any;
+	if (modal) {
+		size = modal.size;
+		fullscreen = modal.fullscreen;
+	}
 
 	// GROUPING METHOD
 	if (makeColumns) {
@@ -72,17 +73,17 @@
 	let classes: string = `ftn-gallery ${groupingClasses}`;
 
 	// FTN button selection handle
-  const toggleModal = () => {
-    whenFTNGprompted = !whenFTNGprompted;
-  }
+	const toggleModal = () => {
+		whenFTNGprompted = !whenFTNGprompted;
+	}
 	const handleGalleryItemSelection = (item: any, resData:any) => {
-	  console.log('>> [COMP_HANDLE] - GALLERY WILL HANDLE UI SELECTION with:', item, resData);
-    const isModalItem = item.actionType.includes('modal-select');
-    if (modal && isModalItem) {
-    selectedNavItem = {...item, ...resData};
-     toggleModal();
-   }
-  }
+		console.log('>> [COMP_HANDLE] - GALLERY WILL HANDLE UI SELECTION with:', item, resData);
+		const isModalItem = item.actionType.includes('modal-select');
+		if (modal && isModalItem) {
+		selectedNavItem = {...item, ...resData};
+			toggleModal();
+		}
+	}
 </script>
 
 <div class={classes} style={galleryStyle}>
@@ -102,13 +103,21 @@
 <slot/>
 
 {#if modal}
-  <FluidModal
+	<FluidModal
 		modalIsOpen={whenFTNGprompted}
 		modalSize={size}
 		modalFullscreen={fullscreen}
 		{toggleModal}
 	>
+		<div slot="modal-header">
+			HEADER TEXT FOR FLUID MODAL
+		</div>
+
 		Sample text for FLUID_MODAL projection
+		
+		<div slot="modal-footer">
+			<Button color="secondary" on:click={toggleModal}>Close</Button>
+		</div>
 	</FluidModal>
 {/if}
 

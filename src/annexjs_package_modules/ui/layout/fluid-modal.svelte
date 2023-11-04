@@ -1,7 +1,5 @@
 	<script lang="ts">
-		import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "sveltestrap";
-		// TODO - Add named slots for modal header and footer
-
+		import { Modal, ModalHeader, ModalBody, ModalFooter } from "sveltestrap";
 
 		export let modalIsOpen: boolean;
 		export let modalSize: string;
@@ -15,7 +13,19 @@
 		fullscreen={modalFullscreen}
 		toggle={toggleModal}
 	>
+		{#if $$slots["modal-header"]}
+			<ModalHeader toggle={toggleModal}>
+				<slot name="modal-header"/>
+			</ModalHeader>
+		{/if}
+
 		<ModalBody>
 			<slot/>
 		</ModalBody>
+
+		{#if $$slots["modal-footer"]}
+			<ModalFooter>
+				<slot name="modal-footer"/>
+			</ModalFooter>
+		{/if}
 	</Modal>
