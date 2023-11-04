@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Button } from "sveltestrap";
 	import FluidModal from "./fluid-modal.svelte";
+	import SingleShowcase from "./fluid/content/single-showcase.svelte";
 	import { sortByCount, sortEvenly } from "@annexjs/utils";
 	import ItemGroup from "@annexjs/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
 
@@ -31,7 +32,7 @@
 	let size: any;
 	let fullscreen: boolean;
 	let whenFTNGprompted = false;
-	let selectedNavItem: any;
+	let selectedGalleryItem: any;
 	if (modal) {
 		size = modal.size;
 		fullscreen = modal.fullscreen;
@@ -76,11 +77,19 @@
 	const toggleModal = () => {
 		whenFTNGprompted = !whenFTNGprompted;
 	}
-	const handleGalleryItemSelection = (item: any, resData:any) => {
-		console.log('>> [COMP_HANDLE] - GALLERY WILL HANDLE UI SELECTION with:', item, resData);
-		const isModalItem = item.actionType.includes('modal-select');
-		if (modal && isModalItem) {
-		selectedNavItem = {...item, ...resData};
+	const handleGalleryItemSelection = (selectedItem: any, resData:any) => {
+		console.log('>> [COMP_HANDLE] - GALLERY WILL HANDLE UI SELECTION with:', selectedItem, resData);
+		const isModalItem = selectedItem.actionType.includes('modal-select');
+		
+		if (modal && isModalItem) {			
+			const targetContent = items.filter((item: any) => {
+				const hasTargetNavItem = item.navItem;
+				return (hasTargetNavItem) 
+					? hasTargetNavItem.nodeId === selectedItem.nodeId
+					: false;
+			});
+
+			selectedGalleryItem = {...targetContent[0], ...resData};
 			toggleModal();
 		}
 	}
@@ -109,15 +118,15 @@
 		modalFullscreen={fullscreen}
 		{toggleModal}
 	>
-		<div slot="modal-header">
+		<!-- <div slot="modal-header">
 			HEADER TEXT FOR FLUID MODAL
-		</div>
+		</div> -->
 
-		Sample text for FLUID_MODAL projection
+		<SingleShowcase contentDetails={selectedGalleryItem}/>
 		
-		<div slot="modal-footer">
+		<!-- <div slot="modal-footer">
 			<Button color="secondary" on:click={toggleModal}>Close</Button>
-		</div>
+		</div> -->
 	</FluidModal>
 {/if}
 
