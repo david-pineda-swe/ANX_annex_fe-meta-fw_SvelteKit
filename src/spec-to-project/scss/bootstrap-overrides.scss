@@ -1,0 +1,7 @@
+// - BOOTSTRAP OVERRIDES
+.modal {
+  // border: 5px solid fuchsia;
+  .modal-content {
+    background-color: var(--bs-modal-background);
+  }
+}
