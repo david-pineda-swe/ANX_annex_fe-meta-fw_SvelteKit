@@ -122,7 +122,9 @@
 			HEADER TEXT FOR FLUID MODAL
 		</div> -->
 
-		<SingleShowcase contentDetails={selectedGalleryItem}/>
+		<SingleShowcase contentDetails={selectedGalleryItem}>
+			Content here!!!
+		</SingleShowcase>
 		
 		<!-- <div slot="modal-footer">
 			<Button color="secondary" on:click={toggleModal}>Close</Button>
