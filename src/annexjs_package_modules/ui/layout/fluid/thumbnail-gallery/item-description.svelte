@@ -1,15 +1,15 @@
 <script lang="ts">
 	export let descriptClass: string = '';
 	export let title: string = '';
-	export let message: string = '';
+	export let description: string = '';
 </script>
 
 <div class="item-description {descriptClass}">
 	<h2 class="title">
 		{title}
 	</h2>
-	<h3 class="message">
-		{message}
+	<h3 class="description">
+		{description}
 	</h3>
 </div>
 
@@ -20,7 +20,7 @@
 			flex-direction: column;
 			padding: 10px;
 			// border: 1px solid white;
-			.title, .message {
+			.title, .description {
 				margin-bottom: 0;
 			}
 			&.bold-title {
@@ -29,7 +29,7 @@
 				}
 			}
 			&.bold-message {
-				h3.message {
+				h3.description {
 					font-weight: bold;
 				}
 			}

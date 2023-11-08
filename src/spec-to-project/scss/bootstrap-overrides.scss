@@ -1,7 +1,15 @@
 // - BOOTSTRAP OVERRIDES
+
+// - MODALS
 .modal {
   // border: 5px solid fuchsia;
+  .modal-fullscreen {
+    .modal-content {
+      height: 100%;
+    }
+  }
   .modal-content {
     background-color: var(--bs-modal-background);
+    height: 600px;
   }
 }

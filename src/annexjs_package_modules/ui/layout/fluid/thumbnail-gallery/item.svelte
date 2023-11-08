@@ -11,7 +11,7 @@
 	export let handle: any = {};
 	
 	const { tileSize, allBoxStyles, useDescriptions, allDescriptLocations, allDescriptClasses, vertRowSpacing } = galleryConfig;
-	const { backgroundStyles, boxStyles, title, message, descriptLocation, descriptClasses, navItem } = item;
+	const { backgroundStyles, boxStyles, title, description, descriptLocation, descriptClasses, navItem } = item;
 
 	// CLASSES
 	let classes: string = `ftn-gallery-item ${groupingClasses}`;
@@ -88,7 +88,7 @@
 				<ItemDescription
 					{descriptClass}
 					{title}
-					{message}
+					{description}
 				/>
 			{/if}
 		</WrapAction>
@@ -97,7 +97,7 @@
 			<ItemDescription
 				{descriptClass}
 				{title}
-				{message}
+				{description}
 			/>
 		{/if}
 	{/if}

@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { Button } from "sveltestrap";
+	import ItemGroup from "@annexjs/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
+	import ItemDescription from "./fluid/thumbnail-gallery/item-description.svelte";
 	import FluidModal from "./fluid-modal.svelte";
 	import SingleShowcase from "./fluid/content/single-showcase.svelte";
 	import { sortByCount, sortEvenly } from "@annexjs/utils";
-	import ItemGroup from "@annexjs/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
+	import IconIndex from "../copy/icon-index.svelte";
 
 	// Default gallery Config
 	export let galleryConfig: any = {};
@@ -123,7 +125,16 @@
 		</div> -->
 
 		<SingleShowcase contentDetails={selectedGalleryItem}>
-			Content here!!!
+			<button class="close-showcase" on:click={toggleModal}>
+				<IconIndex designation={`ICONIFY_mdi:close-circle-outline_medium|s2|white`}/>
+			</button>
+
+			<!-- bold-message -->
+			<ItemDescription
+				descriptClass={'bold-title bt-r'}
+				title={selectedGalleryItem.title}
+				description={selectedGalleryItem.longMessage}
+			/>
 		</SingleShowcase>
 		
 		<!-- <div slot="modal-footer">
@@ -133,6 +144,12 @@
 {/if}
 
 <style lang="scss">
+	.close-showcase {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+	}
+	
 	.ftn-gallery {
 		height: 100%;
 		display: flex;
