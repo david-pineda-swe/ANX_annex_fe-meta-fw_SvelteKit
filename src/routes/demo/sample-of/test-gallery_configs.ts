@@ -19,63 +19,63 @@ export const galleryConfig_A = {
       backgroundStyles: "url('./images/sample/sample_leather_texture.jpg')",
       // boxStyles: 'border: 5px solid fuchsia;',
       title: '1',
-      message: '1-tile'
+      description: '1-tile'
     },
     {
       image: '',
       backgroundStyles: 'blue',
       title: '2',
-      message: '2-tile'
+      description: '2-tile'
     },
     {
       image: '',
       backgroundStyles: 'fuchsia',
       title: '3',
-      message: '3-tile'
+      description: '3-tile'
     },
     {
       image: '',
       backgroundStyles: 'purple',
       title: '4',
-      message: '4-tile'
+      description: '4-tile'
     },
     {
       image: '',
       backgroundStyles: 'red',
       title: '5',
-      message: '5-tile'
+      description: '5-tile'
     },
     {
       image: '',
       backgroundStyles: 'orange',
       title: '6',
-      message: '6-tile'
+      description: '6-tile'
     },
     {
       image: '',
       // backgroundStyles: 'teal',
       backgroundStyles: "url('./images/sample/sample_canvas_texture.jpg')",
       title: '7',
-      message: '7-tile'
+      description: '7-tile'
     },
     {
       image: '',
       backgroundStyles: 'gray',
       title: '8',
-      message: '8-tile'
+      description: '8-tile'
     },
     {
       image: '',
       backgroundStyles: 'yellow',
       boxStyles: 'border: 5px solid green;',
       title: '9',
-      message: '9-tile'
+      description: '9-tile'
     },
     {
       image: '',
       backgroundStyles: 'brown',
       title: '10',
-      message: '10-tile'
+      description: '10-tile'
     }
   ]
   // infiniteTiles: false,
@@ -102,6 +102,10 @@ export const galleryConfig_B = {
   useDescriptions: true,
   allDescriptLocations: 8,
   allDescriptClasses: 'bold', // dark-text
+  modal: {
+    size: 'xl', // ['sm', 'lg', 'xl']
+    fullscreen: true
+  },
   // TODO - vertical row spacing
   //
   // allBoxStyles: "border: 3px solid white;",
@@ -113,11 +117,14 @@ export const galleryConfig_B = {
       // boxStyles: 'border: 5px solid fuchsia;',
       title: '1',
       descriptLocation: 1,
-      message: '1-tile',
+      description: '1-tile',
+      longMessage:
+        'This is some long message description and content. This will be an example to follow and describe Showcase content.',
       navItem: {
         // is "NavigationNode" type
         nodeId: 'to-home-from-gallery',
-        actionType: 'INTERNAL_ROUTE',
+        actionType: 'PROCESS_modal-select-1',
+        // actionType: 'INTERNAL_ROUTE',
         label: 'Home',
         slug: '/'
       }
@@ -127,14 +134,21 @@ export const galleryConfig_B = {
       backgroundStyles: 'blue',
       title: '2',
       descriptLocation: 2,
-      message: '2-tile'
+      description: '2-tile_OPEN-MODAL',
+      longMessage:
+        'This is some extra long message description and content. This will be an example to follow and describe Showcase content.',
+      navItem: {
+        // is "NavigationNode" type
+        nodeId: 'something-arb',
+        actionType: 'PROCESS_modal-select-2'
+      }
     },
     {
       image: '',
       backgroundStyles: 'fuchsia',
       title: '3',
       descriptLocation: 3,
-      message: '3-tile test PROCESS',
+      description: '3-tile test PROCESS',
       navItem: {
         // is "NavigationNode" type
         nodeId: 'test-process-action',
@@ -146,14 +160,14 @@ export const galleryConfig_B = {
       backgroundStyles: 'purple',
       title: '4',
       descriptLocation: 4,
-      message: '4-tile'
+      description: '4-tile'
     },
     {
       image: '',
       backgroundStyles: 'green',
       title: '5',
       descriptLocation: 5,
-      message: '5-tile',
+      description: '5-tile',
       navItem: {
         // <== NavigationNode
         nodeId: 'to-privacy-policy-from-gallery',
@@ -168,7 +182,7 @@ export const galleryConfig_B = {
       title: '6',
       descriptLocation: 6,
       descriptClasses: 'dark-text bold',
-      message: '6-tile'
+      description: '6-tile'
     },
     {
       image: '',
@@ -176,14 +190,14 @@ export const galleryConfig_B = {
       backgroundStyles: "url('./images/sample/sample_canvas_texture.jpg')",
       title: '7',
       descriptLocation: 7,
-      message: '7-tile'
+      description: '7-tile'
     },
     {
       image: '',
       backgroundStyles: 'gray',
       title: '8',
       descriptLocation: 8,
-      message: '8-tile'
+      description: '8-tile'
     },
     {
       image: '',
@@ -193,13 +207,13 @@ export const galleryConfig_B = {
       title: '9',
       descriptLocation: 9,
       descriptClasses: 'dark-text', // bold-title, bold-message
-      message: '9-tile'
+      description: '9-tile'
     },
     {
       image: '',
       backgroundStyles: 'brown',
       title: '10',
-      message: '10-tile'
+      description: '10-tile'
     }
   ]
   // infiniteTiles: false,

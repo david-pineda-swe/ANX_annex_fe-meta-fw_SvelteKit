@@ -1,6 +1,11 @@
 <script lang="ts">
-	import { sortByCount, sortEvenly } from "@annexjs/utils";
+	import { Button } from "sveltestrap";
 	import ItemGroup from "@annexjs/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
+	import ItemDescription from "./fluid/thumbnail-gallery/item-description.svelte";
+	import FluidModal from "./fluid-modal.svelte";
+	import SingleShowcase from "./fluid/content/single-showcase.svelte";
+	import { sortByCount, sortEvenly } from "@annexjs/utils";
+	import IconIndex from "../copy/icon-index.svelte";
 
 	// Default gallery Config
 	export let galleryConfig: any = {};
@@ -12,15 +17,28 @@
 		sortMethod,
 		tileSize,
 		vertRowSpacing,
+		modal,
 		items
 	} = galleryConfig;
 
 	let groupedItems: Array<unknown>;
 	let factorCount = null;
+
+	// GALLERY STATE
 	const [sortBy, count] = (sortMethod) ? sortMethod.split('-') : '';
 	factorCount = parseInt(count);
 	const makeColumns = sortBy === 'COLUMNS' && factorCount;
 	const makeRows = sortBy === 'ROWS' && factorCount;
+
+	// MODAL STATE
+	let size: any;
+	let fullscreen: boolean;
+	let whenFTNGprompted = false;
+	let selectedGalleryItem: any;
+	if (modal) {
+		size = modal.size;
+		fullscreen = modal.fullscreen;
+	}
 
 	// GROUPING METHOD
 	if (makeColumns) {
@@ -58,8 +76,24 @@
 	let classes: string = `ftn-gallery ${groupingClasses}`;
 
 	// FTN button selection handle
-	const handleGalleryItemSelection = (item: any, resData:any) => {
-	  console.log('>> [COMP_HANDLE] - GALLERY WILL HANDLE UI SELECTION with:', item, resData);
+	const toggleModal = () => {
+		whenFTNGprompted = !whenFTNGprompted;
+	}
+	const handleGalleryItemSelection = (selectedItem: any, resData:any) => {
+		console.log('>> [COMP_HANDLE] - GALLERY WILL HANDLE UI SELECTION with:', selectedItem, resData);
+		const isModalItem = selectedItem.actionType.includes('modal-select');
+		
+		if (modal && isModalItem) {			
+			const targetContent = items.filter((item: any) => {
+				const hasTargetNavItem = item.navItem;
+				return (hasTargetNavItem) 
+					? hasTargetNavItem.nodeId === selectedItem.nodeId
+					: false;
+			});
+
+			selectedGalleryItem = {...targetContent[0], ...resData};
+			toggleModal();
+		}
 	}
 </script>
 
@@ -77,7 +111,45 @@
 	{/if}
 </div>
 
+<slot/>
+
+{#if modal}
+	<FluidModal
+		modalIsOpen={whenFTNGprompted}
+		modalSize={size}
+		modalFullscreen={fullscreen}
+		{toggleModal}
+	>
+		<!-- <div slot="modal-header">
+			HEADER TEXT FOR FLUID MODAL
+		</div> -->
+
+		<SingleShowcase contentDetails={selectedGalleryItem}>
+			<button class="close-showcase" on:click={toggleModal}>
+				<IconIndex designation={`ICONIFY_mdi:close-circle-outline_medium|s2|white`}/>
+			</button>
+
+			<!-- bold-message -->
+			<ItemDescription
+				descriptClass={'bold-title bt-r'}
+				title={selectedGalleryItem.title}
+				description={selectedGalleryItem.longMessage}
+			/>
+		</SingleShowcase>
+		
+		<!-- <div slot="modal-footer">
+			<Button color="secondary" on:click={toggleModal}>Close</Button>
+		</div> -->
+	</FluidModal>
+{/if}
+
 <style lang="scss">
+	.close-showcase {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+	}
+	
 	.ftn-gallery {
 		height: 100%;
 		display: flex;
