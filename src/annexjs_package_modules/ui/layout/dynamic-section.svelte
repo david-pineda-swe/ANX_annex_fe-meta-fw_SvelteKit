@@ -128,7 +128,7 @@
       display: flex;
       justify-content: center;
       height: 100%;
-      padding: calc(var(--section-vertical-padding) * 2.5) 0px;
+      padding: calc(var(--section-vertical-padding)) 0px;
       // border: 1px solid red;
 
       &.stacked {
