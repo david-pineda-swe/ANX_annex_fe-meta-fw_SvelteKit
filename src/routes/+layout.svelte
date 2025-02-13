@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
 	import Footer from '@annexjs/core/webapp/nav-interface/footer.svelte';
 	
