@@ -1,5 +1,7 @@
+@use "theming";
+
 .base.copy-card {
-  @include cardTheme;
+  @include theming.cardTheme;
   h1,
   h2,
   h3{

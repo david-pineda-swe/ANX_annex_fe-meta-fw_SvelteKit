@@ -1,3 +1,5 @@
+@use "icon-index";
+
 // SCROLLING INTERFACE CONTAINERS
 .interface-container {
   padding: 20px 20px 150px 20px;
@@ -68,7 +70,7 @@ span.menu-nav-item-label {
     position: relative;
   }
   li.active::before {
-    @include fa-icon-defaults;
+    @include icon-index.fa-icon-defaults;
     content: "\f054";
     position: absolute;
     left: -15px;

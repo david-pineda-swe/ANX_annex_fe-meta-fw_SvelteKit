@@ -1,3 +1,5 @@
+@use "theming";
+
 p {
 	color: var(--text-color);
 	line-height: 1.5;
@@ -15,7 +17,7 @@ a:hover {
 }
 
 pre {
-  @include cardTheme;
+  @include theming.cardTheme;
 	font-size: 16px;
 	font-family: var(--font-mono);
   font-weight: bold;

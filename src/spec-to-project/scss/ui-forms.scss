@@ -1,3 +1,5 @@
+@use "theming";
+
 // STANDARD //
 $left-col-width: 30%;
 $right-col-width: 70%;
@@ -56,7 +58,7 @@ form.formation {
       // border: 1px solid red;
       
       input {
-        @include inputTheme();
+        @include theming.inputTheme();
         width: 100%;
       }
       
@@ -195,7 +197,7 @@ form.formation {
       $bm: var(--form-input-border-muted);
       $bh: var(--form-input-border-highlighted);
       textarea {
-        @include inputTheme;
+        @include theming.inputTheme;
         width: 100%;
         resize: vertical;
         // border-color: $bm $bh $bh $bm;

@@ -1,15 +1,15 @@
-@import './_color-scheme.scss';
-@import './_spacing-sizing.scss';
-@import './_theming.scss';
-@import './icon-index.scss';
-@import './copy.scss';
-@import './ui-component-buttons.scss';
-@import './ui-component-cards.scss';
-@import './ui-forms.scss';
-@import './bootstrap-overrides.scss';
+@use '_color-scheme.scss';
+@use '_spacing-sizing.scss';
+@use '_theming.scss';
+@use 'icon-index.scss';
+@use 'copy.scss';
+@use 'ui-component-buttons.scss';
+@use 'ui-component-cards.scss';
+@use 'ui-forms.scss';
+@use 'bootstrap-overrides.scss';
 
-@import './interface-menus.scss';
-@import './primary-menu-navigation.scss';
-@import './footer.scss';
+@use 'interface-menus.scss';
+@use 'primary-menu-navigation.scss';
+@use 'footer.scss';
 
-@import './theme-structure.scss';
+@use 'theme-structure.scss';
