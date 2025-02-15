@@ -1,10 +1,10 @@
 <script lang="ts">
 	// DEBUG TOOLS
-	// import XpSandbox from "@annexjs/debug-tools/xp-sandbox/index.svelte";
+	// import XpSandbox from "annex/debug-tools/xp-sandbox/index.svelte";
 	// SECTIONS
-	// import FullPageContainer from "@annexjs/ui/layout/full-page-container.svelte";
-	import DynamicSection from "@annexjs/ui/layout/dynamic-section.svelte";
-	import FluidThumbnailGallery from "@annexjs/ui/layout/fluid-thumbnail-gallery.svelte";
+	// import FullPageContainer from "annex/ui/layout/full-page-container.svelte";
+	import DynamicSection from "annex/ui/layout/dynamic-section.svelte";
+	import FluidThumbnailGallery from "annex/ui/layout/fluid-thumbnail-gallery.svelte";
 	
 	import ArbitraryFormationA from "./sample-of/arbitrary-formation-a.svelte";
 	import { galleryConfig_A, galleryConfig_B } from "./sample-of/test-gallery_configs";

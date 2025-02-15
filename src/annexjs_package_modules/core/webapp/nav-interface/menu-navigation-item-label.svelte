@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { isEmpty } from "@annexjs/utils";
+  import { isEmpty } from "annex/utils";
   import type { NavigationNode } from "src/global";
 
-  import IconIndex from "@annexjs/ui/copy/icon-index.svelte";
+  import IconIndex from "annex/ui/copy/icon-index.svelte";
 
   export let navItem: NavigationNode;
 

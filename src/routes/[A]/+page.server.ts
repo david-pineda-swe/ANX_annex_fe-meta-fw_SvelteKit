@@ -1,4 +1,4 @@
-import { annexRouter } from '@annexjs/core';
+import { annexRouter } from 'annex/core';
 import type { LoadEvent } from '@sveltejs/kit';
 import type { DynamicRouteData } from 'src/global';
 

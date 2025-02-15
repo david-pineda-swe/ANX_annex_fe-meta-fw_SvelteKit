@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { mediaIs } from "@annexjs/core/webapp/stores/reactive-media";
+  import { mediaIs } from "annex/core/webapp/stores/reactive-media";
   import type { NavigationConfig } from "src/global";
 
-  import MediaMonitorHud from "@annexjs/debug-tools/media-monitor/hud.svelte"; // NOTE - FOR RESPONSIVE TESTING 
+  import MediaMonitorHud from "annex/debug-tools/media-monitor/hud.svelte"; // NOTE - FOR RESPONSIVE TESTING 
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
-  import HeaderDesktop from '@annexjs/core/webapp/nav-interface/header-desktop.svelte';
-  import HeaderMobile from '@annexjs/core/webapp/nav-interface/header-mobile.svelte';
-  import { selectedPrimaryMenuTray } from "@annexjs/core/webapp/stores/menu-trays";
+  import HeaderDesktop from 'annex/core/webapp/nav-interface/header-desktop.svelte';
+  import HeaderMobile from 'annex/core/webapp/nav-interface/header-mobile.svelte';
+  import { selectedPrimaryMenuTray } from "annex/core/webapp/stores/menu-trays";
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 
   // TODO - Collect and merge [siteGraph => contentNavigation, $pec/config navigation] navigations
-  // import { contentNavigation } from "@annexjs/core/webapp/stores/navigation-outlines";
+  // import { contentNavigation } from "annex/core/webapp/stores/navigation-outlines";
   // let contentNavigationData;
   // contentNavigation.subscribe((data) => contentNavigationData = data);
   // console.log('>> TEST: CONFIRM ACCESS OF PAGE MODEL VIA STORE:', contentNavigationData);

@@ -26,13 +26,12 @@
     "checkJs": true,
     // NOTE: ABSOLUTE PATH DEFS FOR IDE STATIC ANALYSIS - LOCAL DEV >
     "paths": {
+      "globalTypes": ["src/global.d.ts"],
       // NOTE: Supported package modules > TEMPORARY !
-      // @annexjs/... is a temporary place holder until open-source package modules can be published.
-      "@annexjs/*": ["src/annexjs_package_modules/*"],
-
-      // Project based modules go here
-      "@nnex/*": ["src/annexjs-extended/*"], // < Package module extended & support development
-      "$pec/*": ["src/spec-to-project/*"] // < Project specififc development modules
+      "annex/*": ["src/annexjs_package_modules/*"], // < LIB supported modules
+      // TBD Project based modules go here - SEE svelte.config.js FOR DEV NOTES
+      // "annex_[TARGET]/*": ["src/annexjs-extended/*"], // TBD < Package module extended & support development
+      "$pec/*": ["src/spec-to-project/*"] // < Project spec development modules
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],

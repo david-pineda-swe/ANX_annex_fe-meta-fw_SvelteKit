@@ -2,7 +2,7 @@
   import { sineIn, quintOut } from 'svelte/easing';
   import type { NavigationConfig } from "src/global";
   import filterTargetNavigations from "./filter-target-navigations";
-  import { mediaIsMobile } from "@annexjs/core/webapp/stores/reactive-media";
+  import { mediaIsMobile } from "annex/core/webapp/stores/reactive-media";
     import MenuPlotter from './menu-plotter.svelte';
 
   export let trayType: string;

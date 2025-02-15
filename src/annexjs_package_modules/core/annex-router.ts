@@ -1,6 +1,6 @@
 import type { DynamicRouteData, NavigationNode, PageModelResult, PageRoute, SiteGraph } from "src/global";
 import { collectDynamicContentFor, stackNestedContentStructure } from "./annex-content-driver";
-import { isEmpty } from '@annexjs/utils';
+import { isEmpty } from 'annex/utils';
 
 // X - siteGraph fixture will be replaced by call to HCMS
 // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'

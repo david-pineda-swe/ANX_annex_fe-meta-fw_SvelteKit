@@ -1,7 +1,7 @@
 <!-- TODO - Extend with hover effects -->
 
 <script lang="ts">
-	import WrapAction from "@annexjs/ui/interact/wrap-action.svelte";
+	import WrapAction from "annex/ui/interact/wrap-action.svelte";
 	import ItemDescription from "./item-description.svelte";
 
 	export let item: any = {};

@@ -2,7 +2,7 @@
   import type { InputRequirements } from "src/global";
   import { splitRequirements } from "../util/split-requirements";
   import FormationInputHandler from "../_input-interface";
-  import IconIndex from "@annexjs/ui/copy/icon-index.svelte";
+  import IconIndex from "annex/ui/copy/icon-index.svelte";
 
   export let inputReqs: InputRequirements = {
     fi: undefined,
