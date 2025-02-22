@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { mediaIs } from "@annexjs/core/webapp/stores/reactive-media";
-  import { isEmpty } from "@annexjs/utils";
+  import { mediaIs } from "annex/core/webapp/stores/reactive-media";
+  import { isEmpty } from "annex/utils";
 
   export let supportClasses: any = null; // null, sm, lg, full
   export let layout: string = 'stacked'; // stacked, rev-stacked, ordered, ordered-left, ordered-right

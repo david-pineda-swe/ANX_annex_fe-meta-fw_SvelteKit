@@ -1,12 +1,14 @@
+@use "theming";
+
 button.ui-btn-primary,
 button.primary {
-  @include buttonPrimary;
+  @include theming.buttonPrimary;
 }
 
 button.ui-btn,
 button.secondary,
 a.ui-btn {
-  @include buttonSecondary;
+  @include theming.buttonSecondary;
 
   &.lg {
     font-size: 2rem;

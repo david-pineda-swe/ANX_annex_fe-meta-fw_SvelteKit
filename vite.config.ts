@@ -1,5 +1,6 @@
 import type { UserConfig } from 'vite';
-import path from "path";
+import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { restartOnMarkdownEdit } from './vite-dev-support/restarts';
 // import {restartOnFixtureEdit, restartOnMarkdownEdit } from './vite-dev-support/restarts';
@@ -13,19 +14,11 @@ const config: UserConfig = {
       }
     }
   },
-  resolve: {
-    // NOTE: ABSOLUTE PATH DEFS FOR BUILD & COMPILE TIME - CI/CD PROCESSING
-    alias: {
-      // NOTE: Supported package modules > TEMPORARY !
-      // @annexjs/... is a temporary place holder until open-source package modules can be published.
-      '@annexjs': path.resolve('./src/annexjs_package_modules'),
-      '@nnex': path.resolve('./src/annexjs-extended'),
-      '$pec': path.resolve('./src/spec-to-project')
-    }
-  },
+  resolve: {},
   plugins: [
+    tailwindcss(),
     sveltekit(),
-    restartOnMarkdownEdit(),
+    restartOnMarkdownEdit()
     // restartOnFixtureEdit() // TODO - NEEDS WORK <<
   ]
 };

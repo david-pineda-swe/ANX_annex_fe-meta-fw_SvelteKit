@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { NavigationConfig } from "src/global";
-  import filterTargetNavigations from "@annexjs/core/webapp/nav-interface/filter-target-navigations";
+  import filterTargetNavigations from "annex/core/webapp/nav-interface/filter-target-navigations";
 
   import MenuPlotter from "./menu-plotter.svelte";
 

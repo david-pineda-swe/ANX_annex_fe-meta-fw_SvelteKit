@@ -1,9 +1,6 @@
-@import '@fontsource/fira-mono';
-
-// TAILWIND DEFAULTS AND 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@use "sass:meta";
+// TAILWIND DEFAULTS AND
+@use "tailwindcss";
 
 /* - PROJECT $PEC STYLES - */
-@import './spec-to-project/scss/_spec-styles.scss';
+@include meta.load-css('spec-to-project/scss/_spec-styles.scss');

@@ -71,11 +71,6 @@ The underlying data structure that will hydrate and control the different aspect
 ### Dynamic Router:
 This is the mechanism that acts as a server side rendering controller when an incoming route request is made. [Concept Outline >>](./docs/dynamic-router.md)
 
-## Deployment
-Style guide and protoform demo is on Netlify!
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/950bb6c3-0af1-4bcb-a1b4-6ac129e37e8d/deploy-status)](https://app.netlify.com/sites/prajkt-annex/deploys)
-
 More details and procs in the G-DOCS under:
 
 PRAJKT | ANNEX > Deployment > [On Netlify](https://docs.google.com/document/d/1wmLbdIYROwjpZHbKP_fokdE-J4w6NO7eJSjJopHGiDw/)

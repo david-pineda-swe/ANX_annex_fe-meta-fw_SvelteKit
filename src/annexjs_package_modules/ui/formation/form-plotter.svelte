@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isEmpty } from "@annexjs/utils";
+  import { isEmpty } from "annex/utils";
   import TierA_Fieldset from "./tier-A-fieldset.svelte";
   import ProcessingScreen from "./processing-screen.svelte";
 

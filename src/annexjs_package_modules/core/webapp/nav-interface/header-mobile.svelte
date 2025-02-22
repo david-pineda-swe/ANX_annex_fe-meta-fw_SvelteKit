@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { NavigationConfig } from 'src/global';
-  import filterTargetNavigations from '@annexjs/core/webapp/nav-interface/filter-target-navigations';
+  import type { NavigationConfig } from 'globalTypes';
+  import filterTargetNavigations from 'annex/core/webapp/nav-interface/filter-target-navigations';
   import MenuPlotter from './menu-plotter.svelte';
 
   export let toggleMenuTray: any;
@@ -14,7 +14,7 @@
 
   // TARGET_ACTIONS
   const targetActions = {
-    handleToggleMenuTray: (provided) => {
+    handleToggleMenuTray: (provided: any) => {
       const targetSide = provided[0];
       toggleMenuTray(`${targetSide}_TRAY`);
     }

@@ -1,7 +1,7 @@
 <script lang="ts">
     // NOTE - Formation Sample instance
-    import FormationInterface from "@annexjs/ui/formation/_interface";
-    import FormPlotter from "@annexjs/ui/formation/form-plotter.svelte";
+    import FormationInterface from "annex/ui/formation/_interface";
+    import FormPlotter from "annex/ui/formation/form-plotter.svelte";
 
     import { formA_outline } from "./arbitrary-formation_outlines";
     

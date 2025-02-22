@@ -1,6 +1,6 @@
-<script lang="ts">
-	import NavInterface from '@annexjs/core/webapp/nav-interface.svelte';
-	import Footer from '@annexjs/core/webapp/nav-interface/footer.svelte';
+<script>
+	import NavInterface from 'annex/core/webapp/nav-interface.svelte';
+	import Footer from 'annex/core/webapp/nav-interface/footer.svelte';
 	
 	import InsertHeaderDesktopA from '$pec/components/interface/menus/insert-header-desktop-a.svelte';
 	import InsertHeaderDesktopB from '$pec/components/interface/menus/insert-header-desktop-b.svelte';

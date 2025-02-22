@@ -1,4 +1,4 @@
-import { isEmpty } from '@annexjs/utils';
+import { isEmpty } from 'annex/utils';
 import type { NavigationConfig } from 'src/global';
 
 // - many locations for a Menu

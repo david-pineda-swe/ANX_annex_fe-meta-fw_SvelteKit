@@ -4,7 +4,7 @@
 
   import MenuNavigationItemLabel from './menu-navigation-item-label.svelte';
   import MenuNavigationList from './menu-navigation-list.svelte';
-  import WrapAction from '@annexjs/ui/interact/wrap-action.svelte';
+  import WrapAction from 'annex/ui/interact/wrap-action.svelte';
 
   export let toggleMenuTray: any;
   export let navItem: NavigationNode;

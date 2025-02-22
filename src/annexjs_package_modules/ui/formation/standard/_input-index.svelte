@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isEmpty } from "@annexjs/utils";
+  import { isEmpty } from "annex/utils";
   import type { InputRequirements } from "src/global";
   import { splitRequirements } from "../util/split-requirements";
   

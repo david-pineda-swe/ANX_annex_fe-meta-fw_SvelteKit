@@ -1,4 +1,4 @@
-import { generateNavigationConfig, sampleNavConfig } from "@annexjs/core/webapp/nav-interface/entity/generate-navigation-config";
+import { generateNavigationConfig, sampleNavConfig } from "annex/core/webapp/nav-interface/entity/generate-navigation-config";
 import { openTopTray, openRightTray, openBottomTray, openLeftTray } from "./module/tray-actions";
 
 // MENUS

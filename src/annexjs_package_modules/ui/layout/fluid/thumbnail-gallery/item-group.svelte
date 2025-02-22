@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { mediaIs } from "@annexjs/core/webapp/stores/reactive-media";
+	import { mediaIs } from "annex/core/webapp/stores/reactive-media";
 	import GalleryItem from "./item.svelte";
 
 	export let itemGroup: unknown = [];

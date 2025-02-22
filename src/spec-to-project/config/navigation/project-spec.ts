@@ -1,5 +1,5 @@
 //TODO - sampleNavConfig => defaultNavConfig
-import { generateNavigationConfig, sampleNavConfig } from "@annexjs/core/webapp/nav-interface/entity/generate-navigation-config";
+import { generateNavigationConfig, sampleNavConfig } from "annex/core/webapp/nav-interface/entity/generate-navigation-config";
 
 import primaryMenu from "./menu/primary.json";
 import footerMenu from "./menu/footer.json";

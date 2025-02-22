@@ -1,6 +1,6 @@
 import type { DynamicRouteData, NavigationNode, PageModelResult, PageRoute, SiteGraph } from "src/global";
 import { collectDynamicContentFor, stackNestedContentStructure } from "./annex-content-driver";
-import { isEmpty } from '@annexjs/utils';
+import { isEmpty } from 'annex/utils';
 
 // X - siteGraph fixture will be replaced by call to HCMS
 // import { ProtoSiteGraph as SiteGraph } from '$pec/fixtures/site-graph'
@@ -49,9 +49,9 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
   const {tierPositionKey, tierPositionLabel, serializedUrlPath} = pathValidationQuery;  
 
   // TODO: ABSTRACT THE DERIVED TIER PROGRESSION
-  let tierPosition: string;
-  let tierSequence: Array<string>;
-  let indexOfTargetTier: number;
+  let tierPosition: string = '';
+  let tierSequence: Array<string> = [];
+  let indexOfTargetTier: number = 0;
 
   // TODO: ACCOUNT FOR DEFAULT AND ALIAS tierPosition(s)
   // TODO: ERROR IF NEITHER KEY OR LABEL WAS PROVIDED
@@ -70,19 +70,19 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
 
   const tierProgression = tierSequence.slice(0, indexOfTargetTier + 1)
 
-  const tempRouteResults = [];
+  const tempRouteResults: Array<PageRoute> = [];
 
   const pageRouteSequence = tierProgression.map((currentTier: string, i: number) => {
     let targetRoute: PageRoute;
-    const requestedRouteSlug = serializedUrlPath[currentTier];
+    const requestedRouteSlug = (serializedUrlPath as any)[currentTier];
 
     if (i === 0) {
       // FIX - PARTIAL MATCHES WORK te => test-a
-      targetRoute = routeStructure[0].slug.includes(requestedRouteSlug) ? routeStructure[0] : null;
+      targetRoute = routeStructure[0].slug.includes(requestedRouteSlug) ? routeStructure[0] : null as any;
     } else {
       // Find targetTierRoute by routeTier index & routeSlug match from parent
-      const parentTierRoute = tempRouteResults[i - 1];
-      targetRoute = parentTierRoute.subRoutes.filter((pageRoute: PageRoute) => {
+      const parentTierRoute: PageRoute = !isEmpty(tempRouteResults) ? tempRouteResults[i - 1] : {} as PageRoute;
+      targetRoute = parentTierRoute.subRoutes!.filter((pageRoute: PageRoute) => {
         const { tier, slug } = pageRoute;
         
         return tier === currentTier && slug.includes(requestedRouteSlug); // ! << /example-slug || example-slug
@@ -126,21 +126,18 @@ const validateRouteForTier = async function(pathValidationQuery: PathValidationQ
 }
 
 const createNavNodeFrom = function(pageRoute:PageRoute, parentSlug: string): NavigationNode {
-  const { slug, subRoutes, routeMeta: { navigationNode: {
-    nodeId,
-    label,
-  } } } = pageRoute;
+  const { slug, subRoutes, routeMeta } = pageRoute;
 
   const slugChain = `${parentSlug}${slug}`;
   // console.log('>> TEST SLUG_CHAIN', slugChain);
 
-  const subNodes = (isEmpty(subRoutes)) ? [] : pageRoute.subRoutes.map((subPageRoute: PageRoute) => {
+  const subNodes = (isEmpty(subRoutes)) ? [] : pageRoute.subRoutes!.map((subPageRoute: PageRoute) => {
     return createNavNodeFrom(subPageRoute, slugChain);
   });
 
   return {
-    nodeId,
-    label,
+    nodeId: routeMeta!.navigationNode!.nodeId,
+    label: routeMeta!.navigationNode!.label,
     actionType: 'INTERNAL_ROUTE',
     //
     slug: slugChain,
@@ -158,19 +155,18 @@ const parseContentNavigationFrom = async function(routeStructure: Array<PageRout
 }
 
 const renderURLrequestedModels = async function(pathValidationQuery: PathValidationQuery):Promise<DynamicRouteData> {
+  // ! STAGE 1: COLLECT SITE_GRAPH
+  const collectedSiteGraph = await requestSiteGraphData();
+  const { routeStructure } = collectedSiteGraph;
+  
+  // ! STAGE 2: PARSE THE CONTENT_NAVIGATION
+  const contentNavigation = await parseContentNavigationFrom(routeStructure);
+  
+  // ! STAGE 3: VALIDATE REQUESTED URL_PATH VIA PAGE_ROUTE_SEQUENCE OF ROUTE_STRUCTURE
+  const workingPageModel = await validateRouteForTier(pathValidationQuery, routeStructure);
+
+  // console.log('>> TEST VALIDATED_PAGE_MODEL:', workingPageModel);
   try {
-    // ! STAGE 1: COLLECT SITE_GRAPH
-    const collectedSiteGraph = await requestSiteGraphData();
-    const { routeStructure } = collectedSiteGraph;
-    
-    // ! STAGE 2: PARSE THE CONTENT_NAVIGATION
-    const contentNavigation = await parseContentNavigationFrom(routeStructure);
-    
-    // ! STAGE 3: VALIDATE REQUESTED URL_PATH VIA PAGE_ROUTE_SEQUENCE OF ROUTE_STRUCTURE
-    const workingPageModel = await validateRouteForTier(pathValidationQuery, routeStructure);
-
-    // console.log('>> TEST VALIDATED_PAGE_MODEL:', workingPageModel);
-
     if (!workingPageModel.allTiersAreResolved) {
       // FAIL: (!) No PageRoute model for requested URL path (!) 
       const { tierPosition, pageRouteSequence } = workingPageModel;
@@ -220,6 +216,12 @@ const renderURLrequestedModels = async function(pathValidationQuery: PathValidat
 
     // ! return a dummy error ContentResult for testing;
   }
+
+  // Default bypass try/catch
+  return {
+    pageModel: workingPageModel,
+    contentNavigation
+  };
 }
 
 export default { validateRouteForTier, renderURLrequestedModels };

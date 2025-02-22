@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { mediaIs } from "@annexjs/core/webapp/stores/reactive-media";
+  import { mediaIs } from "annex/core/webapp/stores/reactive-media";
   
   $:mobileAnonActive = ($mediaIs.mobile_anon) ? 'active' : 'inactive';
   $:mobileIPxiiiMaxActive = ($mediaIs.mobile_iPhoneXIIIproMax) ? 'active' : 'inactive';

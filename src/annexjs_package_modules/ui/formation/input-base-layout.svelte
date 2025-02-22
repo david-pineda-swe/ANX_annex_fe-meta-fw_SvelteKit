@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isEmpty } from "@annexjs/utils";
+  import { isEmpty } from "annex/utils";
 
   export let node:any = null;
   const { id, label, inputType, required, setupConfig, status: input } = node;
