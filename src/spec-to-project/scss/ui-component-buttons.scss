@@ -1,14 +1,14 @@
-@use "theming";
+@use "artifact-theming";
 
 button.ui-btn-primary,
 button.primary {
-  @include theming.buttonPrimary;
+  @include artifact-theming.buttonPrimary;
 }
 
 button.ui-btn,
 button.secondary,
 a.ui-btn {
-  @include theming.buttonSecondary;
+  @include artifact-theming.buttonSecondary;
 
   &.lg {
     font-size: 2rem;

@@ -1,7 +1,7 @@
-@use "theming";
+@use "artifact-theming";
 
 .base.copy-card {
-  @include theming.cardTheme;
+  @include artifact-theming.cardTheme;
   h1,
   h2,
   h3{
