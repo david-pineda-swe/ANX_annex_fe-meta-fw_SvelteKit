@@ -1,6 +1,0 @@
-@use "sass:meta";
-// TAILWIND DEFAULTS AND
-@use "tailwindcss";
-
-/* - PROJECT $PEC STYLES - */
-@include meta.load-css('spec-to-project/scss/_spec-styles.scss');

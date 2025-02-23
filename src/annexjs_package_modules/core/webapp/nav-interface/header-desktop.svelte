@@ -25,7 +25,7 @@
 
 
 
-<header class="desktop-header hidden sm:flex">
+<header class="desktop-header">
   {#if $$slots["insert-header-desktop-aa"]}
     <div class="corner">
       <slot name="insert-header-desktop-aa"/>
