@@ -31,7 +31,7 @@
       "annex/*": ["src/annexjs_package_modules/*"], // < LIB supported modules
       // TBD Project based modules go here - SEE svelte.config.js FOR DEV NOTES
       // "annex_[TARGET]/*": ["src/annexjs-extended/*"], // TBD < Package module extended & support development
-      "$pec/*": ["src/spec-to-project/*"] // < Project spec development modules
+      "$pec/*": ["src/_project/*"] // < Project spec development modules
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],

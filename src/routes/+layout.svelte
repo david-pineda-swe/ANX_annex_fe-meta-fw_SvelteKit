@@ -13,7 +13,7 @@
 	import InsertFooter from '$pec/components/interface/menus/insert-footer.svelte';
 	
 	import generateProjectConfiguration from "$pec/config/project";
-	import '../app.scss';
+	import '$pec/scss/_styles.scss';
 
 	import logo from '$pec/images/branding/Free4m-IO_logo_wht_v14.svg';
 

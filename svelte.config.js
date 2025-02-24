@@ -17,7 +17,7 @@ const config = {
       // TODO - IMPLEMENT AND SUPPORT LIB EXTENSION PATTERN OF COMPONENTS
       // TODO - RENAME ALIAS => ANNEX_[TARGET_MODULE]
       // 'annex_[TARGET]': path.resolve('./src/annexjs-extended'),
-      '$pec': path.resolve('./src/spec-to-project') // < Project spec development modules
+      '$pec': path.resolve('./src/_project') // < Project spec development modules
     }
   }
 };
