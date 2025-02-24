@@ -1,3 +1,4 @@
+// x REMOVE - AFTER SUBSTITUTE IMPLEMENTATION OF MEDIAQUERY BPs
 const colors = require('tailwindcss/colors');
 
 module.exports = {
