@@ -68,14 +68,15 @@
   </div>
 
   <div class="nav-interface-outlet">
-    <!-- NOTE - DEVELOPMENT TOOL | MEDIA MONITOR HUD -->
-    <!-- <MediaMonitorHud/> -->
 
     {#if headerIsFixed}
       <slot name="page-layout" />
     {/if}
 
     <div class="header-dock">
+      <!-- NOTE - DEVELOPMENT TOOL | MEDIA MONITOR HUD -->
+      <!-- <MediaMonitorHud/> -->
+
       <!-- DESKTOP_HEADER_SLOTS -->
       <HeaderDesktop {toggleMenuTray} {navigations}>
         <slot slot="insert-header-desktop-aa">

@@ -33,6 +33,10 @@
 </div>
 
 <style>
+  .media-monitor-hud {
+    background-color: #fff;
+  }
+
   .bp-indicator {
     padding: 5px 0 5px 10px;
     border-bottom: 2px solid gray;
