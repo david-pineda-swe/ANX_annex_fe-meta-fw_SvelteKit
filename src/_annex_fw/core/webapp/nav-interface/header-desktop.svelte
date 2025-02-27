@@ -24,8 +24,7 @@
 </script>
 
 
-
-<header class="desktop-header">
+<header class="desktop-header SM_none">
   {#if $$slots["insert-header-desktop-aa"]}
     <div class="corner">
       <slot name="insert-header-desktop-aa"/>

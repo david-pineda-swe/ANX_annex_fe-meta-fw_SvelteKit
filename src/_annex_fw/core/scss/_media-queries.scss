@@ -1,0 +1,47 @@
+@use 'media-small';
+@use 'media-medium';
+@use 'media-large';
+@use 'media-ultra';
+
+$mobileBreakpoint: 500px;
+$tabletBreakpoint: 700px;
+$desktopBreakpoint: 900px;
+
+// NONE - MOBILE: SM_
+// todo - remove min-width
+@mixin smallDevices {
+  @media (max-width: #{$mobileBreakpoint}) {
+    @content;
+  }
+}
+// MOBILE - TABLET: MD_
+@mixin mediumDevices {
+  @media (min-width: #{$mobileBreakpoint}) and (max-width: #{$tabletBreakpoint}) {
+    @content;
+  }
+}
+// TABLET - DESKTOP: LG_
+@mixin largeDevices {
+  @media (min-width: #{$tabletBreakpoint}) and (max-width: #{$desktopBreakpoint}) {
+    @content;
+  }
+}
+// DESKTOP - ULTRA: XL_
+@mixin ultraDevices {
+  @media (min-width: #{$desktopBreakpoint}) {
+    @content;
+  }
+}
+
+@include smallDevices {
+  @include media-small.rules;
+}
+@include mediumDevices {
+  @include media-medium.rules;
+}
+@include largeDevices {
+  @include media-large.rules;
+}
+@include ultraDevices {
+  @include media-ultra.rules;
+}

@@ -21,7 +21,7 @@
   };
 </script>
 
-<header class="mobile-header">
+<header class="mobile-header SM_only">
   {#if targetNavigations}
     <MenuPlotter
       navigations={targetNavigations}
