@@ -14,7 +14,7 @@
 
 <style lang="scss">
   .desktop.branding {
-    padding: 10px 0 0 10px;
+    padding: 15px 0 0 15px;
   }
 
   .branding {

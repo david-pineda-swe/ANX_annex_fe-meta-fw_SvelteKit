@@ -41,7 +41,7 @@
   id="annex-nav-interface"
   class="nav-interface-container"
   class:fixed-header={headerIsFixed}
-  class:sm-media={$mediaIs.sm}
+  class:sm-media={$mediaIs.smallDevice}
 >
   <div class="menu-dock">
     {#if $$slots['insert-tray-tp']}

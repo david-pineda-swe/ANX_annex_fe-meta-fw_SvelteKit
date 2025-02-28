@@ -2,7 +2,7 @@
   import { sineIn, quintOut } from 'svelte/easing';
   import type { NavigationConfig } from "src/global";
   import filterTargetNavigations from "./filter-target-navigations";
-  import { mediaIsMobile } from "annex/core/webapp/stores/reactive-media";
+  import { mediaIsSmall } from "annex/core/webapp/stores/reactive-media";
     import MenuPlotter from './menu-plotter.svelte';
 
   export let trayType: string;
@@ -73,7 +73,7 @@
 
 
 
-{#if $mediaIsMobile}
+{#if $mediaIsSmall}
   <!-- MOBILE BROWSER -->
   {#if openTray}
     <div class="menu-tray {trayType}"  in:traySlide={{into:true}} out:traySlide={{into:false}}>

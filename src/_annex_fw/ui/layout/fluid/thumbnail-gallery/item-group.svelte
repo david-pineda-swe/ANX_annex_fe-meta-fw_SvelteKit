@@ -21,7 +21,7 @@
 	class="item-group"
 	class:centered={centerList}
 	class:marquee={isMarquee}
-	class:small={$mediaIs.sm}
+	class:sm-small={$mediaIs.smallDevice}
 	{style}
 >
 	{#each items as item}
@@ -49,7 +49,7 @@
 			flex-wrap: wrap;
 		}
 
-		&.small {
+		&.sm-media {
 			flex-direction: row;
 		}
 	}

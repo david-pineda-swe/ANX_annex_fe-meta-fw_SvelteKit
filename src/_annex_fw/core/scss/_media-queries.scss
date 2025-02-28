@@ -9,39 +9,39 @@ $desktopBreakpoint: 900px;
 
 // NONE - MOBILE: SM_
 // todo - remove min-width
-@mixin smallDevices {
+@mixin smallDevice {
   @media (max-width: #{$mobileBreakpoint}) {
     @content;
   }
 }
 // MOBILE - TABLET: MD_
-@mixin mediumDevices {
+@mixin mediumDevice {
   @media (min-width: #{$mobileBreakpoint}) and (max-width: #{$tabletBreakpoint}) {
     @content;
   }
 }
 // TABLET - DESKTOP: LG_
-@mixin largeDevices {
+@mixin largeDevice {
   @media (min-width: #{$tabletBreakpoint}) and (max-width: #{$desktopBreakpoint}) {
     @content;
   }
 }
 // DESKTOP - ULTRA: XL_
-@mixin ultraDevices {
+@mixin ultraDevice {
   @media (min-width: #{$desktopBreakpoint}) {
     @content;
   }
 }
 
-@include smallDevices {
+@include smallDevice {
   @include media-small.rules;
 }
-@include mediumDevices {
+@include mediumDevice {
   @include media-medium.rules;
 }
-@include largeDevices {
+@include largeDevice {
   @include media-large.rules;
 }
-@include ultraDevices {
+@include ultraDevice {
   @include media-ultra.rules;
 }

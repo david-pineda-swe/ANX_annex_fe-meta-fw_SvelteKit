@@ -16,7 +16,7 @@
   }
 
   let MQ_flag: string;
-  if ($mediaIs.sm) {
+  if ($mediaIs.smallDevice) {
     MQ_flag = 'sm-media';
   }
 

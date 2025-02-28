@@ -1,9 +1,9 @@
-// TODO - RE LABEL TO FOLLOW CSS PROP CONVENTIONS
+// SPACING & SIZING
 
 @mixin spacingSizing {
   // - PAGE
-  --page-header-top: 125px;
-  --page-header-top-sm-media: 85px;
+  --page-header-top: 100px;
+  --page-header-top-sm-media: 132px;
   
   // ! EXAMPLE - NEGATIVE VALUE CALC
   // --negative-page-header-top: calc(var(--page-header-top) * -1);
