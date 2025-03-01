@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { mediaIs } from "annex/core/webapp/stores/reactive-media";
+	import { mediaWatch } from "annex/core/webapp/stores/reactive-media";
 	import GalleryItem from "./item.svelte";
 
 	export let itemGroup: unknown = [];
@@ -21,7 +21,7 @@
 	class="item-group"
 	class:centered={centerList}
 	class:marquee={isMarquee}
-	class:sm-small={$mediaIs.smallDevice}
+	class:sm-small={$mediaWatch.isSmall}
 	{style}
 >
 	{#each items as item}

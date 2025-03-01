@@ -1,47 +1,46 @@
-@use 'media-small';
-@use 'media-medium';
-@use 'media-large';
-@use 'media-ultra';
+@use 'small-media';
+@use 'medium-media';
+@use 'large-media';
+@use 'ultra-media';
 
 $mobileBreakpoint: 500px;
 $tabletBreakpoint: 700px;
 $desktopBreakpoint: 900px;
 
 // NONE - MOBILE: SM_
-// todo - remove min-width
-@mixin smallDevice {
+@mixin isSmall {
   @media (max-width: #{$mobileBreakpoint}) {
     @content;
   }
 }
 // MOBILE - TABLET: MD_
-@mixin mediumDevice {
+@mixin isMedium {
   @media (min-width: #{$mobileBreakpoint}) and (max-width: #{$tabletBreakpoint}) {
     @content;
   }
 }
 // TABLET - DESKTOP: LG_
-@mixin largeDevice {
+@mixin isLarge {
   @media (min-width: #{$tabletBreakpoint}) and (max-width: #{$desktopBreakpoint}) {
     @content;
   }
 }
 // DESKTOP - ULTRA: XL_
-@mixin ultraDevice {
+@mixin isUltra {
   @media (min-width: #{$desktopBreakpoint}) {
     @content;
   }
 }
 
-@include smallDevice {
-  @include media-small.rules;
+@include isSmall {
+  @include small-media.rules;
 }
-@include mediumDevice {
-  @include media-medium.rules;
+@include isMedium {
+  @include medium-media.rules;
 }
-@include largeDevice {
-  @include media-large.rules;
+@include isLarge {
+  @include large-media.rules;
 }
-@include ultraDevice {
-  @include media-ultra.rules;
+@include isUltra {
+  @include ultra-media.rules;
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { mediaIs } from "annex/core/webapp/stores/reactive-media";
+  import { mediaWatch } from "annex/core/webapp/stores/reactive-media";
   import { isEmpty } from "annex/utils";
 
   export let supportClasses: any = null; // null, sm, lg, full
@@ -16,7 +16,7 @@
   }
 
   let MQ_flag: string;
-  if ($mediaIs.smallDevice) {
+  if ($mediaWatch.isSmall) {
     MQ_flag = 'sm-media';
   }
 

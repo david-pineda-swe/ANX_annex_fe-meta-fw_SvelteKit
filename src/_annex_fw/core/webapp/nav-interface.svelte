@@ -1,13 +1,16 @@
 <script lang="ts">
-  import { mediaIs } from "annex/core/webapp/stores/reactive-media";
+  import { mediaWatch } from "annex/core/webapp/stores/reactive-media";
   import type { NavigationConfig } from "src/global";
 
-  import MediaMonitorHud from "annex/debug-tools/media-monitor/hud.svelte"; // NOTE - FOR RESPONSIVE TESTING 
+  import DevMonitorHud from "annex/debug-tools/dev-monitor/_hud.svelte"; // NOTE - FOR RESPONSIVE TESTING 
   import MenuTray from "./nav-interface/menu-tray.svelte";
 
   import HeaderDesktop from 'annex/core/webapp/nav-interface/header-desktop.svelte';
   import HeaderMobile from 'annex/core/webapp/nav-interface/header-mobile.svelte';
   import { selectedPrimaryMenuTray } from "annex/core/webapp/stores/menu-trays";
+
+  // TODO - CREATE AND ADD DIAGNOSTIC TO A PROJECT CONFIG
+  const showDiagnostic = false;
 
   // TODO - INTEGRATE ANNEX CONFIG FOR TRAY UX PREFERENCES
 
@@ -41,7 +44,7 @@
   id="annex-nav-interface"
   class="nav-interface-container"
   class:fixed-header={headerIsFixed}
-  class:sm-media={$mediaIs.smallDevice}
+  class:sm-media={$mediaWatch.isSmall}
 >
   <div class="menu-dock">
     {#if $$slots['insert-tray-tp']}
@@ -74,8 +77,6 @@
     {/if}
 
     <div class="header-dock">
-      <!-- NOTE - DEVELOPMENT TOOL | MEDIA MONITOR HUD -->
-      <!-- <MediaMonitorHud/> -->
 
       <!-- DESKTOP_HEADER_SLOTS -->
       <HeaderDesktop {toggleMenuTray} {navigations}>
@@ -99,6 +100,11 @@
       <slot name="page-layout" />
     {/if}
   </div>
+
+  {#if showDiagnostic}
+    <!-- NOTE - DEVELOPMENT TOOL | MEDIA MONITOR HUD -->
+    <DevMonitorHud/>
+  {/if}
 </div>
 
 <style lang="scss">
