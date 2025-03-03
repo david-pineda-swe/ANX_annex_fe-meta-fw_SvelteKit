@@ -1,24 +1,57 @@
-@use "color-scheme";
 @use "spacing-sizing";
+@use "color-scheme";
+@use "color-theme";
 
-// NOTE - THEME VARIABLES >>>
+// NOTE - GLOBAL VARIABLES >>>
 :root {
 	font-family: 'Assistant', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--font-mono: 'Fira Mono', monospace;
-	@include color-scheme.colorScheme;
 	@include spacing-sizing.spacingSizing;
+	@include color-scheme.colorScheme;
+  @include color-theme.colorTheme;
 }
 
-// - STYLE GROUPS
+// - MOTIFS
+@mixin topContainerFade {
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 65px;
+    z-index: -1;
+    background: linear-gradient(
+      180deg,
+      var(--header-bkgrd-fade-primary) 0%,
+      var(--header-bkgrd-fade-secondary) 100%
+    );
+  }
+}
+
 @mixin dropShadow {
-  box-shadow: 2px 3px 6px rgba(63, 2, 66, 0.45);
+  box-shadow: 2px 3px 6px var(--block-drop-shadow);
 }
 
 @mixin cardTheme {
   @include dropShadow;
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: var(--card-bkgrd-color);
   border-radius: 3px;
-  color: var(--bg-primary-color);
+  padding: 5px 10px;
+}
+
+@mixin pageScrollGradient {
+  background: linear-gradient(
+		180deg,
+		var(--bkgrd-primary-color) 0%,
+		var(--bkgrd-secondary-color) 10.45%,
+		var(--bkgrd-tertiary-color) 41.35%
+	);
+}
+
+@mixin footerFade {
+  background: linear-gradient(
+    180deg,
+    var(--footer-bkgrd-primary) 0%,
+    var(--footer-bkgrd-secondary) 100%);
 }
 
 // - INPUTS
@@ -44,12 +77,14 @@
 
 @mixin buttonPrimary {
   @include buttonTheme;
-  color: var(--text-color-negative);
-  background-color: rgba(255, 255, 255, 0.858);
+  color: var(--copy-color-negative);
+  background-color: var(--form-btn-primary-bkgrd-color);
 }
 
 @mixin buttonSecondary {
   @include buttonTheme;
-  border: 2px solid var(--bg-secondary-color);
-  background-color: var(--bg-tertiary-color);
+  border: 2px solid var(--bkgrd-secondary-color);
+  background-color: var(--bkgrd-tertiary-color);
+}
+
 }

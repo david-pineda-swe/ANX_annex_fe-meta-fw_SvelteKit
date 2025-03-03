@@ -1,7 +1,7 @@
 @use "artifact-theming";
 
 p {
-	color: var(--text-color);
+	color: var(--copy-color);
 	line-height: 1.5;
   font-size: var(--font-size);
 	margin-bottom: 15px;
@@ -43,7 +43,7 @@ h4 { font-size: 1.25rem; }
 
 // LISTS
 ul {
-  color: var(--text-color);
+  color: var(--list-copy-color);
   margin-bottom: calc(var(--heading-bottom-margin) + 20px);
 
   li {
