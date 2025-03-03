@@ -33,6 +33,6 @@
   }
 
   a:hover {
-    color: var(--links);
+    color: var(--links-color);
   }
 </style>

@@ -13,15 +13,22 @@
   }
   
   p {
-    color: black;
+    color: var(--copy-color-negative);
   }
 
   a {
-    color: var(--card-links);
+    color: var(--card-links-color);
     font-weight: bold;
   }
 
   // .card-header
   // .card-content
   // .card-footer
+  ul {
+    color: var(--list-copy-color-negative);
+  }
+
+  hr {
+    color: var(--hr-color-negative);
+  }
 }

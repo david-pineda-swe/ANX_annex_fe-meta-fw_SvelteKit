@@ -1,61 +1,70 @@
 @mixin colorTheme {
   // - STRUCTURE
   // - - header
-  --header-bkgrd: var(--purple-tl-01);
-  --header-bkgrd-fade-primary: var(--purple-06);
-  --header-bkgrd-fade-secondary: var(--purple-07);
+  --header-bkgrd-color: var(--purple-tl-01);
+  --header-bkgrd-color-fade-primary: var(--purple-06);
+  --header-bkgrd-color-fade-secondary: var(--purple-07);
 
   // - - background
-  --bkgrd-primary-color: var(--purple-03);
-  --bkgrd-secondary-color: var(--purple-05);
-  --bkgrd-tertiary-color: var(--dk-gray-03);
+  --bkgrd-color-primary: var(--purple-03);
+  --bkgrd-color-secondary: var(--purple-05);
+  --bkgrd-color-tertiary: var(--dk-gray-03);
 
   // - - footer
-  --footer-bkgrd-primary: var(--purple-tl-02);
-  --footer-bkgrd-secondary: var(--purple-tl-03);
-  
-  // - - menus
+  --footer-bkgrd-color-primary: var(--purple-tl-02);
+  --footer-bkgrd-color-secondary: var(--purple-tl-03);
   
   // - - sections
-  --section-bg-color: var(--black-tl-01);
+  --section-bkgrd-color: var(--black-tl-01);
   --card-bkgrd-color: var(--white-tl-02);
-  --block-drop-shadow: var(--purple-tl-04);
-  
-  // - - modals
-  
+  --block-drop-shadow-color: var(--purple-tl-04);
+
   // - CONTENT
   // - - headers
   --heading-color: var(--pure-white);
-  // --heading-secondary-color: var(TBD); // TBD
+  --heading-secondary-color: var(--lt-gray-00);
   --card-heading-color: var(--purple-03);
   --card-heading-secondary-color: var(--dk-gray-02);
 
   // - - copy
   --copy-color: var(--white-tl);
-  // --copy-color-negative: var(--copy-white); // TBD
-  --copy-color-negative: var(--purple-04);
-  // TODO - hr's
+  --copy-color-negative: var(--dk-gray-02);
+  --hr-color: var(--purple-01);
+  --hr-color-negative: var(--purple-03);
 
   // - - lists
   --list-copy-color: var(--white-tl);
-  // --list-copy-color-negative: var(--pink-02); // TBD
+  --list-copy-color-negative: var(--dk-gray-01);
 
-  // - - errors
-  --error-highlight: var(--red-01);
-  // --error-copy-color: var(--red-02); // TBD
+  // - - menus
+  --menu-primary-links-color: var(--purple-01);
+  --menu-primary-link-active-color: var(--purple-01);
 
   // - - links
-  --card-links: var(--blue-02);
-  --links: var(--blue-01);
+  --card-links-color: var(--blue-02);
+  --links-color: var(--blue-01);
+  --links-color-hover: var(--black-tl-01);
 
   // - FORMS
+  // - - inputs
   --form-label-color: var(--lt-gray-00);
   --form-copy-color: var(--lt-gray-01);
   --form-input-border-muted: var(--lt-gray-00);
   --form-input-border-highlighted: var(--lt-gray-01);
-  --form-btn-primary-bkgrd-color: var(--white-tl);
+  
+  // - - buttons
+  --button-primary-copy-color: var(--copy-color-negative);
+  --button-primary-bkgrd-color: var(--white-tl);
+  --button-secondary-copy-color: var(--copy-color);
+  --button-secondary-bkgrd-color: var(--purple-02);
+
+  // - - errors
+  --error-highlight: var(--red-01);
+  // --error-copy-color: var(--red-02); // TBD < < < 
 
   // - UI
+    // - - modals
+  // TBD < < < 
   // - BRANDING
 
   // - BOOTSTRAP OVERRIDES

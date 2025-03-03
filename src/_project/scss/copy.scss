@@ -8,7 +8,7 @@ p {
 }
 
 a {
-	color: var(--links);
+	color: var(--links-color);
 	text-decoration: none;
 }
 
@@ -28,12 +28,15 @@ pre {
 // - COLOR
 h1,
 h2,
-h3{
+h3 {
 	color: var(--heading-color);
   margin-bottom: var(--heading-bottom-margin);
   // font-weight: bold;
 }
 // h4 = black
+h4 {
+  color: var(--heading-secondary-color);
+}
 
 // - SIZE
 h1 { font-size: 2rem; }
@@ -49,4 +52,9 @@ ul {
   li {
     margin-bottom: 15px;
   }
+}
+
+hr {
+  color: var(--hr-color);
+  opacity: .75;
 }

@@ -1,13 +1,13 @@
 @use "artifact-theming";
 
 html {
-	background-color: var(--bkgrd-primary-color);
+	background-color: var(--bkgrd-color-primary);
 }
 
 body {
 	min-height: 100vh;
 	margin: 0;
-	background-color: var(--bkgrd-primary-color);
+	background-color: var(--bkgrd-color-primary);
   @include artifact-theming.pageScrollGradient;
 }
 
@@ -38,7 +38,7 @@ header.desktop-header {
 }
 
 section.dynamic {
-    background-color: var(--section-bg-color);
+    background-color: var(--section-bkgrd-color);
     
     // TODO - TRY TO WORK OUT THEMING IMAGES INSIDE OF SPEC DIRECTORY
     // .section-bg {

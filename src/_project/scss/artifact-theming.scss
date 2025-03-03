@@ -21,14 +21,14 @@
     z-index: -1;
     background: linear-gradient(
       180deg,
-      var(--header-bkgrd-fade-primary) 0%,
-      var(--header-bkgrd-fade-secondary) 100%
+      var(--header-bkgrd-color-fade-primary) 0%,
+      var(--header-bkgrd-color-fade-secondary) 100%
     );
   }
 }
 
 @mixin dropShadow {
-  box-shadow: 2px 3px 6px var(--block-drop-shadow);
+  box-shadow: 2px 3px 6px var(--block-drop-shadow-color);
 }
 
 @mixin cardTheme {
@@ -41,17 +41,17 @@
 @mixin pageScrollGradient {
   background: linear-gradient(
 		180deg,
-		var(--bkgrd-primary-color) 0%,
-		var(--bkgrd-secondary-color) 10.45%,
-		var(--bkgrd-tertiary-color) 41.35%
+		var(--bkgrd-color-primary) 0%,
+		var(--bkgrd-color-secondary) 10.45%,
+		var(--bkgrd-color-tertiary) 41.35%
 	);
 }
 
 @mixin footerFade {
   background: linear-gradient(
     180deg,
-    var(--footer-bkgrd-primary) 0%,
-    var(--footer-bkgrd-secondary) 100%);
+    var(--footer-bkgrd-color-primary) 0%,
+    var(--footer-bkgrd-color-secondary) 100%);
 }
 
 // - INPUTS
@@ -77,14 +77,15 @@
 
 @mixin buttonPrimary {
   @include buttonTheme;
-  color: var(--copy-color-negative);
-  background-color: var(--form-btn-primary-bkgrd-color);
+  color: var(--button-primary-copy-color);
+  background-color: var(--button-primary-bkgrd-color);
 }
 
 @mixin buttonSecondary {
   @include buttonTheme;
-  border: 2px solid var(--bkgrd-secondary-color);
-  background-color: var(--bkgrd-tertiary-color);
+  border: 2px solid var(--black-tl-01);
+  color: var(--button-secondary-copy-color);
+  background-color: var(--button-secondary-bkgrd-color);
 }
 
 .btnAnnexReset {

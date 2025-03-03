@@ -1,6 +1,6 @@
 .desktop-header {
   position: relative;
-  background-color: var(--header-bkgrd);
+  background-color: var(--header-bkgrd-color);
   // padding-bottom: 40px;
 
   .primary-menu {
@@ -46,7 +46,7 @@
         top: 8px;
         left: calc(50% - var(--size));
         border: var(--size) solid transparent;
-        border-top: var(--size) solid var(--links);
+        border-top: var(--size) solid var(--menu-primary-link-active-color);
       }
     
       button,
@@ -55,7 +55,7 @@
         height: 100%;
         align-items: center;
         padding: 0 1em;
-        color: var(--heading-color);
+        color: var(--menu-primary-links-color);
         font-weight: 700;
         font-size: 0.75rem;
         text-transform: uppercase;
@@ -65,7 +65,7 @@
       }
     
       a:hover {
-        color: var(--links);
+        color: var(--links-color-hover);
       }
     }
   }
