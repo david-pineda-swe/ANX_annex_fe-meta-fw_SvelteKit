@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let cardId:string = null;
-  export let cardClass:string = null;
-  export let cardConfigType:string = null;
-  export let cardTheme:string = null;
+  export let cardId:string|null = null;
+  export let cardClass:string|null = null;
+  export let cardConfigType:string|null = null;
+  export let cardTheme:string|null = null;
 
   const testingUI = false;
 

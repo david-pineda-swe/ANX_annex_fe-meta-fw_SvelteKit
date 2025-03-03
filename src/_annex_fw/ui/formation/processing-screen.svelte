@@ -1,6 +1,6 @@
 <script>
   import StickyBlock from "../layout/sticky-block.svelte";
-  import { Spinner } from 'sveltestrap';
+  import { Spinner } from '@sveltestrap/sveltestrap';
 </script>
 
 <div class="processing-screen">

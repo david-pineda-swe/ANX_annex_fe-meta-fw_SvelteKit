@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Button } from "sveltestrap";
 	import ItemGroup from "annex/ui/layout/fluid/thumbnail-gallery/item-group.svelte";
 	import ItemDescription from "./fluid/thumbnail-gallery/item-description.svelte";
 	import FluidModal from "./fluid-modal.svelte";
@@ -136,10 +135,6 @@
 				description={selectedGalleryItem.longMessage}
 			/>
 		</SingleShowcase>
-		
-		<!-- <div slot="modal-footer">
-			<Button color="secondary" on:click={toggleModal}>Close</Button>
-		</div> -->
 	</FluidModal>
 {/if}
 

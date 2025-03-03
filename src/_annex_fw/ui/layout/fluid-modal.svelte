@@ -1,5 +1,5 @@
 	<script lang="ts">
-		import { Modal, ModalHeader, ModalBody, ModalFooter } from "sveltestrap";
+		import { Modal, ModalHeader, ModalBody, ModalFooter } from '@sveltestrap/sveltestrap';
 
 		export let modalIsOpen: boolean;
 		export let modalSize: string;
