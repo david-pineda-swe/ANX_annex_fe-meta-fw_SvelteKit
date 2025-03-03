@@ -124,7 +124,7 @@
 		</div> -->
 
 		<SingleShowcase contentDetails={selectedGalleryItem}>
-			<button class="close-showcase" on:click={toggleModal}>
+			<button class="close-showcase btnAnnexReset" on:click={toggleModal}>
 				<IconIndex designation={`ICONIFY_mdi:close-circle-outline_medium|s2|white`}/>
 			</button>
 

@@ -19,7 +19,7 @@
 			</ModalHeader>
 		{/if}
 
-		<ModalBody>
+		<ModalBody class="fluid-modal-body">
 			<slot/>
 		</ModalBody>
 

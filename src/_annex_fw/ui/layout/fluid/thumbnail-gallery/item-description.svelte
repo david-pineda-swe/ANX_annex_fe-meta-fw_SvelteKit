@@ -36,7 +36,7 @@
 
 			&.dark-text {
 				h2, h3 {
-					color: var(--text-color-negative);
+					color: var(--copy-color-negative);
 				}
 			}
 			&.bold {
