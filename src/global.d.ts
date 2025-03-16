@@ -2,6 +2,7 @@ import type { GrayMatterFile } from 'gray-matter';
 
 /// <reference types="@sveltejs/kit" />
 
+// TODO - ABSTRACT TYPES from an index
 //! ---SUB_META TRAITS---
 interface UserNameTraits {
   first: string,
