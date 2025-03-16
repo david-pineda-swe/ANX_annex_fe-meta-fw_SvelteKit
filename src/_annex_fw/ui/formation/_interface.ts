@@ -17,6 +17,7 @@ class FormationInterface {
   _targetActions: any;
   _schema: any;
   _nodeIndex: any;
+  _targetSubmitButton: any;
 
   // STATE
   _formData: any;
@@ -82,6 +83,7 @@ class FormationInterface {
         }
         if (currentNodeIsSubmitBtn) {
           this._hasTargetSubmitButton = true;
+          this._targetSubmitButton = currentNode;
         }
 
         if (currentHasSubNodes) {
@@ -211,8 +213,7 @@ class FormationInterface {
 
       if (formIsReady) {
         if (this._hasTargetSubmitButton) {
-          const target = this._nodes.filter((node: any) => node.inputType === 'SUBMIT_BTN')[0];
-          target.status.update((data: any) => {
+          this._targetSubmitButton.status.update((data: any) => {
             return { ...data, ...{ disabled: false } };
           });
         } else {
@@ -248,37 +249,56 @@ class FormationInterface {
     });
   };
 
-  validateFormData = (formData: any) => {
+  validateFormData = (formData?: any) => {
     if (formData) {
       // IS FOR SUBMISSION
       return this._schema.parse(formData); // ! <<< VALIDATION !!!
     } else {
       // PRE FLIGHT RE-VALIDATION CHECK-OFF
       try {
-        const enteredFormData = get(this._formData);
-        this._schema.parse(enteredFormData); // ! <<< VALIDATION !!!
         this._setFormErrorsTo([]);
+        const enteredFormData = get(this._formData);
+        return this._schema.parse(enteredFormData); // ! <<< VALIDATION !!!
       } catch (errors: any) {
         this._setFormErrorsTo(errors);
       }
     }
   };
 
-  handleFormSubmission = (event: any) => {
-    // console.log('>> FORM SUBMIT EVENT OBJ:', event);
+  getValidatedFormData = (submitEvent: any) => {
+    if (submitEvent) {
+      const dataFromEvent = new FormData(submitEvent.target);
+      const submittedFormData = Object.fromEntries(dataFromEvent);
+      return this.validateFormData(submittedFormData);
+    } else {
+      return this.validateFormData();
+    }
+  }
+
+  handleFormSubmission = async(event: any) => {
     const { _formSubmitAction, _formIsProcessing } = this;
-
-    _formIsProcessing.set(true);
-
-    const formData = new FormData(event.target);
-    const providedEntries = Object.fromEntries(formData);
-
+    
     try {
       if (_formSubmitAction) {
         this._setFormErrorsTo([]);
-        const validated = this.validateFormData(providedEntries);
+        _formIsProcessing.set(true);
+        
+        const validatedForm = this.getValidatedFormData(event);
+        const submissionResult = await _formSubmitAction(validatedForm);
 
-        _formSubmitAction(validated, providedEntries);
+        console.log('>> INTERFACE HAS submissionResult', submissionResult);
+        
+        _formIsProcessing.set(false);
+        if (submissionResult) {
+          if (submissionResult.success) {
+            // TODO - toast success
+            console.log(">> FORMATION WILL HANDLE SUBMISSION SUCCESS!");
+          } else {
+            // TODO - toast fail / error 
+            console.error(">> FORMATION WILL HANDLE SUBMISSION FAILURE!");
+          }
+        }
+        // FORMATION WAS BYPASSED - CARRY ON > > >
       } else {
         // TODO - THROW ERROR AND HANDLE DEV MISTAKE
         console.error('(!) FORM SUBMIT ACTION WAS NOT PROVIDED - (!)');
