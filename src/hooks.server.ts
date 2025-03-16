@@ -5,8 +5,8 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY  } from '$env/static/public';
 
 // TODO - ADD TO PROJECT CONFIG
-const APPLICATION_PROTECTED_ROUTE_BASE = '/private-app';
-const APPLICATION_AUTHENTICATION_ROUTE_BASE = '/login';
+const APPLICATION_PROTECTED_ROUTE_BASE = '/demo/private-app';
+const APPLICATION_AUTHENTICATION_ROUTE_BASE = '/demo/login';
 
 const supabase: Handle = async ({ event, resolve }) => {
   /**
