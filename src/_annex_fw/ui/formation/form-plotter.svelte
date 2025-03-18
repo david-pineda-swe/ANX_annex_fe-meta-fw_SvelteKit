@@ -6,7 +6,7 @@
   export let formInterface: any;
   export const fi = formInterface;
   
-  const { _formId, _hasRequiredFields, _defaultSubmitActivated, _formLevelErrors, _formIsProcessing, handleFormSubmission } = fi;
+  const { _formId, _hasRequiredFields, _defaultSubmitActivated, _formLevelErrors, _formIsProcessing, handleActionSubmission } = fi;
 
   const useDefaultSubmit = !fi.hasTargetSubmitButton();
   $: disabled = !$_defaultSubmitActivated;
@@ -18,7 +18,10 @@
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    handleFormSubmission(event);
+    handleActionSubmission({
+      isFormSubmit: true,
+      event
+    });
   };
 </script>
 

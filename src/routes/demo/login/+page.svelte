@@ -9,6 +9,16 @@
   import FormPlotter from "annex/ui/formation/form-plotter.svelte";
   import { goto } from "$app/navigation";
 
+  const POC_LOGIN_CONSTANTS = {
+    errorMessages: {
+      // Login
+      invalid_credentials: 'Please check your username or password and try again.',
+      email_not_confirmed: 'Please go to your email and click the link to confirm registration.',
+      // Register
+      weak_password: 'Please select a different password that is more secure.'
+    }
+  }
+
   // NOTE - FORM OUTLINE
   const poc_login_form_outline = {
     formId: "poc-supabase-login",
@@ -106,8 +116,6 @@
     //   // Confirm form data
     //   console.log('>> LOGIN VALIDATED_FORM:');
     //   console.table(validatedForm);
-      
-    //   // debugger;
 
     //   // configure & initialize a request to server
     //   const loginRequest = await fetch('/demo/login', {
@@ -123,18 +131,16 @@
       
     //   // return response to formation-UI for visual success / error handling
     //   return response;
-    // TODO - SUPPORT DELAYED CALLBACK FUNC
     // }
     targetActions: {
-      handlePOCregistration: async(params: any) => {
-        console.log('>> SUPABASE USER REGISTRATION WITH:', params);
-        console.log('>> VALIDATED FORM for REGISTER:', params.fi.getValidatedFormData());
+      handlePOCregistration: async(validatedForm: any, event: any) => {
+        console.log('>> VALIDATED FORM for REGISTER:', validatedForm);
 
         const registerRequest = await fetch('/demo/login', {
           method: 'POST',
           body: JSON.stringify({
             isRegistration: true,
-            formData: params.fi.getValidatedFormData()
+            formData: validatedForm
           })
         });
 
@@ -145,12 +151,19 @@
         if (response.success) {
           goto('/demo/login/pending');
         } else {
-          // TODO - ADD LOGGING SERVICE / IMP
-          return response;
+          const errorCode = response.error.code;
+
+          // TODO - create util helper on interface or from @annex for errorCode messages
+          return {
+            errorCode: errorCode,
+            //@ts-ignore
+            text: POC_LOGIN_CONSTANTS.errorMessages[errorCode],
+            displayType: 'LIST'
+          }
         }
       }
     },
-    formSubmitAction: async(validatedForm: any) => {
+    formSubmitAction: async(validatedForm: any, event: any) => {
       const loginRequest = await fetch('/demo/login', {
         method: 'POST',
         body: JSON.stringify({
@@ -166,20 +179,24 @@
       if (response.success) {
         goto('/demo/private-app');
       } else {
-        // NEXT - COMMIT WORK
-        // NEXT - USE RESPONSE HANDLE
-        return { // is ResponseHandle
-          errorHandle: {
-            text: '', // TODO - code => messageCopyIndex() 
-            type: '', // [ LIST, TOAST, BANNER ]
-            clearNoticeDelay: 2000,
-            delayedErrorCallBack: () => {}
-          },
-          // general and more for success.ResponseHandle
-          callBackDelay: 3000,
-          delayedCallBack: () => {},
-          response
-        };
+        const errorCode = response.error.code;
+        return {
+          errorCode,
+          //@ts-ignore
+          text: POC_LOGIN_CONSTANTS.errorMessages[errorCode],
+          displayType: 'LIST'
+        }
+        
+        // NOTE - SAMPLE TYPE - ResponseHandoff 
+        // return {
+        //   errorCode
+        //   text: POC_LOGIN_CONSTANTS.errorMessages[errorCode], // TODO - CREATE a messageCopyIndex() 
+        //   displayType: 'LIST', // [ LIST, TOAST, BANNER ]
+        //   clearNoticeDelay: 2000, // TODO
+        //   callBackDelay: 3000, // TODO
+        //   delayedCallBack: () => {} // TODO
+        //   response
+        // };
       }
     }
   });

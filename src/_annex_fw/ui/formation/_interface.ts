@@ -233,11 +233,7 @@ class FormationInterface {
 
   getTargetAction = (actionKey: string) => {
     const target = this._targetActions[actionKey];
-    if (target) {
-      return target;
-    } else {
-      return null;
-    }
+    return (target) ? target : null;
   };
 
   updateFormData = (update: any) => {
@@ -265,48 +261,69 @@ class FormationInterface {
     }
   };
 
-  getValidatedFormData = (submitEvent: any) => {
-    if (submitEvent) {
-      const dataFromEvent = new FormData(submitEvent.target);
-      const submittedFormData = Object.fromEntries(dataFromEvent);
-      return this.validateFormData(submittedFormData);
+  handleResponseHandoff(responseHandoff: any) {
+    const { errorCode, text, displayType } = responseHandoff;
+
+    if (errorCode) {
+      // ! HANDLE ERRORS
+      console.error(">> FORMATION WILL HANDLE SUBMISSION FAILURE!");
+      if (displayType === 'LIST') {
+        // LIST @ form level errors
+        const formError = {
+          label: errorCode,
+          message: text
+        }
+  
+        this._setFormErrorsTo([formError]);
+      }
+      // TODO - MANAGE other ERROR FORMATS
+      // TODO - TOAST
+      // TODO - BANNER
     } else {
-      return this.validateFormData();
+      // ! HANDLE SUCCESS
+      console.log(">> FORMATION WILL HANDLE SUBMISSION SUCCESS!");
     }
   }
 
-  handleFormSubmission = async(event: any) => {
-    const { _formSubmitAction, _formIsProcessing } = this;
-    
+  handleActionSubmission = async(actionSetup: any) => {
+    const { _formIsProcessing } = this
+    const {
+      isFormSubmit,
+      event,
+      targetActionKey
+    } = actionSetup;
+
+    let targetAction;
+
+    if (isFormSubmit) {
+      targetAction = this._formSubmitAction;
+    } else {
+      targetAction = this.getTargetAction(targetActionKey);
+    }
+
     try {
-      if (_formSubmitAction) {
+      if (targetAction) {
         this._setFormErrorsTo([]);
         _formIsProcessing.set(true);
-        
-        const validatedForm = this.getValidatedFormData(event);
-        const submissionResult = await _formSubmitAction(validatedForm);
 
-        console.log('>> INTERFACE HAS submissionResult', submissionResult);
+        const validatedForm = this.validateFormData();
+        const actionResult = await targetAction(validatedForm, event);
         
+        console.log('>> INTERFACE HAS actionResult', actionResult);
+
         _formIsProcessing.set(false);
-        if (submissionResult) {
-          if (submissionResult.success) {
-            // TODO - toast success
-            console.log(">> FORMATION WILL HANDLE SUBMISSION SUCCESS!");
-          } else {
-            // TODO - toast fail / error 
-            console.error(">> FORMATION WILL HANDLE SUBMISSION FAILURE!");
-          }
+        if (actionResult) {
+          this.handleResponseHandoff(actionResult);
         }
-        // FORMATION WAS BYPASSED - CARRY ON > > >
+        // else FORMATION WAS BYPASSED - CARRY ON > > >
       } else {
-        // TODO - THROW ERROR AND HANDLE DEV MISTAKE
-        console.error('(!) FORM SUBMIT ACTION WAS NOT PROVIDED - (!)');
+        // THROW ERROR AND HANDLE DEV MISTAKE
+        console.error('(!) FORM TARGET ACTION WAS NOT PROVIDED - (!)');
       }
     } catch (errors: any) {
       this._setFormErrorsTo(errors);
     }
-  };
+  }
 
   // X - TESTING
   verifyInstance = () => {
