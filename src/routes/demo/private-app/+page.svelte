@@ -5,6 +5,7 @@
   import type { PageData } from './$types'
 
   let { data } = $props()
+  // NOTE - record data comes in from the server side
   let { notes, supabase, user } = $derived(data)
 
   const handleSubmit: EventHandler<SubmitEvent, HTMLFormElement> = async (evt) => {
@@ -28,14 +29,31 @@
 
 <h1>Private page for user: {user?.email}</h1>
 <h2>Notes</h2>
+
+
+<!-- NOTE - Simple TUT form example -->
 <ul>
   {#each notes as note}
     <li>{note.note}</li>
   {/each}
 </ul>
-<form onsubmit={handleSubmit}>
+<form class="supa-tut-sample" onsubmit={handleSubmit}>
   <label>
     Add a note
     <input name="note" type="text" />
   </label>
 </form>
+
+<style lang="scss">
+  .supa-tut-sample {
+    border: 1px solid red;
+
+    label {
+      border: 1px solid white;
+
+      input {
+        border: 1px solid fuchsia;
+      }
+    }
+  }  
+</style>
