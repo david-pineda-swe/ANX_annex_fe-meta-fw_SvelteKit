@@ -13,26 +13,4 @@
 </div>
 
 <style lang="scss">
-  .desktop.branding {
-    padding: 15px 0 0 15px;
-  }
-
-  .branding {
-    width: 330px;
-    a {
-      display: flex;
-      .brand-logo {
-        width: 3em;
-        height: 3em;
-        margin-right: 10px;
-      }
-      .brand-logo-type {
-        width: 10em;
-      }
-    }
-  }
-
-  a:hover {
-    color: var(--links-color);
-  }
 </style>

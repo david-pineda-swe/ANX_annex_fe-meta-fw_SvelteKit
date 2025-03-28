@@ -1,0 +1,20 @@
+.branding {
+  padding: 10px 0 0 10px;
+  // width: 330px;
+  // border: 1px solid red;
+  a {
+    display: flex;
+    .brand-logo {
+      width: 3em;
+      height: 3em;
+      margin-right: 10px;
+    }
+    .brand-logo-type {
+      width: 10em;
+    }
+  }
+}
+
+a:hover {
+  color: var(--links-color);
+}

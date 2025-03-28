@@ -2,8 +2,8 @@
 
 @mixin spacingSizing {
   // - PAGE
-  --page-header-top: 100px;
-  --page-header-top-sm-media: 132px;
+  --page-header-height-desktop: 175px;
+  --page-header-height-mobile: 150px;
   
   // ! EXAMPLE - NEGATIVE VALUE CALC
   // --negative-page-header-top: calc(var(--page-header-top) * -1);
@@ -26,11 +26,13 @@
   --item-bottom-margin: 5px;
   --item-side-margin: 20px;
   --item-top-padding: 10px;
-  --heading-bottom-margin: 20px;
+  --heading-bottom-margin: 15px;
 
   // - SIZES
-  --font-size: 1.5rem;
-  --link-size: 1.5rem;
+  --font-size: 1.25rem;
+  --link-size: 1rem;
+
+  // - FORMS & INPUTS
   --form-label-size: 1rem;
   --form-copy-size: 1.25rem;
   --input-radius: 5px;

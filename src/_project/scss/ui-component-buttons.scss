@@ -1,5 +1,9 @@
 @use "artifact-theming";
 
+button {
+  @include artifact-theming.buttonTheme;
+}
+
 button.ui-btn-primary,
 button.primary {
   @include artifact-theming.buttonPrimary;

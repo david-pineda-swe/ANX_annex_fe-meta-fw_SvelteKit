@@ -11,6 +11,15 @@ body {
   @include artifact-theming.pageScrollGradient;
 }
 
+// HEADERS
+.mobile-header {
+  height: var(--page-header-height-mobile);
+  background-color: var(--header-bkgrd-color);
+}
+.desktop-header {
+  height: var(--page-header-height-desktop);
+  background-color: var(--header-bkgrd-color);
+}
 header.mobile-header,
 header.desktop-header {
   @include artifact-theming.topContainerFade;

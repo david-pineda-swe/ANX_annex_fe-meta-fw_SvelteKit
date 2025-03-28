@@ -70,7 +70,8 @@
 
 @mixin buttonTheme {
   @include inputTheme;
-  margin: 10px 10px 10px 0;
+  margin: 10px;
+  padding: 7px 15px;
   @include dropShadow;
   // font-weight: bold;
 }
