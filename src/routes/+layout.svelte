@@ -2,9 +2,8 @@
 	import NavInterface from 'annex/core/webapp/nav-interface.svelte';
 	import Footer from 'annex/core/webapp/nav-interface/footer.svelte';
 	
-	import InsertHeaderDesktopA from '$pec/components/interface/menus/insert-header-desktop-a.svelte';
-	import InsertHeaderDesktopB from '$pec/components/interface/menus/insert-header-desktop-b.svelte';
-	import InsertHeaderMobile from "$pec/components/interface/menus/insert-header-mobile.svelte";
+	import DesktopHeaderInsert from '$pec/components/interface/menus/insert-header-desktop.svelte';
+	import MobileHeaderInsert from "$pec/components/interface/menus/insert-header-mobile.svelte";
 
 	import InsertTrayTop from '$pec/components/interface/menus/insert-tray-top.svelte';
 	import InsertTrayRight from '$pec/components/interface/menus/insert-tray-right.svelte';
@@ -17,6 +16,8 @@
 	import '$pec/_styles.scss';
 
 	import logo from '$pec/images/branding/Free4m-IO_logo_wht_v14.svg';
+
+  const { children } = $props();
 
 	const { navigations } = generateProjectConfiguration();	
 </script>
@@ -35,13 +36,12 @@
 
 
 <NavInterface navigations={navigations}>
-	<!-- INSERT_HEADER_DESKTOP_A -->
-	<InsertHeaderDesktopA slot="insert-header-desktop-a"/>
-	<!-- INSERT_HEADER_DESKTOP_B -->
-	<InsertHeaderDesktopB slot="insert-header-desktop-b"/>
-
-	<!-- INSERT_HEADER_MOBILE -->
-	<InsertHeaderMobile slot="insert-header-mobile"/>
+  {#snippet desktopHeaderInsert()}
+    <DesktopHeaderInsert/>
+  {/snippet}
+  {#snippet mobileHeaderInsert()}
+    <MobileHeaderInsert/>
+  {/snippet}
 
 	<!-- TOP_TRAY_INTERFACE -->
 	<InsertTrayTop slot="insert-tray-tp"/>
@@ -53,16 +53,14 @@
 	<InsertTrayLeft slot="insert-tray-lt"/>
 	
 	<!-- PAGE_LAYOUT_SLOT -->
-	<div class="page-layout" slot="page-layout">
-		<main id="page-content">
-			<slot />
-		</main>
+  {#snippet pageLayout()}
+    <div class="page-layout">
+      <main id="page-content">
+        {@render children?.()}
+      </main>
 		
-		<Footer navigations={navigations}>
-			<InsertFooter slot="insert-footer"/>
-		</Footer>
-		
-	</div>
+	  </div>
+  {/snippet}
 </NavInterface>
 
 

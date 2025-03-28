@@ -4,10 +4,9 @@
 
   import DevMonitorHud from "annex/debug-tools/dev-monitor/_hud.svelte"; // NOTE - FOR RESPONSIVE TESTING 
   import MenuTray from "./nav-interface/menu-tray.svelte";
-
-  import HeaderDesktop from 'annex/core/webapp/nav-interface/header-desktop.svelte';
-  import HeaderMobile from 'annex/core/webapp/nav-interface/header-mobile.svelte';
+  import HeaderDockManager from "./nav-interface/header-dock-manager.svelte";
   import { selectedPrimaryMenuTray } from "annex/core/webapp/stores/menu-trays";
+  import type { Snippet } from "svelte";
 
   // TODO - CREATE AND ADD DIAGNOSTIC TO A PROJECT CONFIG
   const showDiagnostic = false;
@@ -20,7 +19,20 @@
   // contentNavigation.subscribe((data) => contentNavigationData = data);
   // console.log('>> TEST: CONFIRM ACCESS OF PAGE MODEL VIA STORE:', contentNavigationData);
 
-  export let navigations: Array<NavigationConfig>;
+  interface NavInterfaceSig {
+    navigations: Array<NavigationConfig>;
+    pageLayout?: Snippet;
+    desktopHeaderInsert?: Snippet;
+    mobileHeaderInsert?: Snippet;
+  }
+  const props = $props();
+
+  const {
+    navigations,
+    pageLayout,
+    desktopHeaderInsert,
+    mobileHeaderInsert,
+  } = props as NavInterfaceSig;
 
   // TODO - PROJECT_CONFIG FOR headerIsFixed setting
   // TODO - PROJECT_CONFIG FOR headerFixedHeightDefault setting
@@ -43,8 +55,7 @@
 <div
   id="annex-nav-interface"
   class="nav-interface-container"
-  class:fixed-header={headerIsFixed}
-  class:sm-media={$mediaWatch.isSmall}
+  class:sm-media={$mediaWatch.is_SM}
 >
   <div class="menu-dock">
     {#if $$slots['insert-tray-tp']}
@@ -73,31 +84,20 @@
   <div class="nav-interface-outlet">
 
     {#if headerIsFixed}
-      <slot name="page-layout" />
+      {@render pageLayout?.()}
     {/if}
 
-    <div class="header-dock">
-
-      <!-- DESKTOP_HEADER_SLOTS -->
-      <HeaderDesktop {toggleMenuTray} {navigations}>
-        <slot slot="insert-header-desktop-aa">
-          <slot name="insert-header-desktop-a" />
-        </slot>
-        <slot slot="insert-header-desktop-bb">
-          <slot name="insert-header-desktop-b" />
-        </slot>
-      </HeaderDesktop>
-
-      <!-- MOBILE_HEADER_SLOT -->
-      <HeaderMobile {toggleMenuTray} {navigations}>
-        <slot slot="insert-header-mobile">
-          <slot name="insert-header-mobile" />
-        </slot>
-      </HeaderMobile>
-    </div>
+    <HeaderDockManager {headerIsFixed} {toggleMenuTray} {navigations}>
+      {#snippet DHinsert()}
+        {@render desktopHeaderInsert?.()}
+      {/snippet}
+      {#snippet MHinsert()}
+        {@render mobileHeaderInsert?.()}
+      {/snippet}
+    </HeaderDockManager>
 
     {#if !headerIsFixed}
-      <slot name="page-layout" />
+      {@render pageLayout?.()}
     {/if}
   </div>
 
@@ -113,28 +113,19 @@
     min-height: 100%;
     min-width: 100%;
     overflow: hidden;
+    padding-top: var(--page-header-height-desktop);
     /* border: 2px solid fuchsia; */
-  }
-
-  .nav-interface-container.fixed-header .menu-dock {
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    z-index: 1;
-    /* border: 1px solid green; */
-  }
-
-  .nav-interface-container.fixed-header {
-    padding-top: var(--page-header-top);
 
     &.sm-media {
-      padding-top: var(--page-header-top-sm-media);
+      padding-top: var(--page-header-height-mobile);
     }
-  }
 
-  .nav-interface-container.fixed-header .nav-interface-outlet .header-dock {
-    position: fixed;
-    top: 0px;
-    width: 100%;
+    .menu-dock {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      z-index: 1;
+      /* border: 1px solid green; */
+    }
   }
 </style>
