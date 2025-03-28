@@ -1,46 +1,46 @@
-@use 'small-media';
-@use 'medium-media';
-@use 'large-media';
-@use 'ultra-media';
+@use 'SM_media';
+@use 'MD_media';
+@use 'LG_media';
+@use 'XL_media';
 
 $mobileBreakpoint: 500px;
 $tabletBreakpoint: 700px;
 $desktopBreakpoint: 900px;
 
 // NONE - MOBILE: SM_
-@mixin isSmall {
+@mixin is_SM {
   @media (max-width: #{$mobileBreakpoint}) {
     @content;
   }
 }
 // MOBILE - TABLET: MD_
-@mixin isMedium {
+@mixin is_MD {
   @media (min-width: #{$mobileBreakpoint}) and (max-width: #{$tabletBreakpoint}) {
     @content;
   }
 }
 // TABLET - DESKTOP: LG_
-@mixin isLarge {
+@mixin is_LG {
   @media (min-width: #{$tabletBreakpoint}) and (max-width: #{$desktopBreakpoint}) {
     @content;
   }
 }
 // DESKTOP - ULTRA: XL_
-@mixin isUltra {
+@mixin is_XL {
   @media (min-width: #{$desktopBreakpoint}) {
     @content;
   }
 }
 
-@include isSmall {
-  @include small-media.rules;
+@include is_SM {
+  @include SM_media.rules;
 }
-@include isMedium {
-  @include medium-media.rules;
+@include is_MD {
+  @include MD_media.rules;
 }
-@include isLarge {
-  @include large-media.rules;
+@include is_LG {
+  @include LG_media.rules;
 }
-@include isUltra {
-  @include ultra-media.rules;
+@include is_XL {
+  @include XL_media.rules;
 }

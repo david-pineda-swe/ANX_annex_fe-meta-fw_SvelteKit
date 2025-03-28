@@ -1,6 +1,10 @@
 @mixin rules {
-  .MD_none {
+  .XL_none {
     display: none;
+  }
+
+  .XL_flex {
+    display: flex;
   }
 
   .SM_only { display: none; }

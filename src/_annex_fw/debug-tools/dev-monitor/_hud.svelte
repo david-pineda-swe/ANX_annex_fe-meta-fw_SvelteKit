@@ -13,31 +13,46 @@
   <div>Current: {$mediaWatch.classNames}</div>
 
   <div class="bp-indicator">
-    <span class="bp-key">- isSmall:</span>
-    <span class="bp-state" class:active={$mediaWatch.isSmall}>{$mediaWatch.isSmall}</span>
-    <span class="bp-query-spec">BP spec: {breakpoints.isSmall}</span>
+    <span class="bp-key">- is_SM:</span>
+    <span class="bp-state" class:active={$mediaWatch.is_SM}>{$mediaWatch.is_SM}</span>
+    <span class="bp-query-spec">BP spec: {breakpoints.is_SM}</span>
   </div>
   <div class="bp-indicator">
-    <span class="bp-key">- isMedium:</span>
-    <span class="bp-state" class:active={$mediaWatch.isMedium}>{$mediaWatch.isMedium}</span>
-    <span class="bp-query-spec">BP spec: {breakpoints.isMedium}</span>
+    <span class="bp-key">- isPast_SM:</span>
+    <span class="bp-state" class:active={$mediaWatch.isPast_SM}>{$mediaWatch.isPast_SM}</span>
+    <span class="bp-query-spec">BP spec: {breakpoints.isPast_SM}</span>
   </div>
   <div class="bp-indicator">
-    <span class="bp-key">- isLarge:</span>
-    <span class="bp-state" class:active={$mediaWatch.isLarge}>{$mediaWatch.isLarge}</span>
-    <span class="bp-query-spec">BP spec: {breakpoints.isLarge}</span>
+    <span class="bp-key">- is_MD:</span>
+    <span class="bp-state" class:active={$mediaWatch.is_MD}>{$mediaWatch.is_MD}</span>
+    <span class="bp-query-spec">BP spec: {breakpoints.is_MD}</span>
   </div>
   <div class="bp-indicator">
-    <span class="bp-key">- isUltra:</span>
-    <span class="bp-state" class:active={$mediaWatch.isUltra}>{$mediaWatch.isUltra}</span>
-    <span class="bp-query-spec">BP spec: {breakpoints.isUltra}</span>
+    <span class="bp-key">- isPast_MD:</span>
+    <span class="bp-state" class:active={$mediaWatch.isPast_MD}>{$mediaWatch.isPast_MD}</span>
+    <span class="bp-query-spec">BP spec: {breakpoints.isPast_MD}</span>
+  </div>
+  <div class="bp-indicator">
+    <span class="bp-key">- is_LG:</span>
+    <span class="bp-state" class:active={$mediaWatch.is_LG}>{$mediaWatch.is_LG}</span>
+    <span class="bp-query-spec">BP spec: {breakpoints.is_LG}</span>
+  </div>
+  <div class="bp-indicator">
+    <span class="bp-key">- isPast_LG:</span>
+    <span class="bp-state" class:active={$mediaWatch.isPast_LG}>{$mediaWatch.isPast_LG}</span>
+    <span class="bp-query-spec">BP spec: {breakpoints.isPast_LG}</span>
+  </div>
+  <div class="bp-indicator">
+    <span class="bp-key">- is_XL:</span>
+    <span class="bp-state" class:active={$mediaWatch.is_XL}>{$mediaWatch.is_XL}</span>
+    <span class="bp-query-spec">BP spec: {breakpoints.is_XL}</span>
   </div>
 </div>
 
 <style lang="scss">
   .dev-monitor-hud {
     position: absolute;
-    top: 0px;
+    top: 700px;
     width: 100%;
     padding: 5px;
     background-color: #fff;

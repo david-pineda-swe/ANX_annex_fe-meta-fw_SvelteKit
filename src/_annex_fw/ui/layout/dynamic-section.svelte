@@ -16,7 +16,7 @@
   }
 
   let MQ_flag: string;
-  if ($mediaWatch.isSmall) {
+  if ($mediaWatch.is_SM) {
     MQ_flag = 'sm-media';
   }
 

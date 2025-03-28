@@ -21,7 +21,7 @@
 	class="item-group"
 	class:centered={centerList}
 	class:marquee={isMarquee}
-	class:sm-small={$mediaWatch.isSmall}
+	class:sm-small={$mediaWatch.is_SM}
 	{style}
 >
 	{#each items as item}
