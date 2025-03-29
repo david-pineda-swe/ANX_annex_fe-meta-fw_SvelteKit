@@ -1,7 +1,6 @@
 <script lang="ts">
   import { isEmpty } from "annex/utils";
   import type { InputRequirements } from "src/global";
-  import { splitRequirements } from "../util/split-requirements";
   
   import CheckboxButton from "./checkbox-button.svelte";
   import CustomButton from "./custom-button.svelte";
@@ -16,7 +15,7 @@
     fi: undefined,
     node: undefined
   };
-  const { node } = splitRequirements(inputReqs);
+  const { node } = inputReqs;
   const { inputType } = node;
 
   const inputIndex: any = {

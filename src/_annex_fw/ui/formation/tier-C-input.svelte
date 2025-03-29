@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { InputRequirements } from 'src/global';
-  import { splitRequirements } from './util/split-requirements';
   import { shouldShow } from './util/should-show';
 
   import StandardInputIndex from './standard/_input-index.svelte';
@@ -10,7 +9,7 @@
     fi: undefined,
     node: undefined
   };
-  const { node } = splitRequirements(inputReqs);
+  const { node } = inputReqs;
 </script>
 
 {#if shouldShow(node)}

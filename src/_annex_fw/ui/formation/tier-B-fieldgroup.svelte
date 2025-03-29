@@ -1,10 +1,9 @@
 <script lang="ts">
   import type { InputRequirements } from 'src/global';
-  import { splitRequirements } from './util/split-requirements';
   import TierC_Input from './tier-C-input.svelte';
 
-  export let inputReqs: InputRequirements = null;
-  const { fi, node } = splitRequirements(inputReqs);
+  export let inputReqs: InputRequirements;
+  const { fi, node } = inputReqs;
 </script>
 
 <div class="form-fieldgroup {node.classes}">

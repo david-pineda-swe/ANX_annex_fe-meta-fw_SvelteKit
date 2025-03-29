@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { InputRequirements } from "src/global";
-  import { splitRequirements } from "../util/split-requirements";
   import FormationInputHandler from "../_input-interface";
 
   export let inputReqs: InputRequirements = {
@@ -8,7 +7,7 @@
     node: undefined
   };
 
-  const { node } = splitRequirements(inputReqs);
+  const { node } = inputReqs;
   const { id, classes, label, status } = node;
   const inputHandler = new FormationInputHandler(inputReqs);
 </script>
