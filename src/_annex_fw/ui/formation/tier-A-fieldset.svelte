@@ -3,10 +3,17 @@
 
   import TierB_Fieldgroup from './tier-B-fieldgroup.svelte';
   import TierC_Input from './tier-C-input.svelte';
+  import type { InputRequirements } from 'globalTypes';
 
-  export let fi: any = null;
+  export let inputReqs: InputRequirements;
+  const { fi, node } = inputReqs;
+  // export let fi: any = null;
 
-  const formNodes = fi._nodes ? fi._nodes : [];
+  const formNodes = (node)
+    ? [node]
+    : fi._nodes
+      ? fi._nodes
+      : [];
   // TODO - flag on PROD vs. DEV to show dev error messages
 </script>
 
