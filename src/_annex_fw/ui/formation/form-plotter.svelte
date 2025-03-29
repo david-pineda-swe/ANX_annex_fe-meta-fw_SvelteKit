@@ -42,7 +42,7 @@
   on:submit={e => handleSubmit(e)}
 >
 
-  <TierA_Fieldset inputReqs={{ fi, node: null }}/>
+  <TierA_Fieldset formTier={{ fi, node: null }}/>
 
   {#if useDefaultSubmit}
     <div class={`form-field${(disabled) ? ' disabled': ''}`}>

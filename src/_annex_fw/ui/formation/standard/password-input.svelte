@@ -3,13 +3,13 @@
   import FormationInputHandler from "../_input-interface";
   import IconIndex from "annex/ui/copy/icon-index.svelte";
 
-  export let inputReqs: InputRequirements = {
+  export let formTier: InputRequirements = {
     fi: undefined,
     node: undefined
   };
 
-  const inputHandler = new FormationInputHandler(inputReqs);
-  const { node } = inputReqs;
+  const inputHandler = new FormationInputHandler(formTier);
+  const { node } = formTier;
   const {id, classes, dataPointKey, placeholder, status } = node;
 
   let toggledPrivate = true;

@@ -5,16 +5,16 @@
   import StandardInputIndex from './standard/_input-index.svelte';
   import InputBaseLayout from './input-base-layout.svelte';
 
-  export let inputReqs: InputRequirements = {
+  export let formTier: InputRequirements = {
     fi: undefined,
     node: undefined
   };
-  const { node } = inputReqs;
+  const { node } = formTier;
 </script>
 
 {#if shouldShow(node)}
   <InputBaseLayout {node}>
     <!-- TODO - PASS OUTLINE TO THIS TIER FOR "inputSetType" [STANDARD, EXTENDED, DYNAMIC, BETA] -->
-    <StandardInputIndex {inputReqs} />
+    <StandardInputIndex {formTier} />
   </InputBaseLayout>
 {/if}

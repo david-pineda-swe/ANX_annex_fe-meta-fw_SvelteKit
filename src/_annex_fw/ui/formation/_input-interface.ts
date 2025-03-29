@@ -20,7 +20,7 @@ class FormationInputHandler {
     this._updateNodeState({ errors });
   };
 
-  _getInputReqs = () => {
+  _getThisFormTier = () => {
     return {
       fi: this._formInterface,
       node: this._inputNode
@@ -38,8 +38,8 @@ class FormationInputHandler {
     }
   };
 
-  constructor(inputReqs: InputRequirements) {
-    const { fi, node } = inputReqs;
+  constructor(formTier: InputRequirements) {
+    const { fi, node } = formTier;
     this._formInterface = fi;
     this._inputNode = node;
   }

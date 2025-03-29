@@ -2,12 +2,12 @@
   import type { InputRequirements } from "src/global";
   import { isEmpty } from "annex/utils";
 
-  export let inputReqs: InputRequirements = {
+  export let formTier: InputRequirements = {
     fi: undefined,
     node: undefined
   };
 
-  const { fi, node } = inputReqs;
+  const { fi, node } = formTier;
   const { _formLevelErrors } = fi;
   const { id, classes, label, status } = node;
 

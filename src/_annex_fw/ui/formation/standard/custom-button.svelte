@@ -2,14 +2,14 @@
   import type { InputRequirements } from "src/global";
   import FormationInputHandler from "../_input-interface";
 
-  export let inputReqs: InputRequirements = {
+  export let formTier: InputRequirements = {
     fi: undefined,
     node: undefined
   };
 
-  const { node } = inputReqs;
+  const { node } = formTier;
   const { id, classes, label, status } = node;
-  const inputHandler = new FormationInputHandler(inputReqs);
+  const inputHandler = new FormationInputHandler(formTier);
 </script>
  
 <button

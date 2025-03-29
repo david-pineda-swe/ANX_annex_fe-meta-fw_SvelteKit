@@ -11,11 +11,11 @@
   import TextInput from "./text-input.svelte";
   import TextareaInput from "./textarea-input.svelte";
 
-  export let inputReqs: InputRequirements = {
+  export let formTier: InputRequirements = {
     fi: undefined,
     node: undefined
   };
-  const { node } = inputReqs;
+  const { node } = formTier;
   const { inputType } = node;
 
   const inputIndex: any = {
@@ -38,7 +38,7 @@
 </script>
 
 {#if hasComponent}
-  <svelte:component this={targetComponent} {inputReqs} />
+  <svelte:component this={targetComponent} {formTier} />
 {:else}
   <h3>Input not supported!</h3>
 {/if}
