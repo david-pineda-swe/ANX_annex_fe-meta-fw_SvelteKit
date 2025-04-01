@@ -10,8 +10,34 @@ export const formA_outline = {
   formClasses: 'stacked test form-a full-tier-set',
   // TIER A - FIELDSET(s) + & B || C
   nodes: [
+    // ! ========================== Ticket Qty
     {
-      // ! ========================== TICKET CODE
+      type: 'INPUT',
+      inputType: 'NUMBER',
+      // ! DATA
+      dataPointKey: 'ticketQty',
+      dataValidator: zfd.numeric(z.number().min(5, {message: 'Actually... you need to get at least 5'})),
+      // startValue: 12, // ? optional
+      required: true,
+      // targetActionKey: '',
+      // setupConfig: {},
+      // ! INPUT
+      id: 'test-number-type',
+      classes: 'test input-a tier-a number-field',
+      label: 'Ticket Quantity',
+      placeholder: 'How many?',
+      minValue: 2,  // ? opt
+      maxValue: 15, // ? opt
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: ['Need a number of tickets', 'Max is 15 tickets']
+      }
+    },
+    // ! ========================== TICKET CODE
+    {
       type: 'INPUT',
       inputType: 'TEXT',
       // ! DATA

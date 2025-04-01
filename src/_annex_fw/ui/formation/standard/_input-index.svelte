@@ -10,6 +10,7 @@
   import SubmitButton from "./submit-button.svelte";
   import TextInput from "./text-input.svelte";
   import TextareaInput from "./textarea-input.svelte";
+  import NumberInput from "./number-input.svelte";
 
   export let formTier: InputRequirements = {
     fi: undefined,
@@ -26,6 +27,7 @@
     RADIO_BTN: RadioButton,
     SUBMIT_BTN: SubmitButton,
     TEXT: TextInput,
+    NUMBER: NumberInput,
     TEXTAREA: TextareaInput
   };
 
