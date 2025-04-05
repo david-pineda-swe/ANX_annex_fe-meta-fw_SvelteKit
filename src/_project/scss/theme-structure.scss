@@ -1,0 +1,60 @@
+@use "artifact-theming";
+
+html {
+	background-color: var(--bkgrd-color-primary);
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background-color: var(--bkgrd-color-primary);
+  @include artifact-theming.pageScrollGradient;
+}
+
+// HEADERS
+.mobile-header {
+  height: var(--page-header-height-mobile);
+  background-color: var(--header-bkgrd-color);
+}
+.desktop-header {
+  height: var(--page-header-height-desktop);
+  background-color: var(--header-bkgrd-color);
+}
+header.mobile-header,
+header.desktop-header {
+  @include artifact-theming.topContainerFade;
+}
+
+#svelte.app-container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	/* border: 2px solid red; */
+}
+
+.content {
+	width: 100%;
+	padding: 0 15px;
+}
+
+.content.full-width {
+	margin-top: var(--column-top-margin);
+}
+
+.content.center-column {
+	max-width: var(--column-width);
+	margin: var(--column-top-margin) auto 0 auto;
+}
+
+section.dynamic {
+    background-color: var(--section-bkgrd-color);
+    
+    // TODO - TRY TO WORK OUT THEMING IMAGES INSIDE OF SPEC DIRECTORY
+    // .section-bg {
+    //   background-image: url(./images/theming/hero_general_01.jpg);
+    //   //   border: 2px solid red;
+    //   // img {
+    //   //   border: 2px solid red;
+    //   // }
+    // }
+}

@@ -24,9 +24,9 @@ interface NodeMeta {
   //--- CMS AUTHOR / EDITING
   tags?: Array<string>
   created: Date
-  createdBy: ProjectUser,
-  edited: Date
-  editedBy: ProjectUser,
+  createdBy: ProjectUser | null,
+  edited: Date | null,
+  editedBy: ProjectUser | null,
   notes?: string,
 }
 
@@ -89,10 +89,10 @@ interface FlowControlTraits {
 // - PAGE ROUTE
 interface NavigationNode {
   nodeId: string;
-  label: string;
+  label: string | null;
   actionType: string; // [INTERNAL_ROUTE(d), EXTERNAL_LINK, SLOT, PROCESS_[target_handle_key]_[...params]]
   //
-  displayTypes?: Array<string>; // [label(d), icon, image]
+  displayTypes?: Array<string>; // possible: [label(d), icon, image]
   slug?: string;
   url?: string;
   linkTarget?: string; // DOCS linkTarget - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target

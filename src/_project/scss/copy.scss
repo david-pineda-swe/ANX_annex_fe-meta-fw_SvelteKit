@@ -1,0 +1,63 @@
+@use "artifact-theming";
+
+// TODO - CHANGE TO TYPOGROPHY
+// TODO - SEPERATE BASE STYLES FROM PROJECT THEME STYLES
+
+p {
+	color: var(--copy-color);
+	line-height: 1.5;
+  font-size: var(--font-size);
+	margin-bottom: 15px;
+}
+
+a {
+	color: var(--links-color);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+pre {
+  @include artifact-theming.cardTheme;
+	font-size: 16px;
+	font-family: var(--font-mono);
+  font-weight: bold;
+	overflow-x: auto;
+}
+
+// HEADINGS
+// - COLOR
+h1,
+h2,
+h3 {
+	color: var(--heading-color);
+  margin-bottom: var(--heading-bottom-margin);
+  // font-weight: bold;
+}
+// h4 = black
+h4 {
+  color: var(--heading-secondary-color);
+}
+
+// - SIZE
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.25rem; }
+
+// LISTS
+ul {
+  color: var(--list-copy-color);
+  margin-bottom: calc(var(--heading-bottom-margin) + 20px);
+
+  li {
+    margin-bottom: 15px;
+  }
+}
+
+hr {
+  color: var(--hr-color);
+  opacity: .75;
+}

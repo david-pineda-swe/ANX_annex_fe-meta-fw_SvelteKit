@@ -1,0 +1,11 @@
+@mixin rules {
+  .LG_none {
+    display: none;
+  }
+
+  .LG_flex {
+    display: flex;
+  }
+
+  .SM_only { display: none; }
+}

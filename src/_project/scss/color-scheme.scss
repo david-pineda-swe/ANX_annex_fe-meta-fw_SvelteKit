@@ -1,0 +1,37 @@
+@mixin colorScheme {
+  // - COLORS
+	--pure-white: #fff;
+  --white-tl: rgba(255, 255, 255, 0.858);
+  --white-tl-02: rgba(255, 255, 255, 0.45);
+	//
+	--pink-00: #fac5fb;
+	--pink-01: #f667f9;
+  --pink-02: fuchsia;
+  --red-00: #ff0000;
+  --red-01: rgb(255, 122, 122);
+  //
+  --green-01: #189736;
+	//
+	--blue-01: #11b3f3;
+	--blue-02: rgb(23, 13, 171);
+	//
+	--purple-01: #8f1ee0;
+	--purple-02: #711e8d;
+	--purple-03: #4508ae;
+	--purple-04: #250954;
+	--purple-05: #160632;
+  --purple-06: rgba(72,21,74,1);
+  --purple-07: rgba(255,255,255,0);
+  --purple-tl-01: #181f49f3;
+  --purple-tl-02: rgba(72, 21, 74, 0);
+  --purple-tl-03: rgba(39, 12, 40, 0.932);
+  --purple-tl-04: rgba(63, 2, 66, 0.45);
+	//
+  --lt-gray-00: #999;
+  --lt-gray-01: #ccc;
+	--dk-gray-01: #2d2e2f;
+	--dk-gray-02: #222223;
+	--dk-gray-03: #181818;
+  //
+  --black-tl-01: #00000043;
+}

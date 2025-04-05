@@ -28,10 +28,10 @@
     "paths": {
       "globalTypes": ["src/global.d.ts"],
       // NOTE: Supported package modules > TEMPORARY !
-      "annex/*": ["src/annexjs_package_modules/*"], // < LIB supported modules
+      "annex/*": ["src/_annex_fw/*"], // < framework support modules
       // TBD Project based modules go here - SEE svelte.config.js FOR DEV NOTES
       // "annex_[TARGET]/*": ["src/annexjs-extended/*"], // TBD < Package module extended & support development
-      "$pec/*": ["src/spec-to-project/*"] // < Project spec development modules
+      "$pec/*": ["src/_project/*"], // < Project development modules
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],

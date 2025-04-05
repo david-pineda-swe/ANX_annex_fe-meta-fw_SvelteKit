@@ -117,6 +117,7 @@ export const galleryConfig_B = {
       // boxStyles: 'border: 5px solid fuchsia;',
       title: '1',
       descriptLocation: 1,
+      descriptClasses: 'dark-text bold',
       description: '1-tile',
       longMessage:
         'This is some long message description and content. This will be an example to follow and describe Showcase content.',
@@ -134,6 +135,7 @@ export const galleryConfig_B = {
       backgroundStyles: 'blue',
       title: '2',
       descriptLocation: 2,
+      descriptClasses: 'dark-text bold',
       description: '2-tile_OPEN-MODAL',
       longMessage:
         'This is some extra long message description and content. This will be an example to follow and describe Showcase content.',
@@ -148,6 +150,7 @@ export const galleryConfig_B = {
       backgroundStyles: 'fuchsia',
       title: '3',
       descriptLocation: 3,
+      descriptClasses: 'dark-text bold',
       description: '3-tile test PROCESS',
       navItem: {
         // is "NavigationNode" type

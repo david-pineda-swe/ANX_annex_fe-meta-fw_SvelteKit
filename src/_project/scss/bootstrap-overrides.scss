@@ -1,0 +1,6 @@
+// - BOOTSTRAP OVERRIDES
+
+// - MODALS FOR FLUID TN GALLERY
+.modal-content:has(>.fluid-modal-body) {
+  background-color: var(--bs-modal-background);
+}

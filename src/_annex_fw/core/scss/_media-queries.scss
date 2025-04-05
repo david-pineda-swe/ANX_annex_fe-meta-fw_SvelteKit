@@ -1,0 +1,47 @@
+// TODO - ADD isPast_[X] queries and rules
+@use 'SM_media';
+@use 'MD_media';
+@use 'LG_media';
+@use 'XL_media';
+
+$mobileBreakpoint: 500px;
+$tabletBreakpoint: 700px;
+$desktopBreakpoint: 900px;
+
+// NONE - MOBILE: SM_
+@mixin is_SM {
+  @media (max-width: #{$mobileBreakpoint}) {
+    @content;
+  }
+}
+// MOBILE - TABLET: MD_
+@mixin is_MD {
+  @media (min-width: #{$mobileBreakpoint}) and (max-width: #{$tabletBreakpoint}) {
+    @content;
+  }
+}
+// TABLET - DESKTOP: LG_
+@mixin is_LG {
+  @media (min-width: #{$tabletBreakpoint}) and (max-width: #{$desktopBreakpoint}) {
+    @content;
+  }
+}
+// DESKTOP - ULTRA: XL_
+@mixin is_XL {
+  @media (min-width: #{$desktopBreakpoint}) {
+    @content;
+  }
+}
+
+@include is_SM {
+  @include SM_media.rules;
+}
+@include is_MD {
+  @include MD_media.rules;
+}
+@include is_LG {
+  @include LG_media.rules;
+}
+@include is_XL {
+  @include XL_media.rules;
+}

@@ -11,6 +11,12 @@
 <!-- <div class="content center-column"> -->
 	<h1>About this app</h1>
 
+  <ul class="test">
+    <li class="test">One</li>
+    <li class="test">Two</li>
+    <li class="test">Three</li>
+  </ul>
+
 	<a href="#scroll-to-test-link" on:click={smoothScroll}>MIDDLE</a> <br/>
 	<a href="#test-copy-card" on:click={smoothScroll}>COPY CARD</a>
 	<hr/>
@@ -56,6 +62,12 @@
 		</div>
 
 		<slot slot="content">
+      <ul class="test">
+        <li class="test">One</li>
+        <li class="test">Two</li>
+        <li class="test">Three</li>
+      </ul>
+      <hr>
 			<p>Cum autem in quo sapienter dicimus, id a primo rectissime dicitur. Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Nec tamen ille erat sapiens quis enim hoc aut quando aut ubi aut unde? Obsecro, inquit, Torquate, haec dicit Epicurus? An tu me de L. Quod praeceptum quia maius erat, quam ut ab homine videretur, idcirco assignatum est deo. Utilitatis causa amicitia est quaesita. Qui ita affectus, beatum esse numquam probabis; Simus igitur contenti his. </p>
 
 			<h3>-, sed ut hoc iudicaremus, non esse in iis partem maximam positam beate aut secus vivendi.</h3>

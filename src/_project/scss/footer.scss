@@ -1,0 +1,5 @@
+@use "artifact-theming";
+
+.footer-menu {
+  @include artifact-theming.footerFade;
+}
