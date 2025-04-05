@@ -1,17 +1,25 @@
 <script lang="ts">
   import type { NavigationConfig } from "src/global";
   import filterTargetNavigations from "annex/core/webapp/nav-interface/filter-target-navigations";
-
   import MenuPlotter from "./menu-plotter.svelte";
+  import type { Snippet } from "svelte";
+
+  interface FooterSig {
+    navigations?: NavigationConfig[];
+    //
+    children?: Snippet
+  }
+  const props = $props();
+  const {
+    navigations = [],
+    children
+  } = props as FooterSig;
 
   // Pull targetNav configs
-  export let navigations: Array<NavigationConfig>;
   const targetNavigations = filterTargetNavigations({
     navigations,
     targetMenuLocation: 'FOOTER_MENU'
   });
-
-  // TODO - PROJECT CONFIG FOR CONTROL OF TRAY POSITIONING
 </script>
 
 
@@ -23,8 +31,7 @@
       locationClasses='sub-footer-menu'
       targetActions={{}}/>
   {/if}
-
-  <slot name="insert-footer"/>
+  {@render children?.()}
 </footer>
 
 

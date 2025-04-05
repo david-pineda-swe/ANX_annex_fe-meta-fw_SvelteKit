@@ -2,8 +2,9 @@
   import type { NavigationConfig } from "src/global";
   import MenuNavigation from "./menu-navigation.svelte";
 
+  // TODO - S5_MIGRATE
   export let toggleMenuTray: any = null;
-  export let navigations: Array<NavigationConfig>
+  export let navigations: Array<NavigationConfig>;
   export let locationClasses: string;
   export let targetActions: {};
 
@@ -27,5 +28,3 @@
     </MenuNavigation>
   {/each}
 </div>
-
-<style></style>

@@ -1,9 +1,11 @@
 <script lang="ts">
+  // TODO - S5_MIGRATE
   export let cardId:string|null = null;
   export let cardClass:string|null = null;
   export let cardConfigType:string|null = null;
   export let cardTheme:string|null = null;
 
+  // TODO - ADD TO DIAGNOSTIC CONFIG OR REMOVE
   const testingUI = false;
 
   if (testingUI) {

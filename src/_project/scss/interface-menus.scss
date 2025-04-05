@@ -1,6 +1,6 @@
 @use "icon-index";
 
-// SCROLLING INTERFACE CONTAINERS
+// TODO - S5_MIGRATE_WHITELABEL
 .interface-container {
   padding: 20px 20px 150px 20px;
   background-color: var(--dk-gray-02);
@@ -27,6 +27,7 @@
   // border: 1px solid red;
   .nav-group {
 
+    // TODO - CHECK FLAT_LIST_MENUS
     nav.nav-menu.flat-list {
       position: absolute;
       // border: 1px solid orange;
@@ -76,7 +77,8 @@
           }
         }
         li.active::before {
-          // next - artifact v2
+          // TODO - S5_MIGRATE_WHITELABEL
+          // next - artifact v2 TO THEMING
           top: -8px;
           left: calc(50% - var(--size));
           content: '';
@@ -103,6 +105,7 @@
             position: relative;
 
             &::before {
+              // TODO - S5_MIGRATE_WHITELABEL
               // NEXT - SETUP ARTIFACT V1
               @include icon-index.fa-icon-defaults;
               content: "\f054";
@@ -135,7 +138,8 @@
             }
 
             &:hover span {
-              // next - ass to theme
+              // TODO - S5_MIGRATE_WHITELABEL
+              // next - MOVE to theme
               color: red;
             }
           }
@@ -144,6 +148,18 @@
     }
   }
 }
+  
+  // TODO
+  // fix - simple DDs
+  /* EXPANDABLE */
+  // ul.sub-list {
+  //   display: none;
+  // }
+  // .nav-menu-list-item.has-sub-nav:hover {
+  //   ul.nav-menu-list.sub-list.expand {
+  //     display: flex;
+  //   }
+  // }
 
 /* NESTED MENUS */
 .sub-list {

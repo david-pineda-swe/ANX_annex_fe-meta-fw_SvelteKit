@@ -1,14 +1,21 @@
 <script lang="ts">
-  import { selectedPrimaryMenuTray } from 'annex/core/webapp/stores/menu-trays';
-  import IconIndex from 'annex/ui/copy/icon-index.svelte';
+  import LogoType from '$pec/components/branding/logo-type.svelte';
 
-  const handleTargetTrayClick = () => {
-    selectedPrimaryMenuTray.set('LT_TRAY');
-  };
+  // NOTE - FROM DESKTOP B 
+  // import { selectedMenuTray } from 'annex/core/webapp/stores/menu-trays';
+  // import IconIndex from 'annex/ui/copy/icon-index.svelte';
+
+  // const handleTargetTrayClick = () => {
+  //   selectedMenuTray.set('LT_TRAY');
+  // };
 </script>
 
+<LogoType location={'desktop'} />
 
-<!-- NOTE - DEACTIVATED -->
+<!-- TODO - ADD SUPPORT FOR MOBILE LAYOUT SWAP -->
+<!-- <LogoType location={'mobile'} /> -->
+
+<!-- NOTE - DEACTIVATED FROM DESKTOP B -->
 <!-- <button on:click={handleTargetTrayClick}>
   <IconIndex designation={'ICONIFY_mdi:menu-open_medium|s2|white'}/>
 </button> -->
@@ -17,9 +24,8 @@
   <img src="github-logo.png" alt="Annex.JS Repo" /> 
 </a> -->
 
-
-
 <style>
+  /* NOTE FROM DESKTOP B  */
   /* a.brand-logo-link {
     display: flex;
     align-items: center;

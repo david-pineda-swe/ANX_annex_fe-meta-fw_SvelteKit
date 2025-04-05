@@ -1,23 +1,26 @@
-<script>
-	import NavInterface from 'annex/core/webapp/nav-interface.svelte';
-	import Footer from 'annex/core/webapp/nav-interface/footer.svelte';
-	
-	import DesktopHeaderInsert from '$pec/components/interface/menus/insert-header-desktop.svelte';
-	import MobileHeaderInsert from "$pec/components/interface/menus/insert-header-mobile.svelte";
-
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+	import NavInterface from 'annex/core/webapp/nav-interface.svelte';	
+	import InsertHeader from '$pec/components/interface/menus/insert-header.svelte';
+	import InsertFooter from '$pec/components/interface/menus/insert-footer.svelte';
 	import InsertTrayTop from '$pec/components/interface/menus/insert-tray-top.svelte';
 	import InsertTrayRight from '$pec/components/interface/menus/insert-tray-right.svelte';
 	import InsertTrayBottom from '$pec/components/interface/menus/insert-tray-bottom.svelte';
 	import InsertTrayLeft from '$pec/components/interface/menus/insert-tray-left.svelte';
-	import InsertFooter from '$pec/components/interface/menus/insert-footer.svelte';
+	import Footer from 'annex/core/webapp/nav-interface/footer.svelte';
 	
 	import generateProjectConfiguration from "$pec/config/project";
-	import 'annex/core/_styles.scss';
+	
+  import 'annex/core/_styles.scss';
 	import '$pec/_styles.scss';
 
 	import logo from '$pec/images/branding/Free4m-IO_logo_wht_v14.svg';
 
-  const { children } = $props();
+  interface MainLayoutSig {
+    children?: Snippet
+  }
+  const props = $props();
+  const { children } = props as MainLayoutSig;
 
 	const { navigations } = generateProjectConfiguration();	
 </script>
@@ -36,29 +39,38 @@
 
 
 <NavInterface navigations={navigations}>
-  {#snippet desktopHeaderInsert()}
-    <DesktopHeaderInsert/>
-  {/snippet}
-  {#snippet mobileHeaderInsert()}
-    <MobileHeaderInsert/>
+  {#snippet HeaderInsert()}
+    <InsertHeader/>
   {/snippet}
 
 	<!-- TOP_TRAY_INTERFACE -->
-	<InsertTrayTop slot="insert-tray-tp"/>
+  {#snippet TrayTopInsert()}
+	  <InsertTrayTop/>
+  {/snippet}
 	<!-- RIGHT_TRAY_INTERFACE -->
-	<InsertTrayRight slot="insert-tray-rt"/>
+  {#snippet TrayRightInsert()}
+    <InsertTrayRight/>
+  {/snippet}
 	<!-- BOTTOM_TRAY_INTERFACE -->
-	<InsertTrayBottom slot="insert-tray-bt"/>
+  {#snippet TrayBottomInsert()}
+	  <InsertTrayBottom/>
+  {/snippet}
 	<!-- LEFT_TRAY_INTERFACE -->
-	<InsertTrayLeft slot="insert-tray-lt"/>
+  {#snippet TrayLeftInsert()}
+	  <InsertTrayLeft/>
+  {/snippet}
 	
-	<!-- PAGE_LAYOUT_SLOT -->
+	<!-- PAGE_LAYOUT -->
   {#snippet pageLayout()}
     <div class="page-layout">
       <main id="page-content">
         {@render children?.()}
       </main>
-		
+      
+      <Footer {navigations}>
+        <InsertFooter/>
+      </Footer>
+      
 	  </div>
   {/snippet}
 </NavInterface>

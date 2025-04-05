@@ -2,8 +2,9 @@
   import type { NavigationNode } from "src/global";
   import MenuNavigationItem from "./menu-navigation-item.svelte";
 
+  // TODO - S5_MIGRATE
   export let toggleMenuTray: any;
-  export let elementId: string;
+  export let elementId: string | undefined;
   export let locationMark: string;
   export let levelDepth: string;
   export let navigationType: string;
@@ -49,7 +50,3 @@
     </MenuNavigationItem>
   {/each}
 </ul>
-
-
-
-<style></style>

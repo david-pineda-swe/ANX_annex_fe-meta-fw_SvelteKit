@@ -1,12 +1,10 @@
 <script lang="ts">
-  import { mediaWatch } from "annex/core/webapp/stores/reactive-media";
   import type { NavigationConfig } from "src/global";
-
+  import type { Snippet } from "svelte";
+  import { mediaWatch } from "annex/core/webapp/stores/reactive-media";
   import DevMonitorHud from "annex/debug-tools/dev-monitor/_hud.svelte"; // NOTE - FOR RESPONSIVE TESTING 
   import MenuTray from "./nav-interface/menu-tray.svelte";
   import HeaderDockManager from "./nav-interface/header-dock-manager.svelte";
-  import { selectedPrimaryMenuTray } from "annex/core/webapp/stores/menu-trays";
-  import type { Snippet } from "svelte";
 
   // TODO - CREATE AND ADD DIAGNOSTIC TO A PROJECT CONFIG
   const showDiagnostic = false;
@@ -21,36 +19,30 @@
 
   interface NavInterfaceSig {
     navigations: Array<NavigationConfig>;
+    //
     pageLayout?: Snippet;
-    desktopHeaderInsert?: Snippet;
-    mobileHeaderInsert?: Snippet;
+    HeaderInsert?: Snippet;
+    TrayTopInsert?: Snippet;
+    TrayRightInsert?: Snippet;
+    TrayBottomInsert?: Snippet;
+    TrayLeftInsert?: Snippet;
   }
   const props = $props();
 
   const {
     navigations,
     pageLayout,
-    desktopHeaderInsert,
-    mobileHeaderInsert,
+    HeaderInsert,
+    TrayTopInsert,
+    TrayRightInsert,
+    TrayBottomInsert,
+    TrayLeftInsert
   } = props as NavInterfaceSig;
 
   // TODO - PROJECT_CONFIG FOR headerIsFixed setting
   // TODO - PROJECT_CONFIG FOR headerFixedHeightDefault setting
-  let headerIsFixed: boolean = true;
-  let currentMenuTray: string;
-
-  selectedPrimaryMenuTray.subscribe((selected) => {
-    // console.log('>> SELECTED:', selected);
-    currentMenuTray = selected;
-  });
-
-  const toggleMenuTray = (selectedTray: string): void => {
-    // console.log('>> CHECK SELECTED_TRAY:', selectedTray);
-    selectedPrimaryMenuTray.set(selectedTray);
-  };
+  const headerIsFixed: boolean = true;
 </script>
-
-<!-- TODO >>> MAKE THE .nav-interface-container TOP SPACING REACTIVE TO CUMULATIVE HIGHT OF THE .header-dock -->
 
 <div
   id="annex-nav-interface"
@@ -58,41 +50,36 @@
   class:sm-media={$mediaWatch.is_SM}
 >
   <div class="menu-dock">
-    {#if $$slots['insert-tray-tp']}
-      <MenuTray trayType="TP_TRAY" {toggleMenuTray} {currentMenuTray} {navigations}>
-        <slot name="insert-tray-tp" />
+    {#if TrayTopInsert}
+      <MenuTray trayPosition="TP_TRAY" {navigations}>
+        {@render TrayTopInsert?.()}
       </MenuTray>
     {/if}
-    {#if $$slots['insert-tray-rt']}
-      <MenuTray trayType="RT_TRAY" {toggleMenuTray} {currentMenuTray} {navigations}>
-        <slot name="insert-tray-rt" />
+    {#if TrayRightInsert}
+      <MenuTray trayPosition="RT_TRAY" {navigations}>
+        {@render TrayRightInsert?.()}
       </MenuTray>
     {/if}
-    {#if $$slots['insert-tray-bt']}
-      <MenuTray trayType="BT_TRAY" {toggleMenuTray} {currentMenuTray} {navigations}>
-        <slot name="insert-tray-bt" />
+    {#if TrayBottomInsert}
+      <MenuTray trayPosition="BT_TRAY" {navigations}>
+        {@render TrayBottomInsert?.()}
       </MenuTray>
     {/if}
-    {#if $$slots['insert-tray-lt']}
-      <MenuTray trayType="LT_TRAY" {toggleMenuTray} {currentMenuTray} {navigations}>
-        <slot name="insert-tray-lt" />
+    {#if TrayLeftInsert}
+      <MenuTray trayPosition="LT_TRAY" {navigations}>
+        {@render TrayLeftInsert?.()}
       </MenuTray>
     {/if}
-    <!-- TODO - CONSIDER WILDCARD CUSTOM MENU -->
   </div>
 
   <div class="nav-interface-outlet">
-
     {#if headerIsFixed}
       {@render pageLayout?.()}
     {/if}
 
-    <HeaderDockManager {headerIsFixed} {toggleMenuTray} {navigations}>
-      {#snippet DHinsert()}
-        {@render desktopHeaderInsert?.()}
-      {/snippet}
-      {#snippet MHinsert()}
-        {@render mobileHeaderInsert?.()}
+    <HeaderDockManager {headerIsFixed} {navigations}>
+      {#snippet HeaderInsertSpot()}
+        {@render HeaderInsert?.()}
       {/snippet}
     </HeaderDockManager>
 

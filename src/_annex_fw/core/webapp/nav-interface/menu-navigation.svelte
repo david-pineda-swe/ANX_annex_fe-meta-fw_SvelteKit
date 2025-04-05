@@ -2,6 +2,7 @@
   import type { NavigationConfig } from "src/global";
   import MenuNavigationList from "./menu-navigation-list.svelte";
 
+  // TODO - S5_MIGRATE
   export let toggleMenuTray: any;
   export let nav: NavigationConfig;
   export let locationClasses: string;
@@ -32,11 +33,3 @@
     </slot>
   </MenuNavigationList>
 </nav>
-
-
-
-<style>
-  .nav-menu {
-    margin-bottom: 20px;
-  }
-</style>

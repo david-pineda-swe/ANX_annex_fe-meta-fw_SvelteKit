@@ -74,3 +74,7 @@
       targetActions={targetActions}/>
   {/if}
 </li>
+
+<style>
+  li {margin-bottom: 0px;}
+</style>

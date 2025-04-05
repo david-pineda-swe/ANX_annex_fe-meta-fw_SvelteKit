@@ -1,34 +1,35 @@
 <script lang="ts">
-  import { sineIn, quintOut } from 'svelte/easing';
+  import type { Snippet } from 'svelte';
   import type { NavigationConfig } from "src/global";
+  import { sineIn, quintOut } from 'svelte/easing';
+  import { mediaIs_SM } from "annex/core/webapp/stores/reactive-media";
+  import { selectedMenuTray, toggleMenuTray } from '../stores/menu-trays';
   import filterTargetNavigations from "./filter-target-navigations";
-  import { mediaIsSmall } from "annex/core/webapp/stores/reactive-media";
-    import MenuPlotter from './menu-plotter.svelte';
+  import MenuPlotter from './menu-plotter.svelte';
 
-  export let trayType: string;
-  export let toggleMenuTray: any;
-  export let currentMenuTray: string;
+  interface MenuTraySig {
+    trayPosition: string;
+    navigations: Array<NavigationConfig>;
+    //
+    children: Snippet;
+  }
+  const props = $props();
+
+  const {
+    trayPosition,
+    navigations,
+    children
+  } = props as MenuTraySig
 
   // Pull targetNav configs
-  export let navigations: Array<NavigationConfig>;
   const targetNavigations = filterTargetNavigations({
     navigations,
-    targetMenuLocation: trayType
+    targetMenuLocation: trayPosition
   });
 
-  let openTray: boolean;
-  $:openTray = currentMenuTray === trayType;
+  const openTray = $derived($selectedMenuTray === trayPosition);
 
-  const trayFade = (_domNode: any, { into }) => {
-    return {
-      delay: (into) ? 0 : 550,
-      duration: 400,
-      easing: sineIn,
-      css: (t: number) => `opacity: ${t};`
-    };
-  }
-
-  const traySlide = (_domNode: any, { into }) => {
+  const traySlide = (_domNode: any, { into }: {into: boolean}) => {
     const intoDelay = (into) ? 450 : 0;
     // _domNode: any, _invocationParams: any
     // console.log('>> Transition setup includes:', _domNode, _invocationParams);
@@ -39,7 +40,7 @@
       css: (t: number) => `transform: translate(${-100 + 100*t}%);`
     };
 
-    switch(trayType) {
+    switch(trayPosition) {
       case 'TP_TRAY':
         return {
           ...defaultTransition,
@@ -69,45 +70,54 @@
         return defaultTransition;
     };
   };
+
+  const trayFade = (_domNode: any, { into }: {into: boolean}) => {
+    return {
+      delay: (into) ? 0 : 550,
+      duration: 400,
+      easing: sineIn,
+      css: (t: number) => `opacity: ${t};`
+    };
+  }
 </script>
 
 
 
-{#if $mediaIsSmall}
-  <!-- MOBILE BROWSER -->
+{#if $mediaIs_SM}
+  <!-- MOBILE BROWSER - has "traySlide" -->
   {#if openTray}
-    <div class="menu-tray {trayType}"  in:traySlide={{into:true}} out:traySlide={{into:false}}>
-      <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
+    <div class="menu-tray {trayPosition}"  in:traySlide={{into:true}} out:traySlide={{into:false}}>
+      <button type="button" class='btn-close-menu-tray' aria-label="{`close ${trayPosition}`}" onclick={() => {toggleMenuTray('close')}}></button>
       <div class="menu-interface tray-menu mobile interface-container">
         
         {#if targetNavigations}
           <MenuPlotter
             {toggleMenuTray}
             navigations={targetNavigations}
-            locationClasses='menu-tray {trayType} mobile'
+            locationClasses='menu-tray {trayPosition} mobile'
             targetActions={{}}/>
         {/if}
         
-        <slot/>
+        {@render children?.()}
       </div>
     </div>
   {/if}
 {:else}
-  <!-- DESKTOP -->
+  <!-- DESKTOP - has "trayFade" -->
   {#if openTray}
-    <div class="menu-tray {trayType}"  in:trayFade={{into: true}} out:trayFade={{into: false}}>
-      <button type="button" class='btn-close-menu-tray' on:click={toggleMenuTray('close')}/>
+    <div class="menu-tray {trayPosition}"  in:trayFade={{into: true}} out:trayFade={{into: false}}>
+      <button type="button" class='btn-close-menu-tray' aria-label="{`close ${trayPosition}`}" onclick={() => {toggleMenuTray('close')}}></button>
       <div class="menu-interface tray-menu desktop interface-container" in:traySlide={{into:true}} out:traySlide={{into:false}}>
         
         {#if targetNavigations}
           <MenuPlotter
             {toggleMenuTray}
             navigations={targetNavigations}
-            locationClasses='menu-tray {trayType} desktop'
+            locationClasses='menu-tray {trayPosition} desktop'
             targetActions={{}}/>
         {/if}
         
-        <slot/>
+        {@render children?.()}
       </div>
     </div>
   {/if}
@@ -133,6 +143,9 @@
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,.5);
+    border: none;
+    margin: 0;
+    border-radius: 0;
   }
 
   .interface-container {
