@@ -17,6 +17,7 @@ class FormationInterface {
   _targetActions: any;
   _schema: any;
   _nodeIndex: any;
+  _targetSubmitButton: any;
 
   // STATE
   _formData: any;
@@ -82,6 +83,7 @@ class FormationInterface {
         }
         if (currentNodeIsSubmitBtn) {
           this._hasTargetSubmitButton = true;
+          this._targetSubmitButton = currentNode;
         }
 
         if (currentHasSubNodes) {
@@ -211,8 +213,7 @@ class FormationInterface {
 
       if (formIsReady) {
         if (this._hasTargetSubmitButton) {
-          const target = this._nodes.filter((node: any) => node.inputType === 'SUBMIT_BTN')[0];
-          target.status.update((data: any) => {
+          this._targetSubmitButton.status.update((data: any) => {
             return { ...data, ...{ disabled: false } };
           });
         } else {
@@ -232,11 +233,7 @@ class FormationInterface {
 
   getTargetAction = (actionKey: string) => {
     const target = this._targetActions[actionKey];
-    if (target) {
-      return target;
-    } else {
-      return null;
-    }
+    return (target) ? target : null;
   };
 
   updateFormData = (update: any) => {
@@ -248,45 +245,85 @@ class FormationInterface {
     });
   };
 
-  validateFormData = (formData: any) => {
+  validateFormData = (formData?: any) => {
     if (formData) {
       // IS FOR SUBMISSION
       return this._schema.parse(formData); // ! <<< VALIDATION !!!
     } else {
       // PRE FLIGHT RE-VALIDATION CHECK-OFF
       try {
-        const enteredFormData = get(this._formData);
-        this._schema.parse(enteredFormData); // ! <<< VALIDATION !!!
         this._setFormErrorsTo([]);
+        const enteredFormData = get(this._formData);
+        return this._schema.parse(enteredFormData); // ! <<< VALIDATION !!!
       } catch (errors: any) {
         this._setFormErrorsTo(errors);
       }
     }
   };
 
-  handleFormSubmission = (event: any) => {
-    // console.log('>> FORM SUBMIT EVENT OBJ:', event);
-    const { _formSubmitAction, _formIsProcessing } = this;
+  handleResponseHandoff(responseHandoff: any) {
+    const { errorCode, text, displayType } = responseHandoff;
 
-    _formIsProcessing.set(true);
+    if (errorCode) {
+      // ! HANDLE ERRORS
+      console.error(">> FORMATION WILL HANDLE SUBMISSION FAILURE!");
+      if (displayType === 'LIST') {
+        // LIST @ form level errors
+        const formError = {
+          label: errorCode,
+          message: text
+        }
+  
+        this._setFormErrorsTo([formError]);
+      }
+      // TODO - MANAGE other ERROR FORMATS
+      // TODO - TOAST
+      // TODO - BANNER
+    } else {
+      // ! HANDLE SUCCESS
+      console.log(">> FORMATION WILL HANDLE SUBMISSION SUCCESS!");
+    }
+  }
 
-    const formData = new FormData(event.target);
-    const providedEntries = Object.fromEntries(formData);
+  handleActionSubmission = async(actionSetup: any) => {
+    const { _formIsProcessing } = this
+    const {
+      isFormSubmit,
+      event,
+      targetActionKey
+    } = actionSetup;
+
+    let targetAction;
+
+    if (isFormSubmit) {
+      targetAction = this._formSubmitAction;
+    } else {
+      targetAction = this.getTargetAction(targetActionKey);
+    }
 
     try {
-      if (_formSubmitAction) {
+      if (targetAction) {
         this._setFormErrorsTo([]);
-        const validated = this.validateFormData(providedEntries);
+        _formIsProcessing.set(true);
 
-        _formSubmitAction(validated, providedEntries);
+        const validatedForm = this.validateFormData();
+        const actionResult = await targetAction(validatedForm, event);
+        
+        console.log('>> INTERFACE HAS actionResult', actionResult);
+
+        _formIsProcessing.set(false);
+        if (actionResult) {
+          this.handleResponseHandoff(actionResult);
+        }
+        // else FORMATION WAS BYPASSED - CARRY ON > > >
       } else {
-        // TODO - THROW ERROR AND HANDLE DEV MISTAKE
-        console.error('(!) FORM SUBMIT ACTION WAS NOT PROVIDED - (!)');
+        // THROW ERROR AND HANDLE DEV MISTAKE
+        console.error('(!) FORM TARGET ACTION WAS NOT PROVIDED - (!)');
       }
     } catch (errors: any) {
       this._setFormErrorsTo(errors);
     }
-  };
+  }
 
   // X - TESTING
   verifyInstance = () => {

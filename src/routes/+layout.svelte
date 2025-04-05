@@ -5,13 +5,34 @@
   import 'annex/core/_styles.scss';
 	import '$pec/_styles.scss';
 
+  import { invalidate } from '$app/navigation'
+  import { onMount } from 'svelte'
+
 	import logo from '$pec/images/branding/Free4m-IO_logo_wht_v14.svg';
 
   interface MainLayoutSig {
+    data: any;
+    //
     children?: Snippet
   }
   const props = $props();
-  const { children } = props as MainLayoutSig;
+  const {
+    data,
+    children
+  } = props as MainLayoutSig;
+
+  // AUTH STATE MANAGEMENT
+  let { session, supabase } = $derived(data);
+
+  onMount(() => {
+    const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
+      if (newSession?.expires_at !== session?.expires_at) {
+        invalidate('supabase:auth')
+      }
+    })
+
+    return () => data.subscription.unsubscribe()
+  });
 </script>
 
 
