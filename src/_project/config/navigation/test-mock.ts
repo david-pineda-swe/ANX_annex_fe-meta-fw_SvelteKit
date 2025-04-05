@@ -15,7 +15,7 @@ const customHeaderDeskNavList = [
   ...[
     {
       "nodeId": "open-top-tray",
-      "label": "Top C",
+      "label": "Top",
       "actionType": "PROCESS_handleToggleMenuTray_TP",
       // "displayTypes": ["label", "icon"],
       "displayTypes": ["icon", "label"],
@@ -24,7 +24,7 @@ const customHeaderDeskNavList = [
     },
     {
       "nodeId": "open-right-tray",
-      "label": "Right C",
+      "label": "Right",
       "actionType": "PROCESS_handleToggleMenuTray_RT",
       "displayTypes": ["icon", "label"],
       "icon": "ICONIFY_mdi:chevron-right",
@@ -35,7 +35,7 @@ const customHeaderDeskNavList = [
   ...[
     {
       "nodeId": "open-bottom-tray",
-      "label": "Bottom C",
+      "label": "Bottom",
       "actionType": "PROCESS_handleToggleMenuTray_BT",
       "displayTypes": ["icon", "label"],
       "icon": "ICONIFY_mdi:chevron-down",
@@ -43,7 +43,7 @@ const customHeaderDeskNavList = [
     },
     {
       "nodeId": "open-left-tray",
-      "label": "Left C",
+      "label": "Left",
       "actionType": "PROCESS_handleToggleMenuTray_LT",
       "displayTypes": ["icon", "label"],
       "icon": "FA_faSquareCaretLeft", // X - use case needs re work do not use "FA" on a project
@@ -60,17 +60,20 @@ const testMockNavigations = [
     ...baseNavConfig,
     ...{
       menuLocations: ['HEADER_DESKTOP'],
-      // navListLabel: 'DESKTOP Primary'
+      // navListLabel: 'DESKTOP Primary',
+      classes: 'flat-list BR',
       navListItems: customHeaderDeskNavList,
       navigationType: 'EXPANDABLE'
     }
   }),
   // HEADER_MOBILE
+  // X - PREVIOUS EXAMPLE OF SLOT INJECTED MENU > [MOBILE_MENU_SLOT_INJECTED]
   generateNavigationConfig({
     ...baseNavConfig,
     ...{
       menuLocations: ['HEADER_MOBILE'],
-      // navListLabel: 'MOBILE Primary'
+      // navListLabel: 'MOBILE Primary',
+      classes: 'flat-list BR',
       navListItems: [
         ...[
           openTopTray,

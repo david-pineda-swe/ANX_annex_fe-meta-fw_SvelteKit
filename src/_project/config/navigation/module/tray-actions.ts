@@ -33,7 +33,7 @@ const TrayActions = {
     // "displayTypes": ["icon"],
     "icon": "ICONIFY_mdi:menu-open_large|s1|white",
     // "icon": "ICONIFY_mdi:chevron-left",
-    "classes": "vert-display"
+    "classes": "vert-display no-pad"
     // TODO
     // "displayTypes": ["image"],
     // "image": "test-image-name.png"
