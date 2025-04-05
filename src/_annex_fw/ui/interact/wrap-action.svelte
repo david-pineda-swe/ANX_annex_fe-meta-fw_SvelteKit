@@ -1,6 +1,8 @@
 <script lang="ts">
-	import type { NavigationNode } from "src/global";
+  // NEXT - REVISIT / REFACTOR
+  import type { NavigationNode } from "src/global";
 
+  // TODO - S5 MIGRATE
 	export let actingId: string = '';
 	export let navItem: NavigationNode;
 	export let containedAction: boolean = false;
@@ -24,12 +26,10 @@
 
 	// PROCESS TARGET ACTION
 	const processTargetAction = (navItem: NavigationNode) => {
-		// TODO - simplify or resolve ts lint error
-		// FIX - PARAM USE AND SELECTION
+		// FIX - REFACTOR PARAM USE AND SELECTION
 		const params = actionType.split('_');
-		const _ATswitch = params.shift();
-		const handleKey = params.shift();
-		
+		const _ATswitch = params.shift(); // NOTE - should BE CONSISTENT SEGMENTS
+		const handleKey = params.shift()!;
 		const targetAction = targetActions[handleKey];
 
 		if (targetAction) {
@@ -37,7 +37,7 @@
 		}
 	};
 
-	const _handleAndProcessSelection = () => {
+	const _confirmAndProcessSelection = () => {
     // For parent scope reaction
     isProcessAction && processTargetAction(navItem);
     // TODO - Consider fail case & result scenario handling
@@ -52,7 +52,7 @@
 		id={workingId}
 		class={classes}
 		class:contained-action={containedAction}
-		on:click={() => _handleAndProcessSelection()}>
+		on:click={() => _confirmAndProcessSelection()}>
 			<slot />
 	</button>
 {:else if isInternalRoute}
@@ -62,7 +62,7 @@
 		class:contained-action={containedAction}
 		data-sveltekit-preload-data
 		href={slug}
-		on:click={() => _handleAndProcessSelection()}
+		on:click={() => _confirmAndProcessSelection()}
 	>
 		<slot />
 	</a>
@@ -73,7 +73,7 @@
 		class:contained-action={containedAction}
 		target={linkTarget}
 		href={url}
-		on:click={() => _handleAndProcessSelection()}
+		on:click={() => _confirmAndProcessSelection()}
 	>
 		<slot />
 	</a>
@@ -85,7 +85,7 @@
 		class:contained-action={containedAction}
 		target={linkTarget}
 		href={url}
-		on:click={() => _handleAndProcessSelection()}
+		on:click={() => _confirmAndProcessSelection()}
 	>
 		<slot />
 	</a>
@@ -93,7 +93,7 @@
 
 <style lang="scss">
 	a, button {
-		/* border: 1px solid fuchsia; */
+		// border: 1px solid fuchsia;
 		
 		&.contained-action {
 			width: 100%;

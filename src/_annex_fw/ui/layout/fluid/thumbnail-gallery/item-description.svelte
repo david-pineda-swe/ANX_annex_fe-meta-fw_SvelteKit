@@ -23,6 +23,7 @@
 			.title, .description {
 				margin-bottom: 0;
 			}
+      // TODO - MOVE COPY STYLES TO TYPO/COPY.SCSS
 			&.bold-title {
 				h2.title {
 					font-weight: bold;
@@ -43,7 +44,8 @@
 				font-weight: bold;
 			}
 
-			//
+      // TODO - MOVE TO BASE TYPOGRAPHY
+			// TYPE POSITIONING / PER FLEX?
 
 			// &.tp-l {
 				// DEFAULT

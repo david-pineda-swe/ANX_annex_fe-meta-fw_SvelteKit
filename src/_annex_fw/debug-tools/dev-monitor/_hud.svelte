@@ -7,7 +7,9 @@
     });
 </script>
 
-
+<!-- TODO - ADD COLOR CHANGING BG FOR SEGMENTS -->
+<!-- TODO - UI FOR REPOSITION AND COLLAPSING -->
+ <!-- TODO - REFACTOR FW SCSS FOR isPast MEDIA QUERIES -->
 
 <div class="dev-monitor-hud">
   <div>Current: {$mediaWatch.classNames}</div>

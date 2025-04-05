@@ -3,7 +3,7 @@
 @mixin spacingSizing {
   // - PAGE
   --page-header-height-desktop: 175px;
-  --page-header-height-mobile: 150px;
+  --page-header-height-mobile: 150px; // FIX - page content does not respect mobile
   
   // ! EXAMPLE - NEGATIVE VALUE CALC
   // --negative-page-header-top: calc(var(--page-header-top) * -1);
