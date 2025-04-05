@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
-  import PrimaryLayout from '$pec/components/interface/primary-layout.svelte';
+  import PrimaryLayoutPublic from '$pec/components/interface/primary-layout-public.svelte';
 
   import 'annex/core/_styles.scss';
 	import '$pec/_styles.scss';
@@ -27,6 +27,6 @@
 </svelte:head>
 
 
-<PrimaryLayout>
+<PrimaryLayoutPublic>
   {@render children?.()}
-</PrimaryLayout>
+</PrimaryLayoutPublic>
