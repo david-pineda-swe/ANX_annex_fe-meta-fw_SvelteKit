@@ -1,7 +1,6 @@
 <script lang="ts">
   import { isEmpty } from "annex/utils";
   import type { InputRequirements } from "src/global";
-  import { splitRequirements } from "../util/split-requirements";
   
   import CheckboxButton from "./checkbox-button.svelte";
   import CustomButton from "./custom-button.svelte";
@@ -12,11 +11,11 @@
   import TextInput from "./text-input.svelte";
   import TextareaInput from "./textarea-input.svelte";
 
-  export let inputReqs: InputRequirements = {
+  export let formTier: InputRequirements = {
     fi: undefined,
     node: undefined
   };
-  const { node } = splitRequirements(inputReqs);
+  const { node } = formTier;
   const { inputType } = node;
 
   const inputIndex: any = {
@@ -39,7 +38,7 @@
 </script>
 
 {#if hasComponent}
-  <svelte:component this={targetComponent} {inputReqs} />
+  <svelte:component this={targetComponent} {formTier} />
 {:else}
   <h3>Input not supported!</h3>
 {/if}

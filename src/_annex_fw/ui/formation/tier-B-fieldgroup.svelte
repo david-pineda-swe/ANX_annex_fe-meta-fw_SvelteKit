@@ -1,15 +1,20 @@
 <script lang="ts">
   import type { InputRequirements } from 'src/global';
-  import { splitRequirements } from './util/split-requirements';
+  import TierA_Fieldset from './tier-A-fieldset.svelte';
   import TierC_Input from './tier-C-input.svelte';
+  import { shouldShow } from './util/should-show';
 
-  export let inputReqs: InputRequirements = null;
-  const { fi, node } = splitRequirements(inputReqs);
+  export let formTier: InputRequirements;
+  const { fi, node } = formTier;
 </script>
 
 <div class="form-fieldgroup {node.classes}">
-  {#each node.subNodes as subNode}
-    <TierC_Input inputReqs={{ fi, node: subNode }} />
+  {#each node.subNodes as n}
+    {#if n.type === 'FIELDSET' && shouldShow(n)}
+      <TierA_Fieldset formTier={{ fi, node: n }} />
+    {:else}
+      <TierC_Input formTier={{ fi, node: n }} />
+    {/if}
   {:else}
     <!-- TODO - empty list -->
   {/each}
