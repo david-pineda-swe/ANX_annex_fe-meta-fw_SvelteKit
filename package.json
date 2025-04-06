@@ -46,7 +46,10 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@lukeed/uuid": "^2.0.1",
     "@sveltestrap/sveltestrap": "^7.1.0",
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.49.1",
     "cookie": "^1.0.2",
+    "dotenv": "^16.4.7",
     "svelte-media": "^0.1.5",
     "zod": "^3.24.2",
     "zod-form-data": "^2.0.5"

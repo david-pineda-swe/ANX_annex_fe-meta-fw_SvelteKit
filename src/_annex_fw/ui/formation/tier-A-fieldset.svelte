@@ -3,10 +3,17 @@
 
   import TierB_Fieldgroup from './tier-B-fieldgroup.svelte';
   import TierC_Input from './tier-C-input.svelte';
+  import type { InputRequirements } from 'globalTypes';
 
-  export let fi: any = null;
+  export let formTier: InputRequirements;
+  const { fi, node } = formTier;
+  // export let fi: any = null;
 
-  const formNodes = fi._nodes ? fi._nodes : [];
+  const formNodes = (node)
+    ? [node]
+    : fi._nodes
+      ? fi._nodes
+      : [];
   // TODO - flag on PROD vs. DEV to show dev error messages
 </script>
 
@@ -19,11 +26,11 @@
 
       {#each node.subNodes as subNode}
         {#if subNode.type === 'FIELDGROUP' && shouldShow(subNode)}
-          <TierB_Fieldgroup inputReqs={{ fi, node: subNode }} />
+          <TierB_Fieldgroup formTier={{ fi, node: subNode }} />
         {/if}
 
         {#if subNode.type === 'INPUT' && shouldShow(subNode)}
-          <TierC_Input inputReqs={{ fi, node: subNode }} />
+          <TierC_Input formTier={{ fi, node: subNode }} />
         {/if}
         <!-- TODO - GRACEFUL FAIL FOR NOTHING MATCHED -->
       {:else}
@@ -31,9 +38,9 @@
       {/each}
     </fieldset>
   {:else if node.type === 'FIELDGROUP' && shouldShow(node)}
-    <TierB_Fieldgroup inputReqs={{ fi, node }} />
+    <TierB_Fieldgroup formTier={{ fi, node }} />
   {:else if node.type === 'INPUT' && shouldShow(node)}
-    <TierC_Input inputReqs={{ fi, node }} />
+    <TierC_Input formTier={{ fi, node }} />
   {:else}
     <!-- TODO - GRACEFUL FAIL -->
     <h3>There was Nothing to render! sorry</h3>

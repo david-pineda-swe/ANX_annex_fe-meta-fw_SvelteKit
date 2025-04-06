@@ -23,9 +23,9 @@
           // console.log(params.fi);
         }
       },
-      formSubmitAction: (validated: any, providedEntries: any) => {
-        console.log('>> VALIDATED:', validated); 
-        console.log('>> FORM PROVIDED ENTRIES', providedEntries); 
+      formSubmitAction: async(validatedForm: any) => {
+        console.log('>> VALIDATED FORM:', validatedForm);
+        return { success: true };
       }
     });
 

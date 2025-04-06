@@ -1,15 +1,14 @@
 <script lang="ts">
   import type { InputRequirements } from "src/global";
-  import { splitRequirements } from "../util/split-requirements";
   import FormationInputHandler from "../_input-interface";
 
-  export let inputReqs: InputRequirements = {
+  export let formTier: InputRequirements = {
     fi: undefined,
     node: undefined
   };
 
-  const inputHandler = new FormationInputHandler(inputReqs);
-  const { node } = splitRequirements(inputReqs);
+  const inputHandler = new FormationInputHandler(formTier);
+  const { node } = formTier;
   const {id, classes, dataPointKey, placeholder, status } = node;
   // value={targetValue}
 </script>

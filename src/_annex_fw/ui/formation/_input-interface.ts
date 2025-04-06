@@ -20,7 +20,7 @@ class FormationInputHandler {
     this._updateNodeState({ errors });
   };
 
-  _getInputReqs = () => {
+  _getThisFormTier = () => {
     return {
       fi: this._formInterface,
       node: this._inputNode
@@ -38,8 +38,8 @@ class FormationInputHandler {
     }
   };
 
-  constructor(inputReqs: InputRequirements) {
-    const { fi, node } = inputReqs;
+  constructor(formTier: InputRequirements) {
+    const { fi, node } = formTier;
     this._formInterface = fi;
     this._inputNode = node;
   }
@@ -61,18 +61,14 @@ class FormationInputHandler {
     }
   };
 
-  // TODO - HELPER METHODS for all input types
-  // this.useTargetAction(event);
-  // - make private
   useTargetAction = (event: any) => {
     const { targetActionKey } = this._inputNode;
-    const targetAction = this._formInterface.getTargetAction(targetActionKey);
-
-    if (targetAction) {
-      const { fi, node } = this._getInputReqs();
-      targetAction({ event, node, fi });
-    }
-  };
+    this._formInterface.handleActionSubmission({
+      isFormSubmit: false,
+      event,
+      targetActionKey
+    });
+  }
 
   updateTextEntry = (event: any) => {
     const value = event.target.value;

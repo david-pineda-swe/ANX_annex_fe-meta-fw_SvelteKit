@@ -34,7 +34,7 @@
       "$pec/*": ["src/_project/*"], // < Project development modules
     }
   },
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte"],
+  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte", ".svelte-kit/ambient.d.ts"],
   "exclude": ["node_modules", "build/**/*"],
   "extends": "./.svelte-kit/tsconfig.json"
 }
