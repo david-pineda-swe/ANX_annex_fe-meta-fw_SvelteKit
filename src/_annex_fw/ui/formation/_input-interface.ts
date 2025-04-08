@@ -70,7 +70,7 @@ class FormationInputHandler {
     });
   }
 
-  updateTextEntry = (event: any) => {
+  updateInputEntry = (event: any) => {
     const value = event.target.value;
     this.validateLastEntry({ value });
   };

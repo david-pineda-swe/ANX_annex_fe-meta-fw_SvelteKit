@@ -24,5 +24,5 @@
   max={maxValue}
   required={$status.required}
   disabled={$status.disabled}
-  on:focusout={(e) => inputHandler.updateTextEntry(e)}
+  on:focusout={(e) => inputHandler.updateInputEntry(e)}
 />
