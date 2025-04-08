@@ -10,6 +10,38 @@ export const formA_outline = {
   formClasses: 'stacked test form-a full-tier-set',
   // TIER A - FIELDSET(s) + & B || C
   nodes: [
+    // ! ========================== Select
+    {
+      type: 'INPUT',
+      inputType: 'SELECT',
+      // ! DATA
+      dataPointKey: 'testSelect',
+      dataValidator: zfd.text(),
+      // startValue: 'asdf', // ? optional
+      required: true,
+      // targetActionKey: '',
+      setupConfig: {
+        useEnhancedOptions: true,
+        valueOptions: [
+          { label: 'Apple', value: 'A', id: 'apple-opt' },
+          { label: 'Banana', value: 'B', id: 'banana-opt' },
+          { label: 'Carrot', value: 'C', id: 'carrot-opt' },
+          { label: 'Donut', value: 'D', id: 'donut-opt' }
+        ]
+      },
+      // ! INPUT
+      id: 'test-select',
+      classes: 'test input-a tier-a select',
+      label: 'Test Select',
+      // placeholder: '-- Please select a fruit',
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: []
+      }
+    },
     // ! ========================== Ticket Qty
     {
       type: 'INPUT',

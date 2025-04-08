@@ -205,6 +205,67 @@ form.formation {
         border-radius: $r $r 0px $r;
         height: calc(var(--block-single-height) * 4);
       }
+
+      .select-box {
+        &::after {
+          content: '';
+          border-width: 7px;
+          border-style: solid;
+          border-color: transparent;
+          border-top-color: #fff;
+          display: inline-block;
+          position: absolute;
+          right:22px;
+          top: 45%;
+        }
+      }
+      select {
+        @include artifact-theming.inputTheme;
+        width: 100%;
+        appearance: none;
+
+        option {
+          outline: none;
+          cursor: pointer;
+          color: var(--form-select-option-copy-color);
+          background-color: var(--form-select-option-bkgrd-color);
+        }
+      }
+      ul.proxy-options {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        width: 100%;
+        top: 95%;
+        z-index: 1;
+        // border: 1px solid red;
+
+        li {
+          margin: 0;
+          // border: 1px solid green;
+          button {
+            margin: 0;
+            padding: 0 0 0 15px;
+            width: 100%;
+            text-align: left;
+            color: var(--form-select-option-copy-color);
+            background-color: var(--form-select-option-bkgrd-color);
+            border-radius: 0;
+            transition: background-color 0.7s ease;
+            // border: 1px solid blue;
+
+            &:hover {
+              color: var(--form-select-option-copy-color_hover);
+              background-color: var(--form-select-option-bkgrd-color_hover);
+            }
+            &.active {
+              color: var(--form-select-option-copy-color_hover);
+              background-color: var(--form-select-option-bkgrd-color_active);
+            }
+          }
+        }
+      }
     }
   
   }

@@ -11,6 +11,7 @@
   import TextInput from "./text-input.svelte";
   import TextareaInput from "./textarea-input.svelte";
   import NumberInput from "./number-input.svelte";
+  import SelectInput from "./select-input.svelte";
 
   export let formTier: InputRequirements = {
     fi: undefined,
@@ -28,7 +29,8 @@
     SUBMIT_BTN: SubmitButton,
     TEXT: TextInput,
     NUMBER: NumberInput,
-    TEXTAREA: TextareaInput
+    TEXTAREA: TextareaInput,
+    SELECT: SelectInput
   };
 
   const targetComponent = inputIndex[inputType];  
