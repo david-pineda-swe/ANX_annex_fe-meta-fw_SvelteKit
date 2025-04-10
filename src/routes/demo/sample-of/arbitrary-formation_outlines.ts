@@ -10,6 +10,49 @@ export const formA_outline = {
   formClasses: 'stacked test form-a full-tier-set',
   // TIER A - FIELDSET(s) + & B || C
   nodes: [
+    // ! ========================== DEEP Select
+    {
+      type: 'INPUT',
+      inputType: 'SELECT',
+      // ! DATA
+      dataPointKey: 'testDeepSelect',
+      dataValidator: zfd.text(),
+      // startValue: 'asdf', // TBD - 
+      required: false,
+      // targetActionKey: '',
+      setupConfig: {
+        useEnhancedOptions: true,
+        valueOptions: [
+          {label: 'Fruit', disabled: false, groupItems: [
+            { label: 'Apple', value: 'A', id: 'apple-opt' },
+            { label: 'Banana', value: 'B', id: 'banana-opt' },
+            { label: 'Carrot', value: 'C', id: 'carrot-opt' },
+          ]},
+          {label: 'Dessert', disabled: true, groupItems: [
+            { label: 'Donut', value: 'D', id: 'donut-opt' },
+            { label: 'Eclaire', value: 'E', id: 'eclaire-opt' },
+            { label: 'French Toast', value: 'F', id: 'f-toast-opt' },
+            { label: 'Ginger Bread', value: 'G', id: 'g-bread-opt' }
+          ]},
+          { label: 'Habenero', value: 'H', id: 'apple-opt' },
+          { label: 'Ivy', value: 'I', id: 'banana-opt' },
+          { label: 'Jicama', value: 'J', id: 'carrot-opt', disabled: true },
+          { label: 'Kale', value: 'K', id: 'donut-opt' }
+        ]
+      },
+      // ! INPUT
+      id: 'test-deep-select',
+      classes: 'test deep-select input-a tier-a select',
+      label: 'Test Deep Select',
+      // placeholder: '-- Please select a fruit',
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: []
+      }
+    },
     // ! ========================== Select
     {
       type: 'INPUT',

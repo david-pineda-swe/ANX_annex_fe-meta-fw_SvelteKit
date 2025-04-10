@@ -35,7 +35,7 @@
       };
       
       selectorElement?.addEventListener('mousedown', (e: any) => {
-        // NEXT - CHECK IF MEDIA OR DEVICE is DESKTOP 
+        // TODO - CHECK IF MEDIA OR DEVICE is DESKTOP 
         // if (mobile) {}
         if (useEnhancedOptions) {
           e.preventDefault();
@@ -53,6 +53,17 @@
   });
 </script>
 
+{#snippet optButton(opt: any, groupDisabled?: boolean)}
+  <button
+    id={opt.id}
+    class:active={$_formData[dataPointKey] === opt.value}
+    disabled={opt.disabled || groupDisabled}
+    onclick={() => { handleOptionSelection(opt.value) }}
+  >
+    {opt.label}
+  </button>
+{/snippet}
+
 <div class="select-box">
   <select
     {id}
@@ -68,10 +79,32 @@
         -- Select one
       {/if}
     </option>
-  
-  <!--NEXT - SUPPORT OPT GROUPS-->
+
     {#each valueOptions as opt}
-      <option id={opt.id} value={opt.value}>{opt.label}</option>
+      {#if opt.groupItems}
+        <optgroup
+          label={opt.label}
+          disabled={opt.disabled}
+        >
+          {#each opt.groupItems as subOpt}
+            <option
+              id={subOpt.id}
+              value={subOpt.value}
+              disabled={subOpt.disabled}
+            >
+              {subOpt.label}
+            </option>
+          {/each}
+        </optgroup>
+      {:else}
+      <option
+        id={opt.id}
+        value={opt.value}
+        disabled={opt.disabled}
+      >
+        {opt.label}
+      </option>
+      {/if}
     {/each}
   </select>
 </div>
@@ -92,15 +125,23 @@
     </li>
 
     {#each valueOptions as opt}
-      <li>
-        <button
-          id={opt.id}
-          class:active={$_formData[dataPointKey] === opt.value}
-          onclick={() => { handleOptionSelection(opt.value) }}
-        >
+      <li
+        class:optgroup-label={opt.groupItems}
+      >
+        {#if opt.groupItems}
           {opt.label}
-        </button>
+        {:else}
+          {@render optButton(opt)}
+        {/if}
       </li>
+
+      {#if opt.groupItems}
+        {#each opt.groupItems as subOpt}
+          <li class="optgroup-item">
+            {@render optButton(subOpt, opt.disabled)}  
+          </li>
+        {/each}
+      {/if}
     {/each}
   </ul>
 {/if}
