@@ -10,6 +10,34 @@ export const formA_outline = {
   formClasses: 'stacked test form-a full-tier-set',
   // TIER A - FIELDSET(s) + & B || C
   nodes: [
+    // ! ========================== CURRENCY - USD
+    {
+      type: 'INPUT',
+      inputType: 'CURRENCY',
+      // ! DATA
+      dataPointKey: 'amountUSDtest',
+      dataValidator: zfd.numeric(z.number().min(69, {message: 'Payment must be at least $0.69'})),
+      startValue: 69,
+      required: true,
+      // targetActionKey: '',
+      // TODO - ADD GLOBAL SUPPORT FOR DESIGNATED CURRENCY AND LOCALE
+      setupConfig: {
+        currency:"USD",
+        locale: "en-US"
+      },
+      // ! INPUT
+      id: 'test-currency-usd',
+      classes: 'test currency-usd tier-a',
+      label: 'Amount Towards Balance',
+      placeholder: 'How much can you pay?',
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: []
+      }
+    },
     // ! ========================== DEEP Select
     {
       type: 'INPUT',

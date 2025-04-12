@@ -12,6 +12,7 @@
   import TextareaInput from "./textarea-input.svelte";
   import NumberInput from "./number-input.svelte";
   import SelectInput from "./select-input.svelte";
+  import CurrencyInput from "./currency-input.svelte";
 
   export let formTier: InputRequirements = {
     fi: undefined,
@@ -30,7 +31,8 @@
     TEXT: TextInput,
     NUMBER: NumberInput,
     TEXTAREA: TextareaInput,
-    SELECT: SelectInput
+    SELECT: SelectInput,
+    CURRENCY: CurrencyInput
   };
 
   const targetComponent = inputIndex[inputType];  
