@@ -70,8 +70,8 @@ class FormationInputHandler {
     });
   }
 
-  updateInputEntry = (event: any) => {
-    const value = event.target.value;
+  updateInputEntry = (eventOrValue: any) => {
+    const value = (eventOrValue.target) ? eventOrValue.target.value : eventOrValue;
     this.validateLastEntry({ value });
   };
 
