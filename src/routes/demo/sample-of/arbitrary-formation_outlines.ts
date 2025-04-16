@@ -1,5 +1,6 @@
 import { zfd } from 'zod-form-data';
 import { z } from 'zod';
+import { isValid, parseISO, isAfter, startOfToday } from 'date-fns';
 
 // TIER A / B / C form expression outline
 export const formA_outline = {
@@ -137,6 +138,46 @@ export const formA_outline = {
         disabled: false,
         errors: [],
         hints: ['Need a number of tickets', 'Max is 15 tickets']
+      }
+    },
+    // ! ========================== DATE_PICKER
+    {
+      type: 'INPUT',
+      inputType: 'DATE_PICKER',
+      // ! DATA
+      dataPointKey: 'dateSelect',
+      // dataValidator: zfd.text(), // Lax validation
+      dataValidator: zfd.text(
+        z.string()
+        .regex(
+          /^\d{4}-\d{2}-\d{2}$/, // Regex to match "YYYY-MM-DD" strictly
+          {message: 'Date must be in YYYY-MM-DD format'}
+        )
+        .refine((date) => isValid(parseISO(date)), {
+          message: 'Invalid calendar date',
+        })
+        .refine((date) => isAfter(parseISO(date), startOfToday()), {
+          message: 'Date must be after today',
+        })
+      ),
+      startValue: '2025-04-12', // ! optional
+      required: true,
+      // targetActionKey: '',
+      setupConfig: {
+        // flatpickr
+        displayDateFormat: 'm/d/Y',
+      },
+      // ! INPUT
+      id: 'test-date-pick',
+      classes: 'test date input-a tier-a',
+      label: 'Event start date',
+      placeholder: 'Please select a date for your arrival',
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: ['Should be after today']
       }
     },
     // ! ========================== TICKET CODE
