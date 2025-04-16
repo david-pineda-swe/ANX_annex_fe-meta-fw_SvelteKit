@@ -14,7 +14,7 @@
   const { currency, locale } = setupConfig;
 
   // TODO - CREATE UTILITY
-  function formatCurrency(args: any): string {
+  function formatDisplayCurrency(args: any): string {
     const { amount, currency, locale } = args;
     return new Intl.NumberFormat(locale, {
       style: 'currency',
@@ -24,7 +24,7 @@
   }
 
   // INITIALIZE VALUE
-  let displayValue = formatCurrency({
+  let displayValue = formatDisplayCurrency({
     amount: $_formData[dataPointKey],
     currency,
     locale
@@ -55,7 +55,7 @@
     if (validate) {
       inputHandler.updateInputEntry(rawValue);
 
-      displayValue = formatCurrency({
+      displayValue = formatDisplayCurrency({
         amount: $_formData[dataPointKey],
         currency,
         locale

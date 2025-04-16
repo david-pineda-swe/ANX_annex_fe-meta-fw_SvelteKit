@@ -297,9 +297,14 @@ form.formation {
   .show-list {
     width: 100%;
     list-style: disc;
-    margin-bottom: var(--item-bottom-margin);
+    margin-bottom: 0px;
     
+    li {
+      margin: 0;
+    }
+
     &.errors {
+      margin-bottom: var(--item-bottom-margin);
       color: var(--error-highlight);
     }
     &.hints {
