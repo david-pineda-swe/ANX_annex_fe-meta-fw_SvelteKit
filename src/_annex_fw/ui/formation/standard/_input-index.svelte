@@ -10,6 +10,10 @@
   import SubmitButton from "./submit-button.svelte";
   import TextInput from "./text-input.svelte";
   import TextareaInput from "./textarea-input.svelte";
+  import NumberInput from "./number-input.svelte";
+  import SelectInput from "./select-input.svelte";
+  import CurrencyInput from "./currency-input.svelte";
+  import DateInput from "./date-input.svelte";
 
   export let formTier: InputRequirements = {
     fi: undefined,
@@ -26,7 +30,11 @@
     RADIO_BTN: RadioButton,
     SUBMIT_BTN: SubmitButton,
     TEXT: TextInput,
-    TEXTAREA: TextareaInput
+    NUMBER: NumberInput,
+    TEXTAREA: TextareaInput,
+    SELECT: SelectInput,
+    CURRENCY: CurrencyInput,
+    DATE_PICKER: DateInput
   };
 
   const targetComponent = inputIndex[inputType];  

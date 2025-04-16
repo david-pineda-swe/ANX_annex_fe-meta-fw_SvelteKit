@@ -21,6 +21,6 @@
   {placeholder}
   disabled={$status.disabled}
   required={$status.required}
-  on:focusout={(e) => inputHandler.updateTextEntry(e)}
+  on:focusout={(e) => inputHandler.updateInputEntry(e)}
 />
 

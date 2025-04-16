@@ -51,12 +51,22 @@
   --form-copy-color: var(--lt-gray-01);
   --form-input-border-muted: var(--lt-gray-00);
   --form-input-border-highlighted: var(--lt-gray-01);
-  
+  // TODO - SUPPORT INPUT bkgrd-color;
+
   // - - buttons
   --button-primary-copy-color: var(--copy-color-negative);
   --button-primary-bkgrd-color: var(--white-tl);
   --button-secondary-copy-color: var(--copy-color);
   --button-secondary-bkgrd-color: var(--purple-02);
+
+  // - - selects
+  --form-select-option-copy-color: var(--copy-color-negative);
+  --form-select-option-bkgrd-color: var(--white-tl);
+  --form-select-option-copy-color_hover: var(--white-tl);
+  --form-select-option-bkgrd-color_hover: var(--purple-01);
+  --form-select-option-bkgrd-color_active: var(--purple-03);
+  --form-select-option-disabled-copy-color: var(--lt-gray-00);
+  --form-select-option-disabled-bkgrd-color: var(--lt-gray-01);
 
   // - - errors
   --error-highlight: var(--red-01);

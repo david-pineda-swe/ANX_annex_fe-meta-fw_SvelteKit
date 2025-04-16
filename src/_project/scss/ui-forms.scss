@@ -205,16 +205,106 @@ form.formation {
         border-radius: $r $r 0px $r;
         height: calc(var(--block-single-height) * 4);
       }
+
+      // SELECT
+      .select-box {
+        &::after {
+          content: '';
+          border-width: 7px;
+          border-style: solid;
+          border-color: transparent;
+          border-top-color: #fff;
+          display: inline-block;
+          position: absolute;
+          right:22px;
+          top: 45%;
+        }
+      }
+      select {
+        @include artifact-theming.inputTheme;
+        width: 100%;
+        appearance: none;
+
+        optgroup, option {
+          outline: none;
+          cursor: pointer;
+          color: var(--form-select-option-copy-color);
+          background-color: var(--form-select-option-bkgrd-color);
+        
+          &:disabled {
+            color: var(--form-select-option-disabled-copy-color);
+            background-color: var(--form-select-option-disabled-bkgrd-color);
+            cursor: not-allowed;
+          }
+        }
+      }
+      ul.proxy-options {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        width: 100%;
+        top: 95%;
+        z-index: 1;
+        // border: 1px solid red;
+
+        li {
+          margin: 0;
+          // border: 1px solid green;
+
+          &.optgroup-label {
+            padding: 7px 0 7px 15px;
+            font-weight: bold;
+            color: var(--form-select-option-copy-color);
+            background-color: var(--form-select-option-disabled-bkgrd-color);
+          }
+          &.optgroup-item {
+            button {
+              padding-left: 30px;
+            }
+          }
+
+          button {
+            margin: 0;
+            padding: 0 0 0 15px;
+            width: 100%;
+            text-align: left;
+            color: var(--form-select-option-copy-color);
+            background-color: var(--form-select-option-bkgrd-color);
+            border-radius: 0;
+            transition: background-color 0.7s ease;
+            // border: 1px solid blue;
+
+            &:hover {
+              color: var(--form-select-option-copy-color_hover);
+              background-color: var(--form-select-option-bkgrd-color_hover);
+            }
+            &.active {
+              color: var(--form-select-option-copy-color_hover);
+              background-color: var(--form-select-option-bkgrd-color_active);
+            }
+            &:disabled {
+              color: var(--form-select-option-disabled-copy-color);
+              background-color: var(--form-select-option-disabled-bkgrd-color);
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
     }
-  
   }
 
   .show-list {
     width: 100%;
     list-style: disc;
-    margin-bottom: var(--item-bottom-margin);
+    margin-bottom: 0px;
     
+    li {
+      margin: 0;
+    }
+
     &.errors {
+      margin-bottom: var(--item-bottom-margin);
       color: var(--error-highlight);
     }
     &.hints {

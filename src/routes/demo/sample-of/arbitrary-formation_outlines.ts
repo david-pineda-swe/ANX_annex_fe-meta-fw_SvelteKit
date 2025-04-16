@@ -1,5 +1,6 @@
 import { zfd } from 'zod-form-data';
 import { z } from 'zod';
+import { isValid, parseISO, isAfter, startOfToday } from 'date-fns';
 
 // TIER A / B / C form expression outline
 export const formA_outline = {
@@ -10,8 +11,177 @@ export const formA_outline = {
   formClasses: 'stacked test form-a full-tier-set',
   // TIER A - FIELDSET(s) + & B || C
   nodes: [
+    // ! ========================== CURRENCY - USD
     {
-      // ! ========================== TICKET CODE
+      type: 'INPUT',
+      inputType: 'CURRENCY',
+      // ! DATA
+      dataPointKey: 'amountUSDtest',
+      dataValidator: zfd.numeric(z.number().min(69, {message: 'Payment must be at least $0.69'})),
+      startValue: 69,
+      required: true,
+      // targetActionKey: '',
+      // TODO - ADD GLOBAL SUPPORT FOR DESIGNATED CURRENCY AND LOCALE
+      setupConfig: {
+        currency:"USD",
+        locale: "en-US"
+      },
+      // ! INPUT
+      id: 'test-currency-usd',
+      classes: 'test currency-usd tier-a',
+      label: 'Amount Towards Balance',
+      placeholder: 'How much can you pay?',
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: []
+      }
+    },
+    // ! ========================== DEEP Select
+    {
+      type: 'INPUT',
+      inputType: 'SELECT',
+      // ! DATA
+      dataPointKey: 'testDeepSelect',
+      dataValidator: zfd.text(),
+      // startValue: 'asdf', // TBD - 
+      required: false,
+      // targetActionKey: '',
+      setupConfig: {
+        useEnhancedOptions: true,
+        valueOptions: [
+          {label: 'Fruit', disabled: false, groupItems: [
+            { label: 'Apple', value: 'A', id: 'apple-opt' },
+            { label: 'Banana', value: 'B', id: 'banana-opt' },
+            { label: 'Carrot', value: 'C', id: 'carrot-opt' },
+          ]},
+          {label: 'Dessert', disabled: true, groupItems: [
+            { label: 'Donut', value: 'D', id: 'donut-opt' },
+            { label: 'Eclaire', value: 'E', id: 'eclaire-opt' },
+            { label: 'French Toast', value: 'F', id: 'f-toast-opt' },
+            { label: 'Ginger Bread', value: 'G', id: 'g-bread-opt' }
+          ]},
+          { label: 'Habenero', value: 'H', id: 'apple-opt' },
+          { label: 'Ivy', value: 'I', id: 'banana-opt' },
+          { label: 'Jicama', value: 'J', id: 'carrot-opt', disabled: true },
+          { label: 'Kale', value: 'K', id: 'donut-opt' }
+        ]
+      },
+      // ! INPUT
+      id: 'test-deep-select',
+      classes: 'test deep-select input-a tier-a select',
+      label: 'Test Deep Select',
+      // placeholder: '-- Please select a fruit',
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: []
+      }
+    },
+    // ! ========================== Select
+    {
+      type: 'INPUT',
+      inputType: 'SELECT',
+      // ! DATA
+      dataPointKey: 'testSelect',
+      dataValidator: zfd.text(),
+      // startValue: 'asdf', // ? optional
+      required: true,
+      // targetActionKey: '',
+      setupConfig: {
+        useEnhancedOptions: true,
+        valueOptions: [
+          { label: 'Apple', value: 'A', id: 'apple-opt' },
+          { label: 'Banana', value: 'B', id: 'banana-opt' },
+          { label: 'Carrot', value: 'C', id: 'carrot-opt' },
+          { label: 'Donut', value: 'D', id: 'donut-opt' }
+        ]
+      },
+      // ! INPUT
+      id: 'test-select',
+      classes: 'test input-a tier-a select',
+      label: 'Test Select',
+      // placeholder: '-- Please select a fruit',
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: []
+      }
+    },
+    // ! ========================== Ticket Qty
+    {
+      type: 'INPUT',
+      inputType: 'NUMBER',
+      // ! DATA
+      dataPointKey: 'ticketQty',
+      dataValidator: zfd.numeric(z.number().min(5, {message: 'Actually... you need to get at least 5'})),
+      // startValue: 12, // ? optional
+      required: true,
+      // targetActionKey: '',
+      // setupConfig: {},
+      // ! INPUT
+      id: 'test-number-type',
+      classes: 'test input-a tier-a number-field',
+      label: 'Ticket Quantity',
+      placeholder: 'How many?',
+      minValue: 2,  // ? opt
+      maxValue: 15, // ? opt
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: ['Need a number of tickets', 'Max is 15 tickets']
+      }
+    },
+    // ! ========================== DATE_PICKER
+    {
+      type: 'INPUT',
+      inputType: 'DATE_PICKER',
+      // ! DATA
+      dataPointKey: 'dateSelect',
+      // dataValidator: zfd.text(), // Lax validation
+      dataValidator: zfd.text(
+        z.string()
+        .regex(
+          /^\d{4}-\d{2}-\d{2}$/, // Regex to match "YYYY-MM-DD" strictly
+          {message: 'Date must be in YYYY-MM-DD format'}
+        )
+        .refine((date) => isValid(parseISO(date)), {
+          message: 'Invalid calendar date',
+        })
+        .refine((date) => isAfter(parseISO(date), startOfToday()), {
+          message: 'Date must be after today',
+        })
+      ),
+      startValue: '2025-04-12', // ! optional
+      required: true,
+      // targetActionKey: '',
+      setupConfig: {
+        // flatpickr
+        displayDateFormat: 'm/d/Y',
+      },
+      // ! INPUT
+      id: 'test-date-pick',
+      classes: 'test date input-a tier-a',
+      label: 'Event start date',
+      placeholder: 'Please select a date for your arrival',
+      // ! NODE STATE
+      status: {
+        hidden: false,
+        disabled: false,
+        errors: [],
+        hints: ['Should be after today']
+      }
+    },
+    // ! ========================== TICKET CODE
+    {
       type: 'INPUT',
       inputType: 'TEXT',
       // ! DATA
