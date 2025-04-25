@@ -192,3 +192,63 @@ interface InputRequirements {
   fi: any; // FormInterface
   node: any; // FormOutlineNode
 }
+
+interface FormInputNodeStatus {
+  hidden: boolean;
+  disabled:boolean;
+  // errors // TBD
+  // hints // TBD
+}
+
+// FORM_INPUT_NODES
+interface FormInputNode {
+  type: string;
+  inputType: string;
+  dataPointKey: string;
+  // validator
+  required: boolean;
+  targetActionKey: string;
+  id: string;
+  classes: string;
+  label: string;
+  placeholder: string;
+  status: FormInputNodeStatus;
+}
+
+interface TextNode extends FormInputNode {
+  // - TEXT
+  // - EMAIL
+  // - PASSWORD
+  // - TEXTAREA
+  // TBD
+}
+
+interface CurrencyNode extends FormInputNode {
+  // TBD
+}
+interface SelectNode extends FormInputNode {
+  // - SELECT
+  // - RADIO_BTN
+  // TBD
+}
+interface NumberNode extends FormInputNode {
+  // TBD
+}
+interface DatePickNode extends FormInputNode {
+  // TBD
+}
+interface CheckboxNode extends FormInputNode {
+  // TBD
+}
+
+// TODO - ADD...
+interface ActionButtonNode extends FormInputNode {
+  // - CUSTOM
+  // - SUBMIT
+  // TBD
+}
+interface FormSectionNode {
+  // - FIELDSET
+  // - FIELDGROUP
+  // TBD
+}
