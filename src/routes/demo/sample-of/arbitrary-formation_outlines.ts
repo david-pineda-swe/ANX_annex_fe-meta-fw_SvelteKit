@@ -114,7 +114,7 @@ export const formA_outline = {
         hints: []
       }
     },
-    // ! ========================== Ticket Qty
+    // ! ========================== Ticket Qty (NUMBER)
     {
       type: 'INPUT',
       inputType: 'NUMBER',
@@ -204,6 +204,7 @@ export const formA_outline = {
         hints: ['Code is 5 characters long']
       }
     },
+    // ! === FIELDSET
     {
       type: 'FIELDSET',
       classes: 'test fieldset-1 tier-a',
@@ -213,8 +214,8 @@ export const formA_outline = {
       },
       // TIER B - - FIELDGROUP(s)
       subNodes: [
+        // ! ========================== FIRST NAME
         {
-          // ! ========================== FIRST NAME
           type: 'INPUT',
           inputType: 'TEXT',
           // ===
@@ -237,6 +238,7 @@ export const formA_outline = {
             hints: []
           }
         },
+        // ! === FIELDGROUP
         {
           type: 'FIELDGROUP',
           classes: 'test fieldgroup-1 tier-b',
@@ -245,8 +247,8 @@ export const formA_outline = {
           },
           // TIER C - - - INPUT(s)
           subNodes: [
+            // ! ========================== LAST NAME
             {
-              // ! ========================== LAST NAME
               type: 'INPUT',
               inputType: 'TEXT',
               // ===
@@ -269,8 +271,8 @@ export const formA_outline = {
                 hints: []
               }
             },
+            // ! ========================== JARGON Q's [TEXTAREA]
             {
-              // ! ========================== JARGON Q's
               type: 'INPUT',
               inputType: 'TEXTAREA',
               // ===
@@ -296,8 +298,8 @@ export const formA_outline = {
                 // hints: ['Do something special!']
               }
             },
+            // ! ========================== EMAIL
             {
-              // ! ========================== EMAIL
               type: 'INPUT',
               inputType: 'EMAIL',
               // ===
@@ -330,8 +332,8 @@ export const formA_outline = {
         }
       ]
     },
+    // ! ========================== PASSWORD
     {
-      // ! ========================== PASSWORD
       type: 'INPUT',
       inputType: 'PASSWORD',
       // ===
@@ -354,8 +356,8 @@ export const formA_outline = {
         hints: []
       }
     },
+    // ! ========================== SAMPLE FOODS [RADIO_BTN]
     {
-      // ! ========================== SAMPLE FOODS
       type: 'INPUT',
       inputType: 'RADIO_BTN',
       // ===
@@ -385,8 +387,8 @@ export const formA_outline = {
         hints: []
       }
     },
+    // ! ========================== TERMS & COND [CHECKBOX_BTN]
     {
-      // ! ========================== TERMS & COND
       type: 'INPUT',
       inputType: 'CHECKBOX_BTN',
       // ===
@@ -441,8 +443,8 @@ export const formA_outline = {
     //     hints: []
     //   }
     // },
+    // ! ========================== SUBMIT
     {
-      // ! ========================== SUBMIT
       type: 'INPUT',
       inputType: 'SUBMIT_BTN',
       // === NO DATA
