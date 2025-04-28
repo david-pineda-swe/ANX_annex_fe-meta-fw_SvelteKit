@@ -2,7 +2,18 @@ import { createBrowserClient, createServerClient, isBrowser } from '@supabase/ss
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 import type { LayoutLoad } from './$types';
 
+const isConfigured = Boolean(
+  PUBLIC_SUPABASE_URL &&
+  PUBLIC_SUPABASE_ANON_KEY
+);
+
 export const load: LayoutLoad = async ({ data, depends, fetch }) => {
+  // BYPASS IF NOT CONFIGURED
+  if (!isConfigured) {
+    // Bypass: return empty or safe defaults
+    return {};
+}
+  
   /**
    * Declare a dependency so the layout can be invalidated, for example, on
    * session refresh.

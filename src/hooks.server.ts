@@ -85,7 +85,14 @@ const authGuard: Handle = async ({ event, resolve }) => {
   return resolve(event);
 }
 
-export const handle: Handle = sequence(supabase, authGuard);
+const isConfigured = Boolean(
+  PUBLIC_SUPABASE_URL &&
+  PUBLIC_SUPABASE_ANON_KEY
+);
+
+export const handle: Handle = isConfigured
+  ? sequence(supabase, authGuard)
+  : async ({ event, resolve }) => resolve(event);
 
 
 // NOTE - USER_ID COOKIE ASSIGNMENT EXAMPLE
