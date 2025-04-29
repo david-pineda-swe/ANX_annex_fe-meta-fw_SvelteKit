@@ -218,7 +218,7 @@ interface FormInputNode {
 }
 
 interface TextNode extends FormInputNode {
-  // - TEXT
+  // OK - TEXT
   // - EMAIL
   // - PASSWORD
   // - TEXTAREA

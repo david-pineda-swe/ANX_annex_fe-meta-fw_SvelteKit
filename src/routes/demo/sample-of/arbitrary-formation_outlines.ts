@@ -3,6 +3,14 @@ import { z } from 'zod';
 import { isValid, parseISO, isAfter, startOfToday } from 'date-fns';
 import { addTextNode } from 'annex/ui/formation/util/add-input-node';
 
+
+// - DOCUMENT NEW INPUTS
+// - type
+// - dependent util
+// - add to formation and standard/_input-index
+// - demo util excercise
+// - Document input gen / utill usage
+
 // TIER A / B / C form expression outline
 export const formA_outline = {
   meta: {},
