@@ -1,6 +1,7 @@
 import { zfd } from 'zod-form-data';
 import { z } from 'zod';
 import { isValid, parseISO, isAfter, startOfToday } from 'date-fns';
+import { addTextNode } from 'annex/ui/formation/util/add-input-node';
 
 // TIER A / B / C form expression outline
 export const formA_outline = {
@@ -181,6 +182,25 @@ export const formA_outline = {
       }
     },
     // ! ========================== TICKET CODE
+    addTextNode({
+      dataValidator: zfd.text(z.string({ required_error: 'is required' }).min(5)),
+      type: 'INPUT',
+      inputType: 'TEXT',
+      dataPointKey: 'ticketCodeUtil',
+      id: 'test-text-type-util',
+      classes: '',
+      required: false,
+      label: 'Ticket Code w/ UTIL',
+      placeholder: 'This is the first util genrated input',
+      startValue: 'TaDur',
+      status: {
+        hidden: false,
+        disabled: false,
+        // hints: ['This is for the next set of tickets'],
+        // hints: ["This is a test hint"],
+        // errors: ["Test pre prop error"]
+      }
+    }),
     {
       type: 'INPUT',
       inputType: 'TEXT',

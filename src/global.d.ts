@@ -1,4 +1,5 @@
 import type { GrayMatterFile } from 'gray-matter';
+import type { ZodString } from 'zod';
 
 /// <reference types="@sveltejs/kit" />
 
@@ -196,8 +197,8 @@ interface InputRequirements {
 interface FormInputNodeStatus {
   hidden: boolean;
   disabled:boolean;
-  // errors // TBD
-  // hints // TBD
+  hints?: Array<String>
+  errors?: Array<String> // NOTE - Auto applied by form interface 
 }
 
 // FORM_INPUT_NODES
@@ -205,14 +206,15 @@ interface FormInputNode {
   type: string;
   inputType: string;
   dataPointKey: string;
-  // validator
-  required: boolean;
-  targetActionKey: string;
+  // dataValidator // NOTE - each input spec interface will provide a type spec 
   id: string;
-  classes: string;
-  label: string;
-  placeholder: string;
   status: FormInputNodeStatus;
+  targetActionKey?: string; // NOTE - Is a object prop name that coresponds to the respective targetAction function{s} provided by initializer
+  required?: boolean;
+  classes?: string;
+  label?: string;
+  placeholder?: string;
+  startValue?: any;
 }
 
 interface TextNode extends FormInputNode {
@@ -220,7 +222,7 @@ interface TextNode extends FormInputNode {
   // - EMAIL
   // - PASSWORD
   // - TEXTAREA
-  // TBD
+  dataValidator: z.ZodString;
 }
 
 interface CurrencyNode extends FormInputNode {
