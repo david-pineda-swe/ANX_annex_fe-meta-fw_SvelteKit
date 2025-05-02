@@ -8,7 +8,8 @@
   };
 
   const inputHandler = new FormationInputHandler(formTier);
-  const { node } = formTier;
+  const { fi, node } = formTier;
+  const { _formData } = fi;
   const {id, classes, dataPointKey, placeholder, status } = node;
   // value={targetValue}
 </script>
@@ -17,10 +18,11 @@
   type="email"
   {id}
   class={classes}
-  name={dataPointKey}
   {placeholder}
-  disabled={$status.disabled}
+  name={dataPointKey}
+  value={$_formData[dataPointKey]}
   required={$status.required}
+  disabled={$status.disabled}
   on:focusout={(e) => inputHandler.updateInputEntry(e)}
 />
 

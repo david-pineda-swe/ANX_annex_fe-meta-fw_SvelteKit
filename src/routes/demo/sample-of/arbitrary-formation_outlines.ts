@@ -189,7 +189,7 @@ export const formA_outline = {
         hints: ['Should be after today']
       }
     },
-    // ! ========================== TICKET CODE
+    // ! ========================== TICKET CODE w/ util
     addTextNode({
       dataValidator: zfd.text(z.string({ required_error: 'is required' }).min(5)),
       type: 'INPUT',
@@ -326,36 +326,34 @@ export const formA_outline = {
                 // hints: ['Do something special!']
               }
             },
-            // ! ========================== EMAIL
-            {
-              type: 'INPUT',
-              inputType: 'EMAIL',
-              // ===
-              dataPointKey: 'email',
+            // ! ========================== EMAIL w/ UTIL
+            addTextNode({
               dataValidator: zfd.text(
                 z
+                  // FIX - DROP REQUIRED VALIDATION
                   .string({ required_error: 'is required' })
+                  // .string()
                   .min(1)
                   .max(64)
                   .email({ message: 'must be a valid email address' })
               ),
-              // startValue: '',
-              required: true,
-              // targetActionKey: '',
-              // SC - N/A
-              // ===
-              id: 'test-email',
+              type: 'INPUT',
+              inputType: 'EMAIL',
+              dataPointKey: 'emailEntryUtil',
+              id: 'test-email-util',
               classes: 'test input-2 tier-c',
-              label: 'Email',
+              label: 'Util Email',
               placeholder: 'abc@gmail.com',
-              // ===
+              required: true,
+              startValue: 'taco@gmail.com',
+              // targetActionKey: 'testUtilEmail',
               status: {
                 hidden: false,
                 disabled: false,
-                errors: [],
-                hints: []
+                // errors: ['test add error'],
+                // hints: ['test add hint']
               }
-            }
+            }),
           ]
         }
       ]

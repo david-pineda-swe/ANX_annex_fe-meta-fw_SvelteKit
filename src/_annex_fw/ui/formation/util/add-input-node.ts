@@ -9,8 +9,8 @@ import type {
   TextNode
 } from "globalTypes";
 
-// TEXT
-// EMAIL
+// OK - TEXT
+// OK - EMAIL
 // PASSWORD
 // TEXTAREA // EXPAND_ON
 export const addTextNode = (nodeSetup: TextNode): TextNode => {
