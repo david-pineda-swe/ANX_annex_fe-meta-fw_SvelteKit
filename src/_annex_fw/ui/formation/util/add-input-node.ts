@@ -12,7 +12,7 @@ import type {
 // OK - TEXT
 // OK - EMAIL
 // OK - PASSWORD
-// TEXTAREA // EXPAND_ON
+// OK - TEXTAREA
 export const addTextNode = (nodeSetup: TextNode): TextNode => {
   return {...nodeSetup};
 };

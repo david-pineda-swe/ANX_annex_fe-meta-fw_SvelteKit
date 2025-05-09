@@ -299,33 +299,25 @@ export const formA_outline = {
                 hints: []
               }
             },
-            // ! ========================== JARGON Q's [TEXTAREA]
-            {
+            // ! ========================== [TEXTAREA] w/ util
+            addTextNode({
               type: 'INPUT',
               inputType: 'TEXTAREA',
-              // ===
-              dataPointKey: 'questions',
+              dataPointKey: 'questionsAsked',
               dataValidator: zfd.text(
                 z.string({ required_error: 'are required' }).trim().optional()
               ),
-              // startValue: '',
-              required: false,
               // targetActionKey: '',
-              // SC - N/A
-              // ===
-              id: 'test-textarea-jargon',
+              id: 'test-textarea-util',
               classes: 'test input-4 tier-c',
-              label: 'Questions',
+              label: 'Questions?',
               placeholder: 'Any thing we can help with?',
-              // ===
+              required: false,
               status: {
                 hidden: false,
-                disabled: false,
-                errors: [],
-                hints: []
-                // hints: ['Do something special!']
+                disabled: false
               }
-            },
+            }),
             // ! ========================== EMAIL w/ UTIL
             addTextNode({
               dataValidator: zfd.text(

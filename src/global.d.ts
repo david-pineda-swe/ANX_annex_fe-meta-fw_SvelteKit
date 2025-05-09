@@ -221,7 +221,7 @@ interface TextNode extends FormInputNode {
   // OK - TEXT
   // OK - EMAIL
   // OK - PASSWORD
-  // - TEXTAREA
+  // OK - TEXTAREA
   dataValidator: z.ZodString;
 }
 
