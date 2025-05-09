@@ -358,30 +358,24 @@ export const formA_outline = {
         }
       ]
     },
-    // ! ========================== PASSWORD
-    {
+    // ! ========================== PASSWORD W/ UTIL
+    addTextNode({
       type: 'INPUT',
       inputType: 'PASSWORD',
-      // ===
-      dataPointKey: 'password',
+      dataPointKey: 'passByUtil',
       dataValidator: zfd.text(z.string({ required_error: 'is required' }).trim()),
-      // startValue: '',
       required: true,
-      // targetActionKey: '',
-      // SC - N/A
-      // ===
-      id: 'test-password',
+      id: 'test-pass',
       classes: 'test password tier-a',
-      label: 'Password',
-      placeholder: '---',
-      // ===
+      label: 'Password By Util',
+      placeholder: '--A--',
+      //   // startValue: '',
+      //   // targetActionKey: '',
       status: {
         hidden: false,
-        disabled: false,
-        errors: [],
-        hints: []
+        disabled: false
       }
-    },
+    }),
     // ! ========================== SAMPLE FOODS [RADIO_BTN]
     {
       type: 'INPUT',
