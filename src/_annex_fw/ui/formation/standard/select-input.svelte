@@ -11,8 +11,8 @@
   const inputHandler = new FormationInputHandler(formTier);
   const { fi, node } = formTier;
   const { _formData } = fi;
-  const {id, classes, dataPointKey, placeholder, setupConfig, status } = node;
-  const { useEnhancedOptions, valueOptions } = setupConfig;
+  const {id, classes, dataPointKey, placeholder, contextMeta, status } = node;
+  const { useEnhancedOptions, valueOptions } = contextMeta;
 
   const proxyClasses = `proxy-options ${classes}`;
 

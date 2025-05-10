@@ -10,8 +10,8 @@
   const inputHandler = new FormationInputHandler(formTier);
   const { fi, node } = formTier;
   const { _formData } = fi;
-  const {id, classes, dataPointKey, placeholder, setupConfig, status } = node;
-  const { currency, locale } = setupConfig;
+  const {id, classes, dataPointKey, placeholder, contextMeta, status } = node;
+  const { currency, locale } = contextMeta;
 
   // TODO - CREATE UTILITY
   function formatDisplayCurrency(args: any): string {

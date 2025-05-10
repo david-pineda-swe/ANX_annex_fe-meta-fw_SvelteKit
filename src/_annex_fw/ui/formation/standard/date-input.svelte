@@ -12,8 +12,8 @@
   const inputHandler = new FormationInputHandler(formTier);
   const { fi, node } = formTier;
   const { _formData } = fi;
-  const {id, classes, dataPointKey, placeholder, setupConfig, status } = node;
-  const { displayDateFormat, locale } = setupConfig;
+  const {id, classes, dataPointKey, placeholder, contextMeta, status } = node;
+  const { displayDateFormat, locale } = contextMeta;
 
   // X - RELOCATE to FORMAT UTIL using date-fns
   // function formatDisplayDate(args: any): string {

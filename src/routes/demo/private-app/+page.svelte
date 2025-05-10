@@ -108,7 +108,7 @@
         startValue: false, // ? N/A - reserved for preprop
         required: false,
         // targetActionKey: 'handleTestAction_C',
-        setupConfig: {
+        contextMeta: {
           onValue: 'terms_accepted',
           description:
             'Item selection and size has been confirmed.'

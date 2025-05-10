@@ -10,7 +10,7 @@
   const inputHandler = new FormationInputHandler(formTier);
   const { fi, node } = formTier;
   const { _formData } = fi;
-  const { id, classes, dataPointKey, setupConfig: { valueOptions } } = node;
+  const { id, classes, dataPointKey, contextMeta: { valueOptions } } = node;
 
   //
   let radioOptions = [...valueOptions];

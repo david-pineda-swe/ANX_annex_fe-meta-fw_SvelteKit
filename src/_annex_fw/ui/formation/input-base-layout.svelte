@@ -2,10 +2,10 @@
   import { isEmpty } from "annex/utils";
 
   export let node:any = null;
-  const { id, label, inputType, required, setupConfig, status: input } = node;
+  const { id, label, inputType, required, contextMeta, status: input } = node;
   
   const notExcluded = !['SUBMIT_BTN', 'CUSTOM_BTN'].includes(inputType);
-  const useLabel = notExcluded && label && !setupConfig?.hideLabel;
+  const useLabel = notExcluded && label && !contextMeta?.hideLabel;
   const labelCopy = `${label}${(required) ? ' *' : ''}`;
 
   $: isDisabled = $input.disabled;

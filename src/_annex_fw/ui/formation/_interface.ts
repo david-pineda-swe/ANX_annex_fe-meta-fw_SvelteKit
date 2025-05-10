@@ -115,7 +115,7 @@ class FormationInterface {
 
   _deriveValueTargetLocation = (params: any) => {
     const { node, shell, currentEntry, value } = params;
-    const { inputType, setupConfig } = node;
+    const { inputType, contextMeta } = node;
 
     if (inputType === 'CHECKBOX_BTN') {
       // Update the node
@@ -123,7 +123,7 @@ class FormationInterface {
         return { ...data, ...{ checked: value } };
       });
       // leave formData blank for user interaction
-      return { ...shell, ...{ [currentEntry]: value ? setupConfig.onValue : null } };
+      return { ...shell, ...{ [currentEntry]: value ? contextMeta.onValue : null } };
     } else {
       // DEFAULT - assign to formData shell schema
       return { ...shell, ...{ [currentEntry]: value } };

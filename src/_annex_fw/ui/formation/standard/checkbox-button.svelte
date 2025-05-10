@@ -10,8 +10,8 @@
 
   const inputHandler = new FormationInputHandler(formTier);
   const { node } = formTier;
-  const {id, classes, label, dataPointKey, setupConfig, status } = node;
-  const { onValue, description } = setupConfig;
+  const {id, classes, label, dataPointKey, contextMeta, status } = node;
+  const { onValue, description } = contextMeta;
 
   $: checked = $status.checked;
 

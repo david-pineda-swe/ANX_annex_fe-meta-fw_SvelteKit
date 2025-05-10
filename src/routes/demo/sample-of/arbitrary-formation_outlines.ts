@@ -58,7 +58,7 @@ export const formA_outline = {
       // startValue: 'asdf', // TBD - 
       required: false,
       // targetActionKey: '',
-      setupConfig: {
+      contextMeta: {
         useEnhancedOptions: true,
         valueOptions: [
           {label: 'Fruit', disabled: false, groupItems: [
@@ -101,7 +101,7 @@ export const formA_outline = {
       // startValue: 'asdf', // ? optional
       required: true,
       // targetActionKey: '',
-      setupConfig: {
+      contextMeta: {
         useEnhancedOptions: true,
         valueOptions: [
           { label: 'Apple', value: 'A', id: 'apple-opt' },
@@ -133,7 +133,7 @@ export const formA_outline = {
       // startValue: 12, // ? optional
       required: true,
       // targetActionKey: '',
-      // setupConfig: {},
+      // contextMeta: {},
       // ! INPUT
       id: 'test-number-type',
       classes: 'test input-a tier-a number-field',
@@ -172,7 +172,7 @@ export const formA_outline = {
       startValue: '2025-04-12', // ! optional
       required: true,
       // targetActionKey: '',
-      setupConfig: {
+      contextMeta: {
         // flatpickr
         displayDateFormat: 'm/d/Y',
       },
@@ -218,7 +218,7 @@ export const formA_outline = {
       // startValue: 'asdf', // ! optional
       required: true,
       // targetActionKey: '',
-      // setupConfig: {},
+      // contextMeta: {},
       // ! INPUT
       id: 'test-text-type',
       classes: 'test input-a tier-a',
@@ -378,7 +378,7 @@ export const formA_outline = {
       startValue: '',
       required: false,
       targetActionKey: 'handleTestAction_B',
-      setupConfig: {
+      contextMeta: {
         // ARBITRARY SPEC DETAILS
         valueOptions: [
           { label: 'Apple', value: 'A', id: 'apple-opt' },
@@ -415,7 +415,7 @@ export const formA_outline = {
       startValue: false, // N/A - reserved for preprop
       required: true,
       targetActionKey: 'handleTestAction_C',
-      setupConfig: {
+      contextMeta: {
         onValue: 'terms_accepted',
         description:
           'This is a much longer description of what is actually happening to the formData as a user selects this checkbox today at this present time.'
@@ -441,7 +441,7 @@ export const formA_outline = {
     //   inputType: 'CUSTOM_BTN',
     //   // === NO DATA
     //   targetActionKey: 'handleTestAction_A',
-    //   // setupConfig: {},
+    //   // contextMeta: {},
     //   // ===
     //   id: 'test-form-custom-btn',
     //   classes: 'test input-btn-custom tier-a',
