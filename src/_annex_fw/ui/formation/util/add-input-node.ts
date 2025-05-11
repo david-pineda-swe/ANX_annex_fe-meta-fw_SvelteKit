@@ -17,12 +17,13 @@ export const addTextNode = (nodeSetup: TextNode): TextNode => {
   return {...nodeSetup};
 };
 
-// CURRENCY
+// OK - CURRENCY
 export const addCurrencyNode = (nodeSetup: CurrencyNode): CurrencyNode => {
   return {...nodeSetup};
 };
 
 // SELECT
+// DEEP_SELECT
 // RADIO_BTN
 export const addSelectNode = (nodeSetup: SelectNode): SelectNode => {
   return {...nodeSetup};

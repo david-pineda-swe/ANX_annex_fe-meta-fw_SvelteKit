@@ -1,5 +1,5 @@
 import type { GrayMatterFile } from 'gray-matter';
-import type { ZodString } from 'zod';
+import type { ZodString, ZodNumber } from 'zod';
 
 /// <reference types="@sveltejs/kit" />
 
@@ -217,6 +217,11 @@ interface FormInputNode {
   startValue?: any;
 }
 
+interface CurrencyInputContextMeta {
+  currency: string;
+  locale: string;
+}
+
 interface TextNode extends FormInputNode {
   // OK - TEXT
   // OK - EMAIL
@@ -226,7 +231,8 @@ interface TextNode extends FormInputNode {
 }
 
 interface CurrencyNode extends FormInputNode {
-  // TBD
+  dataValidator: z.ZodNumber;
+  contextMeta: CurrencyInputContextMeta;
 }
 interface SelectNode extends FormInputNode {
   // - SELECT

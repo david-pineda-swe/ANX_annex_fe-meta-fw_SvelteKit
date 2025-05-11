@@ -1,7 +1,7 @@
 import { zfd } from 'zod-form-data';
 import { z } from 'zod';
 import { isValid, parseISO, isAfter, startOfToday } from 'date-fns';
-import { addTextNode } from 'annex/ui/formation/util/add-input-node';
+import { addCurrencyNode, addTextNode } from 'annex/ui/formation/util/add-input-node';
 
 
 // - DOCUMENT NEW INPUTS
@@ -21,33 +21,30 @@ export const formA_outline = {
   // TIER A - FIELDSET(s) + & B || C
   nodes: [
     // ! ========================== CURRENCY - USD
-    {
+    addCurrencyNode({
       type: 'INPUT',
       inputType: 'CURRENCY',
-      // ! DATA
-      dataPointKey: 'amountUSDtest',
+      dataPointKey: 'amountTestUSD',
       dataValidator: zfd.numeric(z.number().min(69, {message: 'Payment must be at least $0.69'})),
       startValue: 69,
       required: true,
       // targetActionKey: '',
-      // TODO - ADD GLOBAL SUPPORT FOR DESIGNATED CURRENCY AND LOCALE
-      setupConfig: {
-        currency:"USD",
-        locale: "en-US"
+      // TODO - ADD GLOBAL/PROJECT SUPPORT FOR DESIGNATED CURRENCY AND LOCALE
+      contextMeta: {
+        currency: 'USD',
+        locale: 'en-US'
       },
-      // ! INPUT
       id: 'test-currency-usd',
       classes: 'test currency-usd tier-a',
       label: 'Amount Towards Balance',
       placeholder: 'How much can you pay?',
-      // ! NODE STATE
       status: {
         hidden: false,
         disabled: false,
-        errors: [],
-        hints: []
-      }
-    },
+        // errors: [''],
+        // hints: [''],
+      },
+    }),
     // ! ========================== DEEP Select
     {
       type: 'INPUT',
