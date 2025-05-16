@@ -22,9 +22,7 @@ export const addCurrencyNode = (nodeSetup: CurrencyNode): CurrencyNode => {
   return {...nodeSetup};
 };
 
-// SELECT
-// DEEP_SELECT
-// RADIO_BTN
+// OK - SELECT
 export const addSelectNode = (nodeSetup: SelectNode): SelectNode => {
   return {...nodeSetup};
 };

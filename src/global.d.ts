@@ -206,20 +206,37 @@ interface FormInputNode {
   type: string;
   inputType: string;
   dataPointKey: string;
-  // dataValidator // NOTE - each input spec interface will provide a type spec 
-  id: string;
   status: FormInputNodeStatus;
-  targetActionKey?: string; // NOTE - Is a object prop name that coresponds to the respective targetAction function{s} provided by initializer
-  required?: boolean;
+  required: boolean;
+  id: string;
+  // - OPTIONAL
   classes?: string;
+  targetActionKey?: string; // NOTE - Is a object prop name that coresponds to the respective targetAction function{s} provided by initializer
   label?: string;
-  placeholder?: string;
   startValue?: any;
+  placeholder?: string;
+  // - SPEC DEFINED
+  // dataValidator // NOTE - each input spec interface will provide a type spec 
+  // contextMeta
 }
 
 interface CurrencyInputContextMeta {
   currency: string;
   locale: string;
+}
+
+interface ValueOptionNode {
+  label: string;
+  //
+  value?: any;
+  id?: string;
+  diabled?: boolean;
+  groupItems?: Array<ValueOptionNode>;
+}
+
+interface SelectInputContextMeta {
+  valueOptions: Array<ValueOptionNode>
+  useEnhancedOptions?: boolean;
 }
 
 interface TextNode extends FormInputNode {
@@ -235,8 +252,9 @@ interface CurrencyNode extends FormInputNode {
   contextMeta: CurrencyInputContextMeta;
 }
 interface SelectNode extends FormInputNode {
-  // - SELECT
-  // - RADIO_BTN
+  // OK - SELECT
+  dataValidator: z.ZodString;
+  contextMeta: SelectInputContextMeta;
   // TBD
 }
 interface NumberNode extends FormInputNode {

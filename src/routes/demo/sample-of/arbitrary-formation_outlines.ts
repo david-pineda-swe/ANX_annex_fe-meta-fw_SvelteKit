@@ -1,7 +1,7 @@
 import { zfd } from 'zod-form-data';
 import { z } from 'zod';
 import { isValid, parseISO, isAfter, startOfToday } from 'date-fns';
-import { addCurrencyNode, addTextNode } from 'annex/ui/formation/util/add-input-node';
+import { addCurrencyNode, addSelectNode, addTextNode } from 'annex/ui/formation/util/add-input-node';
 
 
 // - DOCUMENT NEW INPUTS
@@ -20,12 +20,12 @@ export const formA_outline = {
   formClasses: 'stacked test form-a full-tier-set',
   // TIER A - FIELDSET(s) + & B || C
   nodes: [
-    // ! ========================== CURRENCY - USD
+    // OK ========================== CURRENCY - USD
     addCurrencyNode({
       type: 'INPUT',
       inputType: 'CURRENCY',
       dataPointKey: 'amountTestUSD',
-      dataValidator: zfd.numeric(z.number().min(69, {message: 'Payment must be at least $0.69'})),
+      dataValidator: zfd.numeric(z.number().min(69, { message: 'Payment must be at least $0.69' })),
       startValue: 69,
       required: true,
       // targetActionKey: '',
@@ -44,6 +44,7 @@ export const formA_outline = {
         // errors: [''],
         // hints: [''],
       },
+      targetActionKey: ''
     }),
     // ! ========================== DEEP Select
     {
@@ -88,15 +89,14 @@ export const formA_outline = {
         hints: []
       }
     },
-    // ! ========================== Select
-    {
+    // OK - ========================== SELECT 
+    addSelectNode({
       type: 'INPUT',
       inputType: 'SELECT',
-      // ! DATA
-      dataPointKey: 'testSelect',
+      dataPointKey: 'testSelectByUtil',
       dataValidator: zfd.text(),
-      // startValue: 'asdf', // ? optional
       required: true,
+      // startValue: '',
       // targetActionKey: '',
       contextMeta: {
         useEnhancedOptions: true,
@@ -107,19 +107,15 @@ export const formA_outline = {
           { label: 'Donut', value: 'D', id: 'donut-opt' }
         ]
       },
-      // ! INPUT
-      id: 'test-select',
+      id: 'test-select-by-util',
       classes: 'test input-a tier-a select',
       label: 'Test Select',
-      // placeholder: '-- Please select a fruit',
-      // ! NODE STATE
+      placeholder: '',
       status: {
         hidden: false,
-        disabled: false,
-        errors: [],
-        hints: []
-      }
-    },
+        disabled: false
+      },
+    }),
     // ! ========================== Ticket Qty (NUMBER)
     {
       type: 'INPUT',
@@ -186,7 +182,7 @@ export const formA_outline = {
         hints: ['Should be after today']
       }
     },
-    // ! ========================== TICKET CODE w/ util
+    // OK ========================== TICKET CODE w/ util
     addTextNode({
       dataValidator: zfd.text(z.string({ required_error: 'is required' }).min(5)),
       type: 'INPUT',
@@ -204,7 +200,8 @@ export const formA_outline = {
         // hints: ['This is for the next set of tickets'],
         // hints: ["This is a test hint"],
         // errors: ["Test pre prop error"]
-      }
+      },
+      targetActionKey: ''
     }),
     {
       type: 'INPUT',
@@ -296,7 +293,7 @@ export const formA_outline = {
                 hints: []
               }
             },
-            // ! ========================== [TEXTAREA] w/ util
+            // OK ========================== [TEXTAREA] w/ util
             addTextNode({
               type: 'INPUT',
               inputType: 'TEXTAREA',
@@ -313,9 +310,10 @@ export const formA_outline = {
               status: {
                 hidden: false,
                 disabled: false
-              }
+              },
+              targetActionKey: ''
             }),
-            // ! ========================== EMAIL w/ UTIL
+            // OK ========================== EMAIL w/ UTIL
             addTextNode({
               dataValidator: zfd.text(
                 z
@@ -341,13 +339,14 @@ export const formA_outline = {
                 disabled: false,
                 // errors: ['test add error'],
                 // hints: ['test add hint']
-              }
+              },
+              targetActionKey: ''
             }),
           ]
         }
       ]
     },
-    // ! ========================== PASSWORD W/ UTIL
+    // OK ========================== PASSWORD W/ UTIL
     addTextNode({
       type: 'INPUT',
       inputType: 'PASSWORD',
@@ -363,7 +362,8 @@ export const formA_outline = {
       status: {
         hidden: false,
         disabled: false
-      }
+      },
+      targetActionKey: ''
     }),
     // ! ========================== SAMPLE FOODS [RADIO_BTN]
     {
