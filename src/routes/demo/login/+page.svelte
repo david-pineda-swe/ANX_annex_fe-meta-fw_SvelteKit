@@ -8,6 +8,7 @@
   import FormationInterface from "annex/ui/formation/_interface";
   import FormPlotter from "annex/ui/formation/form-plotter.svelte";
   import { goto } from "$app/navigation";
+  import { page } from '$app/state';
 
   const POC_LOGIN_CONSTANTS = {
     errorMessages: {
@@ -203,6 +204,11 @@
 
   loginPOC.verifyInstance();
 </script>
+
+<!-- X - REMOVE TEST -->
+<h1>TEST PAGE STATE:</h1>
+<h1>BYPASS_ROUTE_AUTH_SERVICES: {page.data.bypassRouteAuthentication}</h1>
+<!-- X - REMOVE TEST -->
 
 <form method="POST" action="?/demo/login">
   <label>

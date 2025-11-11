@@ -11,8 +11,16 @@ export const load: LayoutLoad = async ({ data, depends, fetch }) => {
   // BYPASS IF NOT CONFIGURED
   if (!isConfigured) {
     // Bypass: return empty or safe defaults
-    return {};
-}
+    // TODO - Add to monitor logging
+    console.error('>>> (!) SESSION SERVICES ARE OFFLINE (!) - AUTH SERVICES WILL BE BYPASSED <<<');
+    
+    return {
+      bypassRouteAuthentication: true,
+      session: null,
+      supabase: null,
+      user: null
+    };
+  }
   
   /**
    * Declare a dependency so the layout can be invalidated, for example, on
@@ -50,5 +58,9 @@ export const load: LayoutLoad = async ({ data, depends, fetch }) => {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return { session, supabase, user };
+  return {
+    session,
+    supabase,
+    user
+  };
 }
