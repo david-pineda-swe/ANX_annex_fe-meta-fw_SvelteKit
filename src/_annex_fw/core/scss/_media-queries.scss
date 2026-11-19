@@ -1,8 +1,8 @@
 // TODO - ADD isPast_[X] queries and rules
-@use 'SM_media';
-@use 'MD_media';
-@use 'LG_media';
-@use 'XL_media';
+@use 'media__XL';
+@use 'media_LG';
+@use 'media_MD';
+@use 'media_SM';
 
 $mobileBreakpoint: 500px;
 $tabletBreakpoint: 700px;
@@ -34,14 +34,14 @@ $desktopBreakpoint: 900px;
 }
 
 @include is_SM {
-  @include SM_media.rules;
+  @include media_SM.rules;
 }
 @include is_MD {
-  @include MD_media.rules;
+  @include media_MD.rules;
 }
 @include is_LG {
-  @include LG_media.rules;
+  @include media_LG.rules;
 }
 @include is_XL {
-  @include XL_media.rules;
+  @include media__XL.rules;
 }

@@ -2,7 +2,26 @@ import { createBrowserClient, createServerClient, isBrowser } from '@supabase/ss
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 import type { LayoutLoad } from './$types';
 
+const isConfigured = Boolean(
+  PUBLIC_SUPABASE_URL &&
+  PUBLIC_SUPABASE_ANON_KEY
+);
+
 export const load: LayoutLoad = async ({ data, depends, fetch }) => {
+  // BYPASS IF NOT CONFIGURED
+  if (!isConfigured) {
+    // Bypass: return empty or safe defaults
+    // TODO - Add to monitor logging
+    console.error('>>> (!) SESSION SERVICES ARE OFFLINE (!) - AUTH SERVICES WILL BE BYPASSED <<<');
+    
+    return {
+      bypassRouteAuthentication: true,
+      session: null,
+      supabase: null,
+      user: null
+    };
+  }
+  
   /**
    * Declare a dependency so the layout can be invalidated, for example, on
    * session refresh.
@@ -39,5 +58,9 @@ export const load: LayoutLoad = async ({ data, depends, fetch }) => {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return { session, supabase, user };
+  return {
+    session,
+    supabase,
+    user
+  };
 }
